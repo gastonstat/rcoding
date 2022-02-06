@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Session Management | Coding in R</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Session Management | Coding in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Session Management | Coding in R" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+<meta name="date" content="2022-02-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rstudio.html"/>
+<link rel="next" href="vectors.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Coding in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yet-another-r-book"><i class="fa fa-check"></i>Yet Another R Book</a></li>
+</ul></li>
+<li class="part"><span><b>I Getting Started with R and RStudio</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#interacting-with-r"><i class="fa fa-check"></i><b>1.1</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>2</b> Breaking the Ice with R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-r-via-rstudio"><i class="fa fa-check"></i><b>2.1</b> First Contact with R (via RStudio)</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>2.1.1</b> R as a scientific calculator</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rintro.html"><a href="rintro.html#assigning-values-to-objects"><i class="fa fa-check"></i><b>2.1.2</b> Assigning values to objects</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>2.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="2.1.4" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>2.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="2.1.5" data-path="rintro.html"><a href="rintro.html#calling-functions"><i class="fa fa-check"></i><b>2.1.5</b> Calling Functions</a></li>
+<li class="chapter" data-level="2.1.6" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>2.1.6</b> Comments in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rintro.html"><a href="rintro.html#help-documentation"><i class="fa fa-check"></i><b>2.2</b> Getting Help</a></li>
+<li class="chapter" data-level="2.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rintro.html"><a href="rintro.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>3</b> A Quick Tour Around RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rstudio.html"><a href="rstudio.html#first-contact-with-rstudio"><i class="fa fa-check"></i><b>3.1</b> First Contact with RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="rstudio.html"><a href="rstudio.html#rstudio-panes-in-a-nutshell"><i class="fa fa-check"></i><b>3.2</b> RStudio Panes in a Nutshell</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>3.2.1</b> Console</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help"><i class="fa fa-check"></i><b>3.2.2</b> Files, Plots, Packages, Help</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rstudio.html"><a href="rstudio.html#source-or-editor"><i class="fa fa-check"></i><b>3.2.3</b> Source or Editor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rstudio.html"><a href="rstudio.html#environment-history-connections"><i class="fa fa-check"></i><b>3.2.4</b> Environment, History, Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rstudio.html"><a href="rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session.html"><a href="session.html"><i class="fa fa-check"></i><b>4</b> Session Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session.html"><a href="session.html#starting-a-session"><i class="fa fa-check"></i><b>4.1</b> Starting a Session</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="session.html"><a href="session.html#what-happens-when-you-open-an-r-session-via-rstudio"><i class="fa fa-check"></i><b>4.1.1</b> What happens when you open an R session via RStudio?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="session.html"><a href="session.html#opening-a-session-for-the-first-time"><i class="fa fa-check"></i><b>4.1.2</b> Opening a session for the first time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="session.html"><a href="session.html#working-directory"><i class="fa fa-check"></i><b>4.1.3</b> Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="session.html"><a href="session.html#working-during-a-session"><i class="fa fa-check"></i><b>4.2</b> Working During a Session</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#working-directory-1"><i class="fa fa-check"></i><b>4.2.1</b> Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="session.html"><a href="session.html#workspace-and-global-environment"><i class="fa fa-check"></i><b>4.2.2</b> Workspace and Global Environment</a></li>
+<li class="chapter" data-level="4.2.3" data-path="session.html"><a href="session.html#commands-history"><i class="fa fa-check"></i><b>4.2.3</b> Commands History</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="session.html"><a href="session.html#closing-a-session"><i class="fa fa-check"></i><b>4.3</b> Closing a Session</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Objects in R</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors.html"><a href="vectors.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="vectors.html"><a href="vectors.html#creating-objects"><i class="fa fa-check"></i><b>5.1.1</b> Creating Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html#about-r-vectors"><i class="fa fa-check"></i><b>5.2</b> About R Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="vectors.html"><a href="vectors.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>5.3</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="vectors.html"><a href="vectors.html#types-and-modes"><i class="fa fa-check"></i><b>5.3.1</b> Types and Modes</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vectors.html"><a href="vectors.html#special-values"><i class="fa fa-check"></i><b>5.3.2</b> Special Values</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vectors.html"><a href="vectors.html#length-of-vectors"><i class="fa fa-check"></i><b>5.3.3</b> Length of Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="vectors.html"><a href="vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.4</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="vectors.html"><a href="vectors.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>5.4.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="vectors.html"><a href="vectors.html#numeric-sequences"><i class="fa fa-check"></i><b>5.4.2</b> Numeric Sequences</a></li>
+<li class="chapter" data-level="5.4.3" data-path="vectors.html"><a href="vectors.html#replicated-vectors"><i class="fa fa-check"></i><b>5.4.3</b> Replicated Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="vectors.html"><a href="vectors.html#coercion"><i class="fa fa-check"></i><b>5.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="vectors.html"><a href="vectors.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>5.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="5.5.2" data-path="vectors.html"><a href="vectors.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>5.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-about-vectors.html"><a href="more-about-vectors.html"><i class="fa fa-check"></i><b>6</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#motivation-future-value"><i class="fa fa-check"></i><b>6.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#future-value-formula"><i class="fa fa-check"></i><b>6.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization"><i class="fa fa-check"></i><b>6.2</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#definition-of-vectorization"><i class="fa fa-check"></i><b>6.2.1</b> Definition of Vectorization</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#recycling"><i class="fa fa-check"></i><b>6.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>6.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>6.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#numeric-subsetting"><i class="fa fa-check"></i><b>6.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="6.4.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#character-subsetting"><i class="fa fa-check"></i><b>6.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="6.4.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#logical-subsetting"><i class="fa fa-check"></i><b>6.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="6.4.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#summary-of-subsetting"><i class="fa fa-check"></i><b>6.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="arrays.html"><a href="arrays.html"><i class="fa fa-check"></i><b>7</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="arrays.html"><a href="arrays.html#motivation"><i class="fa fa-check"></i><b>7.1</b> Motivation</a></li>
+<li class="chapter" data-level="7.2" data-path="arrays.html"><a href="arrays.html#tables-with-matrices"><i class="fa fa-check"></i><b>7.2</b> Tables with Matrices</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="arrays.html"><a href="arrays.html#r-matrices"><i class="fa fa-check"></i><b>7.2.1</b> R Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="arrays.html"><a href="arrays.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>7.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="arrays.html"><a href="arrays.html#more-matrices"><i class="fa fa-check"></i><b>7.3.1</b> More Matrices</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="session" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Session Management</h1>
+<p>In this chapter I review some important aspects about managing your
+interactive session with R.</p>
+<p>There are several things going on behind the scenes:</p>
+<ul>
+<li><p>when starting a session</p></li>
+<li><p>during the session</p></li>
+<li><p>when closing a session</p></li>
+</ul>
+<div id="starting-a-session" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Starting a Session</h2>
+<p>Starting a session can be done in two primary ways:</p>
+<ul>
+<li><p>launching the R application program, which will give you access to its
+graphical usier interface; or via RStudio or any other IDE that has the
+ability to open an R session.</p></li>
+<li><p>by clicking on a file that your computer associates with R (or RStudio).
+For example, R-script files (with file extension <code>.R</code> or <code>r</code>), R-Markdown
+files (<code>.Rmd</code> extension), R-Noweb files (<code>.Rnw</code> extension), RStudio project
+files (<code>.Rproj</code> extension), etc.</p></li>
+</ul>
+<div id="what-happens-when-you-open-an-r-session-via-rstudio" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> What happens when you open an R session via RStudio?</h3>
+<p>This is an important question that many users never stop to think about.
+However, it’s worth reviewing what happens when a session is started. So let’s
+talk about this.</p>
+<ul>
+<li><p>Every time you open RStudio, the console pane will display R’s welcome message.</p></li>
+<li><p>The console is always linked to a working directory.</p></li>
+<li><p>Typically, the working directory of the console will be your home directory,
+unless you specified a different location when you installed R in your computer.</p></li>
+<li><p>You can change the working directory to a different directory if you want.
+This change can be permanent (for future sessions), or temporary (for current
+session).</p></li>
+<li><p>To permanently modify working directory (when a session is opened), go to the
+menu bar, select “RStudio” tab, click on Preferences, and modify the “R General”
+options.</p></li>
+<li><p>To temporary change the working directory, go to the menu bar, select the
+“Session” tab, and click on “Set Working Directory,” or simply specify a
+working directory with the <code>setwd()</code> function executed from R’s console.</p></li>
+</ul>
+</div>
+<div id="opening-a-session-for-the-first-time" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Opening a session for the first time</h3>
+<p>If you are opening a session for the very fist time:</p>
+<ul>
+<li><p>the “Editor” pane will be collapsed, and</p></li>
+<li><p>all the tabs in the “Environment, History, Connections” pane will be empty</p></li>
+</ul>
+<p>In general, when you open a session (<strong>not</strong> for the very fist time):</p>
+<ul>
+<li>the “Environment” tab may display some objects, which means you have some
+existing objects in your global environment</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="session.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what objects are in my global environment?</span></span>
+<span id="cb18-2"><a href="session.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<ul>
+<li>the “History” tab may contain lines of previously used commands; if this is
+the case it means that there is a text file called <code>.Rhistory</code> in your
+working directory.</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="session.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is my history of commands being tracked?</span></span>
+<span id="cb19-2"><a href="session.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>()</span></code></pre></div>
+</div>
+<div id="working-directory" class="section level3" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Working Directory</h3>
+<p>If you open R via launching an application program (e.g. RStudio) that lets
+you interact with R’s console, your session will have an associated working
+directory, sometimes also referred to as the <em>current</em> working directory.</p>
+<p>When you install R in your computer, during the installation process a default
+working directory is assigned with R. Be default, this directory is your home
+directory. You can check whether this is the case if you run the
+<em>get working directory</em> function <code>getwd()</code> in your console.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="session.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run this command in the console to find out </span></span>
+<span id="cb20-2"><a href="session.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the working directory of your session</span></span>
+<span id="cb20-3"><a href="session.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<p>In RStudio, you can also look at the console pane, and inspect the text right
+below the <code>Console</code> tab that always displays the working directory of your
+session. If you see the symbols <code>~/</code> it means that the home directory
+(represented by the tilde) is your working directory.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
+<img src="images/rstudio/rstudio-console-working-directory.png" alt="The working directory is indicated right below the Console tab." width="70%" />
+<p class="caption">
+Figure 4.1: The working directory is indicated right below the Console tab.
+</p>
+</div>
+</div>
+</div>
+<div id="working-during-a-session" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Working During a Session</h2>
+<p>Working with R involves a series of common actions:</p>
+<ul>
+<li><p>writing commands (on a source document or on the console)</p></li>
+<li><p>executing commands (from a source doc or from the console)</p></li>
+<li><p>looking or examining outputs</p></li>
+<li><p>reading or importing files (e.g. data files, script files)</p></li>
+<li><p>saving or exporting output to files (e.g. data files, images, results)</p></li>
+</ul>
+<p>From the logistical point of vew, it all boils down to executing commands,
+taking into account the following:</p>
+<ul>
+<li><p>where a command is being executed from</p></li>
+<li><p>if the command requires an input, where does that input comes from?</p></li>
+<li><p>if the command produces an output, where does that output goes to?</p></li>
+</ul>
+<p>This is why we need to describe:</p>
+<ol style="list-style-type: decimal">
+<li>Working Directory</li>
+<li>Workspace and Global Environment</li>
+<li>History of commands</li>
+</ol>
+<div id="working-directory-1" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Working Directory</h3>
+<p>You will be writing commands either directly in the console or in a source
+document (e.g. <code>R</code> script file, <code>Rmd</code> file, etc.)</p>
+<p>The console is always associated to a working directory (usually your home
+directory).</p>
+<p>A source document, once it’s saved, will live in some directory. <strong>Ideally</strong>,
+a source doc’s directory whould be used as its working directory, using
+relative filepaths to handle all input and output resources required in the
+code of the source doc. Unfortunately, this ideal is far from what happens
+in practice.</p>
+<ul>
+<li><p>By default, when you execute code chunks in a <strong>saved</strong> <code>Rmd</code> file, the
+working directory is the directory where the <code>Rmd</code> file resides.</p></li>
+<li><p>By default, when you execute code from an <code>R</code> file, the working directory
+is that of the console.</p></li>
+</ul>
+</div>
+<div id="workspace-and-global-environment" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Workspace and Global Environment</h3>
+<p>Regardless of where commands are being executed from, R will carry out
+all the necessary computations, and objects will be created along the way.</p>
+<p>The collection of objects that are being created (<em>and kept alive</em>) during a
+session are part of what is considered to be your <strong>workspace</strong>.</p>
+<p>At a more technical level, all the objects in your workspace are part of an R
+<strong>environment</strong>. To be more precise, the workspace is the <strong>Global Environment</strong>.</p>
+<p>On the console, if you type <code>ls()</code>, R will display all the available objects
+in your workspace.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="session.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># available objects in your workspace</span></span>
+<span id="cb21-2"><a href="session.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<p>You can also go to the pane “Environment, History, …” and
+click on the <code>Environment</code> tab to see the objects in your workspace which are
+displayed by default under the option “Global Environment.”</p>
+</div>
+<div id="commands-history" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Commands History</h3>
+<p>When you start a session, R will track all the commands that you execute during
+that session. As you execute commands, they will become part of what is called
+the <strong>Commands History</strong>.</p>
+<p>You can find the list of all used commands in the <code>History</code> tab,
+located in the <em>Environment, History, Connections</em> pane of RStudio. You can
+also access the commands history with the function <code>history()</code>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
+<img src="images/rstudio/rstudio-history-tab.png" alt="The comands history is avaialble in the History tab." width="65%" />
+<p class="caption">
+Figure 4.2: The comands history is avaialble in the History tab.
+</p>
+</div>
+<p>By default, the history of commands are stored in a text file called <code>.Rhistory</code>
+that is saved in your session’s working directory.</p>
+</div>
+</div>
+<div id="closing-a-session" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Closing a Session</h2>
+<p>When closing a session, what should you do?</p>
+<p>This is a somewhat “very personal” type of question, because it is up to you to
+decide what should happen to all the work that you’ve done in R.</p>
+<p>Having said that, you can always decide whether or not to:</p>
+<ul>
+<li><p>save changes in your source document(s)</p></li>
+<li><p>save the commands history in a text file</p></li>
+<li><p>save the objects in your workspace (i.e. objects in Global Environment) in
+a binary file</p></li>
+</ul>
+<p>It turns out that RStudio comes with default settings that take place
+when you close a session:</p>
+<ul>
+<li><p>it will ask you if you want to save changes in your source documents</p></li>
+<li><p>it will ask you if you want to save the workspace in an <code>.RData</code> file
+(this is a file that uses R’s native binary format; this is saved in your
+session’s working directory)</p></li>
+<li><p>it will automatically save your commands history in a text file called
+<code>.Rhistory</code> (saved in your session’s working directory)</p></li>
+</ul>
+<p>Also, because of RStudio’s default settings, the next time you open a new
+session it will:</p>
+<ul>
+<li><p>restore the previously open source document</p></li>
+<li><p>restore objects in the <code>.RData</code> file into your workspace</p></li>
+<li><p>give you access to all the commands stored in the <code>.Rhistory</code> file</p></li>
+</ul>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rcoding.pdf", "rcoding.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
