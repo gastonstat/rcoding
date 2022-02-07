@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Intro to Functions | Coding in R</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Intro to Functions | Coding in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Intro to Functions | Coding in R" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+<meta name="date" content="2022-02-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lists.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Coding in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yet-another-r-book"><i class="fa fa-check"></i>Yet Another R Book</a></li>
+</ul></li>
+<li class="part"><span><b>I Getting Started with R and RStudio</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#interacting-with-r"><i class="fa fa-check"></i><b>1.1</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>2</b> Breaking the Ice with R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-r-via-rstudio"><i class="fa fa-check"></i><b>2.1</b> First Contact with R (via RStudio)</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>2.1.1</b> R as a scientific calculator</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rintro.html"><a href="rintro.html#assigning-values-to-objects"><i class="fa fa-check"></i><b>2.1.2</b> Assigning values to objects</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>2.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="2.1.4" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>2.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="2.1.5" data-path="rintro.html"><a href="rintro.html#calling-functions"><i class="fa fa-check"></i><b>2.1.5</b> Calling Functions</a></li>
+<li class="chapter" data-level="2.1.6" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>2.1.6</b> Comments in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rintro.html"><a href="rintro.html#help-documentation"><i class="fa fa-check"></i><b>2.2</b> Getting Help</a></li>
+<li class="chapter" data-level="2.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rintro.html"><a href="rintro.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>3</b> A Quick Tour Around RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rstudio.html"><a href="rstudio.html#first-contact-with-rstudio"><i class="fa fa-check"></i><b>3.1</b> First Contact with RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="rstudio.html"><a href="rstudio.html#rstudio-panes-in-a-nutshell"><i class="fa fa-check"></i><b>3.2</b> RStudio Panes in a Nutshell</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>3.2.1</b> Console</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help"><i class="fa fa-check"></i><b>3.2.2</b> Files, Plots, Packages, Help</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rstudio.html"><a href="rstudio.html#source-or-editor"><i class="fa fa-check"></i><b>3.2.3</b> Source or Editor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rstudio.html"><a href="rstudio.html#environment-history-connections"><i class="fa fa-check"></i><b>3.2.4</b> Environment, History, Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rstudio.html"><a href="rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session.html"><a href="session.html"><i class="fa fa-check"></i><b>4</b> Session Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session.html"><a href="session.html#starting-a-session"><i class="fa fa-check"></i><b>4.1</b> Starting a Session</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="session.html"><a href="session.html#what-happens-when-you-open-an-r-session-via-rstudio"><i class="fa fa-check"></i><b>4.1.1</b> What happens when you open an R session via RStudio?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="session.html"><a href="session.html#opening-a-session-for-the-first-time"><i class="fa fa-check"></i><b>4.1.2</b> Opening a session for the first time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="session.html"><a href="session.html#working-directory"><i class="fa fa-check"></i><b>4.1.3</b> Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="session.html"><a href="session.html#working-during-a-session"><i class="fa fa-check"></i><b>4.2</b> Working During a Session</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#working-directory-1"><i class="fa fa-check"></i><b>4.2.1</b> Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="session.html"><a href="session.html#workspace-and-global-environment"><i class="fa fa-check"></i><b>4.2.2</b> Workspace and Global Environment</a></li>
+<li class="chapter" data-level="4.2.3" data-path="session.html"><a href="session.html#commands-history"><i class="fa fa-check"></i><b>4.2.3</b> Commands History</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="session.html"><a href="session.html#closing-a-session"><i class="fa fa-check"></i><b>4.3</b> Closing a Session</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Objects in R</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors.html"><a href="vectors.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="vectors.html"><a href="vectors.html#creating-objects"><i class="fa fa-check"></i><b>5.1.1</b> Creating Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html#about-r-vectors"><i class="fa fa-check"></i><b>5.2</b> About R Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="vectors.html"><a href="vectors.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>5.3</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="vectors.html"><a href="vectors.html#types-and-modes"><i class="fa fa-check"></i><b>5.3.1</b> Types and Modes</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vectors.html"><a href="vectors.html#special-values"><i class="fa fa-check"></i><b>5.3.2</b> Special Values</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vectors.html"><a href="vectors.html#length-of-vectors"><i class="fa fa-check"></i><b>5.3.3</b> Length of Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="vectors.html"><a href="vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.4</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="vectors.html"><a href="vectors.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>5.4.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="vectors.html"><a href="vectors.html#numeric-sequences"><i class="fa fa-check"></i><b>5.4.2</b> Numeric Sequences</a></li>
+<li class="chapter" data-level="5.4.3" data-path="vectors.html"><a href="vectors.html#replicated-vectors"><i class="fa fa-check"></i><b>5.4.3</b> Replicated Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="vectors.html"><a href="vectors.html#coercion"><i class="fa fa-check"></i><b>5.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="vectors.html"><a href="vectors.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>5.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="5.5.2" data-path="vectors.html"><a href="vectors.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>5.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-about-vectors.html"><a href="more-about-vectors.html"><i class="fa fa-check"></i><b>6</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#motivation-future-value"><i class="fa fa-check"></i><b>6.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#future-value-formula"><i class="fa fa-check"></i><b>6.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization"><i class="fa fa-check"></i><b>6.2</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#definition-of-vectorization"><i class="fa fa-check"></i><b>6.2.1</b> Definition of Vectorization</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#recycling"><i class="fa fa-check"></i><b>6.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>6.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>6.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#numeric-subsetting"><i class="fa fa-check"></i><b>6.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="6.4.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#character-subsetting"><i class="fa fa-check"></i><b>6.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="6.4.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#logical-subsetting"><i class="fa fa-check"></i><b>6.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="6.4.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#summary-of-subsetting"><i class="fa fa-check"></i><b>6.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> Factors</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>7.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="7.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>7.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="7.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>7.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>7.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>7.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>7.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="arrays.html"><a href="arrays.html"><i class="fa fa-check"></i><b>8</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="arrays.html"><a href="arrays.html#motivation"><i class="fa fa-check"></i><b>8.1</b> Motivation</a></li>
+<li class="chapter" data-level="8.2" data-path="arrays.html"><a href="arrays.html#tables-with-matrices"><i class="fa fa-check"></i><b>8.2</b> Tables with Matrices</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="arrays.html"><a href="arrays.html#r-matrices"><i class="fa fa-check"></i><b>8.2.1</b> R Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="arrays.html"><a href="arrays.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>8.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="arrays.html"><a href="arrays.html#more-matrices"><i class="fa fa-check"></i><b>8.3.1</b> More Matrices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>9</b> Lists</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>9.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="9.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>9.2</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>9.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="9.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>9.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="9.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>9.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="9.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>9.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="9.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>9.2.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="lists.html"><a href="lists.html#exercises-2"><i class="fa fa-check"></i><b>9.3</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III Programming Basics</b></span></li>
+<li class="chapter" data-level="10" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>10</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="functions1.html"><a href="functions1.html#motivation-1"><i class="fa fa-check"></i><b>10.1</b> Motivation</a></li>
+<li class="chapter" data-level="10.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>10.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>10.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>10.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>10.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="10.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>10.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="functions1.html"><a href="functions1.html#exercises-3"><i class="fa fa-check"></i><b>10.4</b> Exercises</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functions1" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Intro to Functions</h1>
+<p>R comes with many functions and packages that let us perform a wide variety
+of tasks, and so far we’ve been using a number of them. In fact, most of the
+things we do in R is by calling some function. Sometimes, however, there is no
+function to do what we want to achieve. When this is the case, we may very
+well want to write our own functions.</p>
+<p>In this chapter we’ll describe how to start writing small and simple functions.
+We are going to start covering the “tip of the iceberg,” and in the following
+chapters we will continue discussing more aspects about writing functions, and
+describing how R works when you invoke (call) a function.</p>
+<div id="motivation-1" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Motivation</h2>
+<p>We’ve used the formula of <strong>future value</strong> which is useful to answer questions
+like: If you deposit $1000 into a savings account that pays an annual interest
+of 2%, how much will you have at the end of year 10?</p>
+<p><span class="math display">\[
+\text{FV} = \text{PV} \times (1 + r)^t
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\text{FV}\)</span> = future value (how much you’ll have)</li>
+<li><span class="math inline">\(\text{PV}\)</span> = present value (the initial deposit)</li>
+<li><span class="math inline">\(r\)</span> = rate of return (e.g. annual rate of return)</li>
+<li><span class="math inline">\(t\)</span> = number of periods (e.g. number of years)</li>
+</ul>
+<p>R has a large number of functions—e.g. <code>sqrt()</code>, <code>log()</code>, <code>mean()</code>,
+<code>sd()</code>, <code>exp()</code>, etc—but it does not have a built-in function to compute
+future value.</p>
+<p>Wouldn’t it be nice to have a <code>future_value()</code> function—or an <code>fv()</code>
+function—that you could call in R? Perhaps something like:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="functions1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>Let’s create such a function!</p>
+</div>
+<div id="writing-a-simple-function" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Writing a Simple Function</h2>
+<p>This won’t always be the case, but in our current example we have a specific
+mathematical formula to work with (which makes things easier):</p>
+<p><span class="math display">\[
+\text{FV} = \text{PV} \times (1 + r)^t
+\]</span></p>
+<p>Like other programming languages for scientific computations, we can take
+advantage of the syntax in R to write an expression that is “identical” to
+the algebraic formulation:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="functions1.html#cb2-1" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>t</span></code></pre></div>
+<p>We will use this simple line of code as our starting point for creating a
+future value function. Here is how to do it “logically” step by step.</p>
+<div id="step-1-start-with-a-concrete-example" class="section level4 unnumbered">
+<h4>Step 1: Start with a concrete example</h4>
+<p>You should always start with a <strong>small and concrete example</strong>, focusing
+on writing code that does the job. For example, we could write the following
+lines:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="functions1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb3-2"><a href="functions1.html#cb3-2" aria-hidden="true" tabindex="-1"></a>pv <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb3-3"><a href="functions1.html#cb3-3" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb3-4"><a href="functions1.html#cb3-4" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb3-5"><a href="functions1.html#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="functions1.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># process</span></span>
+<span id="cb3-7"><a href="functions1.html#cb3-7" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>t</span>
+<span id="cb3-8"><a href="functions1.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="functions1.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output</span></span>
+<span id="cb3-10"><a href="functions1.html#cb3-10" aria-hidden="true" tabindex="-1"></a>fv</span>
+<span id="cb3-11"><a href="functions1.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1218.994</span></span></code></pre></div>
+<p>When I say “small example” I mean working with objects containing just a few
+values. Here, the objects <code>pv</code>, <code>r</code>, and <code>t</code> are super simple vectors of size 1.
+Sometimes, though, you may want to start with less simple—yet small—objects
+containing just a couple of values. That’s fine too.</p>
+<p>Sometimes you may even need to start not just with one, but with a couple of
+concrete examples that will help you get a better feeling of what kind of
+objects, and operations you need to use.</p>
+<p>As you get more experience creating and writing functions, you may want to
+start with a “medium-size” concrete example. Personally, I don’t tend to start
+like this. Instead, I like to take baby-steps, and I also to take my time,
+without rushing the coding. You know the old-saying: “measure twice, cut once.”</p>
+<p>An important part of starting with a concrete example is so that you can
+identify what the inputs are, what computations or process the inputs will go through, and what the output should be.</p>
+<p>Inputs:</p>
+<ul>
+<li><code>pv</code></li>
+<li><code>r</code></li>
+<li><code>t</code></li>
+</ul>
+<p>Process:</p>
+<ul>
+<li><code>fv = pv * (1 + r)^t</code></li>
+</ul>
+<p>Output:</p>
+<ul>
+<li><code>fv</code></li>
+</ul>
+</div>
+<div id="step-2-make-your-code-more-generalizable" class="section level4 unnumbered">
+<h4>Step 2: Make your code more generalizable</h4>
+<p>After having one (or a few) concrete example(s), the next step is to make your
+code more generalizable, or if you prefer, to make it more abstract (or at
+least less concrete).</p>
+<p>Instead of working with specific values <code>pv</code>, <code>r</code>, and <code>t</code>, you can give them
+a more algebraic spirit. For instance, the code below considers “open-ended”
+inputs without assigning them any values</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="functions1.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># general inputs (could take &quot;any&quot; values)</span></span>
+<span id="cb4-2"><a href="functions1.html#cb4-2" aria-hidden="true" tabindex="-1"></a>pv</span>
+<span id="cb4-3"><a href="functions1.html#cb4-3" aria-hidden="true" tabindex="-1"></a>r</span>
+<span id="cb4-4"><a href="functions1.html#cb4-4" aria-hidden="true" tabindex="-1"></a>t</span>
+<span id="cb4-5"><a href="functions1.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="functions1.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># process</span></span>
+<span id="cb4-7"><a href="functions1.html#cb4-7" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>t</span>
+<span id="cb4-8"><a href="functions1.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="functions1.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output</span></span>
+<span id="cb4-10"><a href="functions1.html#cb4-10" aria-hidden="true" tabindex="-1"></a>fv</span></code></pre></div>
+<p>Obviously this piece of code is very abstract and not intended to be executed
+in R; this is just for the sake of conceptual illustration.</p>
+</div>
+<div id="step-3-encapsulate-the-code-into-a-function" class="section level4 unnumbered">
+<h4>Step 3: Encapsulate the code into a function</h4>
+<p>The next step is to encapsulate your code as a formal function in R. I will
+show you how to do this in two logical substeps, although keep in mind that in
+practice you will merge these two substeps into a single one.</p>
+<p>The encapsulation process involves placing the “inputs” inside the function
+<code>function()</code>, separating each input with a comma. Formally speaking, the
+inputs of your functions are known as the <strong>arguments</strong> of the function.</p>
+<p>Likewise, the lines of code that correspond to the “process” and “output” are
+what will become the <strong>body</strong> of the function. Typically, you encapsulate the
+code of the body by surrounding it with curly braces <code>{ }</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="functions1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># encapsulating code into a function</span></span>
+<span id="cb5-2"><a href="functions1.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(pv, r, t) {</span>
+<span id="cb5-3"><a href="functions1.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>t</span>
+<span id="cb5-4"><a href="functions1.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
+<span id="cb5-5"><a href="functions1.html#cb5-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The other substep typically consists of <strong>assigning a name</strong> to the code of
+your function. For example, you can give it the name <code>FV</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="functions1.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
+<span id="cb6-2"><a href="functions1.html#cb6-2" aria-hidden="true" tabindex="-1"></a>FV <span class="ot">=</span> <span class="cf">function</span>(pv, r, t) {</span>
+<span id="cb6-3"><a href="functions1.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>t</span>
+<span id="cb6-4"><a href="functions1.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
+<span id="cb6-5"><a href="functions1.html#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>In summary:</p>
+<ul>
+<li><p>the inputs go inside <code>function()</code>, separating each input with a comma</p></li>
+<li><p>the processing step and the output are surrounded within curly braces <code>{ }</code></p></li>
+<li><p>you typically assign a name to the code of your function</p></li>
+</ul>
+</div>
+<div id="step-4-test-that-the-function-works" class="section level4 unnumbered">
+<h4>Step 4: Test that the function works</h4>
+<p>Once the function is created, you test it to make sure that everything works.
+Very likely you will test your function with the small and concrete example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="functions1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test it</span></span>
+<span id="cb7-2"><a href="functions1.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fl">0.02</span>, <span class="dv">10</span>)</span>
+<span id="cb7-3"><a href="functions1.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1218.994</span></span></code></pre></div>
+<p>And then you’ll keep testing your function with other less simple examples.
+In this case, because the code we are working with is based on vectors,
+and uses common functions for vectors, we can further inspect the behavior of
+the function by providing vectors of various sizes for all the arguments:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="functions1.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized years</span></span>
+<span id="cb8-2"><a href="functions1.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fl">0.02</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb8-3"><a href="functions1.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1020.000 1040.400 1061.208 1082.432 1104.081</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="functions1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized rates</span></span>
+<span id="cb9-2"><a href="functions1.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="at">by =</span> <span class="fl">0.005</span>), <span class="dv">1</span>)</span>
+<span id="cb9-3"><a href="functions1.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1010 1015 1020</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="functions1.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized present values</span></span>
+<span id="cb10-2"><a href="functions1.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">3000</span>), <span class="fl">0.02</span>, <span class="dv">1</span>)</span>
+<span id="cb10-3"><a href="functions1.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1020 2040 3060</span></span></code></pre></div>
+<p>Notice that the function is vectorized, this is because we are using arithmetic
+operators (e.g. multiplication, subtraction, division) which are in turn
+vectorized.</p>
+</div>
+<div id="in-summary" class="section level4 unnumbered">
+<h4>In Summary</h4>
+<ul>
+<li><p>To define a new function in R you use the function <code>function()</code>.</p></li>
+<li><p>Usually, you specify a name for the function, and then assign <code>function()</code>
+to the chosen name.</p></li>
+<li><p>You also need to define optional arguments (i.e. inputs of the function).</p></li>
+<li><p>And of course, you must write the code (i.e. the body) so the function does
+something when you use it.</p></li>
+</ul>
+</div>
+<div id="arguments-with-default-values" class="section level3" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Arguments with default values</h3>
+<p>Sometimes it’s a good idea to add a default value to one (or more) of the
+arguments. For example, we could give default values to the arguments in such
+a way that when the user executes the function without any input, <code>FV()</code>
+returns the value of 100 monetary units invested at a rate of return of
+1% for 1 year:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="functions1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function with default arguments</span></span>
+<span id="cb11-2"><a href="functions1.html#cb11-2" aria-hidden="true" tabindex="-1"></a>FV <span class="ot">=</span> <span class="cf">function</span>(<span class="at">pv =</span> <span class="dv">100</span>, <span class="at">r =</span> <span class="fl">0.01</span>, <span class="at">t =</span> <span class="dv">1</span>) {</span>
+<span id="cb11-3"><a href="functions1.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>t</span>
+<span id="cb11-4"><a href="functions1.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
+<span id="cb11-5"><a href="functions1.html#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-6"><a href="functions1.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="functions1.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># default execution</span></span>
+<span id="cb11-8"><a href="functions1.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>()</span>
+<span id="cb11-9"><a href="functions1.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 101</span></span></code></pre></div>
+<p>An interesting side effect of giving default values to the arguments of
+a function is that you can also call it by specifying arguments in an order
+different from the order in which the function was created:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="functions1.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="at">r =</span> <span class="fl">0.02</span>, <span class="at">t =</span> <span class="dv">3</span>, <span class="at">pv =</span> <span class="dv">1000</span>)</span>
+<span id="cb12-2"><a href="functions1.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1061.208</span></span></code></pre></div>
+</div>
+</div>
+<div id="writing-functions-for-humans" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Writing Functions for Humans</h2>
+<p>When writing functions (or coding in general), you should write code not just
+for the computer, <strong>but also for humans</strong>.</p>
+<p>Here are some options to make our code more human friendly. We can give the
+function a more descriptive name such as <code>future_value()</code>. Likewise, we can
+use more descriptive names for the arguments: e.g. <code>present</code>, <code>rate</code>, and
+<code>years</code></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="functions1.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
+<span id="cb13-2"><a href="functions1.html#cb13-2" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(present, rate, years) {</span>
+<span id="cb13-3"><a href="functions1.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb13-4"><a href="functions1.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  future</span>
+<span id="cb13-5"><a href="functions1.html#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-6"><a href="functions1.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="functions1.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># test it</span></span>
+<span id="cb13-8"><a href="functions1.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">years =</span> <span class="dv">10</span>)</span>
+<span id="cb13-9"><a href="functions1.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1218.994</span></span></code></pre></div>
+<p>Even better: whenever possible, as we just said, it’s a good idea to give
+default values to the arguments (i.e. inputs) of the function:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="functions1.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
+<span id="cb14-2"><a href="functions1.html#cb14-2" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(<span class="at">present =</span> <span class="dv">100</span>, <span class="at">rate =</span> <span class="fl">0.01</span>, <span class="at">years =</span> <span class="dv">1</span>) {</span>
+<span id="cb14-3"><a href="functions1.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb14-4"><a href="functions1.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  future</span>
+<span id="cb14-5"><a href="functions1.html#cb14-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-6"><a href="functions1.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="functions1.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>()</span>
+<span id="cb14-8"><a href="functions1.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 101</span></span></code></pre></div>
+<div id="naming-functions" class="section level3" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> Naming Functions</h3>
+<p>Since we just change the name of the function from <code>fv()</code> to <code>future_value()</code>,
+you should learn about the rules for naming R functions. A function cannot have
+any name. For a name to be valid, two things must happen:</p>
+<ul>
+<li><p>the first character must be a letter (either upper or lower case) or the
+dot <code>.</code></p></li>
+<li><p>besides the dot, the only other symbol allowed in a name is the underscore
+<code>_</code> (as long as it’s not used as the first character)</p></li>
+</ul>
+<p>Following the above two principles, below are some valid names that could be
+used for the future value function:</p>
+<ul>
+<li><p><code>fv()</code></p></li>
+<li><p><code>fv1()</code></p></li>
+<li><p><code>future_value()</code></p></li>
+<li><p><code>future.value()</code></p></li>
+<li><p><code>futureValue()</code></p></li>
+<li><p><code>.fv()</code>: a function that starts with a dot is a valid name, but the
+function will be a <em>hidden</em> function.</p></li>
+</ul>
+<p>In contrast, here are examples of invalid names:</p>
+<ul>
+<li><p><code>1fv()</code>: cannot begin with a number</p></li>
+<li><p><code>_fv()</code>: cannot begin with an underscore</p></li>
+<li><p><code>future-value()</code>: cannot use hyphenated names</p></li>
+<li><p><code>fv!()</code>: cannot contain symbols other than the dot and the underscore
+(not in the 1st character)</p></li>
+</ul>
+</div>
+<div id="functions-documentation" class="section level3" number="10.3.2">
+<h3><span class="header-section-number">10.3.2</span> Function’s Documentation</h3>
+<p>Part of writing a human-friendly function involves writing its
+<strong>documentation</strong>, usually providing the following information:</p>
+<ul>
+<li><p><strong>title</strong>: short title</p></li>
+<li><p><strong>description</strong>: one or two sentences of what the function does</p></li>
+<li><p><strong>arguments</strong>: short description for each of the arguments</p></li>
+<li><p><strong>output</strong>: description of what the function returns</p></li>
+</ul>
+<p>Once you are happy with the status of your function, include comments for its
+documentation, for example:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="functions1.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># title: future value function</span></span>
+<span id="cb15-2"><a href="functions1.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># description: computes future value using compounding interest</span></span>
+<span id="cb15-3"><a href="functions1.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs:</span></span>
+<span id="cb15-4"><a href="functions1.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - present: amount for present value</span></span>
+<span id="cb15-5"><a href="functions1.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - rate: annual rate of return (in decimal)</span></span>
+<span id="cb15-6"><a href="functions1.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - years: number of years</span></span>
+<span id="cb15-7"><a href="functions1.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># output:</span></span>
+<span id="cb15-8"><a href="functions1.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># - computed future value</span></span>
+<span id="cb15-9"><a href="functions1.html#cb15-9" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(<span class="at">present =</span> <span class="dv">100</span>, <span class="at">rate =</span> <span class="fl">0.01</span>, <span class="at">years =</span> <span class="dv">1</span>) {</span>
+<span id="cb15-10"><a href="functions1.html#cb15-10" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb15-11"><a href="functions1.html#cb15-11" aria-hidden="true" tabindex="-1"></a>  future</span>
+<span id="cb15-12"><a href="functions1.html#cb15-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Writing documentation for a function seems like a waste of time and energy.
+Shouldn’t a function (with its arguments, body, and output) be
+self-descriptive? In an ideal world that would be the case, but this rarely
+happens in practice.</p>
+<p>Yes, it does take time to write these comments. And yes, you will be constantly
+asking your self the same question: “Do I really need to document this function
+that I’m just planing to use today, and no one else will ever use?”</p>
+<p><strong>Yes!</strong></p>
+<p>I’ll be the first one to admit that I’ve created so many functions without
+writing their documentation. And almost always—sooner or later—I’ve ended
+up regretting my laziness for not including the documentation.
+So do yourself and others (especially your future self) a big favor by
+including some comments to document your functions.</p>
+<p>Enough for this chapter. Although, obviously, we are not done yet with functions.
+After all, this is a book about programming in R, and there is still a long
+way to cover about the basics and not so basics of functions.</p>
+<hr />
+</div>
+</div>
+<div id="exercises-3" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Exercises</h2>
+<p><strong>1)</strong> Write a function to compute the <strong>Present Value</strong>, which is given by:</p>
+<p><span class="math display">\[
+\text{PV} = \frac{\text{FV}}{(1 + r)^t}
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\text{PV}\)</span> = present value (the initial deposit)</p></li>
+<li><p><span class="math inline">\(\text{FV}\)</span> = future value (how much you’ll have)</p></li>
+<li><p><span class="math inline">\(r\)</span> = rate of return (e.g. annual rate of return)</p></li>
+<li><p><span class="math inline">\(t\)</span> = number of periods (e.g. number of years)</p></li>
+</ul>
+<p><strong>2)</strong> Write another function to compute the <strong>Future Value</strong>, but this time
+the output should be a <strong>list</strong> with two elements:</p>
+<ul>
+<li><p>vector <code>year</code> from 0 to provided year</p></li>
+<li><p>vector <code>amount</code> from amount at year 0, till amount at the
+provided year</p></li>
+</ul>
+<p>For example, something like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="functions1.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_list</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">3</span>)</span>
+<span id="cb16-2"><a href="functions1.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>year</span>
+<span id="cb16-3"><a href="functions1.html#cb16-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb16-4"><a href="functions1.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="functions1.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>amount</span>
+<span id="cb16-6"><a href="functions1.html#cb16-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1000.000</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
+<p><strong>3)</strong> Write another function to compute the <strong>Future Value</strong>, but this time
+the output should be a <strong>“table”</strong> with two columns: <code>year</code> and <code>amount</code>. For
+example, something like this:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="functions1.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_table</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">3</span>)</span>
+<span id="cb17-2"><a href="functions1.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  year   amount</span>
+<span id="cb17-3"><a href="functions1.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    <span class="dv">0</span> <span class="fl">1000.000</span></span>
+<span id="cb17-4"><a href="functions1.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="dv">1</span> <span class="fl">1020.000</span></span>
+<span id="cb17-5"><a href="functions1.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>    <span class="dv">2</span> <span class="fl">1040.400</span></span>
+<span id="cb17-6"><a href="functions1.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="dv">3</span> <span class="fl">1061.208</span></span></code></pre></div>
+<p><em>Note</em>: by “table” you can use either a <code>matrix</code> or a <code>data.frame</code>. Even better,
+try to create two separate functions: 1) <code>fv_matrix()</code> that returns a matrix,
+and 2) <code>fv_df()</code> that returns a data frame.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lists.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rcoding.pdf", "rcoding.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

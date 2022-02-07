@@ -13,7 +13,7 @@
 \makeatother
 \subtitle{An introduction to practical programming in R}
 \author{Gaston Sanchez}
-\date{2022-02-05}
+\date{2022-02-06}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -915,7 +915,7 @@ the little tasks than can be a hassle.
 \section{First Contact with RStudio}\label{first-contact-with-rstudio}}
 
 When you open RStudio, you should be able to see its layout organized into
-quadrants offically called \emph{panes} (or panels).
+quadrants officially called \emph{panes} (or panels).
 
 The very first time you launch RStudio you will only see three panes, like in
 the screenshot below.
@@ -1012,7 +1012,7 @@ execute the commands from that pane.
 The reason for writing commands in a text file and not directly in the console,
 is because of convenience and organization. \emph{Convenience} because, as you will
 see, many commands involve writing several lines of code which can be tricky to
-do it correctly just by typing on the console. \emph{Organization} in the sense that
+do it correctly just by typing in the console. \emph{Organization} in the sense that
 having all your commands in a text file makes it easy to store your code,
 keep track of all the work you do, build upon it, and share it with others.
 
@@ -1020,12 +1020,12 @@ So, knowing that programmers rarely make direct use of the \texttt{Console}, whe
 do you actually use this pane? I don't know about the rest of programmers but
 I can tell you how I personally use it.
 
-One common use is when I want to calculate basic things like the monthly
-balance in my credit cards, or the overall score for one of my students, or
-some other quick computation. These are types of calculations that I could
-perfectly perform with any scientific calculator like the one in my smartphone.
-But many times I prefer to do them in R, typically when that's the tool I have
-at hand (which happens almost every day).
+One common use of the \texttt{Console} is when I want to calculate basic things like
+the monthly balance in my credit cards, or the overall score for one of the
+students in my classes, or some other quick computation. These are types of
+calculations that I could perfectly perform with any scientific calculator
+like the one in my smartphone. But more often than not I prefer to do them in R,
+typically when that's the tool I have at hand (which happens almost every day).
 
 The other typical situation in which I use the console is when I'm trying out
 some idea or testing if a certain command could work. I like to explore the
@@ -1084,7 +1084,7 @@ need to know about \texttt{Environment} is that this tab is used to list the obj
 that have being created, or that are available, in a given R session.
 
 In turn, the \texttt{History} tab is a very useful resource that lists \textbf{all} the R
-commands that you've executed so far. In theory, R will track all the invoked
+commands that you have executed so far. In theory, R will track all the invoked
 commands since the first time you used it, unless you've removed the auxiliary
 \texttt{.Rhistory} file linked to your working directory, or unless you've modified
 the history mechanism used by your R console.
@@ -1161,9 +1161,10 @@ R version):
 \chapter{Session Management}\label{session}}
 
 In this chapter I review some important aspects about managing your
-interactive session with R.
+interactive session with R using RStudio.
 
-There are several things going on behind the scenes:
+From the point of view of a session, all the work, activities, and actions you
+do with R can be classified into three categories:
 
 \begin{itemize}
 \item
@@ -1173,6 +1174,10 @@ There are several things going on behind the scenes:
 \item
   when closing a session
 \end{itemize}
+
+Because there are several things going on behind the scenes in each of the
+categories listed above, it is important that we talk about them---at least
+briefly.
 
 \hypertarget{starting-a-session}{%
 \section{Starting a Session}\label{starting-a-session}}
@@ -1186,7 +1191,7 @@ Starting a session can be done in two primary ways:
   ability to open an R session.
 \item
   by clicking on a file that your computer associates with R (or RStudio).
-  For example, R-script files (with file extension \texttt{.R} or \texttt{r}), R-Markdown
+  For example, R-script files (with file extension \texttt{.R} or \texttt{.r}), R-Markdown
   files (\texttt{.Rmd} extension), R-Noweb files (\texttt{.Rnw} extension), RStudio project
   files (\texttt{.Rproj} extension), etc.
 \end{itemize}
@@ -1212,8 +1217,8 @@ talk about this.
   session).
 \item
   To permanently modify working directory (when a session is opened), go to the
-  menu bar, select ``RStudio'' tab, click on Preferences, and modify the ``R General''
-  options.
+  menu bar, select ``RStudio'' tab, click on ``Preferences'', and modify the
+  ``R General'' options.
 \item
   To temporary change the working directory, go to the menu bar, select the
   ``Session'' tab, and click on ``Set Working Directory'', or simply specify a
@@ -1223,7 +1228,7 @@ talk about this.
 \hypertarget{opening-a-session-for-the-first-time}{%
 \subsection{Opening a session for the first time}\label{opening-a-session-for-the-first-time}}
 
-If you are opening a session for the very fist time:
+If you are opening a session in RStudio for the very fist time:
 
 \begin{itemize}
 \item
@@ -1238,7 +1243,8 @@ In general, when you open a session (\textbf{not} for the very fist time):
 \tightlist
 \item
   the ``Environment'' tab may display some objects, which means you have some
-  existing objects in your global environment
+  existing objects in your global environment. You can also invoke the list
+  function \texttt{ls()} to list any available objects in your current session:
 \end{itemize}
 
 \begin{Shaded}
@@ -1252,8 +1258,10 @@ In general, when you open a session (\textbf{not} for the very fist time):
 \tightlist
 \item
   the ``History'' tab may contain lines of previously used commands; if this is
-  the case it means that there is a text file called \texttt{.Rhistory} in your
-  working directory.
+  the case it means that there is an associated a text file called \texttt{.Rhistory} in
+  your working directory. You can also use the \texttt{history()} function to display
+  the \emph{Commands History}, that is, all the commands invoked in your interactive
+  sessions:
 \end{itemize}
 
 \begin{Shaded}
@@ -1271,7 +1279,7 @@ you interact with R's console, your session will have an associated working
 directory, sometimes also referred to as the \emph{current} working directory.
 
 When you install R in your computer, during the installation process a default
-working directory is assigned with R. Be default, this directory is your home
+working directory is assigned to R. By default, this directory is your home
 directory. You can check whether this is the case if you run the
 \emph{get working directory} function \texttt{getwd()} in your console.
 
@@ -1322,16 +1330,15 @@ taking into account the following:
 \item
   where a command is being executed from
 \item
-  if the command requires an input, where does that input comes from?
+  if the command requires an input, where does that input come from?
 \item
-  if the command produces an output, where does that output goes to?
+  if the command produces an output, where does that output go to?
 \end{itemize}
 
-This is why we need to describe:
+This is why we need to describe the following:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   Working Directory
 \item
@@ -1349,16 +1356,16 @@ document (e.g.~\texttt{R} script file, \texttt{Rmd} file, etc.)
 The console is always associated to a working directory (usually your home
 directory).
 
-A source document, once it's saved, will live in some directory. \textbf{Ideally},
-a source doc's directory whould be used as its working directory, using
-relative filepaths to handle all input and output resources required in the
-code of the source doc. Unfortunately, this ideal is far from what happens
-in practice.
+A source document, once it has been saved, will live in some directory.
+\textbf{Ideally}, a source document's directory would be used as its working directory,
+using relative filepaths to handle all input and output resources required in
+thecode of the source document. Unfortunately, this ideal is far from what
+happens in practice.
 
 \begin{itemize}
 \item
   By default, when you execute code chunks in a \textbf{saved} \texttt{Rmd} file, the
-  working directory is the directory where the \texttt{Rmd} file resides.
+  working directory is the directory where the \texttt{Rmd} file resides in.
 \item
   By default, when you execute code from an \texttt{R} file, the working directory
   is that of the console.
@@ -1433,7 +1440,7 @@ Having said that, you can always decide whether or not to:
   a binary file
 \end{itemize}
 
-It turns out that RStudio comes with default settings that take place
+It turns out that RStudio comes with default actions that take place
 when you close a session:
 
 \begin{itemize}
@@ -2508,10 +2515,10 @@ Let's bring back the code that uses the Future Value to obtain the vector
 \end{Highlighting}
 \end{Shaded}
 
-Recall that \texttt{deposit} and \texttt{rate} have length 1. So does the number \texttt{1}, it is
-a vector containing just one element. In contrast, \texttt{years} has 10 elements.
-This means that R is dealing with four vectors some of which have different
-lengths.
+Recall that \texttt{deposit} and \texttt{rate} are vectors of length 1. And so it is the
+number \texttt{1}, it is a vector containing just one element. In contrast, \texttt{years}
+has 10 elements. This means that R is dealing with four vectors some of which
+have different lengths.
 
 In pictures, we have the following diagram:
 
@@ -2796,6 +2803,677 @@ vectors are:
 \NormalTok{amounts3[}\FunctionTok{length}\NormalTok{(amounts3)]}
 \FunctionTok{sort}\NormalTok{(amounts3, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
 \FunctionTok{rev}\NormalTok{(amounts3)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{factors}{%
+\chapter{Factors}\label{factors}}
+
+I'm one of those with the humble opinion that great software for data science
+and analytics should have a data structure dedicated to handle categorical data.
+Lucky for us, one of the nicest features about R is that it provides a data
+object exclusively designed to handle categorical data: \textbf{factors}.
+
+The term ``factor'' as used in R for handling categorical variables, comes from
+the terminology used in \emph{Analysis of Variance}, commonly referred to as ANOVA.
+In this statistical method, a categorical variable is commonly referred to as,
+surprise-surprise, \emph{factor} and its categories are known as \emph{levels}. Perhaps
+this is not the best terminology but it is the one R uses, which reflects its
+distinctive statistical origins. Especially for those users without a brackground
+in statistics, this is one of R's idiosyncracies that seems disconcerning at
+the beginning. But as long as you keep in mind that a factor is just the object
+that allows you to handle a qualitative variable you'll be fine. In case you
+need it, here's a short mantra to remember:
+
+\begin{quote}
+factors have levels
+\end{quote}
+
+\hypertarget{creating-factors}{%
+\section{Creating Factors}\label{creating-factors}}
+
+To create a factor in R you use the homonym function \texttt{factor()}, which takes a
+vector as input. The vector can be either numeric, character or logical. Let's
+see our first example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# numeric vector}
+\NormalTok{num\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# creating a factor from num\_vector}
+\NormalTok{first\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(num\_vector)}
+
+\NormalTok{first\_factor}
+\CommentTok{\#\textgreater{} [1] 1 2 3 1 2 3 2}
+\CommentTok{\#\textgreater{} Levels: 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+As you can tell from the previous code snippet, \texttt{factor()} converts the numeric
+vector \texttt{num\_vector} into a factor (i.e.~a categorical variable) with 3
+categories---the so called \texttt{levels}.
+
+You can also obtain a factor from a string vector:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# string vector}
+\NormalTok{str\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{str\_vector}
+\CommentTok{\#\textgreater{} [1] "a" "b" "c" "b" "c" "a" "c" "b"}
+
+\CommentTok{\# creating a factor from str\_vector}
+\NormalTok{second\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(str\_vector)}
+
+\NormalTok{second\_factor}
+\CommentTok{\#\textgreater{} [1] a b c b c a c b}
+\CommentTok{\#\textgreater{} Levels: a b c}
+\end{Highlighting}
+\end{Shaded}
+
+Notice how \texttt{str\_vector} and \texttt{second\_factor} are displayed. Even though the
+elements are the same in both the vector and the factor, they are printed in
+different formats. The letters in the string vector are displayed with quotes,
+while the letters in the factor are printed without quotes.
+
+And of course, you can use a logical vector to generate a factor as well:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# logical vector}
+\NormalTok{log\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# creating a factor from log\_vector}
+\NormalTok{third\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(log\_vector)}
+
+\NormalTok{third\_factor}
+\CommentTok{\#\textgreater{} [1] TRUE  FALSE TRUE  TRUE  FALSE}
+\CommentTok{\#\textgreater{} Levels: FALSE TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{how-r-treats-factors}{%
+\section{How R treats factors}\label{how-r-treats-factors}}
+
+Technically speaking, R factors are referred to as \emph{compound objects}. According
+to the ``R Language Definition'' manual:
+
+\begin{quote}
+``Factors are currently implemented using an integer array to specify the
+actual levels and a second array of names that are mapped to the integers.''
+\end{quote}
+
+What does this mean?
+
+Essentially, a factor is internally stored using two ingredients: one is an
+integer vector containing the values of categories, the other is a vector with
+the ``levels'' which has the names of categories which are mapped to the integers.
+
+Under the hood, the way R stores factors is as vectors of integer values.
+One way to confirm this is using the function \texttt{storage.mode()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# storage of factor}
+\FunctionTok{storage.mode}\NormalTok{(first\_factor)}
+\CommentTok{\#\textgreater{} [1] "integer"}
+\end{Highlighting}
+\end{Shaded}
+
+This means that we can manipulate factors just like we manipulate vectors. In
+addition, many functions for vectors can be applied to factors. For instance,
+we can use the function \texttt{length()} to get the number of elements in a factor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# factors have length}
+\FunctionTok{length}\NormalTok{(first\_factor)}
+\CommentTok{\#\textgreater{} [1] 7}
+\end{Highlighting}
+\end{Shaded}
+
+We can also use the square brackets \texttt{{[}\ {]}} to extract or select elements of a
+factor. Inside the brackets we specify vectors of indices such as numeric
+vectors, logical vectors, and sometimes even character vectors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# first element}
+\NormalTok{first\_factor[}\DecValTok{1}\NormalTok{]}
+
+\CommentTok{\# third element}
+\NormalTok{first\_factor[}\DecValTok{3}\NormalTok{]}
+
+\CommentTok{\# second to fourth elements}
+\NormalTok{first\_factor[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{]}
+
+\CommentTok{\# last element}
+\NormalTok{first\_factor[}\FunctionTok{length}\NormalTok{(first\_factor)]}
+
+\CommentTok{\# logical subsetting}
+\NormalTok{first\_factor[}\FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{), }\AttributeTok{length.out =} \DecValTok{7}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+If you have a factor with named elements, you can also specify the names of
+the elements within the brackets:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(first\_factor) }\OtherTok{\textless{}{-}}\NormalTok{ letters[}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(first\_factor)]}
+\NormalTok{first\_factor}
+\CommentTok{\#\textgreater{} a b c d e f g }
+\CommentTok{\#\textgreater{} 1 2 3 1 2 3 2 }
+\CommentTok{\#\textgreater{} Levels: 1 2 3}
+
+\NormalTok{first\_factor[}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}d\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}f\textquotesingle{}}\NormalTok{)]}
+\CommentTok{\#\textgreater{} b d f }
+\CommentTok{\#\textgreater{} 2 1 3 }
+\CommentTok{\#\textgreater{} Levels: 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+However, you should know that factors are NOT really vectors. To see this you
+can check the behavior of the functions \texttt{is.factor()} and \texttt{is.vector()} on a
+factor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# factors are not vectors}
+\FunctionTok{is.vector}\NormalTok{(first\_factor)}
+\CommentTok{\#\textgreater{} [1] FALSE}
+
+\CommentTok{\# factors are factors}
+\FunctionTok{is.factor}\NormalTok{(first\_factor)}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+Even a single element of a factor is also a factor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(first\_factor[}\DecValTok{1}\NormalTok{])}
+\CommentTok{\#\textgreater{} [1] "factor"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{so-what-makes-a-factor-different-from-a-vector}{%
+\subsubsection*{So what makes a factor different from a vector?}\label{so-what-makes-a-factor-different-from-a-vector}}
+\addcontentsline{toc}{subsubsection}{So what makes a factor different from a vector?}
+
+Well, it turns out that factors have an additional attribute that vectors don't:
+\texttt{levels}. And as you can expect, the class of a factor is indeed \texttt{"factor"}
+(not \texttt{"vector"}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# attributes of a factor}
+\FunctionTok{attributes}\NormalTok{(first\_factor)}
+\CommentTok{\#\textgreater{} $levels}
+\CommentTok{\#\textgreater{} [1] "1" "2" "3"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $class}
+\CommentTok{\#\textgreater{} [1] "factor"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $names}
+\CommentTok{\#\textgreater{} [1] "a" "b" "c" "d" "e" "f" "g"}
+\end{Highlighting}
+\end{Shaded}
+
+Another feature that makes factors so special is that their values (the levels)
+are mapped to a set of character values for displaying purposes. This might
+seem like a minor feature but it has two important consequences. On the one
+hand, this implies that factors provide a way to store character values very
+efficiently. Why? Because each unique character value is stored only once, and
+the data itself is stored as a vector of integers.
+
+Notice how the numeric value \texttt{1} was mapped into the character value \texttt{"1"}. And
+the same happens for the other values \texttt{2} and \texttt{3} that are mapped into the
+characters \texttt{"2"} and \texttt{"3"}.
+
+\hypertarget{what-is-the-advantage-of-r-factors}{%
+\subsubsection*{What is the advantage of R factors?}\label{what-is-the-advantage-of-r-factors}}
+\addcontentsline{toc}{subsubsection}{What is the advantage of R factors?}
+
+Every time I teach about factors, there is inevitably one student who asks a
+very pertinent question: Why do we want to use factors? Isn't it redundant to
+have a factor object when there are already character or integer vectors?
+
+I have two answers to this question.
+
+The first has to do with the storage of factors. Storing a factor as integers
+will usually be more efficient than storing a character vector. As we've seen,
+this is an important issue especially when the data---to be encoded into a
+factor---is of considerable size.
+
+The second reason has to do with categorical variables of \emph{ordinal} nature.
+Qualitative data can be classified into nominal and ordinal variables. Nominal
+variables could be easily handled with character vectors. In fact, \emph{nominal}
+means name (values are just names or labels), and there's no natural order
+among the categories.
+
+A different story is when we have ordinal variables, like sizes \texttt{"small"},
+\texttt{"medium"}, \texttt{"large"} or college years \texttt{"freshman"}, \texttt{"sophomore"}, \texttt{"junior"},
+\texttt{"senior"}. In these cases we are still using names of categories, but they
+can be arranged in increasing or decreasing order. In other words, we can rank
+the categories since they have a natural order: small is less than medium which
+is less than large. Likewise, freshman comes first, then sophomore, followed by
+junior, and finally senior.
+
+So here's an important question: How do we keep the order of categories in an
+ordinal variable? We can use a character vector to store the values. But a
+character vector does not allow us to store the ranking of categories. The
+solution in R comes via factors. We can use factors to define ordinal variables,
+like the following example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sizes }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}
+  \AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}sm\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}md\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}lg\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}sm\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}md\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}sm\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}md\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}lg\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{)}
+
+\NormalTok{sizes}
+\CommentTok{\#\textgreater{} [1] sm md lg sm md}
+\CommentTok{\#\textgreater{} Levels: sm \textless{} md \textless{} lg}
+\end{Highlighting}
+\end{Shaded}
+
+As you can tell, \texttt{sizes} has ordered levels, clearly identifying the first
+category \texttt{"sm"}, the second one \texttt{"md"}, and the third one \texttt{"lg"}.
+
+\hypertarget{a-closer-look-at-factor}{%
+\section{\texorpdfstring{A closer look at \texttt{factor()}}{A closer look at factor()}}\label{a-closer-look-at-factor}}
+
+Since working with categorical data in R typically involves working with factors,
+you should become familiar with the variety of functions related with them. In
+the following sections we'll cover a bunch of details about factors so you can
+be better prepared to deal with any type of categorical data.
+
+\hypertarget{function-factor}{%
+\subsection{\texorpdfstring{Function \texttt{factor()}}{Function factor()}}\label{function-factor}}
+
+Given the fundamental role played by the function \texttt{factor()} we need to pay a
+closer look at its arguments. If you check the documentation---see
+\texttt{help(factor)}---you'll see that the usage of the function \texttt{factor()} is:
+
+\begin{verbatim}
+  factor(x = character(), levels, labels = levels,
+         exclude = NA, ordered = is.ordered(x), nmax = NA)
+\end{verbatim}
+
+with the following arguments:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x} a vector of data
+\item
+  \texttt{levels} an optional vector for the categories
+\item
+  \texttt{labels} an optional character vector of labels for the levels
+\item
+  \texttt{exclude} a vector of values to be excluded when forming the set of levels
+\item
+  \texttt{ordered} logical value to indicate if the levels should be regarded as ordered
+\item
+  \texttt{nmax} an upper bound on the number of levels
+\end{itemize}
+
+The main argument of \texttt{factor()} is the input vector \texttt{x}. The next argument is
+\texttt{levels}, followed by \texttt{labels}, both of which are optional arguments. Although
+you won't always be providing values for \texttt{levels} and \texttt{labels}, it is important
+to understand how R handles these arguments by default.
+
+\hypertarget{argument-levels}{%
+\subsubsection*{\texorpdfstring{Argument \texttt{levels}}{Argument levels}}\label{argument-levels}}
+\addcontentsline{toc}{subsubsection}{Argument \texttt{levels}}
+
+If \texttt{levels} is not provided (which is what happens in most cases), then R
+assigns the unique values in \texttt{x} as the category levels.
+
+For example, consider our numeric vector from the first example: \texttt{num\_vector}
+contains unique values 1, 2, and 3.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# numeric vector}
+\NormalTok{num\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# creating a factor from num\_vector}
+\NormalTok{first\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(num\_vector)}
+
+\NormalTok{first\_factor}
+\CommentTok{\#\textgreater{} [1] 1 2 3 1 2 3 2}
+\CommentTok{\#\textgreater{} Levels: 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+Now imagine we want to have \texttt{levels} 1, 2, 3, 4, and 5. This is how you can
+define the factor with an extended set of levels:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# numeric vector}
+\NormalTok{num\_vector}
+\CommentTok{\#\textgreater{} [1] 1 2 3 1 2 3 2}
+
+\CommentTok{\# defining levels}
+\NormalTok{one\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(num\_vector, }\AttributeTok{levels =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
+\NormalTok{one\_factor}
+\CommentTok{\#\textgreater{} [1] 1 2 3 1 2 3 2}
+\CommentTok{\#\textgreater{} Levels: 1 2 3 4 5}
+\end{Highlighting}
+\end{Shaded}
+
+Although the created factor only has values between 1 and 3, the \texttt{levels} range
+from 1 to 5. This can be useful if we plan to add elements whose values are not
+in the input vector \texttt{num\_vector}. For instance, you can append two more elements
+to \texttt{one\_factor} with values \texttt{4} and \texttt{5} like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# adding values 4 and 5}
+\NormalTok{one\_factor[}\FunctionTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{one\_factor}
+\CommentTok{\#\textgreater{} [1] 1 2 3 1 2 3 2 4 5}
+\CommentTok{\#\textgreater{} Levels: 1 2 3 4 5}
+\end{Highlighting}
+\end{Shaded}
+
+If you attempt to insert an element having a value that is not in the
+predefined set of levels, R will insert a missing value (\texttt{\textless{}NA\textgreater{}}) instead, and
+you'll get a warning message like the one below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# attempting to add value 6 (not in levels)}
+\NormalTok{one\_factor[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{6}
+\CommentTok{\#\textgreater{} Warning in \textasciigrave{}[\textless{}{-}.factor\textasciigrave{}(\textasciigrave{}*tmp*\textasciigrave{}, 1, value = 6): invalid factor level, NA}
+\CommentTok{\#\textgreater{} generated}
+\NormalTok{one\_factor}
+\CommentTok{\#\textgreater{} [1] \textless{}NA\textgreater{} 2    3    1    2    3    2    4    5   }
+\CommentTok{\#\textgreater{} Levels: 1 2 3 4 5}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{argument-labels}{%
+\subsubsection*{\texorpdfstring{Argument \texttt{labels}}{Argument labels}}\label{argument-labels}}
+\addcontentsline{toc}{subsubsection}{Argument \texttt{labels}}
+
+Another very useful argument is \texttt{labels}, which allows you to provide a string
+vector for naming the \texttt{levels} in a different way from the values in \texttt{x}. Let's
+take the numeric vector \texttt{num\_vector} again, and say we want to use words as
+labels instead of numeric values. Here's how you can create a factor with
+predefined \texttt{labels}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# defining labels}
+\NormalTok{num\_word\_vector }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(num\_vector, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"one"}\NormalTok{, }\StringTok{"two"}\NormalTok{, }\StringTok{"three"}\NormalTok{))}
+
+\NormalTok{num\_word\_vector}
+\CommentTok{\#\textgreater{} [1] one   two   three one   two   three two  }
+\CommentTok{\#\textgreater{} Levels: one two three}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{argument-exclude}{%
+\subsubsection*{\texorpdfstring{Argument \texttt{exclude}}{Argument exclude}}\label{argument-exclude}}
+\addcontentsline{toc}{subsubsection}{Argument \texttt{exclude}}
+
+If you want to ignore some values of the input vector \texttt{x}, you can use the
+\texttt{exclude} argument. You just need to provide those values which will be removed
+from the set of \texttt{levels}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# excluding level 3}
+\FunctionTok{factor}\NormalTok{(num\_vector, }\AttributeTok{exclude =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1    2    \textless{}NA\textgreater{} 1    2    \textless{}NA\textgreater{} 2   }
+\CommentTok{\#\textgreater{} Levels: 1 2}
+
+\CommentTok{\# excluding levels 1 and 3}
+\FunctionTok{factor}\NormalTok{(num\_vector, }\AttributeTok{exclude =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\CommentTok{\#\textgreater{} [1] \textless{}NA\textgreater{} 2    \textless{}NA\textgreater{} \textless{}NA\textgreater{} 2    \textless{}NA\textgreater{} 2   }
+\CommentTok{\#\textgreater{} Levels: 2}
+\end{Highlighting}
+\end{Shaded}
+
+The side effect of \texttt{exclude} is that it returns a missing value (\texttt{\textless{}NA\textgreater{}}) for
+each element that was excluded, which is not always what we want. Here's one
+way to remove the missing values when excluding 3:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# excluding level 3}
+\NormalTok{num\_fac12 }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(num\_vector, }\AttributeTok{exclude =} \DecValTok{3}\NormalTok{)}
+
+\CommentTok{\# oops, we have some missing values}
+\NormalTok{num\_fac12}
+\CommentTok{\#\textgreater{} [1] 1    2    \textless{}NA\textgreater{} 1    2    \textless{}NA\textgreater{} 2   }
+\CommentTok{\#\textgreater{} Levels: 1 2}
+\CommentTok{\# removing missing values}
+\NormalTok{num\_fac12[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(num\_fac12)]}
+\CommentTok{\#\textgreater{} [1] 1 2 1 2 2}
+\CommentTok{\#\textgreater{} Levels: 1 2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{unclassing-factors}{%
+\subsection{Unclassing factors}\label{unclassing-factors}}
+
+We've mentioned that factors are stored as vectors of integers (for efficiency
+reasons). But we also said that factors are more than vectors. Even though a
+factor is displayed with string labels, the way it is stored internally is as
+integers. Why is this important to know? Because there will be occasions in
+which you'll need to know exactly what numbers are associated to each level
+values.
+
+Imagine you have a factor with \texttt{levels} 11, 22, 33, 44.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# factor}
+\NormalTok{xfactor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{22}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{44}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{44}\NormalTok{))}
+\NormalTok{xfactor}
+\CommentTok{\#\textgreater{} [1] 22 11 44 33 11 22 44}
+\CommentTok{\#\textgreater{} Levels: 11 22 33 44}
+\end{Highlighting}
+\end{Shaded}
+
+To obtain the integer vector associated to \texttt{xfactor} you can use the function
+\texttt{unclass()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# unclassing a factor}
+\FunctionTok{unclass}\NormalTok{(xfactor)}
+\CommentTok{\#\textgreater{} [1] 2 1 4 3 1 2 4}
+\CommentTok{\#\textgreater{} attr(,"levels")}
+\CommentTok{\#\textgreater{} [1] "11" "22" "33" "44"}
+\end{Highlighting}
+\end{Shaded}
+
+As you can see, the levels \texttt{"11"}, \texttt{"22"}, \texttt{"33"}, \texttt{"44"} were mapped to the
+vector of integers \texttt{(1\ 2\ 3\ 4)}.
+
+An alternative option is to simply apply \texttt{as.numeric()} or \texttt{as.integer()}
+instead of using \texttt{unclass()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# equivalent to unclass}
+\FunctionTok{as.integer}\NormalTok{(xfactor)}
+\CommentTok{\#\textgreater{} [1] 2 1 4 3 1 2 4}
+
+\CommentTok{\# equivalent to unclass}
+\FunctionTok{as.numeric}\NormalTok{(xfactor)}
+\CommentTok{\#\textgreater{} [1] 2 1 4 3 1 2 4}
+\end{Highlighting}
+\end{Shaded}
+
+Although rarely used, there can be some cases in which what you need to do is
+revert the integer values in order to get the original factor levels. This is
+only possible when the levels of the factor are themselves numeric. To accomplish
+this use the following command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# recovering numeric levels}
+\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{levels}\NormalTok{(xfactor))[xfactor]}
+\CommentTok{\#\textgreater{} [1] 22 11 44 33 11 22 44}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ordinal-factors}{%
+\section{Ordinal Factors}\label{ordinal-factors}}
+
+By default, \texttt{factor()} creates a \emph{nominal} categorical variable, not an ordinal.
+One way to check that you have a nominal factor is to use the function
+\texttt{is.ordered()}, which returns \texttt{TRUE} if its argument is an ordinal factor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ordinal factor?}
+\FunctionTok{is.ordered}\NormalTok{(num\_vector)}
+\CommentTok{\#\textgreater{} [1] FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+If you want to specify an ordinal factor you must use the \texttt{ordered} argument of
+\texttt{factor()}. This is how you can generate an ordinal value from \texttt{num\_vector}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ordinal factor from numeric vector}
+\NormalTok{ordinal\_num }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(num\_vector, }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{ordinal\_num}
+\CommentTok{\#\textgreater{} [1] 1 2 3 1 2 3 2}
+\CommentTok{\#\textgreater{} Levels: 1 \textless{} 2 \textless{} 3}
+\end{Highlighting}
+\end{Shaded}
+
+As you can tell from the snippet above, the levels of \texttt{ordinal\_factor} are
+displayed with less-than symbols ``\textless{}'\}, which means that the levels have an
+increasing order. We can also get an ordinal factor from our string vector:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ordinal factor from character vector}
+\NormalTok{ordinal\_str }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(str\_vector, }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{ordinal\_str}
+\CommentTok{\#\textgreater{} [1] a b c b c a c b}
+\CommentTok{\#\textgreater{} Levels: a \textless{} b \textless{} c}
+\end{Highlighting}
+\end{Shaded}
+
+In fact, when you set \texttt{ordered\ =\ TRUE}, R sorts the provided values in
+alphanumeric order. If you have the following alphanumeric vector
+\texttt{("a1",\ "1a",\ "1b",\ "b1")}, what do you think will be the generated ordered
+factor? Let's check the answer:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# alphanumeric vector}
+\NormalTok{alphanum }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a1"}\NormalTok{, }\StringTok{"1a"}\NormalTok{, }\StringTok{"1b"}\NormalTok{, }\StringTok{"b1"}\NormalTok{)}
+
+\CommentTok{\# ordinal factor from character vector}
+\NormalTok{ordinal\_alphanum }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(alphanum, }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{ordinal\_alphanum}
+\CommentTok{\#\textgreater{} [1] a1 1a 1b b1}
+\CommentTok{\#\textgreater{} Levels: 1a \textless{} 1b \textless{} a1 \textless{} b1}
+\end{Highlighting}
+\end{Shaded}
+
+An alternative way to specify an ordinal variable is by using the function
+\texttt{ordered()}, which is just a convenient wrapper for
+\texttt{factor(x,\ ...,\ ordered\ =\ TRUE)}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ordinal factor with ordered()}
+\FunctionTok{ordered}\NormalTok{(num\_vector)}
+\CommentTok{\#\textgreater{} [1] 1 2 3 1 2 3 2}
+\CommentTok{\#\textgreater{} Levels: 1 \textless{} 2 \textless{} 3}
+
+\CommentTok{\# same as using \textquotesingle{}ordered\textquotesingle{} argument}
+\FunctionTok{factor}\NormalTok{(num\_vector, }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1 2 3 1 2 3 2}
+\CommentTok{\#\textgreater{} Levels: 1 \textless{} 2 \textless{} 3}
+\end{Highlighting}
+\end{Shaded}
+
+A word of caution. Don't confuse the function \texttt{ordered()} with \texttt{order()}. They
+are not equivalent. \texttt{order()} arranges a vector into ascending or descending
+order, and returns the sorted vector. \texttt{ordered()}, as we've seen, is used to
+get ordinal factors.
+
+Of course, you won't always be using the default order provided by the
+functions \texttt{factor(...,\ ordered\ =\ TRUE)} or \texttt{ordered()}. Sometimes you want to
+determine categories according to a different order.
+
+For example, let's take the values of \texttt{str\_vector} and let's assume that we
+want them in descending order, that is, \texttt{c\ \textless{}\ b\ \textless{}\ a}. How can you do that? Easy,
+you just need to specify the \texttt{levels} in the order you want them and set
+\texttt{ordered\ =\ TRUE} (or use \texttt{ordered()}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# setting levels with specified order}
+\FunctionTok{factor}\NormalTok{(str\_vector, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"c"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"a"}\NormalTok{), }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] a b c b c a c b}
+\CommentTok{\#\textgreater{} Levels: c \textless{} b \textless{} a}
+
+\CommentTok{\# equivalently}
+\FunctionTok{ordered}\NormalTok{(str\_vector, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"c"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"a"}\NormalTok{))}
+\CommentTok{\#\textgreater{} [1] a b c b c a c b}
+\CommentTok{\#\textgreater{} Levels: c \textless{} b \textless{} a}
+\end{Highlighting}
+\end{Shaded}
+
+Here's another example. Consider a set of size values \texttt{"xs"} extra-small, \texttt{"sm"}
+small, \texttt{"md"} medium, \texttt{"lg"} large, and \texttt{"xl"} extra-large. If you have a
+vector with size values you can create an ordinal variable as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vector of sizes}
+\NormalTok{sizes }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"sm"}\NormalTok{, }\StringTok{"xs"}\NormalTok{, }\StringTok{"xl"}\NormalTok{, }\StringTok{"lg"}\NormalTok{, }\StringTok{"xs"}\NormalTok{, }\StringTok{"lg"}\NormalTok{)}
+
+\CommentTok{\# setting levels with specified order}
+\FunctionTok{ordered}\NormalTok{(sizes, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"xs"}\NormalTok{, }\StringTok{"sm"}\NormalTok{, }\StringTok{"md"}\NormalTok{, }\StringTok{"lg"}\NormalTok{, }\StringTok{"xl"}\NormalTok{))}
+\CommentTok{\#\textgreater{} [1] sm xs xl lg xs lg}
+\CommentTok{\#\textgreater{} Levels: xs \textless{} sm \textless{} md \textless{} lg \textless{} xl}
+\end{Highlighting}
+\end{Shaded}
+
+Notice that when you create an ordinal factor, the given \texttt{levels} will always
+be considered in an increasing order. This means that the first value of \texttt{levels}
+will be the smallest one, then the second one, and so on. The last category,
+in turn, is taken as the one at the top of the scale.
+
+Now that we have several nominal and ordinal factors, we can compare the
+behavior of \texttt{is.ordered()} on two factors:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# is.ordered() on an ordinal factor}
+\NormalTok{ordinal\_str}
+\CommentTok{\#\textgreater{} [1] a b c b c a c b}
+\CommentTok{\#\textgreater{} Levels: a \textless{} b \textless{} c}
+\FunctionTok{is.ordered}\NormalTok{(ordinal\_str)}
+\CommentTok{\#\textgreater{} [1] TRUE}
+
+\CommentTok{\# is.ordered() on a nominal factor}
+\NormalTok{second\_factor}
+\CommentTok{\#\textgreater{} [1] a b c b c a c b}
+\CommentTok{\#\textgreater{} Levels: a b c}
+\FunctionTok{is.ordered}\NormalTok{(second\_factor)}
+\CommentTok{\#\textgreater{} [1] FALSE}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3153,8 +3831,885 @@ Why?
 
 Recall that matrices are \textbf{atomic} objects. Therefore, all the values in a
 matrix must be of the same data type. In this example, because the first
-input vector to \texttt{cbind()} is a character vector, this will dictate the type
-flavor of the produced matrix \texttt{investments}.
+input vector to \texttt{cbind()} is a character vector, which dominates other data
+types, this will dictate the type of the produced matrix \texttt{investments}.
+
+\hypertarget{lists}{%
+\chapter{Lists}\label{lists}}
+
+In this chapter, you will learn about R lists, the most generic type of data
+container in R. Here's a summary of the main features of R lists:
+
+\begin{itemize}
+\tightlist
+\item
+  Lists are the most general class of data container
+\item
+  Like vectors, lists group data into a one-dimensional set
+\item
+  Unlike vectors, lists can store all kinds of objects
+\item
+  Lists can be of any length
+\item
+  Elements of a list can be named, or not
+\end{itemize}
+
+\hypertarget{creating-lists}{%
+\section{Creating Lists}\label{creating-lists}}
+
+The typical way to create a list is with the function \texttt{list()}. This function
+creates a list the same way \texttt{c()} creates a vector. Let's start with a simple
+example creating three numeric vectors of same length, that we then use to
+store them in a list:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec1 }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}
+\NormalTok{vec2 }\OtherTok{\textless{}{-}} \DecValTok{4}\SpecialCharTok{:}\DecValTok{6}
+\NormalTok{vec3 }\OtherTok{\textless{}{-}} \DecValTok{7}\SpecialCharTok{:}\DecValTok{9}
+
+\CommentTok{\# list with unnamed elements}
+\NormalTok{lis }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(vec1, vec2, vec3)}
+\NormalTok{lis}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] 4 5 6}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] 7 8 9}
+\end{Highlighting}
+\end{Shaded}
+
+Note how the contents of a list with unnamed elements are displayed: there is a
+set of double brackets with an index indicating the position of each element,
+and below each double bracket the corresponding vector is printed.
+
+For illustration purposes, we could visualize the three input vectors and the
+list with the following conceptual diagram.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{images/objects/obj-list-vectors1} 
+
+}
+
+\caption{A list containing three unnamed elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-112}
+\end{figure}
+
+Our intention with the depicted list as a set of discontinuous cells is to
+convey the idea that a list is also a one-dimensional vector, albeit a very
+special type of vector: a \textbf{non-atomic vector}. This means that each element
+of a list can be any kind of object.
+
+In the same way you can give names to elements of a vector, you can also give
+names to elements of a list:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# list with named elements}
+\NormalTok{lis }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\StringTok{"vec1"} \OtherTok{=}\NormalTok{ vec1, }\StringTok{"vec2"} \OtherTok{=}\NormalTok{ vec2, }\StringTok{"vec3"} \OtherTok{=}\NormalTok{ vec3)}
+\NormalTok{lis}
+\CommentTok{\#\textgreater{} $vec1}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $vec2}
+\CommentTok{\#\textgreater{} [1] 4 5 6}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $vec3}
+\CommentTok{\#\textgreater{} [1] 7 8 9}
+\end{Highlighting}
+\end{Shaded}
+
+When you create a list in this form, you can actually omit the quotes of
+the given names. While this option of naming elements may create a bit of
+confusion for beginners and inexperienced users in R, we believe it's not a big
+deal (based on our experience):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# another option for giving names to elements in a list}
+\NormalTok{lis }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{vec1 =}\NormalTok{ vec1, }\AttributeTok{vec2 =}\NormalTok{ vec2, }\AttributeTok{vec3 =}\NormalTok{ vec3)}
+\NormalTok{lis}
+\CommentTok{\#\textgreater{} $vec1}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $vec2}
+\CommentTok{\#\textgreater{} [1] 4 5 6}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $vec3}
+\CommentTok{\#\textgreater{} [1] 7 8 9}
+\end{Highlighting}
+\end{Shaded}
+
+Observe how the contents of a list with named elements are displayed: this time,
+instead of the set of double brackets, there is a dollar sign followed by the
+name of the element, e.g.~\texttt{\$vec1}. Below each name, the corresponding vector is
+printed.
+
+The conceptual diagram in this case could look like this:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{images/objects/obj-list-vectors2} 
+
+}
+
+\caption{A list with named elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-115}
+\end{figure}
+
+As we just said, the elements of a list can be any kind of R object. For
+example, here's a list called \texttt{lst} that contains a character vector, a
+numeric matrix, a factor, and another list:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lst }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\StringTok{"Harry"}\NormalTok{, }\StringTok{"Ron"}\NormalTok{, }\StringTok{"Hermione"}\NormalTok{),}
+  \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{),}
+  \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{, }\StringTok{"no"}\NormalTok{, }\StringTok{"no"}\NormalTok{, }\StringTok{"yes"}\NormalTok{)),}
+  \FunctionTok{list}\NormalTok{(}\StringTok{"Harry"}\NormalTok{, }\StringTok{"Ron"}\NormalTok{, }\StringTok{"Hermione"}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{lst}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] "Harry"    "Ron"      "Hermione"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1    3    5}
+\CommentTok{\#\textgreater{} [2,]    2    4    6}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] yes no  no  no  yes}
+\CommentTok{\#\textgreater{} Levels: no yes}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[4]]}
+\CommentTok{\#\textgreater{} [[4]][[1]]}
+\CommentTok{\#\textgreater{} [1] "Harry"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[4]][[2]]}
+\CommentTok{\#\textgreater{} [1] "Ron"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[4]][[3]]}
+\CommentTok{\#\textgreater{} [1] "Hermione"}
+\end{Highlighting}
+\end{Shaded}
+
+Whenever possible, we strongly recommend giving names to the elements of a list.
+Not only this makes it easy to identify one element from the others, but it also
+gives you more flexibility to rearrange the contents of the list without having
+to worry about the exact order or position they occupy.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# whenever possible, give names to elements in a list}
+\NormalTok{lst }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \AttributeTok{first =} \FunctionTok{c}\NormalTok{(}\StringTok{"Harry"}\NormalTok{, }\StringTok{"Ron"}\NormalTok{, }\StringTok{"Hermione"}\NormalTok{),}
+  \AttributeTok{second =} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{),}
+  \AttributeTok{third =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{, }\StringTok{"no"}\NormalTok{, }\StringTok{"no"}\NormalTok{, }\StringTok{"yes"}\NormalTok{)),}
+  \AttributeTok{fourth =} \FunctionTok{list}\NormalTok{(}\StringTok{"Harry"}\NormalTok{, }\StringTok{"Ron"}\NormalTok{, }\StringTok{"Hermione"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{manipulating-lists}{%
+\section{Manipulating Lists}\label{manipulating-lists}}
+
+To manipulate the elements of a list you can use bracket notation. Because a
+list is a vector, you can use single brackets (e.g.~\texttt{lis{[}1{]}}) as well as
+double brackets (e.g.~\texttt{lis{[}{[}1{]}{]}}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{images/objects/obj-list-brackets1} 
+
+}
+
+\caption{Bracket notation with lists}\label{fig:unnamed-chunk-118}
+\end{figure}
+
+\hypertarget{single-brackets}{%
+\subsection{Single brackets}\label{single-brackets}}
+
+Just like any other vector, and any other data object in R, you can use single
+brackets on a list. For example, consider the unnamed version of a list, and
+the use of single brackets with index \texttt{1} inside them:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# list with unnamed elements}
+\NormalTok{lis }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(vec1, vec2, vec3)}
+
+\NormalTok{lis[}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+What a single bracket does, is give you access to the ``container'' of the
+specified element but without ``unboxing'' its contents. This is reflected by
+the way in which the output is displayed: note the double bracket \texttt{{[}{[}1{]}{]}} in
+the first line, and then \texttt{{[}1{]}\ 1\ 2\ 3} in the second line.
+
+In other words, \texttt{lis{[}1{]}} gives you the first element of the list, which
+contains a vector, but it does not give you direct access to the vector itself.
+Put another way, \texttt{lis{[}1{]}} lets you see that the first element of the list is
+a vector, but this vector is still \emph{inside} its ``box''.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{images/objects/obj-list-brackets2} 
+
+}
+
+\caption{Use single brackets to select an element}\label{fig:unnamed-chunk-120}
+\end{figure}
+
+\hypertarget{double-brackets}{%
+\subsection{Double Brackets}\label{double-brackets}}
+
+In addition to single brackets, lists also accept double brackets: e.g.~
+\texttt{lis{[}{[}1{]}{]}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lis[[}\DecValTok{1}\NormalTok{]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+Double brackets are used when you want to get access to the content of the
+list's elements. Notice the output of the previous command: now there are no
+double brackets, just the output of the vector in the first position. Think
+of this command as ``unboxing'' the object of the first element in \texttt{lis}.
+
+What if you want to manipulate the elements of vector \texttt{vec1} or \texttt{vec2}? Use
+double brackets followed by single brackets
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# second index of first list\textquotesingle{}s element}
+\NormalTok{lis[[}\DecValTok{1}\NormalTok{]][}\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 2}
+
+\CommentTok{\# first index of second list\textquotesingle{}s element}
+\NormalTok{lis[[}\DecValTok{2}\NormalTok{]][}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{images/objects/obj-list-brackets3} 
+
+}
+
+\caption{Use double brackets to extract an element}\label{fig:unnamed-chunk-123}
+\end{figure}
+
+\hypertarget{dollar-signs}{%
+\subsection{Dollar signs}\label{dollar-signs}}
+
+R lists---and data frames---follow an optional second system of notation for
+extracting \textbf{named elements} using the dollar sign \textbf{\texttt{\$}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{images/objects/obj-list-dollars1} 
+
+}
+
+\caption{Dollar notation with lists}\label{fig:unnamed-chunk-124}
+\end{figure}
+
+Let's use the named version of \texttt{lis}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# list with named elements}
+\NormalTok{lis }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\StringTok{"vec1"} \OtherTok{=}\NormalTok{ vec1, }\StringTok{"vec2"} \OtherTok{=}\NormalTok{ vec2, }\StringTok{"vec3"} \OtherTok{=}\NormalTok{ vec3)}
+
+\NormalTok{lis}\SpecialCharTok{$}\NormalTok{vec1}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+The dollar sign \textbf{\texttt{\$}} notation works for selecting \textbf{named elements} in a
+list. Notice the output of the above command: \texttt{lis\$vec1} gives you vector
+\texttt{1\ 2\ 3}. In other words, dollar notation ``unboxes'' the object that is associated
+to the specified name.
+
+\hypertarget{adding-new-elements}{%
+\subsection{Adding new elements}\label{adding-new-elements}}
+
+From time to time, you will want to add one or more elements to an existing
+list. For instance, consider a list \texttt{lst} with two elements:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lst }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{))}
+
+\NormalTok{lst}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "A" "B" "C"}
+\end{Highlighting}
+\end{Shaded}
+
+Say you want to add a logical vector as a third element to \texttt{lst}. One option to
+do this is with double brackets, specifying a new index position to which you
+assign the new element:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lst[[}\DecValTok{3}\NormalTok{]] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+
+\NormalTok{lst}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "A" "B" "C"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE  TRUE FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+Another option is to use the dollar operator by giving a new name to which you
+assign the new element. Even though the previous elements in \texttt{lst}are unnamed,
+the new added element will have an associated label:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lst}\SpecialCharTok{$}\NormalTok{new\_elem }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}nuevo\textquotesingle{}}
+
+\NormalTok{lst}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "A" "B" "C"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $new\_elem}
+\CommentTok{\#\textgreater{} [1] "nuevo"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{removing-elements}{%
+\subsection{Removing elements}\label{removing-elements}}
+
+Just like you will want to add new elements in a list, you will also find
+occasions in which you need to remove one or more elements. Take the previous
+list \texttt{lst} with four elements, and say you want to remove the third element
+(containing the logical vector)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lst}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "A" "B" "C"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $new\_elem}
+\CommentTok{\#\textgreater{} [1] "nuevo"}
+\end{Highlighting}
+\end{Shaded}
+
+To remove the third element, which is unnamed, you use double brackets and
+assign a value \texttt{NULL} to that position:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lst[[}\DecValTok{3}\NormalTok{]] }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{lst}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "A" "B" "C"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $new\_elem}
+\CommentTok{\#\textgreater{} [1] "nuevo"}
+\end{Highlighting}
+\end{Shaded}
+
+As for those named elements, such as \texttt{lst\$new\_elem}, you do the same and assign
+a \texttt{NULL} value, but this time using dollar notation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lst}\SpecialCharTok{$}\NormalTok{new\_elem }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{lst}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "A" "B" "C"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercises-2}{%
+\section{Exercises}\label{exercises-2}}
+
+\textbf{1)} How would you create a list with your first name, middle name, and last
+name? For example, something like:
+
+\begin{verbatim}
+$first
+[1] "Gaston"
+
+$middle
+NULL
+
+$last
+[1] "Sanchez"
+\end{verbatim}
+
+\textbf{2)} Consider an R list \texttt{student} containing the following elements:
+
+\begin{verbatim}
+$name
+[1] "Luke Skywalker"
+
+$major_minor
+              major               minor 
+     "jedi studies" "imperial policies" 
+
+$gpa
+[1] 4
+
+$grades
+           course score
+1       force-101   9.3
+2    light-sabers  10.0
+3 jedi-literature   8.5
+\end{verbatim}
+
+What is the output of the following commands? Try to guess the answer without
+running the code.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \texttt{student\$grades\$semester\ \textless{}-\ 4}
+\item
+  \texttt{sum(student{[}{[}2{]}{]}\ ==\ "sith\ philosophy")}
+\item
+  \texttt{student{[}"sid"{]}\ \textless{}-\ as.integer("123456")}
+\item
+  \texttt{mean(student{[}{[}4{]}{]}{[}1:3,2{]},\ na.rm\ =\ TRUE)}
+\item
+  \texttt{student{[}{[}4{]}{]}\ \textless{}-\ student\$grades{[}c(FALSE,\ TRUE,\ TRUE),\ {]}}
+\end{enumerate}
+
+\hypertarget{part-programming-basics}{%
+\part{Programming Basics}\label{part-programming-basics}}
+
+\hypertarget{functions1}{%
+\chapter{Intro to Functions}\label{functions1}}
+
+R comes with many functions and packages that let us perform a wide variety
+of tasks, and so far we've been using a number of them. In fact, most of the
+things we do in R is by calling some function. Sometimes, however, there is no
+function to do what we want to achieve. When this is the case, we may very
+well want to write our own functions.
+
+In this chapter we'll describe how to start writing small and simple functions.
+We are going to start covering the ``tip of the iceberg'', and in the following
+chapters we will continue discussing more aspects about writing functions, and
+describing how R works when you invoke (call) a function.
+
+\hypertarget{motivation-1}{%
+\section{Motivation}\label{motivation-1}}
+
+We've used the formula of \textbf{future value} which is useful to answer questions
+like: If you deposit \$1000 into a savings account that pays an annual interest
+of 2\%, how much will you have at the end of year 10?
+
+\[
+\text{FV} = \text{PV} \times (1 + r)^t
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\text{FV}\) = future value (how much you'll have)
+\item
+  \(\text{PV}\) = present value (the initial deposit)
+\item
+  \(r\) = rate of return (e.g.~annual rate of return)
+\item
+  \(t\) = number of periods (e.g.~number of years)
+\end{itemize}
+
+R has a large number of functions---e.g.~\texttt{sqrt()}, \texttt{log()}, \texttt{mean()},
+\texttt{sd()}, \texttt{exp()}, etc---but it does not have a built-in function to compute
+future value.
+
+Wouldn't it be nice to have a \texttt{future\_value()} function---or an \texttt{fv()}
+function---that you could call in R? Perhaps something like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{future\_value}\NormalTok{(}\AttributeTok{present =} \DecValTok{1000}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.02}\NormalTok{, }\AttributeTok{year =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's create such a function!
+
+\hypertarget{writing-a-simple-function}{%
+\section{Writing a Simple Function}\label{writing-a-simple-function}}
+
+This won't always be the case, but in our current example we have a specific
+mathematical formula to work with (which makes things easier):
+
+\[
+\text{FV} = \text{PV} \times (1 + r)^t
+\]
+
+Like other programming languages for scientific computations, we can take
+advantage of the syntax in R to write an expression that is ``identical'' to
+the algebraic formulation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fv }\OtherTok{=}\NormalTok{ pv }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ r)}\SpecialCharTok{\^{}}\NormalTok{t}
+\end{Highlighting}
+\end{Shaded}
+
+We will use this simple line of code as our starting point for creating a
+future value function. So let's see how to do it ``logically'' step by step.
+
+\hypertarget{step-1-start-with-a-concrete-example}{%
+\subsubsection*{Step 1: Start with a concrete example}\label{step-1-start-with-a-concrete-example}}
+\addcontentsline{toc}{subsubsection}{Step 1: Start with a concrete example}
+
+Together with the identification of the input(s), the process, and the
+output,
+
+You should always start with a \textbf{small and concrete example}, focusing
+on writing code that does the job. For example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# inputs}
+\NormalTok{pv }\OtherTok{=} \DecValTok{1000}
+\NormalTok{r }\OtherTok{=} \FloatTok{0.02}
+\NormalTok{t }\OtherTok{=} \DecValTok{10}
+
+\CommentTok{\# process}
+\NormalTok{fv }\OtherTok{=}\NormalTok{ pv }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ r)}\SpecialCharTok{\^{}}\NormalTok{t}
+
+\CommentTok{\# output}
+\NormalTok{fv}
+\CommentTok{\#\textgreater{} [1] 1218.994}
+\end{Highlighting}
+\end{Shaded}
+
+Part of starting with a concrete example is so that you can identify what the
+inputs are, what computations or process the inputs will go through, and what
+the output should be.
+
+Inputs:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{pv}
+\item
+  \texttt{r}
+\item
+  \texttt{t}
+\end{itemize}
+
+Process:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{fv\ =\ pv\ *\ (1\ +\ r)\^{}t}
+\end{itemize}
+
+Output:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{fv}
+\end{itemize}
+
+When I say ``small example'' I mean working with objects containing just a few
+values. Here, the objects \texttt{pv}, \texttt{r}, and \texttt{t} are super simple vectors of size 1.
+Sometimes, though, you may want to start with less simple, but still small,
+objects containing just a couple of values. That's fine too.
+
+Sometimes you may even need to start not just with one, but with a couple of
+concrete examples that will help you get a better feeling of the objects, and
+operations that you will be using in your function.
+
+As you get more experience creating and writing functions, you may want to
+start with a ``medium-size'' concrete example. Personally, I don't tend to start
+like this, instead, I like to take baby-steps, and also taking my time, without
+rushing the coding. You know the old-saying: ``measure twice, cut once.''
+
+\hypertarget{step-2-make-your-code-more-generalizable}{%
+\subsubsection*{Step 2: Make your code more generalizable}\label{step-2-make-your-code-more-generalizable}}
+\addcontentsline{toc}{subsubsection}{Step 2: Make your code more generalizable}
+
+After having one (or a few) concrete example(s), the next step is to make your
+code more generalizable, or if you prefer, to make it more abstract (or at
+least less concrete).
+
+Instead of working with specific values \texttt{pv}, \texttt{r}, and \texttt{t}, you can give them
+a more algebraic spirit. For instance, the code below considers ``open-ended''
+inputs without assigning them any values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# general inputs (could take "any" values)}
+\NormalTok{pv}
+\NormalTok{r}
+\NormalTok{t}
+
+\CommentTok{\# process}
+\NormalTok{fv }\OtherTok{=}\NormalTok{ pv }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ r)}\SpecialCharTok{\^{}}\NormalTok{t}
+
+\CommentTok{\# output}
+\NormalTok{fv}
+\end{Highlighting}
+\end{Shaded}
+
+Obviously this piece of code is very abstract and not intended to be executed
+in R; this is just for the sake of conceptual illustration.
+
+\hypertarget{step-3-encapsulate-the-code-into-a-function}{%
+\subsubsection*{Step 3: Encapsulate the code into a function}\label{step-3-encapsulate-the-code-into-a-function}}
+\addcontentsline{toc}{subsubsection}{Step 3: Encapsulate the code into a function}
+
+The next step is to encapsulate your code as a formal function in R. I will
+show you how to do this in two logical substeps, although keep in mind that in
+practice you will merge these two substeps into a single one.
+
+The encapsulation process involves placing the ``inputs'' inside the function
+\texttt{function()}, separating each input with a comma. Formally speaking, the
+inputs of your functions are known as the \textbf{arguments} of the function.
+
+Likewise, the lines of code that correspond to the ``process'' and ``output'' are
+what will become the \textbf{body} of the function. Typically, you encapsulate the
+code of the body by surrounding it within curly braces \texttt{\{\ \}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# encapsulating code into a function}
+\ControlFlowTok{function}\NormalTok{(pv, r, t) \{}
+\NormalTok{  fv }\OtherTok{=}\NormalTok{ pv }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ r)}\SpecialCharTok{\^{}}\NormalTok{t}
+\NormalTok{  fv}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+The other substep typically consists of \textbf{assigning a name} to the code of
+your function. For example, you can give it the name \texttt{FV}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# future value function}
+\NormalTok{FV }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(pv, r, t) \{}
+\NormalTok{  fv }\OtherTok{=}\NormalTok{ pv }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ r)}\SpecialCharTok{\^{}}\NormalTok{t}
+\NormalTok{  fv}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+In summary:
+
+\begin{itemize}
+\item
+  the inputs go inside \texttt{function()}, separating each input with a comma
+\item
+  the processing step and the output are surrounded within curly braces \texttt{\{\ \}}
+\item
+  you typically assign a name to the code of your function
+\end{itemize}
+
+\hypertarget{step-4-test-that-the-function-works}{%
+\subsubsection*{Step 4: Test that the function works}\label{step-4-test-that-the-function-works}}
+\addcontentsline{toc}{subsubsection}{Step 4: Test that the function works}
+
+Once the function is created, you test it to make sure that everything works.
+Very likely you will test your function with the small and concrete example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# test it}
+\FunctionTok{FV}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FloatTok{0.02}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1218.994}
+\end{Highlighting}
+\end{Shaded}
+
+And then you'll keep testing your function with other less simple examples.
+In this case, because the code we are working with is based on vectors,
+and uses common functions for vectors, we can further inspect the behavior of
+the function with vectors of various sizes for the arguments:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vectorized years}
+\FunctionTok{FV}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FloatTok{0.02}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1020.000 1040.400 1061.208 1082.432 1104.081}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vectorized rates}
+\FunctionTok{FV}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{, }\FloatTok{0.02}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.005}\NormalTok{), }\DecValTok{1}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1010 1015 1020}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vectorized present values}
+\FunctionTok{FV}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\DecValTok{2000}\NormalTok{, }\DecValTok{3000}\NormalTok{), }\FloatTok{0.02}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1020 2040 3060}
+\end{Highlighting}
+\end{Shaded}
+
+Notice that the function is vectorized, this is because we are using arithmetic
+operators (i.e.~multiplication, subtraction, division) which are in turn
+vectorized.
+
+\hypertarget{in-summary}{%
+\subsubsection*{In Summary}\label{in-summary}}
+\addcontentsline{toc}{subsubsection}{In Summary}
+
+\begin{itemize}
+\item
+  To define a new function in R you use the function \texttt{function()}.
+\item
+  You need to specify a name for the function, and then assign \texttt{function()}
+  to the chosen name.
+\item
+  You also need to define optional arguments (i.e.~inputs of the function).
+\item
+  And of course, you must write the code (i.e.~the body) so the function does
+  something when you use it.
+\end{itemize}
+
+\hypertarget{arguments-with-default-values}{%
+\subsection{Arguments with default values}\label{arguments-with-default-values}}
+
+Sometimes it is recommended to add a default value to one (or more) of the
+arguments. In this case, we could give default values to the arguments in such
+a way that when the user executes the function without any input, \texttt{FV()}
+returns the value of 100 (presumably dollars) invested at a rate of return of
+1\% for 1 year:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# future value function with default arguments}
+\NormalTok{FV }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{pv =} \DecValTok{100}\NormalTok{, }\AttributeTok{r =} \FloatTok{0.01}\NormalTok{, }\AttributeTok{t =} \DecValTok{1}\NormalTok{) \{}
+\NormalTok{  fv }\OtherTok{=}\NormalTok{ pv }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ r)}\SpecialCharTok{\^{}}\NormalTok{t}
+\NormalTok{  fv}
+\NormalTok{\}}
+
+\CommentTok{\# default execution}
+\FunctionTok{FV}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] 101}
+\end{Highlighting}
+\end{Shaded}
+
+Another interesting side effect of giving default values to the arguments of
+a function is that you can also call it by specifying arguments in different
+order:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{FV}\NormalTok{(}\AttributeTok{r =} \FloatTok{0.02}\NormalTok{, }\AttributeTok{t =} \DecValTok{3}\NormalTok{, }\AttributeTok{pv =} \DecValTok{1000}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1061.208}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{writing-functions-for-humans}{%
+\subsection{Writing Functions for Humans}\label{writing-functions-for-humans}}
+
+When writing functions (or coding in general), you should write code not just
+for the computer, \textbf{but also for humans}.
+
+Here's one option to make our code more human friendly:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# future value function}
+\NormalTok{future\_value }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(present, rate, years) \{}
+\NormalTok{  future }\OtherTok{=}\NormalTok{ present }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years}
+\NormalTok{  future}
+\NormalTok{\}}
+
+\CommentTok{\# test it}
+\FunctionTok{future\_value}\NormalTok{(}\AttributeTok{present =} \DecValTok{1000}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.02}\NormalTok{, }\AttributeTok{years =} \DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1218.994}
+\end{Highlighting}
+\end{Shaded}
+
+Even better: whenever possible, as we just said, give default values to the
+arguments (i.e.~inputs) of your function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# future value function}
+\NormalTok{future\_value }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{present =} \DecValTok{100}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.01}\NormalTok{, }\AttributeTok{years =} \DecValTok{1}\NormalTok{) \{}
+\NormalTok{  future }\OtherTok{=}\NormalTok{ present }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years}
+\NormalTok{  future}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{naming-functions}{%
+\subsection{Naming Functions}\label{naming-functions}}
+
+Function names
+
+Different ways to name functions
+
+\begin{itemize}
+\item
+  \texttt{fv()}
+\item
+  \texttt{future\_value()}
+\item
+  \texttt{future.value()}
+\item
+  \texttt{futureValue()}
+\item
+  \texttt{.fv()}: a function that starts with a dot is a valid name, but the
+  function will be a \emph{hidden} function.
+\end{itemize}
+
+Invalid names
+
+\begin{itemize}
+\item
+  \texttt{1fv()}: cannot begin with a number
+\item
+  \texttt{\_fv()}: cannot begin with an underscore
+\item
+  \texttt{future-value()}: cannot use hyphenated names
+\end{itemize}
 
   \bibliography{book.bib}
 
