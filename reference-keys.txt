@@ -114,5 +114,11 @@ writing-a-simple-function
 arguments-with-default-values
 writing-functions-for-humans
 naming-functions
-exercises-3
 functions-documentation
+exercises-3
+expressions
+r-expressions
+simple-expressions
+compound-expressions
+every-expression-has-a-value
+assignments-within-compound-expressions

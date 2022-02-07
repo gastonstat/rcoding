@@ -13,7 +13,7 @@
 \makeatother
 \subtitle{An introduction to practical programming in R}
 \author{Gaston Sanchez}
-\date{2022-02-06}
+\date{2022-02-07}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -137,12 +137,14 @@
 \chapter*{Welcome}\label{welcome}}
 \addcontentsline{toc}{chapter}{Welcome}
 
-This book is a work in progress for a text on programming in R.
+This book is a work in progress for an introductory textbook on programming in R.
 
-We discuss the basics of R, covering how to manipulate data objects such as
-vectors, factors, matrices, data frames, and lists. We also cover data
-manipulation, reshaping, tidying, etc. Likewise, we describe how to make
-basic (and not so) graphics.
+In a nutshell, we discuss the basics of R, covering properties of data objects,
+such as vectors, factors, matrices, data frames, and lists. We also cover
+main principles for data manipulation, reshaping, tidying, etc. Likewise, we
+discuss fundamental notions of programming (e.g.~functions, conditionals,
+iterations). And last but not least we describe how to make basic (and not so
+basic) graphics.
 
 \hypertarget{yet-another-r-book}{%
 \section*{Yet Another R Book}\label{yet-another-r-book}}
@@ -150,18 +152,27 @@ basic (and not so) graphics.
 
 Why writing another book about programming in R? Quick answer: ``Why not?''
 The truth is that for many years I refrained myself from writing a book like
-the one you are reading now.
+the one you are reading now. I used to tell myself something along the lines
+of: ``The world does not need another introductory book about R.'' And I still
+somewhat agree with this. Okay, maybe the world does not need another book
+like this \ldots{} but I do.
 
-However, after using R---almost on a daily basis---for more than 16 years, and
+After using R---almost on a daily basis---for more than 16 years, and
 having taught STAT 133 ``Concepts in Computing with Data'', for the past 6 years,
 I've accumulated a large body of notes, slides, scripts, exercises and that
-sort of things, that deserve a place such as this a textbook. In addition, it
-fits my teaching needs for courses such as STAT 133, STAT 33A, STAT 33B,
-STAT 243, and similar courses on programming, data analysis, data science, with R.
+sort of things, that deserve a place such as this a textbook. In addition, and
+more important, it fits my needs for teaching courses such as STAT 133, STAT 33A,
+STAT 33B, STAT 243, and similar courses on programming, data analysis, data
+science, and related activities \ldots{} with R.
 
-As you will see, the book has an overall theme based on financial math. The main
-reason for this decision is to provide a unifying theme under which most topics
-can be tidely presented, instead of offering a number of examples in a vacuum.
+As you will see, the book has an overarching theme based on financial math
+formulas and personal finance applications. The main reason for this decision
+is to provide a unifying theme under which most topics can be tidely presented,
+instead of offering a number of examples in a vacuum.
+
+I hope you enjoy reading the book, learn something (hopefully a lot) about
+coding in R, and also a bit of financial math. Enough chit-chat.
+Let's get started.
 
 \hypertarget{part-getting-started-with-r-and-rstudio}{%
 \part{Getting Started with R and RStudio}\label{part-getting-started-with-r-and-rstudio}}
@@ -846,6 +857,8 @@ By the way, you only need to install a package once. After a package has been
 installed in your computer, the only command that you need to invoke to use
 its functions is the \texttt{library()} function.
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \hypertarget{exercises}{%
 \section{Exercises}\label{exercises}}
 
@@ -1091,6 +1104,8 @@ the history mechanism used by your R console.
 
 As for the \texttt{Connections} tab, this plays a more advanced (and somewhat obscure)
 role that I briefly discuss in part IV of the book.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{exercises-1}{%
 \section{Exercises}\label{exercises-1}}
@@ -4335,9 +4350,9 @@ describing how R works when you invoke (call) a function.
 \hypertarget{motivation-1}{%
 \section{Motivation}\label{motivation-1}}
 
-We've used the formula of \textbf{future value} which is useful to answer questions
-like: If you deposit \$1000 into a savings account that pays an annual interest
-of 2\%, how much will you have at the end of year 10?
+We've used the formula of \textbf{future value}, given below, which is useful to
+answer questions like: If you deposit \$1000 into a savings account that pays
+an annual interest of 2\%, how much will you have at the end of year 10?
 
 \[
 \text{FV} = \text{PV} \times (1 + r)^t
@@ -4374,15 +4389,15 @@ Let's create such a function!
 \section{Writing a Simple Function}\label{writing-a-simple-function}}
 
 This won't always be the case, but in our current example we have a specific
-mathematical formula to work with (which makes things easier):
+mathematical formula to work with (which makes things a lot easier):
 
 \[
 \text{FV} = \text{PV} \times (1 + r)^t
 \]
 
-Like other programming languages for scientific computations, we can take
-advantage of the syntax in R to write an expression that is ``identical'' to
-the algebraic formulation:
+Like other programming languages that can be used for scientific computations,
+we can take advantage of the syntax in R to write an expression that is almost
+identical to the algebraic formulation:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4391,17 +4406,15 @@ the algebraic formulation:
 \end{Shaded}
 
 We will use this simple line of code as our starting point for creating a
-future value function. So let's see how to do it ``logically'' step by step.
+future value function. Here is how to do it ``logically'' step by step.
 
 \hypertarget{step-1-start-with-a-concrete-example}{%
 \subsubsection*{Step 1: Start with a concrete example}\label{step-1-start-with-a-concrete-example}}
 \addcontentsline{toc}{subsubsection}{Step 1: Start with a concrete example}
 
-Together with the identification of the input(s), the process, and the
-output,
-
 You should always start with a \textbf{small and concrete example}, focusing
-on writing code that does the job. For example:
+on writing code that does the job. For example, we could write the following
+lines:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4419,9 +4432,22 @@ on writing code that does the job. For example:
 \end{Highlighting}
 \end{Shaded}
 
-Part of starting with a concrete example is so that you can identify what the
-inputs are, what computations or process the inputs will go through, and what
-the output should be.
+When I say ``small example'' I mean working with objects containing just a few
+values. Here, the objects \texttt{pv}, \texttt{r}, and \texttt{t} are super simple vectors of size 1.
+Sometimes, though, you may want to start with less simple---yet small---objects
+containing just a couple of values. That's fine too.
+
+Sometimes you may even need to start not just with one, but with a couple of
+concrete examples that will help you get a better feeling of what kind of
+objects, and operations you need to use.
+
+As you get more experience creating and writing functions, you may want to
+start with a ``medium-size'' concrete example. Personally, I don't tend to start
+like this. Instead, I like to take baby-steps, and I also like to take my time,
+without rushing the coding. You know the old-saying: ``measure twice, cut once.''
+
+An important part of starting with a concrete example is so that you can
+identify what the inputs are, what computations or process the inputs will go through, and what the output should be.
 
 Inputs:
 
@@ -4450,20 +4476,6 @@ Output:
 \item
   \texttt{fv}
 \end{itemize}
-
-When I say ``small example'' I mean working with objects containing just a few
-values. Here, the objects \texttt{pv}, \texttt{r}, and \texttt{t} are super simple vectors of size 1.
-Sometimes, though, you may want to start with less simple, but still small,
-objects containing just a couple of values. That's fine too.
-
-Sometimes you may even need to start not just with one, but with a couple of
-concrete examples that will help you get a better feeling of the objects, and
-operations that you will be using in your function.
-
-As you get more experience creating and writing functions, you may want to
-start with a ``medium-size'' concrete example. Personally, I don't tend to start
-like this, instead, I like to take baby-steps, and also taking my time, without
-rushing the coding. You know the old-saying: ``measure twice, cut once.''
 
 \hypertarget{step-2-make-your-code-more-generalizable}{%
 \subsubsection*{Step 2: Make your code more generalizable}\label{step-2-make-your-code-more-generalizable}}
@@ -4509,7 +4521,7 @@ inputs of your functions are known as the \textbf{arguments} of the function.
 
 Likewise, the lines of code that correspond to the ``process'' and ``output'' are
 what will become the \textbf{body} of the function. Typically, you encapsulate the
-code of the body by surrounding it within curly braces \texttt{\{\ \}}
+code of the body by surrounding it with curly braces \texttt{\{\ \}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4563,7 +4575,7 @@ Very likely you will test your function with the small and concrete example:
 And then you'll keep testing your function with other less simple examples.
 In this case, because the code we are working with is based on vectors,
 and uses common functions for vectors, we can further inspect the behavior of
-the function with vectors of various sizes for the arguments:
+the function by providing vectors of various sizes for all the arguments:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4590,7 +4602,7 @@ the function with vectors of various sizes for the arguments:
 \end{Shaded}
 
 Notice that the function is vectorized, this is because we are using arithmetic
-operators (i.e.~multiplication, subtraction, division) which are in turn
+operators (e.g.~multiplication, subtraction, division) which are in turn
 vectorized.
 
 \hypertarget{in-summary}{%
@@ -4601,7 +4613,7 @@ vectorized.
 \item
   To define a new function in R you use the function \texttt{function()}.
 \item
-  You need to specify a name for the function, and then assign \texttt{function()}
+  Usually, you specify a name for the function, and then assign \texttt{function()}
   to the chosen name.
 \item
   You also need to define optional arguments (i.e.~inputs of the function).
@@ -4613,10 +4625,10 @@ vectorized.
 \hypertarget{arguments-with-default-values}{%
 \subsection{Arguments with default values}\label{arguments-with-default-values}}
 
-Sometimes it is recommended to add a default value to one (or more) of the
-arguments. In this case, we could give default values to the arguments in such
+Sometimes it's a good idea to add a default value to one (or more) of the
+arguments. For example, we could give default values to the arguments in such
 a way that when the user executes the function without any input, \texttt{FV()}
-returns the value of 100 (presumably dollars) invested at a rate of return of
+returns the value of 100 monetary units invested at a rate of return of
 1\% for 1 year:
 
 \begin{Shaded}
@@ -4633,9 +4645,9 @@ returns the value of 100 (presumably dollars) invested at a rate of return of
 \end{Highlighting}
 \end{Shaded}
 
-Another interesting side effect of giving default values to the arguments of
-a function is that you can also call it by specifying arguments in different
-order:
+An interesting side effect of giving default values to the arguments of
+a function is that you can also call it by specifying arguments in an order
+different from the order in which the function was created:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4645,12 +4657,18 @@ order:
 \end{Shaded}
 
 \hypertarget{writing-functions-for-humans}{%
-\subsection{Writing Functions for Humans}\label{writing-functions-for-humans}}
+\section{Writing Functions for Humans}\label{writing-functions-for-humans}}
 
 When writing functions (or coding in general), you should write code not just
-for the computer, \textbf{but also for humans}.
+for the computer, \textbf{but also for humans}. While it is true that R doesn't
+care too much about what names and symbols you use, your code will be used by
+a human being: either you or someone else. Which means that a human will have
+to take a look at the code.
 
-Here's one option to make our code more human friendly:
+Here are some options to make our code more human friendly. We can give the
+function a more descriptive name such as \texttt{future\_value()}. Likewise, we can
+use more descriptive names for the arguments: e.g.~\texttt{present}, \texttt{rate}, and
+\texttt{years}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4666,8 +4684,8 @@ Here's one option to make our code more human friendly:
 \end{Highlighting}
 \end{Shaded}
 
-Even better: whenever possible, as we just said, give default values to the
-arguments (i.e.~inputs) of your function.
+Even better: whenever possible, as we just said, it's a good idea to give
+default values to the arguments (i.e.~inputs) of the function:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4676,19 +4694,36 @@ arguments (i.e.~inputs) of your function.
 \NormalTok{  future }\OtherTok{=}\NormalTok{ present }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years}
 \NormalTok{  future}
 \NormalTok{\}}
+
+\FunctionTok{future\_value}\NormalTok{()}
+\CommentTok{\#\textgreater{} [1] 101}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{naming-functions}{%
 \subsection{Naming Functions}\label{naming-functions}}
 
-Function names
+Since we just change the name of the function from \texttt{fv()} to \texttt{future\_value()},
+you should also learn about the rules for naming R functions. A function cannot
+have any name. For a name to be valid, two things must happen:
 
-Different ways to name functions
+\begin{itemize}
+\item
+  the first character must be a letter (either upper or lower case) or the
+  dot \texttt{.}
+\item
+  besides the dot, the only other symbol allowed in a name is the underscore
+  \texttt{\_} (as long as it's not used as the first character)
+\end{itemize}
+
+Following the above two principles, below are some valid names that could be
+used for the future value function:
 
 \begin{itemize}
 \item
   \texttt{fv()}
+\item
+  \texttt{fv1()}
 \item
   \texttt{future\_value()}
 \item
@@ -4700,7 +4735,7 @@ Different ways to name functions
   function will be a \emph{hidden} function.
 \end{itemize}
 
-Invalid names
+In contrast, here are examples of invalid names:
 
 \begin{itemize}
 \item
@@ -4709,7 +4744,380 @@ Invalid names
   \texttt{\_fv()}: cannot begin with an underscore
 \item
   \texttt{future-value()}: cannot use hyphenated names
+\item
+  \texttt{fv!()}: cannot contain symbols other than the dot and the underscore
+  (not in the 1st character)
 \end{itemize}
+
+\hypertarget{functions-documentation}{%
+\subsection{Function's Documentation}\label{functions-documentation}}
+
+Part of writing a human-friendly function involves writing its
+\textbf{documentation}, usually providing the following information:
+
+\begin{itemize}
+\item
+  \textbf{title}: short title
+\item
+  \textbf{description}: one or two sentences of what the function does
+\item
+  \textbf{arguments}: short description for each of the arguments
+\item
+  \textbf{output}: description of what the function returns
+\end{itemize}
+
+Once you are happy with the status of your function, include comments for its
+documentation, for example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# title: future value function}
+\CommentTok{\# description: computes future value using compounding interest}
+\CommentTok{\# inputs:}
+\CommentTok{\# {-} present: amount for present value}
+\CommentTok{\# {-} rate: annual rate of return (in decimal)}
+\CommentTok{\# {-} years: number of years}
+\CommentTok{\# output:}
+\CommentTok{\# {-} computed future value}
+\NormalTok{future\_value }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{present =} \DecValTok{100}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.01}\NormalTok{, }\AttributeTok{years =} \DecValTok{1}\NormalTok{) \{}
+\NormalTok{  future }\OtherTok{=}\NormalTok{ present }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years}
+\NormalTok{  future}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Writing documentation for a function seems like a waste of time and energy.
+Shouldn't a function (with its arguments, body, and output) be
+self-descriptive? In an ideal world that would be the case, but this rarely
+happens in practice.
+
+Yes, it does take time to write these comments. And yes, you will be constantly
+asking yourself the same question: ``Do I really need to document this function
+that I'm just planing to use today, and no one else will ever use?''
+
+\textbf{Yes!}
+
+I'll be the first one to admit that I've created so many functions without
+writing their documentation. And almost always---sooner or later---I've ended
+up regretting my laziness for not including the documentation.
+So do yourself and others (especially your future self) a big favor by
+including some comments to document your functions.
+
+Enough about this chapter. Although, obviously, we are not done yet with
+functions. After all, this is a book about programming in R, and there is still
+a long way to cover about the basics and not so basics of functions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-3}{%
+\section{Exercises}\label{exercises-3}}
+
+\textbf{1)} In the second part of the book we have talked about the Future Value (FV),
+and we have extensively used its simplest version of the FV formula. Let's now
+consider the ``opposite'' value: the Present Value which is the current value of a
+future sum of money or stream of cash flows given a specified rate of return.
+
+Consider the simplest version of the formula to calculate the
+\textbf{Present Value} given by:
+
+\[
+\text{PV} = \frac{\text{FV}}{(1 + r)^t}
+\]
+
+\begin{itemize}
+\item
+  \(\text{PV}\) = present value (the initial deposit)
+\item
+  \(\text{FV}\) = future value (how much you'll have)
+\item
+  \(r\) = rate of return (e.g.~annual rate of return)
+\item
+  \(t\) = number of periods (e.g.~number of years)
+\end{itemize}
+
+Write a function \texttt{present\_value()} to compute the Present Value based on
+the above formula.
+
+\textbf{2)} Write another function to compute the \textbf{Future Value}, but this time
+the output should be a \textbf{list} with two elements:
+
+\begin{itemize}
+\item
+  vector \texttt{year} from 0 to provided year
+\item
+  vector \texttt{amount} from amount at year 0, till amount at the
+  provided year
+\end{itemize}
+
+For example, something like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fv\_list}\NormalTok{(}\AttributeTok{present =} \DecValTok{1000}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.02}\NormalTok{, }\AttributeTok{year =} \DecValTok{3}\NormalTok{)}
+\SpecialCharTok{$}\NormalTok{year}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{0} \DecValTok{1} \DecValTok{2} \DecValTok{3}
+
+\SpecialCharTok{$}\NormalTok{amount}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\FloatTok{1000.000} \FloatTok{1020.000} \FloatTok{1040.400} \FloatTok{1061.208}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{3)} Write another function to compute the \textbf{Future Value}, but this time
+the output should be a \textbf{``table''} with two columns: \texttt{year} and \texttt{amount}. For
+example, something like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fv\_table}\NormalTok{(}\AttributeTok{present =} \DecValTok{1000}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.02}\NormalTok{, }\AttributeTok{year =} \DecValTok{3}\NormalTok{)}
+\NormalTok{  year   amount}
+\DecValTok{1}    \DecValTok{0} \FloatTok{1000.000}
+\DecValTok{2}    \DecValTok{1} \FloatTok{1020.000}
+\DecValTok{3}    \DecValTok{2} \FloatTok{1040.400}
+\DecValTok{4}    \DecValTok{3} \FloatTok{1061.208}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Note}: by ``table'' you can use either a \texttt{matrix} or a \texttt{data.frame}. Even better,
+try to create two separate functions: 1) \texttt{fv\_matrix()} that returns a matrix,
+and 2) \texttt{fv\_df()} that returns a data frame.
+
+\hypertarget{expressions}{%
+\chapter{Expressions}\label{expressions}}
+
+In this chapter you will learn about \emph{R expressions} which is a technical
+concept that appears everywhere in all R programming structures (e.g.~functions,
+conditionals, loops). This chapter, by the way, is the shortest of the book.
+But its implications are fundamental to get a solid understanding of
+programming structures in R.
+
+\hypertarget{r-expressions}{%
+\section{R Expressions}\label{r-expressions}}
+
+Before moving on with more programming structures we must first talk about
+R \textbf{expressions}.
+
+\hypertarget{simple-expressions}{%
+\subsection{Simple Expressions}\label{simple-expressions}}
+
+So far you've been writing several lines of code in R, most of which have
+been \emph{simple} expressions such as:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{deposit }\OtherTok{=} \DecValTok{1000}
+\NormalTok{rate }\OtherTok{=} \FloatTok{0.02}
+\NormalTok{year }\OtherTok{=} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+The expression \texttt{deposit\ =\ 1000} is an assignment statement because we assign
+the number \texttt{1000} to the name \texttt{deposit}. It is also a simple expression.
+The same can be said about the expressions for \texttt{rate} and \texttt{year}.
+
+Simple expressions are fairly common but they are not the only ones. It turns
+out that there is another class of expressions known as compound expressions.
+
+\hypertarget{compound-expressions}{%
+\subsection{Compound Expressions}\label{compound-expressions}}
+
+R programs are made up of expressions which can be either \emph{simple} expressions
+or \emph{compound} expressions. Compound expressions consist of simple expressions
+separated by semicolons or newlines, and grouped within braces.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# structure of a compound expression}
+\CommentTok{\# with simple expressions separated by semicolons}
+\NormalTok{\{expression\_1; expression\_2; ...; expression\_n\}}
+
+\CommentTok{\# structure of a compound expression}
+\CommentTok{\# with simple expressions separated by newlines}
+\NormalTok{\{}
+\NormalTok{  expression\_1}
+\NormalTok{  expression\_2}
+\NormalTok{  expression\_n}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Here's a less abstract example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# simple expressions separated by semicolons}
+\NormalTok{\{}\StringTok{"first"}\NormalTok{; }\DecValTok{1}\NormalTok{; }\DecValTok{2}\NormalTok{; }\DecValTok{3}\NormalTok{; }\StringTok{"last"}\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] "last"}
+
+\CommentTok{\# simple expressions separated by newlines}
+\NormalTok{\{}
+  \StringTok{"first"}
+  \DecValTok{1}
+  \DecValTok{2}
+  \DecValTok{3}
+  \StringTok{"last"}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] "last"}
+\end{Highlighting}
+\end{Shaded}
+
+Writing compound expressions like those in the previous example is not
+something common among R users. Although the expressions are perfectly valid,
+these examples are very dummy (just for illustration purposes).
+
+I discourage you from grouping multiple expressions with semicolons because
+it makes it difficult to inspect things. As for the expressions separated by
+newlines, they do play an important role but they are typically used together
+with other programming structures (e.g.~functions, conditionals, loops).
+
+\hypertarget{every-expression-has-a-value}{%
+\subsection{Every expression has a value}\label{every-expression-has-a-value}}
+
+A fundamental notion about expressions is that
+\textbf{every expression in R has a value}.
+
+Consider this simple expression:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+If I ask you: What is the value of \texttt{a}?, you should not have trouble answering
+this question. You know that \texttt{a} has the value 5.
+
+What about this other simple expression:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+What is the value of \texttt{b}? You know as well that the value of \texttt{b} is the
+numeric sequence given by \texttt{1\ 2\ 3\ 4\ 5}.
+
+Now, let's consider the following compound expression:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ \{}\DecValTok{5}\NormalTok{; }\DecValTok{10}\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the entire expression is assigned to \texttt{x}. Let me ask you the same
+question. What is the value of \texttt{x}? Is it:
+
+\begin{itemize}
+\tightlist
+\item
+  5?
+\item
+  10?
+\item
+  5, 10?
+\end{itemize}
+
+Let's find out the answer by taking a look at \texttt{x}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [1] 10}
+\end{Highlighting}
+\end{Shaded}
+
+Mmmm, this is interesting. As you can tell, \texttt{x} has a single value, and it's
+not \texttt{5} but \texttt{10}. Out of curiosity, let's also consider this other compound
+expression for \texttt{y} and examine its value:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ \{}
+  \DecValTok{15}
+  \DecValTok{10}
+  \DecValTok{5}
+\NormalTok{\}}
+
+\NormalTok{y}
+\CommentTok{\#\textgreater{} [1] 5}
+\end{Highlighting}
+\end{Shaded}
+
+Same thing, \texttt{y} has a single value, the number \texttt{5}, which happens to be the
+\textbf{last statement} inside the expression that was evaluated. This is precisely
+the essence of an R expression. Every R expression has a value, the value of
+the last statement that gets evaluated.
+
+To make sure you don't forget it, repeat this mantra:
+
+\begin{quote}
+\begin{itemize}
+\item
+  Every expression in R has a value: the value of the last evaluated statement.
+\item
+  Every expression in R has a value: the value of the last evaluated statement.
+\item
+  Every expression in R has a value: the value of the last evaluated statement.
+\end{itemize}
+\end{quote}
+
+\hypertarget{assignments-within-compound-expressions}{%
+\subsection{Assignments within Compound Expressions}\label{assignments-within-compound-expressions}}
+
+It is possible to have assignments within compound expressions. For instance:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# simple expressions (made up of assignments) separated by newlines}
+\NormalTok{\{}
+\NormalTok{  one }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{  pie }\OtherTok{\textless{}{-}}\NormalTok{ pi}
+\NormalTok{  zee }\OtherTok{\textless{}{-}} \StringTok{"z"}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+This compound expression contains three simple expressions, all of which are
+assignments. Interestingly, when an R expressions contains such assignments, the
+values of the variables can be used in later expressions. In other words, you
+can refer later to \texttt{one} or \texttt{pie} or \texttt{zee}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# simple expressions (made up of assignments) separated by newlines}
+\NormalTok{\{}
+\NormalTok{  one }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{  pie }\OtherTok{\textless{}{-}}\NormalTok{ pi}
+\NormalTok{  zee }\OtherTok{\textless{}{-}} \StringTok{"z"}
+\NormalTok{\}}
+
+\NormalTok{one}
+\CommentTok{\#\textgreater{} [1] 1}
+\NormalTok{pie}
+\CommentTok{\#\textgreater{} [1] 3.141593}
+\NormalTok{zee}
+\CommentTok{\#\textgreater{} [1] "z"}
+\end{Highlighting}
+\end{Shaded}
+
+Here's another example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{\textless{}{-}}\NormalTok{ \{ x }\OtherTok{=} \DecValTok{10}\NormalTok{ ; y }\OtherTok{=}\NormalTok{ x}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{; x }\SpecialCharTok{+}\NormalTok{ y \}}
+
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [1] 10}
+\NormalTok{y}
+\CommentTok{\#\textgreater{} [1] 100}
+\NormalTok{z}
+\CommentTok{\#\textgreater{} [1] 110}
+\end{Highlighting}
+\end{Shaded}
+
+Now that we've introduced the concept of R expressions, we can move on to next
+chapter where we introduce conditional structures.
 
   \bibliography{book.bib}
 
