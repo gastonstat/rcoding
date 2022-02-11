@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12 Conditionals | Coding in R</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12 Conditionals | Coding in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12 Conditionals | Coding in R" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+<meta name="date" content="2022-02-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="expressions.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Coding in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yet-another-r-book"><i class="fa fa-check"></i>Yet Another R Book</a></li>
+</ul></li>
+<li class="part"><span><b>I Getting Started with R and RStudio</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#interacting-with-r"><i class="fa fa-check"></i><b>1.1</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>2</b> Breaking the Ice with R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-r-via-rstudio"><i class="fa fa-check"></i><b>2.1</b> First Contact with R (via RStudio)</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>2.1.1</b> R as a scientific calculator</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rintro.html"><a href="rintro.html#assigning-values-to-objects"><i class="fa fa-check"></i><b>2.1.2</b> Assigning values to objects</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>2.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="2.1.4" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>2.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="2.1.5" data-path="rintro.html"><a href="rintro.html#calling-functions"><i class="fa fa-check"></i><b>2.1.5</b> Calling Functions</a></li>
+<li class="chapter" data-level="2.1.6" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>2.1.6</b> Comments in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rintro.html"><a href="rintro.html#help-documentation"><i class="fa fa-check"></i><b>2.2</b> Getting Help</a></li>
+<li class="chapter" data-level="2.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rintro.html"><a href="rintro.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>3</b> A Quick Tour Around RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rstudio.html"><a href="rstudio.html#first-contact-with-rstudio"><i class="fa fa-check"></i><b>3.1</b> First Contact with RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="rstudio.html"><a href="rstudio.html#rstudio-panes-in-a-nutshell"><i class="fa fa-check"></i><b>3.2</b> RStudio Panes in a Nutshell</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>3.2.1</b> Console</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help"><i class="fa fa-check"></i><b>3.2.2</b> Files, Plots, Packages, Help</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rstudio.html"><a href="rstudio.html#source-or-editor"><i class="fa fa-check"></i><b>3.2.3</b> Source or Editor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rstudio.html"><a href="rstudio.html#environment-history-connections"><i class="fa fa-check"></i><b>3.2.4</b> Environment, History, Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rstudio.html"><a href="rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session.html"><a href="session.html"><i class="fa fa-check"></i><b>4</b> Session Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session.html"><a href="session.html#starting-a-session"><i class="fa fa-check"></i><b>4.1</b> Starting a Session</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="session.html"><a href="session.html#what-happens-when-you-open-an-r-session-via-rstudio"><i class="fa fa-check"></i><b>4.1.1</b> What happens when you open an R session via RStudio?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="session.html"><a href="session.html#opening-a-session-for-the-first-time"><i class="fa fa-check"></i><b>4.1.2</b> Opening a session for the first time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="session.html"><a href="session.html#working-directory"><i class="fa fa-check"></i><b>4.1.3</b> Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="session.html"><a href="session.html#working-during-a-session"><i class="fa fa-check"></i><b>4.2</b> Working During a Session</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#working-directory-1"><i class="fa fa-check"></i><b>4.2.1</b> Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="session.html"><a href="session.html#workspace-and-global-environment"><i class="fa fa-check"></i><b>4.2.2</b> Workspace and Global Environment</a></li>
+<li class="chapter" data-level="4.2.3" data-path="session.html"><a href="session.html#commands-history"><i class="fa fa-check"></i><b>4.2.3</b> Commands History</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="session.html"><a href="session.html#closing-a-session"><i class="fa fa-check"></i><b>4.3</b> Closing a Session</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Objects in R</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors.html"><a href="vectors.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="vectors.html"><a href="vectors.html#creating-objects"><i class="fa fa-check"></i><b>5.1.1</b> Creating Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html#about-r-vectors"><i class="fa fa-check"></i><b>5.2</b> About R Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="vectors.html"><a href="vectors.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>5.3</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="vectors.html"><a href="vectors.html#types-and-modes"><i class="fa fa-check"></i><b>5.3.1</b> Types and Modes</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vectors.html"><a href="vectors.html#special-values"><i class="fa fa-check"></i><b>5.3.2</b> Special Values</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vectors.html"><a href="vectors.html#length-of-vectors"><i class="fa fa-check"></i><b>5.3.3</b> Length of Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="vectors.html"><a href="vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.4</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="vectors.html"><a href="vectors.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>5.4.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="vectors.html"><a href="vectors.html#numeric-sequences"><i class="fa fa-check"></i><b>5.4.2</b> Numeric Sequences</a></li>
+<li class="chapter" data-level="5.4.3" data-path="vectors.html"><a href="vectors.html#replicated-vectors"><i class="fa fa-check"></i><b>5.4.3</b> Replicated Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="vectors.html"><a href="vectors.html#coercion"><i class="fa fa-check"></i><b>5.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="vectors.html"><a href="vectors.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>5.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="5.5.2" data-path="vectors.html"><a href="vectors.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>5.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-about-vectors.html"><a href="more-about-vectors.html"><i class="fa fa-check"></i><b>6</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#motivation-future-value"><i class="fa fa-check"></i><b>6.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#future-value-formula"><i class="fa fa-check"></i><b>6.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization"><i class="fa fa-check"></i><b>6.2</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#definition-of-vectorization"><i class="fa fa-check"></i><b>6.2.1</b> Definition of Vectorization</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#recycling"><i class="fa fa-check"></i><b>6.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>6.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>6.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#numeric-subsetting"><i class="fa fa-check"></i><b>6.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="6.4.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#character-subsetting"><i class="fa fa-check"></i><b>6.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="6.4.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#logical-subsetting"><i class="fa fa-check"></i><b>6.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="6.4.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#summary-of-subsetting"><i class="fa fa-check"></i><b>6.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> Factors</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>7.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="7.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>7.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="7.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>7.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>7.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>7.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>7.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="arrays.html"><a href="arrays.html"><i class="fa fa-check"></i><b>8</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="arrays.html"><a href="arrays.html#motivation"><i class="fa fa-check"></i><b>8.1</b> Motivation</a></li>
+<li class="chapter" data-level="8.2" data-path="arrays.html"><a href="arrays.html#tables-with-matrices"><i class="fa fa-check"></i><b>8.2</b> Tables with Matrices</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="arrays.html"><a href="arrays.html#r-matrices"><i class="fa fa-check"></i><b>8.2.1</b> R Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="arrays.html"><a href="arrays.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>8.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="arrays.html"><a href="arrays.html#more-matrices"><i class="fa fa-check"></i><b>8.3.1</b> More Matrices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>9</b> Lists</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>9.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="9.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>9.2</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>9.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="9.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>9.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="9.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>9.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="9.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>9.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="9.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>9.2.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="lists.html"><a href="lists.html#exercises-2"><i class="fa fa-check"></i><b>9.3</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III Programming Basics</b></span></li>
+<li class="chapter" data-level="10" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>10</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="functions1.html"><a href="functions1.html#motivation-1"><i class="fa fa-check"></i><b>10.1</b> Motivation</a></li>
+<li class="chapter" data-level="10.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>10.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>10.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>10.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>10.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="10.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>10.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="functions1.html"><a href="functions1.html#exercises-3"><i class="fa fa-check"></i><b>10.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>11</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>11.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>11.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="11.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>11.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="11.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>11.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="11.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>11.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>12</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="conditionals.html"><a href="conditionals.html#motivation-2"><i class="fa fa-check"></i><b>12.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>12.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="12.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>12.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>12.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>12.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="12.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>12.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="12.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>12.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="12.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>12.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>12.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>12.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>12.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conditionals" class="section level1" number="12">
+<h1><span class="header-section-number">12</span> Conditionals</h1>
+<p>In the last two chapters you got your feet wet around programming structures.
+Specifically, you got your first contact with functions, and you also got
+introduced to the notion of R compound expressions. In this chapter you will
+learn about another common programming structure known as <strong>conditionals</strong>.</p>
+<p>Every programming language comes with a set of structures that allows us to
+have control over how commands are executed. One of these structures is called
+<strong>conditionals</strong>, and as its name indicates, they are used to evaluate
+conditions. Simply put, conditional statements, commonly referred to as
+<strong>if-else</strong> statements, allow you to decide what to do based on a logical
+condition.</p>
+<div id="motivation-2" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Motivation</h2>
+<p>So far we have extensively used a simple savings-investing scenario in which
+$1000 are deposited in a savings that pays an annual interest rate of 2%,
+and the future value formula is used to calculate the amount of money at the
+end of a certain number of years.</p>
+<p>Let’s now consider a less simplistic savings scenario.</p>
+<p>Say you deposit $1000 into a savings account that gives you 2% annual return.
+The difference this time is that you will also make contributions of $1000 to
+this savings account every year. The question is still the same, for example:</p>
+<blockquote>
+<p>How much money will you have in 3 years?</p>
+</blockquote>
+<div id="future-value-of-ordinary-annuity" class="section level3" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> Future Value of Ordinary Annuity</h3>
+<p>To make things more specific, consider the following scenario. Imagine you
+recently applied for a job, they hired you, and today is your first day of work.
+So let’s take this point in time as time 0, or equivalently the beginning of
+year 1 in your new job.</p>
+<p>During this first year you manage to save $1000, and at the end of year 1 you
+deposit this sum of money into a savings account that pays 2% interest annually.
+During your second year of work, you manage again to save $1000, which you
+add to your savings account at the very end of year 2. The same thing happens
+during your third year of work: you save $1000 and contribute this amount to
+your savings account at the end of year 3. This is illustrated in the
+diagram below, with a generic rate of return:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-166"></span>
+<img src="images/conditionals/timeline-ord-annuity.png" alt="Timeline of an ordinary annuity" width="95%" />
+<p class="caption">
+Figure 12.1: Timeline of an ordinary annuity
+</p>
+</div>
+<p>The balance in your savings account at the end of year 3 is given by:</p>
+<p><span class="math display">\[
+\underbrace{1000 (1 + 0.02)^2}_{\text{1st contribution}} + \underbrace{1000 (1 + 0.02)}_{\text{2nd contrib.}} + \underbrace{1000}_{\text{3rd contrib.}} = 3060.4
+\]</span></p>
+<p>which in R we can quickly calculate as:</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="conditionals.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>) <span class="sc">+</span> <span class="dv">1000</span></span>
+<span id="cb165-2"><a href="conditionals.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3060.4</span></span></code></pre></div>
+<p>This example corresponds to what is formally called an <strong>ordinary annuity</strong>.
+It is an annuity because the same amount of money is contributed every year.
+It is ordinary because the contributions are made at the
+<strong>end of each period</strong> (e.g. end of each year).</p>
+<p>The formula to calculate the <strong>future value of an ordinary annuity</strong> is given by:</p>
+<p><span class="math display">\[
+\text{FV} = \text{C} \times \left [ \frac{(1 + r)^t - 1}{r} \right]
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\text{FV}\)</span> = future value (how much you’ll have)</p></li>
+<li><p><span class="math inline">\(\text{C}\)</span> = constant periodic contribution</p></li>
+<li><p><span class="math inline">\(r\)</span> = rate of return (e.g. annual rate of return)</p></li>
+<li><p><span class="math inline">\(t\)</span> = number of periods (e.g. number of years)</p></li>
+</ul>
+<p>Writing code in a less quick and dirty, we may type these commands:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="conditionals.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># at the end of year 3</span></span>
+<span id="cb166-2"><a href="conditionals.html#cb166-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb166-3"><a href="conditionals.html#cb166-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb166-4"><a href="conditionals.html#cb166-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb166-5"><a href="conditionals.html#cb166-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-6"><a href="conditionals.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of ordinary annuity</span></span>
+<span id="cb166-7"><a href="conditionals.html#cb166-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>year <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb166-8"><a href="conditionals.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3060.4</span></span></code></pre></div>
+</div>
+<div id="future-value-of-annuity-due" class="section level3" number="12.1.2">
+<h3><span class="header-section-number">12.1.2</span> Future Value of Annuity Due</h3>
+<p>It turns out that there is another type of annuity known as <strong>annuity due</strong>.
+The difference between the ordinary annuity and the annuity due is that in the
+latter the contributions are made at the <strong>beginning of every year</strong>. Here’s an
+example.</p>
+<p>Picture the same hypothetical situation. Today is your first day of work
+which corresponds to time 0, that is, the beginning of year 1 in your new job.
+In this scenario, though, let’s say you already have $1000 at your disposal
+at this point in time. You go to the bank and deposit this sum of money into a
+savings account that pays an annual interest rate of 2%.</p>
+<p>During this first year you manage to save $1000, and at the beginning of year 2
+you make this contribution to your savings account. During your second year of
+work, you manage again to save $1000, which you add to your savings account at
+the beginning of year 3. This is illustrated in the diagram below, with a
+generic rate of return:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-169"></span>
+<img src="images/conditionals/timeline-due-annuity.png" alt="Timeline of an annuity due" width="95%" />
+<p class="caption">
+Figure 12.2: Timeline of an annuity due
+</p>
+</div>
+<p>The balance in your savings account at the end of year 3 is given by:</p>
+<p><span class="math display">\[
+\underbrace{1000 (1 + 0.02)^3}_{\text{1st contribution}} + \underbrace{1000 (1 + 0.02)^2}_{\text{2nd contrib.}} + \underbrace{1000 (1 + 0.02)}_{\text{3rd contrib.}} = 3121.608
+\]</span></p>
+<p>which in R we can quickly calculate as:</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="conditionals.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>)<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)</span>
+<span id="cb167-2"><a href="conditionals.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3121.608</span></span></code></pre></div>
+<p>The formula to calculate the <strong>future value of an annuity due</strong> is given by:</p>
+<p><span class="math display">\[
+\text{FV} = \text{C} \times \left [ \frac{(1 + r)^t - 1}{r} \right] \times (1 + r)
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\text{FV}\)</span> = future value (how much you’ll have)</p></li>
+<li><p><span class="math inline">\(\text{C}\)</span> = constant periodic contribution</p></li>
+<li><p><span class="math inline">\(r\)</span> = rate of return (e.g. annual rate of return)</p></li>
+<li><p><span class="math inline">\(t\)</span> = number of periods (e.g. number of years)</p></li>
+</ul>
+<p>In a less informal way, we can write the following lines of code:</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="conditionals.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># at the end of year 3</span></span>
+<span id="cb168-2"><a href="conditionals.html#cb168-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb168-3"><a href="conditionals.html#cb168-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb168-4"><a href="conditionals.html#cb168-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb168-5"><a href="conditionals.html#cb168-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-6"><a href="conditionals.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of annuity due</span></span>
+<span id="cb168-7"><a href="conditionals.html#cb168-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>year <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb168-8"><a href="conditionals.html#cb168-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3121.608</span></span></code></pre></div>
+<p>As you know, we can also consider a vectorized option:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="conditionals.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># over a 3 year period</span></span>
+<span id="cb169-2"><a href="conditionals.html#cb169-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb169-3"><a href="conditionals.html#cb169-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb169-4"><a href="conditionals.html#cb169-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb169-5"><a href="conditionals.html#cb169-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-6"><a href="conditionals.html#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of annuity due</span></span>
+<span id="cb169-7"><a href="conditionals.html#cb169-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb169-8"><a href="conditionals.html#cb169-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1020.000 2060.400 3121.608</span></span></code></pre></div>
+</div>
+</div>
+<div id="conditionals-1" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Conditionals</h2>
+<p>There are two types of annuity:</p>
+<ul>
+<li><p><strong>ordinary</strong> (contributions at the end of each period)</p></li>
+<li><p><strong>due</strong> (contributions at the beginning of each period)</p></li>
+</ul>
+<p>What if you want to consider an input <strong><code>type</code></strong> that can take
+two values: <code>type = "ordinary"</code> or <code>type = "due"</code>?</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="conditionals.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in 3 years</span></span>
+<span id="cb170-2"><a href="conditionals.html#cb170-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb170-3"><a href="conditionals.html#cb170-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb170-4"><a href="conditionals.html#cb170-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span></code></pre></div>
+<p>Ordinary annuity:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="conditionals.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if type == &quot;ordinary&quot;</span></span>
+<span id="cb171-2"><a href="conditionals.html#cb171-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb171-3"><a href="conditionals.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1000.0 2020.0 3060.4</span></span></code></pre></div>
+<p>Annuity due:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="conditionals.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if type == &quot;due&quot;</span></span>
+<span id="cb172-2"><a href="conditionals.html#cb172-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb172-3"><a href="conditionals.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1020.000 2060.400 3121.608</span></span></code></pre></div>
+<div id="if-else-conditions" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> If-else conditions</h3>
+<p>Perhaps the best way for you to get introduced to <code>if-else</code> statements is to
+see one for yourself, so here it is:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="conditionals.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinary annuity</span></span>
+<span id="cb173-2"><a href="conditionals.html#cb173-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb173-3"><a href="conditionals.html#cb173-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb173-4"><a href="conditionals.html#cb173-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb173-5"><a href="conditionals.html#cb173-5" aria-hidden="true" tabindex="-1"></a>type <span class="ot">=</span> <span class="st">&quot;ordinary&quot;</span></span>
+<span id="cb173-6"><a href="conditionals.html#cb173-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb173-7"><a href="conditionals.html#cb173-7" aria-hidden="true" tabindex="-1"></a><span class="co"># if-else statement</span></span>
+<span id="cb173-8"><a href="conditionals.html#cb173-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
+<span id="cb173-9"><a href="conditionals.html#cb173-9" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb173-10"><a href="conditionals.html#cb173-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb173-11"><a href="conditionals.html#cb173-11" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb173-12"><a href="conditionals.html#cb173-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb173-13"><a href="conditionals.html#cb173-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb173-14"><a href="conditionals.html#cb173-14" aria-hidden="true" tabindex="-1"></a>fv</span>
+<span id="cb173-15"><a href="conditionals.html#cb173-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1000.0 2020.0 3060.4</span></span></code></pre></div>
+<p>I hope that just by looking at the conditional statement you get the gist of
+what is going on. If the type of annuity is the ordinary one
+(<code>type == "ordinary"</code>) then we apply the formula of the FV of ordinary annuity.
+Otherwise (<code>else</code>) we apply the formula of the FV of annuity due.</p>
+<p>The same piece of code can be implemented with the other type of annuity</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="conditionals.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># annuity due</span></span>
+<span id="cb174-2"><a href="conditionals.html#cb174-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb174-3"><a href="conditionals.html#cb174-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb174-4"><a href="conditionals.html#cb174-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb174-5"><a href="conditionals.html#cb174-5" aria-hidden="true" tabindex="-1"></a>type <span class="ot">=</span> <span class="st">&quot;due&quot;</span></span>
+<span id="cb174-6"><a href="conditionals.html#cb174-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb174-7"><a href="conditionals.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
+<span id="cb174-8"><a href="conditionals.html#cb174-8" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb174-9"><a href="conditionals.html#cb174-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb174-10"><a href="conditionals.html#cb174-10" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb174-11"><a href="conditionals.html#cb174-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb174-12"><a href="conditionals.html#cb174-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-13"><a href="conditionals.html#cb174-13" aria-hidden="true" tabindex="-1"></a>fv</span>
+<span id="cb174-14"><a href="conditionals.html#cb174-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1020.000 2060.400 3121.608</span></span></code></pre></div>
+</div>
+<div id="anatomy-of-if-else-statements" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Anatomy of if-else statements</h3>
+<p>The <strong>if-then-else</strong> statement makes it possible to choose between two
+(possibly compound) expressions depending on the value of a (logical) condition.</p>
+<p>In R (as in many other languages) the if-then-else statement has the following
+structure:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="conditionals.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb175-2"><a href="conditionals.html#cb175-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb175-3"><a href="conditionals.html#cb175-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb175-4"><a href="conditionals.html#cb175-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
+<span id="cb175-5"><a href="conditionals.html#cb175-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>In our working example with the two types of annuities, the condition that
+we are evaluating depends on the value of <code>type</code>:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="conditionals.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
+<span id="cb176-2"><a href="conditionals.html#cb176-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute ordinary annuity</span></span>
+<span id="cb176-3"><a href="conditionals.html#cb176-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb176-4"><a href="conditionals.html#cb176-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute annuity due</span></span>
+<span id="cb176-5"><a href="conditionals.html#cb176-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>If <code>type == "ordinary"</code>,
+then we should compute the future value of annuity using its ordinary version.
+Otherwise, we should compute the future value using the annuity due formula.</p>
+<p>Let’s dissect the conditional statement</p>
+<p><img src="images/conditionals/if-else-anatomy-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>An <code>if-else</code> statement always begins with the <code>if</code> clause. You basically refer
+to it as a function, that is, employing parenthesis <code>if( )</code>. The thing that
+goes inside parenthesis corresponds to the logical condition to be evaluated.
+Then we have the R expression, defined with the first pair of braces <code>{ }</code> that
+contains the code to be executed when the logical condition is true. Next,
+right after the closing brace of the expression associated to the if-clause, we
+have the <code>else</code> clause. This second clause involves another R expression, the
+one defined with a second pair of braces. This expression contains the code to
+be executed when the logical condition is false.</p>
+<p>For readability purposes, and to match the syntax used in many other programming
+languages, when declaring the <code>if</code> clause I prefer to leave a blank space before
+the opening parenthesis: <code>if (condition)</code>.</p>
+<p>Using the annuity example, let’s recap the main parts of a typical if-else
+statement. In general, this kind of statement consists of the <code>if</code> clause
+and the <code>else</code> clause. Only the <code>if</code> clause uses parenthesis.</p>
+<p><img src="images/conditionals/if-else-anatomy-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Inside the <code>if()</code> function, you specify a <strong>condition</strong> to be
+evaluated. This condition can be almost any piece of code that R will evaluate
+into a <strong>logical</strong> value. The important thing about this condition is that it
+must correspond to a single logical value, either a single <code>TRUE</code> or a single
+<code>FALSE</code>.</p>
+<p>The <em>condition</em> is an expression that when evaluated returns
+a <strong>logical</strong> value of length one. In other words, whatever you pass as the
+input of the <code>if</code> clause, it has to be something that becomes <code>TRUE</code> or <code>FALSE</code></p>
+<p><img src="images/conditionals/if-else-anatomy-3.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>In general, an R expression—using braces <code>{ }</code>—is used for each clause:
+the first one with the code that tells R what to do when the evaluated
+condition is true; the second one for what to do when the condition is false.</p>
+<p><img src="images/conditionals/if-else-anatomy-6.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="minimalist-if-then-else" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Minimalist If-then-else</h3>
+<p><code>if-else</code> statements can be written in different forms, depending on the types
+of expressions that are evaluated. If the expressions of both the <code>if</code> clause
+and the <code>else</code> clause are <strong>simple</strong> expressions, the syntax of the <code>if-else</code>
+code can be simplified into one line of code:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="conditionals.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression_1 <span class="cf">else</span> expression_2</span></code></pre></div>
+<p>Consider the following example that uses a conditional statement to decide
+between calculating the square root of the input <em>if</em> the input value is
+positive, or computing the negative square root of the negative input <em>if</em> the
+input value is negative:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="conditionals.html#cb178-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb178-2"><a href="conditionals.html#cb178-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-3"><a href="conditionals.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb178-4"><a href="conditionals.html#cb178-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) </span>
+<span id="cb178-5"><a href="conditionals.html#cb178-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb178-6"><a href="conditionals.html#cb178-6" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
+<span id="cb178-7"><a href="conditionals.html#cb178-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb178-8"><a href="conditionals.html#cb178-8" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb178-9"><a href="conditionals.html#cb178-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.162278</span></span></code></pre></div>
+<p>Because the code in both clauses consists of simple expressions, the use of
+braces is not mandatory. In fact, you can write the conditional statement in
+a single line of code, as follows:</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="conditionals.html#cb179-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb179-2"><a href="conditionals.html#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-3"><a href="conditionals.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="co"># with simple expressions, braces are optional</span></span>
+<span id="cb179-4"><a href="conditionals.html#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) <span class="cf">else</span> y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
+<span id="cb179-5"><a href="conditionals.html#cb179-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-6"><a href="conditionals.html#cb179-6" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<p>Interestingly, the previous statement can be written more succinctly in R as:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="conditionals.html#cb180-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb180-2"><a href="conditionals.html#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="conditionals.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you can assign the output of an if-else statement</span></span>
+<span id="cb180-4"><a href="conditionals.html#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="co"># to an object</span></span>
+<span id="cb180-5"><a href="conditionals.html#cb180-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">sqrt</span>(x) <span class="cf">else</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
+<span id="cb180-6"><a href="conditionals.html#cb180-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-7"><a href="conditionals.html#cb180-7" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<p>Again, even though the previous commands are perfectly okay, I prefer to
+use braces when working with conditional structures. This is a good practice
+that improves readability:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="conditionals.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># embrace braces: use them as much as possible!</span></span>
+<span id="cb181-2"><a href="conditionals.html#cb181-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb181-3"><a href="conditionals.html#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="conditionals.html#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb181-5"><a href="conditionals.html#cb181-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) </span>
+<span id="cb181-6"><a href="conditionals.html#cb181-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb181-7"><a href="conditionals.html#cb181-7" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
+<span id="cb181-8"><a href="conditionals.html#cb181-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="simple-ifs" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> Simple If’s</h3>
+<p>There is a simplified form of if-else statement which is available when
+there is no expression in the <code>else</code> clause. In its simplest version this
+statement has the general form:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="conditionals.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression</span></code></pre></div>
+<p>and it is equivalent to:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="conditionals.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression <span class="cf">else</span> <span class="cn">NULL</span></span></code></pre></div>
+<p>Here’s an example in which we have two numbers, <code>x</code> and <code>y</code>, and we are
+interested in knowing if <code>x</code> is greater than <code>y</code>. If yes, we print the message
+<code>"x is greater than y"</code>. If not, then we don’t really care, and we do nothing.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="conditionals.html#cb184-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb184-2"><a href="conditionals.html#cb184-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb184-3"><a href="conditionals.html#cb184-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-4"><a href="conditionals.html#cb184-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
+<span id="cb184-5"><a href="conditionals.html#cb184-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is greater than y&quot;</span>)</span>
+<span id="cb184-6"><a href="conditionals.html#cb184-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb184-7"><a href="conditionals.html#cb184-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;x is greater than y&quot;</span></span></code></pre></div>
+</div>
+</div>
+<div id="multiple-ifs" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Multiple If’s</h2>
+<p>A common situation involves working with multiple conditions at the same time.
+You can chain multiple if-else statements like so:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="conditionals.html#cb185-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Change this value!</span></span>
+<span id="cb185-2"><a href="conditionals.html#cb185-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-3"><a href="conditionals.html#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (y <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb185-4"><a href="conditionals.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;positive&quot;</span>)</span>
+<span id="cb185-5"><a href="conditionals.html#cb185-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb185-6"><a href="conditionals.html#cb185-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;negative&quot;</span>)</span>
+<span id="cb185-7"><a href="conditionals.html#cb185-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb185-8"><a href="conditionals.html#cb185-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;zero?&quot;</span>)</span>
+<span id="cb185-9"><a href="conditionals.html#cb185-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb185-10"><a href="conditionals.html#cb185-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;positive&quot;</span></span></code></pre></div>
+<p>Working with multiple chained if’s becomes cumbersome. Consider the following
+example that uses several if’s to convert a day of the week into a number:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="conditionals.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb186-2"><a href="conditionals.html#cb186-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb186-3"><a href="conditionals.html#cb186-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-4"><a href="conditionals.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&#39;Sunday&#39;</span>) {</span>
+<span id="cb186-5"><a href="conditionals.html#cb186-5" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb186-6"><a href="conditionals.html#cb186-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb186-7"><a href="conditionals.html#cb186-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Monday&quot;</span>) {</span>
+<span id="cb186-8"><a href="conditionals.html#cb186-8" aria-hidden="true" tabindex="-1"></a>    num_day <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb186-9"><a href="conditionals.html#cb186-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb186-10"><a href="conditionals.html#cb186-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Tuesday&quot;</span>) {</span>
+<span id="cb186-11"><a href="conditionals.html#cb186-11" aria-hidden="true" tabindex="-1"></a>      num_day <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb186-12"><a href="conditionals.html#cb186-12" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb186-13"><a href="conditionals.html#cb186-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Wednesday&quot;</span>) {</span>
+<span id="cb186-14"><a href="conditionals.html#cb186-14" aria-hidden="true" tabindex="-1"></a>        num_day <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb186-15"><a href="conditionals.html#cb186-15" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb186-16"><a href="conditionals.html#cb186-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Thursday&quot;</span>) {</span>
+<span id="cb186-17"><a href="conditionals.html#cb186-17" aria-hidden="true" tabindex="-1"></a>          num_day <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb186-18"><a href="conditionals.html#cb186-18" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb186-19"><a href="conditionals.html#cb186-19" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Friday&quot;</span>) {</span>
+<span id="cb186-20"><a href="conditionals.html#cb186-20" aria-hidden="true" tabindex="-1"></a>            num_day <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb186-21"><a href="conditionals.html#cb186-21" aria-hidden="true" tabindex="-1"></a>          } <span class="cf">else</span> {</span>
+<span id="cb186-22"><a href="conditionals.html#cb186-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Saturday&quot;</span>) {</span>
+<span id="cb186-23"><a href="conditionals.html#cb186-23" aria-hidden="true" tabindex="-1"></a>              num_day <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb186-24"><a href="conditionals.html#cb186-24" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb186-25"><a href="conditionals.html#cb186-25" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb186-26"><a href="conditionals.html#cb186-26" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb186-27"><a href="conditionals.html#cb186-27" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb186-28"><a href="conditionals.html#cb186-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb186-29"><a href="conditionals.html#cb186-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb186-30"><a href="conditionals.html#cb186-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb186-31"><a href="conditionals.html#cb186-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-32"><a href="conditionals.html#cb186-32" aria-hidden="true" tabindex="-1"></a>num_day</span>
+<span id="cb186-33"><a href="conditionals.html#cb186-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<p>Working with several nested if’s like in the example above can be a nightmare.</p>
+<p>In R, you can get rid of many of the braces like this:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="conditionals.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb187-2"><a href="conditionals.html#cb187-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb187-3"><a href="conditionals.html#cb187-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-4"><a href="conditionals.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&#39;Sunday&#39;</span>) {</span>
+<span id="cb187-5"><a href="conditionals.html#cb187-5" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb187-6"><a href="conditionals.html#cb187-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Monday&quot;</span>) {</span>
+<span id="cb187-7"><a href="conditionals.html#cb187-7" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb187-8"><a href="conditionals.html#cb187-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Tuesday&quot;</span>) {</span>
+<span id="cb187-9"><a href="conditionals.html#cb187-9" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb187-10"><a href="conditionals.html#cb187-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Wednesday&quot;</span>) {</span>
+<span id="cb187-11"><a href="conditionals.html#cb187-11" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb187-12"><a href="conditionals.html#cb187-12" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Thursday&quot;</span>) {</span>
+<span id="cb187-13"><a href="conditionals.html#cb187-13" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb187-14"><a href="conditionals.html#cb187-14" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Friday&quot;</span>) {</span>
+<span id="cb187-15"><a href="conditionals.html#cb187-15" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb187-16"><a href="conditionals.html#cb187-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Saturday&quot;</span>) {</span>
+<span id="cb187-17"><a href="conditionals.html#cb187-17" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb187-18"><a href="conditionals.html#cb187-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb187-19"><a href="conditionals.html#cb187-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-20"><a href="conditionals.html#cb187-20" aria-hidden="true" tabindex="-1"></a>num_day</span>
+<span id="cb187-21"><a href="conditionals.html#cb187-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div id="switch-statements" class="section level3" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Switch statements</h3>
+<p>But still we have too many if’s, and there’s a lot of repetition in the code.
+If you find yourself using many if-else statements with identical structure for
+slightly different cases, you may want to consider a <strong>switch</strong> statement
+instead:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="conditionals.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb188-2"><a href="conditionals.html#cb188-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb188-3"><a href="conditionals.html#cb188-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-4"><a href="conditionals.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(day, <span class="co"># The expression to be evaluated.</span></span>
+<span id="cb188-5"><a href="conditionals.html#cb188-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sunday =</span> <span class="dv">1</span>,</span>
+<span id="cb188-6"><a href="conditionals.html#cb188-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Monday =</span> <span class="dv">2</span>,</span>
+<span id="cb188-7"><a href="conditionals.html#cb188-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tuesday =</span> <span class="dv">3</span>,</span>
+<span id="cb188-8"><a href="conditionals.html#cb188-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Wednesday =</span> <span class="dv">4</span>,</span>
+<span id="cb188-9"><a href="conditionals.html#cb188-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Thursday =</span> <span class="dv">5</span>,</span>
+<span id="cb188-10"><a href="conditionals.html#cb188-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Friday =</span> <span class="dv">6</span>,</span>
+<span id="cb188-11"><a href="conditionals.html#cb188-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saturday =</span> <span class="dv">7</span>,</span>
+<span id="cb188-12"><a href="conditionals.html#cb188-12" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span>) <span class="co"># an (optional) default value if there are no matches</span></span>
+<span id="cb188-13"><a href="conditionals.html#cb188-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<p>Switch statements can also accept integer arguments, which will act as indices
+to choose a corresponding element:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="conditionals.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert a number into a day of the week.</span></span>
+<span id="cb189-2"><a href="conditionals.html#cb189-2" aria-hidden="true" tabindex="-1"></a>day_num <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># Change this value!</span></span>
+<span id="cb189-3"><a href="conditionals.html#cb189-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-4"><a href="conditionals.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(day_num,</span>
+<span id="cb189-5"><a href="conditionals.html#cb189-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Sunday&quot;</span>,</span>
+<span id="cb189-6"><a href="conditionals.html#cb189-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Monday&quot;</span>,</span>
+<span id="cb189-7"><a href="conditionals.html#cb189-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Tuesday&quot;</span>,</span>
+<span id="cb189-8"><a href="conditionals.html#cb189-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Wednesday&quot;</span>,</span>
+<span id="cb189-9"><a href="conditionals.html#cb189-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Thursday&quot;</span>,</span>
+<span id="cb189-10"><a href="conditionals.html#cb189-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Friday&quot;</span>,</span>
+<span id="cb189-11"><a href="conditionals.html#cb189-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Saturday&quot;</span>)</span>
+<span id="cb189-12"><a href="conditionals.html#cb189-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Tuesday&quot;</span></span></code></pre></div>
+</div>
+</div>
+<div id="derivation-of-fvoa" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Derivation of FVOA</h2>
+<p>In case you are curious, here’s the derivation of the formula for the
+Future Value of an Ordinary Annuity.</p>
+<p>For the sake of illustration, we’ll consider a time period of three years,
+but the formula can be easily generalized to any number of years.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-189"></span>
+<img src="images/conditionals/timeline-ord-annuity-2.png" alt="Timeline of an ordinary annuity" width="95%" />
+<p class="caption">
+Figure 12.3: Timeline of an ordinary annuity
+</p>
+</div>
+<p>The starting point is the following equation:</p>
+<p><span class="math display">\[
+\text{FV} = \text{C} + \text{C} (1 + r) + \text{C} (1 + r)^2
+\]</span></p>
+<p>Multiplying both sides by <span class="math inline">\((1+r)\)</span> we get:</p>
+<p><span class="math display">\[\begin{align*}
+(1+r) \text{FV} &amp;= (1+r) \left[ \text{C} + \text{C} (1 + r) + \text{C} (1 + r)^2 \right] \\
+(1+r) \text{FV} &amp;= (1+r) \text{C} + \text{C} (1 + r)^2 + \text{C} (1 + r)^3
+\end{align*}\]</span></p>
+<p>Notice that:</p>
+<p><span class="math display">\[
+(1+r) \text{FV} = \underbrace{\text{C} (1 + r) + \text{C} (1 + r)^2}_{\text{FV} - \text{C}}  + \text{C} (1 + r)^3
+\]</span></p>
+<p>Doing more algebra we get the following:</p>
+<p><span class="math display">\[\begin{align*}
+(1+r) \text{FV} &amp;= \underbrace{\text{C} (1 + r) + \text{C} (1 + r)^2}_{\text{FV} - \text{C}}  + \text{C} (1 + r)^3 \\
+(1+r) \text{FV} &amp;= \text{FV} - \text{C} + \text{C} (1 + r)^3 \\
+\text{FV} - (1+r) \text{FV} &amp;= \text{C} - \text{C}(1+r)^3 \\
+\text{FV} \left[ 1 - (1+r)  \right] &amp;= \text{C} \left[ 1 - (1+r)^3 \right] \\
+\text{FV} &amp;= \text{C} \frac{ \left[ 1 - (1+r)^3 \right]}{ \left[ 1 - (1+r) \right]} \\
+\text{FV} &amp;= \text{C} \frac{ \left[ (1+r)^3 -1 \right]}{ \left[ (1+r) -1 \right]} \\
+\text{FV} &amp;= \text{C} \left[ \frac{(1+r)^3 -1}{r} \right]
+\end{align*}\]</span></p>
+<p>Therefore:</p>
+<p><span class="math display">\[
+\text{FV} = \text{C} + \text{C} (1 + r) + \text{C} (1 + r)^2 = \text{C} \left[ \frac{(1+r)^3 -1}{r} \right]
+\]</span></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="expressions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rcoding.pdf", "rcoding.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

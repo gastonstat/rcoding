@@ -13,7 +13,7 @@
 \makeatother
 \subtitle{An introduction to practical programming in R}
 \author{Gaston Sanchez}
-\date{2022-02-07}
+\date{2022-02-11}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -5118,6 +5118,690 @@ Here's another example:
 
 Now that we've introduced the concept of R expressions, we can move on to next
 chapter where we introduce conditional structures.
+
+\hypertarget{conditionals}{%
+\chapter{Conditionals}\label{conditionals}}
+
+In the last two chapters you got your feet wet around programming structures.
+Specifically, you got your first contact with functions, and you also got
+introduced to the notion of R compound expressions. In this chapter you will
+learn about another common programming structure known as \textbf{conditionals}.
+
+Every programming language comes with a set of structures that allows us to
+have control over how commands are executed. One of these structures is called
+\textbf{conditionals}, and as its name indicates, they are used to evaluate
+conditions. Simply put, conditional statements, commonly referred to as
+\textbf{if-else} statements, allow you to decide what to do based on a logical
+condition.
+
+\hypertarget{motivation-2}{%
+\section{Motivation}\label{motivation-2}}
+
+So far we have extensively used a simple savings-investing scenario in which
+\$1000 are deposited in a savings that pays an annual interest rate of 2\%,
+and the future value formula is used to calculate the amount of money at the
+end of a certain number of years.
+
+Let's now consider a less simplistic savings scenario.
+
+Say you deposit \$1000 into a savings account that gives you 2\% annual return.
+The difference this time is that you will also make contributions of \$1000 to
+this savings account every year. The question is still the same, for example:
+
+\begin{quote}
+How much money will you have in 3 years?
+\end{quote}
+
+\hypertarget{future-value-of-ordinary-annuity}{%
+\subsection{Future Value of Ordinary Annuity}\label{future-value-of-ordinary-annuity}}
+
+To make things more specific, consider the following scenario. Imagine you
+recently applied for a job, they hired you, and today is your first day of work.
+So let's take this point in time as time 0, or equivalently the beginning of
+year 1 in your new job.
+
+During this first year you manage to save \$1000, and at the end of year 1 you
+deposit this sum of money into a savings account that pays 2\% interest annually.
+During your second year of work, you manage again to save \$1000, which you
+add to your savings account at the very end of year 2. The same thing happens
+during your third year of work: you save \$1000 and contribute this amount to
+your savings account at the end of year 3. This is illustrated in the
+diagram below, with a generic rate of return:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/conditionals/timeline-ord-annuity} 
+
+}
+
+\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-166}
+\end{figure}
+
+The balance in your savings account at the end of year 3 is given by:
+
+\[
+\underbrace{1000 (1 + 0.02)^2}_{\text{1st contribution}} + \underbrace{1000 (1 + 0.02)}_{\text{2nd contrib.}} + \underbrace{1000}_{\text{3rd contrib.}} = 3060.4
+\]
+
+which in R we can quickly calculate as:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1000} \SpecialCharTok{*}\NormalTok{ (}\FloatTok{1.02}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \DecValTok{1000} \SpecialCharTok{*}\NormalTok{ (}\FloatTok{1.02}\NormalTok{) }\SpecialCharTok{+} \DecValTok{1000}
+\CommentTok{\#\textgreater{} [1] 3060.4}
+\end{Highlighting}
+\end{Shaded}
+
+This example corresponds to what is formally called an \textbf{ordinary annuity}.
+It is an annuity because the same amount of money is contributed every year.
+It is ordinary because the contributions are made at the
+\textbf{end of each period} (e.g.~end of each year).
+
+The formula to calculate the \textbf{future value of an ordinary annuity} is given by:
+
+\[
+\text{FV} = \text{C} \times \left [ \frac{(1 + r)^t - 1}{r} \right]
+\]
+
+\begin{itemize}
+\item
+  \(\text{FV}\) = future value (how much you'll have)
+\item
+  \(\text{C}\) = constant periodic contribution
+\item
+  \(r\) = rate of return (e.g.~annual rate of return)
+\item
+  \(t\) = number of periods (e.g.~number of years)
+\end{itemize}
+
+Writing code in a less quick and dirty, we may type these commands:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# at the end of year 3}
+\NormalTok{contrib }\OtherTok{=} \DecValTok{1000}
+\NormalTok{year }\OtherTok{=} \DecValTok{3}
+\NormalTok{rate }\OtherTok{=} \FloatTok{0.02}
+
+\CommentTok{\# FV of ordinary annuity}
+\NormalTok{contrib }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{year }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\CommentTok{\#\textgreater{} [1] 3060.4}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{future-value-of-annuity-due}{%
+\subsection{Future Value of Annuity Due}\label{future-value-of-annuity-due}}
+
+It turns out that there is another type of annuity known as \textbf{annuity due}.
+The difference between the ordinary annuity and the annuity due is that in the
+latter the contributions are made at the \textbf{beginning of every year}. Here's an
+example.
+
+Picture the same hypothetical situation. Today is your first day of work
+which corresponds to time 0, that is, the beginning of year 1 in your new job.
+In this scenario, though, let's say you already have \$1000 at your disposal
+at this point in time. You go to the bank and deposit this sum of money into a
+savings account that pays an annual interest rate of 2\%.
+
+During this first year you manage to save \$1000, and at the beginning of year 2
+you make this contribution to your savings account. During your second year of
+work, you manage again to save \$1000, which you add to your savings account at
+the beginning of year 3. This is illustrated in the diagram below, with a
+generic rate of return:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/conditionals/timeline-due-annuity} 
+
+}
+
+\caption{Timeline of an annuity due}\label{fig:unnamed-chunk-169}
+\end{figure}
+
+The balance in your savings account at the end of year 3 is given by:
+
+\[
+\underbrace{1000 (1 + 0.02)^3}_{\text{1st contribution}} + \underbrace{1000 (1 + 0.02)^2}_{\text{2nd contrib.}} + \underbrace{1000 (1 + 0.02)}_{\text{3rd contrib.}} = 3121.608
+\]
+
+which in R we can quickly calculate as:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1000} \SpecialCharTok{*}\NormalTok{ (}\FloatTok{1.02}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{3} \SpecialCharTok{+} \DecValTok{1000} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+} \FloatTok{0.02}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \DecValTok{1000} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+} \FloatTok{0.02}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 3121.608}
+\end{Highlighting}
+\end{Shaded}
+
+The formula to calculate the \textbf{future value of an annuity due} is given by:
+
+\[
+\text{FV} = \text{C} \times \left [ \frac{(1 + r)^t - 1}{r} \right] \times (1 + r)
+\]
+
+\begin{itemize}
+\item
+  \(\text{FV}\) = future value (how much you'll have)
+\item
+  \(\text{C}\) = constant periodic contribution
+\item
+  \(r\) = rate of return (e.g.~annual rate of return)
+\item
+  \(t\) = number of periods (e.g.~number of years)
+\end{itemize}
+
+In a less informal way, we can write the following lines of code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# at the end of year 3}
+\NormalTok{contrib }\OtherTok{=} \DecValTok{1000}
+\NormalTok{year }\OtherTok{=} \DecValTok{3}
+\NormalTok{rate }\OtherTok{=} \FloatTok{0.02}
+
+\CommentTok{\# FV of annuity due}
+\NormalTok{contrib }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate) }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{year }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\CommentTok{\#\textgreater{} [1] 3121.608}
+\end{Highlighting}
+\end{Shaded}
+
+As you know, we can also consider a vectorized option:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# over a 3 year period}
+\NormalTok{contrib }\OtherTok{=} \DecValTok{1000}
+\NormalTok{years }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}
+\NormalTok{rate }\OtherTok{=} \FloatTok{0.02}
+
+\CommentTok{\# FV of annuity due}
+\NormalTok{contrib }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate) }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\CommentTok{\#\textgreater{} [1] 1020.000 2060.400 3121.608}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{conditionals-1}{%
+\section{Conditionals}\label{conditionals-1}}
+
+There are two types of annuity:
+
+\begin{itemize}
+\item
+  \textbf{ordinary} (contributions at the end of each period)
+\item
+  \textbf{due} (contributions at the beginning of each period)
+\end{itemize}
+
+What if you want to consider an input \textbf{\texttt{type}} that can take
+two values: \texttt{type\ =\ "ordinary"} or \texttt{type\ =\ "due"}?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# in 3 years}
+\NormalTok{contrib }\OtherTok{=} \DecValTok{1000}
+\NormalTok{years }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}
+\NormalTok{rate }\OtherTok{=} \FloatTok{0.02}
+\end{Highlighting}
+\end{Shaded}
+
+Ordinary annuity:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# if type == "ordinary"}
+\NormalTok{contrib }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\CommentTok{\#\textgreater{} [1] 1000.0 2020.0 3060.4}
+\end{Highlighting}
+\end{Shaded}
+
+Annuity due:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# if type == "due"}
+\NormalTok{contrib }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate) }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\CommentTok{\#\textgreater{} [1] 1020.000 2060.400 3121.608}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{if-else-conditions}{%
+\subsection{If-else conditions}\label{if-else-conditions}}
+
+Perhaps the best way for you to get introduced to \texttt{if-else} statements is to
+see one for yourself, so here it is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ordinary annuity}
+\NormalTok{contrib }\OtherTok{=} \DecValTok{1000}
+\NormalTok{years }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}
+\NormalTok{rate }\OtherTok{=} \FloatTok{0.02}
+\NormalTok{type }\OtherTok{=} \StringTok{"ordinary"}
+
+\CommentTok{\# if{-}else statement}
+\ControlFlowTok{if}\NormalTok{ (type }\SpecialCharTok{==} \StringTok{"ordinary"}\NormalTok{) \{}
+\NormalTok{  fv }\OtherTok{=}\NormalTok{ contrib }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  fv }\OtherTok{=}\NormalTok{ contrib }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate) }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\NormalTok{\}}
+
+\NormalTok{fv}
+\CommentTok{\#\textgreater{} [1] 1000.0 2020.0 3060.4}
+\end{Highlighting}
+\end{Shaded}
+
+I hope that just by looking at the conditional statement you get the gist of
+what is going on. If the type of annuity is the ordinary one
+(\texttt{type\ ==\ "ordinary"}) then we apply the formula of the FV of ordinary annuity.
+Otherwise (\texttt{else}) we apply the formula of the FV of annuity due.
+
+The same piece of code can be implemented with the other type of annuity
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# annuity due}
+\NormalTok{contrib }\OtherTok{=} \DecValTok{1000}
+\NormalTok{years }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}
+\NormalTok{rate }\OtherTok{=} \FloatTok{0.02}
+\NormalTok{type }\OtherTok{=} \StringTok{"due"}
+  
+\ControlFlowTok{if}\NormalTok{ (type }\SpecialCharTok{==} \StringTok{"ordinary"}\NormalTok{) \{}
+\NormalTok{  fv }\OtherTok{=}\NormalTok{ contrib }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  fv }\OtherTok{=}\NormalTok{ contrib }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate) }\SpecialCharTok{*}\NormalTok{ ((}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ rate}
+\NormalTok{\}}
+
+\NormalTok{fv}
+\CommentTok{\#\textgreater{} [1] 1020.000 2060.400 3121.608}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{anatomy-of-if-else-statements}{%
+\subsection{Anatomy of if-else statements}\label{anatomy-of-if-else-statements}}
+
+The \textbf{if-then-else} statement makes it possible to choose between two
+(possibly compound) expressions depending on the value of a (logical) condition.
+
+In R (as in many other languages) the if-then-else statement has the following
+structure:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condition) \{}
+  \CommentTok{\# do something}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# do something else}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+In our working example with the two types of annuities, the condition that
+we are evaluating depends on the value of \texttt{type}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (type }\SpecialCharTok{==} \StringTok{"ordinary"}\NormalTok{) \{}
+  \CommentTok{\# compute ordinary annuity}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# compute annuity due}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+If \texttt{type\ ==\ "ordinary"},
+then we should compute the future value of annuity using its ordinary version.
+Otherwise, we should compute the future value using the annuity due formula.
+
+Let's dissect the conditional statement
+
+\begin{center}\includegraphics[width=0.5\linewidth]{images/conditionals/if-else-anatomy-1} \end{center}
+
+An \texttt{if-else} statement always begins with the \texttt{if} clause. You basically refer
+to it as a function, that is, employing parenthesis \texttt{if(\ )}. The thing that
+goes inside parenthesis corresponds to the logical condition to be evaluated.
+Then we have the R expression, defined with the first pair of braces \texttt{\{\ \}} that
+contains the code to be executed when the logical condition is true. Next,
+right after the closing brace of the expression associated to the if-clause, we
+have the \texttt{else} clause. This second clause involves another R expression, the
+one defined with a second pair of braces. This expression contains the code to
+be executed when the logical condition is false.
+
+For readability purposes, and to match the syntax used in many other programming
+languages, when declaring the \texttt{if} clause I prefer to leave a blank space before
+the opening parenthesis: \texttt{if\ (condition)}.
+
+Using the annuity example, let's recap the main parts of a typical if-else
+statement. In general, this kind of statement consists of the \texttt{if} clause
+and the \texttt{else} clause. Only the \texttt{if} clause uses parenthesis.
+
+\begin{center}\includegraphics[width=0.5\linewidth]{images/conditionals/if-else-anatomy-2} \end{center}
+
+Inside the \texttt{if()} function, you specify a \textbf{condition} to be
+evaluated. This condition can be almost any piece of code that R will evaluate
+into a \textbf{logical} value. The important thing about this condition is that it
+must correspond to a single logical value, either a single \texttt{TRUE} or a single
+\texttt{FALSE}.
+
+The \emph{condition} is an expression that when evaluated returns
+a \textbf{logical} value of length one. In other words, whatever you pass as the
+input of the \texttt{if} clause, it has to be something that becomes \texttt{TRUE} or \texttt{FALSE}
+
+\begin{center}\includegraphics[width=0.5\linewidth]{images/conditionals/if-else-anatomy-3} \end{center}
+
+In general, an R expression---using braces \texttt{\{\ \}}---is used for each clause:
+the first one with the code that tells R what to do when the evaluated
+condition is true; the second one for what to do when the condition is false.
+
+\begin{center}\includegraphics[width=0.5\linewidth]{images/conditionals/if-else-anatomy-6} \end{center}
+
+\hypertarget{minimalist-if-then-else}{%
+\subsection{Minimalist If-then-else}\label{minimalist-if-then-else}}
+
+\texttt{if-else} statements can be written in different forms, depending on the types
+of expressions that are evaluated. If the expressions of both the \texttt{if} clause
+and the \texttt{else} clause are \textbf{simple} expressions, the syntax of the \texttt{if-else}
+code can be simplified into one line of code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condition) expression\_1 }\ControlFlowTok{else}\NormalTok{ expression\_2}
+\end{Highlighting}
+\end{Shaded}
+
+Consider the following example that uses a conditional statement to decide
+between calculating the square root of the input \emph{if} the input value is
+positive, or computing the negative square root of the negative input \emph{if} the
+input value is negative:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{10}
+
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{  y }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(x) }
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  y }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{sqrt}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{x)}
+\NormalTok{\}}
+\NormalTok{y}
+\CommentTok{\#\textgreater{} [1] 3.162278}
+\end{Highlighting}
+\end{Shaded}
+
+Because the code in both clauses consists of simple expressions, the use of
+braces is not mandatory. In fact, you can write the conditional statement in
+a single line of code, as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{10}
+
+\CommentTok{\# with simple expressions, braces are optional}
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) y }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(x) }\ControlFlowTok{else}\NormalTok{ y }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{sqrt}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{x)}
+
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+Interestingly, the previous statement can be written more succinctly in R as:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{10}
+
+\CommentTok{\# you can assign the output of an if{-}else statement}
+\CommentTok{\# to an object}
+\NormalTok{y }\OtherTok{\textless{}{-}} \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) }\FunctionTok{sqrt}\NormalTok{(x) }\ControlFlowTok{else} \SpecialCharTok{{-}}\FunctionTok{sqrt}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{x)}
+
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+Again, even though the previous commands are perfectly okay, I prefer to
+use braces when working with conditional structures. This is a good practice
+that improves readability:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# embrace braces: use them as much as possible!}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{10}
+
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{  y }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(x) }
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  y }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{sqrt}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{x)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{simple-ifs}{%
+\subsection{Simple If's}\label{simple-ifs}}
+
+There is a simplified form of if-else statement which is available when
+there is no expression in the \texttt{else} clause. In its simplest version this
+statement has the general form:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condition) expression}
+\end{Highlighting}
+\end{Shaded}
+
+and it is equivalent to:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condition) expression }\ControlFlowTok{else} \ConstantTok{NULL}
+\end{Highlighting}
+\end{Shaded}
+
+Here's an example in which we have two numbers, \texttt{x} and \texttt{y}, and we are
+interested in knowing if \texttt{x} is greater than \texttt{y}. If yes, we print the message
+\texttt{"x\ is\ greater\ than\ y"}. If not, then we don't really care, and we do nothing.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{4}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{2}
+
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}}\NormalTok{ y) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"x is greater than y"}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] "x is greater than y"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{multiple-ifs}{%
+\section{Multiple If's}\label{multiple-ifs}}
+
+A common situation involves working with multiple conditions at the same time.
+You can chain multiple if-else statements like so:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{1} \CommentTok{\# Change this value!}
+
+\ControlFlowTok{if}\NormalTok{ (y }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"positive"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (y }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"negative"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"zero?"}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] "positive"}
+\end{Highlighting}
+\end{Shaded}
+
+Working with multiple chained if's becomes cumbersome. Consider the following
+example that uses several if's to convert a day of the week into a number:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert the day of the week into a number.}
+\NormalTok{day }\OtherTok{\textless{}{-}} \StringTok{"Tuesday"} \CommentTok{\# Change this value!}
+
+\ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{\textquotesingle{}Sunday\textquotesingle{}}\NormalTok{) \{}
+\NormalTok{  num\_day }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Monday"}\NormalTok{) \{}
+\NormalTok{    num\_day }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Tuesday"}\NormalTok{) \{}
+\NormalTok{      num\_day }\OtherTok{\textless{}{-}} \DecValTok{3}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+      \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Wednesday"}\NormalTok{) \{}
+\NormalTok{        num\_day }\OtherTok{\textless{}{-}} \DecValTok{4}
+\NormalTok{      \} }\ControlFlowTok{else}\NormalTok{ \{}
+        \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Thursday"}\NormalTok{) \{}
+\NormalTok{          num\_day }\OtherTok{\textless{}{-}} \DecValTok{5}
+\NormalTok{        \} }\ControlFlowTok{else}\NormalTok{ \{}
+          \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Friday"}\NormalTok{) \{}
+\NormalTok{            num\_day }\OtherTok{\textless{}{-}} \DecValTok{6}
+\NormalTok{          \} }\ControlFlowTok{else}\NormalTok{ \{}
+            \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Saturday"}\NormalTok{) \{}
+\NormalTok{              num\_day }\OtherTok{\textless{}{-}} \DecValTok{7}
+\NormalTok{            \}}
+\NormalTok{          \}}
+\NormalTok{        \}}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\NormalTok{num\_day}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
+
+Working with several nested if's like in the example above can be a nightmare.
+
+In R, you can get rid of many of the braces like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert the day of the week into a number.}
+\NormalTok{day }\OtherTok{\textless{}{-}} \StringTok{"Tuesday"} \CommentTok{\# Change this value!}
+
+\ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{\textquotesingle{}Sunday\textquotesingle{}}\NormalTok{) \{}
+\NormalTok{  num\_day }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Monday"}\NormalTok{) \{}
+\NormalTok{  num\_day }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Tuesday"}\NormalTok{) \{}
+\NormalTok{  num\_day }\OtherTok{\textless{}{-}} \DecValTok{3}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Wednesday"}\NormalTok{) \{}
+\NormalTok{  num\_day }\OtherTok{\textless{}{-}} \DecValTok{4}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Thursday"}\NormalTok{) \{}
+\NormalTok{  num\_day }\OtherTok{\textless{}{-}} \DecValTok{5}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Friday"}\NormalTok{) \{}
+\NormalTok{  num\_day }\OtherTok{\textless{}{-}} \DecValTok{6}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (day }\SpecialCharTok{==} \StringTok{"Saturday"}\NormalTok{) \{}
+\NormalTok{  num\_day }\OtherTok{\textless{}{-}} \DecValTok{7}
+\NormalTok{\}}
+
+\NormalTok{num\_day}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{switch-statements}{%
+\subsection{Switch statements}\label{switch-statements}}
+
+But still we have too many if's, and there's a lot of repetition in the code.
+If you find yourself using many if-else statements with identical structure for
+slightly different cases, you may want to consider a \textbf{switch} statement
+instead:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert the day of the week into a number.}
+\NormalTok{day }\OtherTok{\textless{}{-}} \StringTok{"Tuesday"} \CommentTok{\# Change this value!}
+
+\ControlFlowTok{switch}\NormalTok{(day, }\CommentTok{\# The expression to be evaluated.}
+  \AttributeTok{Sunday =} \DecValTok{1}\NormalTok{,}
+  \AttributeTok{Monday =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{Tuesday =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{Wednesday =} \DecValTok{4}\NormalTok{,}
+  \AttributeTok{Thursday =} \DecValTok{5}\NormalTok{,}
+  \AttributeTok{Friday =} \DecValTok{6}\NormalTok{,}
+  \AttributeTok{Saturday =} \DecValTok{7}\NormalTok{,}
+  \ConstantTok{NA}\NormalTok{) }\CommentTok{\# an (optional) default value if there are no matches}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
+
+Switch statements can also accept integer arguments, which will act as indices
+to choose a corresponding element:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert a number into a day of the week.}
+\NormalTok{day\_num }\OtherTok{\textless{}{-}} \DecValTok{3} \CommentTok{\# Change this value!}
+
+\ControlFlowTok{switch}\NormalTok{(day\_num,}
+  \StringTok{"Sunday"}\NormalTok{,}
+  \StringTok{"Monday"}\NormalTok{,}
+  \StringTok{"Tuesday"}\NormalTok{,}
+  \StringTok{"Wednesday"}\NormalTok{,}
+  \StringTok{"Thursday"}\NormalTok{,}
+  \StringTok{"Friday"}\NormalTok{,}
+  \StringTok{"Saturday"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "Tuesday"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{derivation-of-fvoa}{%
+\section{Derivation of FVOA}\label{derivation-of-fvoa}}
+
+In case you are curious, here's the derivation of the formula for the
+Future Value of an Ordinary Annuity.
+
+For the sake of illustration, we'll consider a time period of three years,
+but the formula can be easily generalized to any number of years.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/conditionals/timeline-ord-annuity-2} 
+
+}
+
+\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-189}
+\end{figure}
+
+The starting point is the following equation:
+
+\[
+\text{FV} = \text{C} + \text{C} (1 + r) + \text{C} (1 + r)^2
+\]
+
+Multiplying both sides by \((1+r)\) we get:
+
+\begin{align*}
+(1+r) \text{FV} &= (1+r) \left[ \text{C} + \text{C} (1 + r) + \text{C} (1 + r)^2 \right] \\
+(1+r) \text{FV} &= (1+r) \text{C} + \text{C} (1 + r)^2 + \text{C} (1 + r)^3
+\end{align*}
+
+Notice that:
+
+\[
+(1+r) \text{FV} = \underbrace{\text{C} (1 + r) + \text{C} (1 + r)^2}_{\text{FV} - \text{C}}  + \text{C} (1 + r)^3
+\]
+
+Doing more algebra we get the following:
+
+\begin{align*}
+(1+r) \text{FV} &= \underbrace{\text{C} (1 + r) + \text{C} (1 + r)^2}_{\text{FV} - \text{C}}  + \text{C} (1 + r)^3 \\
+(1+r) \text{FV} &= \text{FV} - \text{C} + \text{C} (1 + r)^3 \\
+\text{FV} - (1+r) \text{FV} &= \text{C} - \text{C}(1+r)^3 \\
+\text{FV} \left[ 1 - (1+r)  \right] &= \text{C} \left[ 1 - (1+r)^3 \right] \\
+\text{FV} &= \text{C} \frac{ \left[ 1 - (1+r)^3 \right]}{ \left[ 1 - (1+r) \right]} \\
+\text{FV} &= \text{C} \frac{ \left[ (1+r)^3 -1 \right]}{ \left[ (1+r) -1 \right]} \\
+\text{FV} &= \text{C} \left[ \frac{(1+r)^3 -1}{r} \right]
+\end{align*}
+
+Therefore:
+
+\[
+\text{FV} = \text{C} + \text{C} (1 + r) + \text{C} (1 + r)^2 = \text{C} \left[ \frac{(1+r)^3 -1}{r} \right]
+\]
 
   \bibliography{book.bib}
 

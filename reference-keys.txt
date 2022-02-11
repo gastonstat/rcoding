@@ -26,6 +26,9 @@ fig:unnamed-chunk-118
 fig:unnamed-chunk-120
 fig:unnamed-chunk-123
 fig:unnamed-chunk-124
+fig:unnamed-chunk-166
+fig:unnamed-chunk-169
+fig:unnamed-chunk-189
 install
 interacting-with-r
 installing-r
@@ -122,3 +125,15 @@ simple-expressions
 compound-expressions
 every-expression-has-a-value
 assignments-within-compound-expressions
+conditionals
+motivation-2
+future-value-of-ordinary-annuity
+future-value-of-annuity-due
+conditionals-1
+if-else-conditions
+anatomy-of-if-else-statements
+minimalist-if-then-else
+simple-ifs
+multiple-ifs
+switch-statements
+derivation-of-fvoa
