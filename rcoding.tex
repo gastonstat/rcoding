@@ -13,7 +13,7 @@
 \makeatother
 \subtitle{An introduction to practical programming in R}
 \author{Gaston Sanchez}
-\date{2022-02-11}
+\date{2022-02-13}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -4276,6 +4276,8 @@ a \texttt{NULL} value, but this time using dollar notation:
 \end{Highlighting}
 \end{Shaded}
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \hypertarget{exercises-2}{%
 \section{Exercises}\label{exercises-2}}
 
@@ -4299,36 +4301,979 @@ $last
 $name
 [1] "Luke Skywalker"
 
+$gpa
+[1] 3.8
+
 $major_minor
               major               minor 
-     "jedi studies" "imperial policies" 
-
-$gpa
-[1] 4
+     "jedi studies" "galactic policies" 
 
 $grades
-           course score
-1       force-101   9.3
-2    light-sabers  10.0
-3 jedi-literature   8.5
+        course letter
+1 light-sabers      B
+2    force-101      A
+3  jedi-poetry     C+
 \end{verbatim}
 
-What is the output of the following commands? Try to guess the answer without
-running the code.
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Which of the following commands gives you the values of column \texttt{letter}
+  (i.e.~column of element \texttt{grades})? Mark all valid options.
+
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii})}
+  \tightlist
+  \item
+    \texttt{student\$grades{[}\ ,letter{]}}
+  \item
+    \texttt{student\$grades{[}\ ,2{]}}
+  \item
+    \texttt{student{[}{[}4{]}{]}{[}\ ,2{]}}
+  \item
+    \texttt{student{[}4{]}{[}\ ,2{]}}
+  \end{enumerate}
+\item
+  Which of the following commands gives you the length of \texttt{major\_minor}? Mark
+  all valid options.
+
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii})}
+  \tightlist
+  \item
+    \texttt{length(student{[}3{]})}
+  \item
+    \texttt{length(student\$major\_minor)}
+  \item
+    \texttt{length(student{[}c(FALSE,\ FALSE,\ TRUE,\ FALSE){]})}
+  \item
+    \texttt{length(student{[}{[}3{]}{]})}
+  \end{enumerate}
+\item
+  Which of the following commands gives you the number of rows in \texttt{grades}?
+  Mark all the valid options.
+
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii})}
+  \tightlist
+  \item
+    \texttt{nrow(student{[}{[}"grades"{]}{]})}
+  \item
+    \texttt{nrow(student{[}4{]})}
+  \item
+    \texttt{nrow(student\$grades)}
+  \item
+    \texttt{nrow(student{[}\ ,c("course",\ "letter"){]})}
+  \end{enumerate}
+\item
+  Which of the following commands gives you the value in \texttt{name}?
+  Mark all the valid options.
+
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii})}
+  \tightlist
+  \item
+    \texttt{student(1)}
+  \item
+    \texttt{student\$name}
+  \item
+    \texttt{student{[}{[}name{]}{]}}
+  \item
+    \texttt{student{[}{[}-c(1,2,3){]}{]}}
+  \end{enumerate}
+\end{enumerate}
+
+\textbf{3)} I have created an R object called \texttt{obj}, which looks like this when
+printed on the console:
+
+\begin{verbatim}
+$exams
+midterm   final 
+    100      90 
+Levels: 90 100
+
+$grades
+midterm   final 
+   "A+"    "A-" 
+
+$hws
+  topic points
+1     x    151
+2     y    154
+3     z    159
+\end{verbatim}
+
+Indicate whether each of the following statements is True or False.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \item
-  \texttt{student\$grades\$semester\ \textless{}-\ 4}
+  length of \texttt{obj\$hws} is 3
 \item
-  \texttt{sum(student{[}{[}2{]}{]}\ ==\ "sith\ philosophy")}
+  data type of \texttt{obj\$exams} could be double (i.e.~real)
 \item
-  \texttt{student{[}"sid"{]}\ \textless{}-\ as.integer("123456")}
+  \texttt{obj\$grades} cannot be a factor
 \item
-  \texttt{mean(student{[}{[}4{]}{]}{[}1:3,2{]},\ na.rm\ =\ TRUE)}
+  \texttt{obj\$hws} could be a data frame
 \item
-  \texttt{student{[}{[}4{]}{]}\ \textless{}-\ student\$grades{[}c(FALSE,\ TRUE,\ TRUE),\ {]}}
+  \texttt{obj\$hws} could be a matrix
+\item
+  column \texttt{points} in \texttt{obj\$hws} could be a factor
 \end{enumerate}
+
+\textbf{4)} Consider an R list \texttt{apprentice} containing the following elements:
+
+\begin{verbatim}
+$name
+[1] "Anakin Skywalker"
+
+$gpa
+[1] 4
+
+$major_minor
+             major1              major2               minor 
+     "jedi studies"      "sith studies" "galactic policies" 
+
+$grades
+        course score
+1    force-101   9.3
+2    podracing  10.0
+3 light-sabers   8.5
+\end{verbatim}
+
+Without running the commands in R, write down what will appear at the console
+when such commands are executed:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \texttt{length(apprentice\$major\_minor)}
+\item
+  \texttt{apprentice\$gpa\ \textless{}\ 2.5}
+\item
+  \texttt{names(apprentice\$major\_minor)}
+\item
+  \texttt{rep(apprentice\$grades{[}{[}2{]}{]}{[}2{]},\ apprentice\$gpa)}
+\item
+  \texttt{apprentice\$grades{[}order(apprentice\$grades\$score),\ {]}}
+\end{enumerate}
+
+\hypertarget{dataframes}{%
+\chapter{R Data Frames}\label{dataframes}}
+
+The most common format/structure for a data set is a tabular format:
+with rows and columns (like a spreadsheet). When your data is in this shape,
+most of the time you will work with R \textbf{data frames} (or similar rectangular
+structures like a \texttt{"matrix"}, \texttt{"table"}, \texttt{"tibble"}, etc).
+
+Learning how to manipulate data frames is among the most important
+\emph{data computing} skills in R.
+Nowadays, there are two primary approaches for manipulating data frames. One
+is what I call the ``traditional'' or ``classic'' approach which is what I present
+in this chapter. The other is the ``tidy'' approach which you can think of as a
+modern version based on the \emph{tidy data} framework mainly developed by
+Hadley Wickham. We leave the discussion of this alternative approach for later.
+
+To make the most of the content covered in the next sections, I am assuming
+that you are familiar with the rest of data objects covered in the previous
+chapters of part ``II Data Objects in R''.
+
+\hypertarget{r-data-frames}{%
+\section{R Data Frames}\label{r-data-frames}}
+
+A data frame is a special type of R list. In most cases, a data frame is
+internally stored as a list of vectors or factors, in which each vector
+(or factor) corresponds to a column. This implies that columns in a data frame
+are typically atomic structures: all elements in a given column are of the same
+data type. However, since a data frame is a list, you
+can technically have any kind of object as a column. In practice, though,
+having data frames with columns that are not vectors or factors is something
+that does not make much sense.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{images/objects/obj-dataframe} 
+
+}
+
+\caption{Abstract view of a data.frame}\label{fig:unnamed-chunk-137}
+\end{figure}
+
+From the data manipulation point of view, data frames behave like a hybrid
+object. On one hand, they are lists and can be manipulated like any other list
+using double brackets \texttt{dat{[}{[}\ {]}{]}} and dollar operator \texttt{dat\$name}.
+On the other hand, because data frames are designed as tabular or 2-dimensional
+objects, they also behave like two-dimensional arrays or matrices, admitting
+bracket notation \texttt{dat{[}\ ,\ {]}}. For these reasons, there is a wide array of
+functions that allows you to manipulate data frames in very convenient ways.
+But to the inexperienced user, all these functions may feel overwhelming.
+
+\hypertarget{inspecting-data-frames}{%
+\section{Inspecting data frames}\label{inspecting-data-frames}}
+
+One of the basic tasks when working with data frames involves inspecting its
+contents. Specially in the early stages of data exploration, when dealing for
+the first time with a new data frame, you will need to inspect things like
+its overall structure, which includes its dimensions (number of rows and
+columns), the data types of its columns, the names of columns and rows, and
+also be able to take a peak to some of its first or last rows, and usually
+obtain a summary of each column.
+
+Let's see an example with one of the built-in data frames in R: \texttt{mtcars}.
+Just a few rows and columns of \texttt{mtcars} are displayed below:
+
+\begin{verbatim}
+#>                    mpg cyl disp  hp drat    wt
+#> Mazda RX4         21.0   6  160 110 3.90 2.620
+#> Mazda RX4 Wag     21.0   6  160 110 3.90 2.875
+#> Datsun 710        22.8   4  108  93 3.85 2.320
+#> Hornet 4 Drive    21.4   6  258 110 3.08 3.215
+#> Hornet Sportabout 18.7   8  360 175 3.15 3.440
+\end{verbatim}
+
+The main function to explore the \emph{structure} of not just a data frame, but of
+any kind of object, is \texttt{str()}. When applied to data frames, \texttt{str()} returns a
+report of the dimensions of the data frame, a list with the name of all the
+variables, and their data types (e.g.~\texttt{chr} character, \texttt{num} real, etc).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(mtcars, }\AttributeTok{vec.len =} \DecValTok{1}\NormalTok{)}
+\CommentTok{\#\textgreater{} \textquotesingle{}data.frame\textquotesingle{}:    32 obs. of  11 variables:}
+\CommentTok{\#\textgreater{}  $ mpg : num  21 21 ...}
+\CommentTok{\#\textgreater{}  $ cyl : num  6 6 ...}
+\CommentTok{\#\textgreater{}  $ disp: num  160 160 ...}
+\CommentTok{\#\textgreater{}  $ hp  : num  110 110 ...}
+\CommentTok{\#\textgreater{}  $ drat: num  3.9 3.9 ...}
+\CommentTok{\#\textgreater{}  $ wt  : num  2.62 ...}
+\CommentTok{\#\textgreater{}  $ qsec: num  16.5 ...}
+\CommentTok{\#\textgreater{}  $ vs  : num  0 0 ...}
+\CommentTok{\#\textgreater{}  $ am  : num  1 1 ...}
+\CommentTok{\#\textgreater{}  $ gear: num  4 4 ...}
+\CommentTok{\#\textgreater{}  $ carb: num  4 4 ...}
+\end{Highlighting}
+\end{Shaded}
+
+The argument \texttt{vec.len\ =\ 1} is optional but we like to use it because it
+indicates that just the first elements in each column should be displayed.
+Observe the output returned by \texttt{str()}. The first line tells us that \texttt{mtcars}
+is an object of class \texttt{\textquotesingle{}data.frame\textquotesingle{}} with 32 observations (rows) and 11 variables
+(columns). Then, the set of 11 variables is listed below, each line starting
+with the dollar \texttt{\$} operator, followed by the name of the variable, followed
+by a colon \texttt{:}, the data mode (all numeric \texttt{num} variables in this case),
+and then a couple of values in each variable.
+
+It is specially useful to check the data type of each column in order to catch
+potential issues and avoid disastrous consequences or bugs in subsequent stages.
+
+Here's a list of useful functions to inspect a data frame:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{str()}: overall structure
+\item
+  \texttt{head()}: first rows
+\item
+  \texttt{tail()}: last rows
+\item
+  \texttt{summary()}: descriptive statistics
+\item
+  \texttt{dim()}: dimensions
+\item
+  \texttt{nrow()}: number of rows
+\item
+  \texttt{ncol()}: number of columns
+\item
+  \texttt{names()}: names of list elements (i.e.~column names)
+\item
+  \texttt{colnames()}: column names
+\item
+  \texttt{rownames()}: row names
+\item
+  \texttt{dimnames()}: list with column and row names
+\end{itemize}
+
+On a technical side, we should mention that a data frame is a list with special
+attributes: an attribute \texttt{names} for column names, an attribute
+\texttt{row.names} for column names, and of course its attribute \texttt{class}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{attributes}\NormalTok{(mtcars)}
+\CommentTok{\#\textgreater{} $names}
+\CommentTok{\#\textgreater{}  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"}
+\CommentTok{\#\textgreater{} [11] "carb"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $row.names}
+\CommentTok{\#\textgreater{}  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         }
+\CommentTok{\#\textgreater{}  [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            }
+\CommentTok{\#\textgreater{}  [7] "Duster 360"          "Merc 240D"           "Merc 230"           }
+\CommentTok{\#\textgreater{} [10] "Merc 280"            "Merc 280C"           "Merc 450SE"         }
+\CommentTok{\#\textgreater{} [13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" }
+\CommentTok{\#\textgreater{} [16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           }
+\CommentTok{\#\textgreater{} [19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      }
+\CommentTok{\#\textgreater{} [22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         }
+\CommentTok{\#\textgreater{} [25] "Pontiac Firebird"    "Fiat X1{-}9"           "Porsche 914{-}2"      }
+\CommentTok{\#\textgreater{} [28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       }
+\CommentTok{\#\textgreater{} [31] "Maserati Bora"       "Volvo 142E"         }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $class}
+\CommentTok{\#\textgreater{} [1] "data.frame"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{creating-data-frames}{%
+\section{Creating data frames}\label{creating-data-frames}}
+
+Most of the (raw) data tables you will be working with will already be in
+some data file. However, from time to time you will face the need to create
+some sort of data table in R. In these situations, you will likely have to
+create such table with a data frame. So let's look at various ways to
+``manually'''' create a data frame.
+
+\textbf{Option 1}: The primary option to build a data frame is with \texttt{data.frame()}.
+You pass a series of vectors (or factors), of the same length, separated by commas.
+Each vector (or factor) will become a column in the generated data frame.
+Preferably, give names to each column like in the example below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Anakin\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Padme\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Luke\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Leia\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{gender =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{height =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.88}\NormalTok{, }\FloatTok{1.65}\NormalTok{, }\FloatTok{1.72}\NormalTok{, }\FloatTok{1.50}\NormalTok{),}
+  \AttributeTok{weight =} \FunctionTok{c}\NormalTok{(}\DecValTok{84}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{77}\NormalTok{, }\DecValTok{49}\NormalTok{)}
+\NormalTok{) }
+
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}     name gender height weight}
+\CommentTok{\#\textgreater{} 1 Anakin   male   1.88     84}
+\CommentTok{\#\textgreater{} 2  Padme female   1.65     45}
+\CommentTok{\#\textgreater{} 3   Luke   male   1.72     77}
+\CommentTok{\#\textgreater{} 4   Leia female   1.50     49}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Option 2}: Another way to create data frames is with a \texttt{list} containing
+vectors or factors (of the same length), which you then convert into a data
+frame with \texttt{data.frame()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# another way to create a basic data frame}
+\NormalTok{lst }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Anakin\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Padme\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Luke\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Leia\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{gender =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{height =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.88}\NormalTok{, }\FloatTok{1.65}\NormalTok{, }\FloatTok{1.72}\NormalTok{, }\FloatTok{1.50}\NormalTok{),}
+  \AttributeTok{weight =} \FunctionTok{c}\NormalTok{(}\DecValTok{84}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{77}\NormalTok{, }\DecValTok{49}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{tbl }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(lst)}
+
+\NormalTok{tbl}
+\CommentTok{\#\textgreater{}     name gender height weight}
+\CommentTok{\#\textgreater{} 1 Anakin   male   1.88     84}
+\CommentTok{\#\textgreater{} 2  Padme female   1.65     45}
+\CommentTok{\#\textgreater{} 3   Luke   male   1.72     77}
+\CommentTok{\#\textgreater{} 4   Leia female   1.50     49}
+\end{Highlighting}
+\end{Shaded}
+
+Remember that a \texttt{data.frame} is nothing more than a \texttt{list}. So as long as the
+elements in the list (vectors or factors) are of the same length, we can simply
+convert the list into a data frame.
+
+By default, \texttt{data.frame()} converts character vectors into factors. You can
+check that by examining the structure of the data frame with \texttt{str()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(tbl)}
+\CommentTok{\#\textgreater{} \textquotesingle{}data.frame\textquotesingle{}:    4 obs. of  4 variables:}
+\CommentTok{\#\textgreater{}  $ name  : chr  "Anakin" "Padme" "Luke" "Leia"}
+\CommentTok{\#\textgreater{}  $ gender: chr  "male" "female" "male" "female"}
+\CommentTok{\#\textgreater{}  $ height: num  1.88 1.65 1.72 1.5}
+\CommentTok{\#\textgreater{}  $ weight: num  84 45 77 49}
+\end{Highlighting}
+\end{Shaded}
+
+To prevent \texttt{data.frame()} from converting strings into factors, you must use
+the argument \texttt{stringsAsFactors\ =\ FALSE}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# strings as strings (not as factors)}
+\NormalTok{dat }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Anakin\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Padme\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Luke\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Leia\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{gender =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{height =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.88}\NormalTok{, }\FloatTok{1.65}\NormalTok{, }\FloatTok{1.72}\NormalTok{, }\FloatTok{1.50}\NormalTok{),}
+  \AttributeTok{weight =} \FunctionTok{c}\NormalTok{(}\DecValTok{84}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{77}\NormalTok{, }\DecValTok{49}\NormalTok{),}
+  \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\FunctionTok{str}\NormalTok{(dat)}
+\CommentTok{\#\textgreater{} \textquotesingle{}data.frame\textquotesingle{}:    4 obs. of  4 variables:}
+\CommentTok{\#\textgreater{}  $ name  : chr  "Anakin" "Padme" "Luke" "Leia"}
+\CommentTok{\#\textgreater{}  $ gender: chr  "male" "female" "male" "female"}
+\CommentTok{\#\textgreater{}  $ height: num  1.88 1.65 1.72 1.5}
+\CommentTok{\#\textgreater{}  $ weight: num  84 45 77 49}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{basic-operations-with-data-frames}{%
+\section{Basic Operations with Data Frames}\label{basic-operations-with-data-frames}}
+
+Now that you have seen some ways to create data frames, let's discuss a number
+of basic manipulations of data frames. We will show you examples of various
+operations, and then you'll have the chance to put them in practice with some
+exercises listed at the end of the chapter.
+
+\begin{itemize}
+\tightlist
+\item
+  Selecting table elements:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    select a given cell
+  \item
+    select a set of cells
+  \item
+    select a given row
+  \item
+    select a set of rows
+  \item
+    select a given column
+  \item
+    select a set of columns
+  \end{itemize}
+\item
+  Adding a new column
+\item
+  Deleting a new column
+\item
+  Renaming a column
+\item
+  Moving a column
+\item
+  Transforming a column
+\end{itemize}
+
+Let's say you have a data frame \texttt{dat} with the following content:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Leia\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Luke\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Han\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{gender =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{),}
+  \AttributeTok{height =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.50}\NormalTok{, }\FloatTok{1.72}\NormalTok{, }\FloatTok{1.80}\NormalTok{),}
+  \AttributeTok{jedi =} \FunctionTok{c}\NormalTok{(}\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{),}
+  \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\NormalTok{dat}
+\NormalTok{  name gender height  jedi}
+\DecValTok{1}\NormalTok{ Leia female   }\FloatTok{1.50} \ConstantTok{FALSE}
+\DecValTok{2}\NormalTok{ Luke   male   }\FloatTok{1.72}  \ConstantTok{TRUE}
+\DecValTok{3}\NormalTok{  Han   male   }\FloatTok{1.80} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{selecting-elements}{%
+\subsection{Selecting elements}\label{selecting-elements}}
+
+The data frame \texttt{dat} is a 2-dimensional object: the 1st dimension corresponds
+to the rows, while the 2nd dimension corresponds to the columns.
+Because \texttt{dat} has two dimensions, the bracket notation involves
+working with data frames in this form: \texttt{dat{[}\ ,\ {]}}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/objects/obj-dataframe-brackets} 
+
+}
+
+\caption{Bracket notation in data frames}\label{fig:unnamed-chunk-144}
+\end{figure}
+
+In other words, you have to specify values inside the
+brackets for the 1st index, and the 2nd index: \texttt{dat{[}index1,\ index2{]}}.
+
+\hypertarget{selecting-cells}{%
+\subsubsection*{Selecting cells}\label{selecting-cells}}
+\addcontentsline{toc}{subsubsection}{Selecting cells}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/objects/obj-dataframe-cells1} 
+
+}
+
+\caption{Several ways to select cells}\label{fig:unnamed-chunk-145}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# select value in row 1 and column 1}
+\NormalTok{dat[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] "Leia"}
+
+\CommentTok{\# select value in row 2 and column 3}
+\NormalTok{dat[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 1.72}
+
+\CommentTok{\# select values in these cells}
+\NormalTok{dat[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{,}\DecValTok{3}\SpecialCharTok{:}\DecValTok{4}\NormalTok{]}
+\CommentTok{\#\textgreater{}   height  jedi}
+\CommentTok{\#\textgreater{} 1   1.50 FALSE}
+\CommentTok{\#\textgreater{} 2   1.72  TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+It is also possible to exclude certain rows-and-columns by passing negative
+numeric indices:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/objects/obj-dataframe-cells2} 
+
+}
+
+\caption{Several ways to exclude cells}\label{fig:unnamed-chunk-147}
+\end{figure}
+
+\hypertarget{selecting-rows}{%
+\subsubsection*{Selecting rows}\label{selecting-rows}}
+\addcontentsline{toc}{subsubsection}{Selecting rows}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/objects/obj-dataframe-rows1} 
+
+}
+
+\caption{Several ways to select rows}\label{fig:unnamed-chunk-148}
+\end{figure}
+
+If no value is specified for \texttt{index1} then all rows are included. Likewise,
+if no value is specified for \texttt{index2} then all columns are included.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# selecting first row}
+\NormalTok{dat[}\DecValTok{1}\NormalTok{, ]}
+\CommentTok{\#\textgreater{}   name gender height  jedi}
+\CommentTok{\#\textgreater{} 1 Leia female    1.5 FALSE}
+
+\CommentTok{\# selecting third row}
+\NormalTok{dat[}\DecValTok{3}\NormalTok{, ]}
+\CommentTok{\#\textgreater{}   name gender height  jedi}
+\CommentTok{\#\textgreater{} 3  Han   male    1.8 FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/objects/obj-dataframe-rows2} 
+
+}
+
+\caption{Several ways to exclude rows}\label{fig:unnamed-chunk-150}
+\end{figure}
+
+\hypertarget{selecting-columns}{%
+\subsubsection*{Selecting columns}\label{selecting-columns}}
+\addcontentsline{toc}{subsubsection}{Selecting columns}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/objects/obj-dataframe-cols1} 
+
+}
+
+\caption{Several ways to select columns}\label{fig:unnamed-chunk-151}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# selecting second column}
+\NormalTok{dat[ ,}\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] "female" "male"   "male"}
+
+\CommentTok{\# selecting columns 2 to 4}
+\NormalTok{dat[ ,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{]}
+\CommentTok{\#\textgreater{}   gender height  jedi}
+\CommentTok{\#\textgreater{} 1 female   1.50 FALSE}
+\CommentTok{\#\textgreater{} 2   male   1.72  TRUE}
+\CommentTok{\#\textgreater{} 3   male   1.80 FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/objects/obj-dataframe-cols2} 
+
+}
+
+\caption{Several ways to exclude columns}\label{fig:unnamed-chunk-153}
+\end{figure}
+
+\hypertarget{more-options-to-access-columns}{%
+\subsubsection*{More Options to Access Columns}\label{more-options-to-access-columns}}
+\addcontentsline{toc}{subsubsection}{More Options to Access Columns}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/objects/obj-dataframe-names} 
+
+}
+
+\caption{Other options to select columns of a data frame}\label{fig:unnamed-chunk-154}
+\end{figure}
+
+The dollar sign also works for selecting a column of a data frame
+using its name
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars}\SpecialCharTok{$}\NormalTok{mpg}
+\CommentTok{\#\textgreater{}  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4}
+\CommentTok{\#\textgreater{} [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7}
+\CommentTok{\#\textgreater{} [31] 15.0 21.4}
+\end{Highlighting}
+\end{Shaded}
+
+You don't need to use quote marks, but you can if you want. The following
+calls are equivalent.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars}\SpecialCharTok{$}\StringTok{\textquotesingle{}mpg\textquotesingle{}}
+\NormalTok{mtcars}\SpecialCharTok{$}\StringTok{"mpg"}
+\NormalTok{mtcars}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{mpg}\StringTok{\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{adding-a-column}{%
+\subsection{Adding a column}\label{adding-a-column}}
+
+Perhaps the simplest way to add a column is with the dollar operator \texttt{\$}.
+You just need to give a name for the new column, and assign a vector (or factor):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# adding a column}
+\NormalTok{dat}\SpecialCharTok{$}\NormalTok{new\_column }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}e\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}i\textquotesingle{}}\NormalTok{)}
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}   name gender height  jedi new\_column}
+\CommentTok{\#\textgreater{} 1 Leia female   1.50 FALSE          a}
+\CommentTok{\#\textgreater{} 2 Luke   male   1.72  TRUE          e}
+\CommentTok{\#\textgreater{} 3  Han   male   1.80 FALSE          i}
+\end{Highlighting}
+\end{Shaded}
+
+Another way to add a column is with the \emph{column binding} function \texttt{cbind()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vector of weights}
+\NormalTok{weight }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{49}\NormalTok{, }\DecValTok{77}\NormalTok{, }\DecValTok{85}\NormalTok{)}
+
+\CommentTok{\# adding weights to dat}
+\NormalTok{dat }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(dat, weight)}
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}   name gender height  jedi new\_column weight}
+\CommentTok{\#\textgreater{} 1 Leia female   1.50 FALSE          a     49}
+\CommentTok{\#\textgreater{} 2 Luke   male   1.72  TRUE          e     77}
+\CommentTok{\#\textgreater{} 3  Han   male   1.80 FALSE          i     85}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{deleting-a-column}{%
+\subsection{Deleting a column}\label{deleting-a-column}}
+
+The inverse operation of adding a column consists of \textbf{deleting} a column.
+This is possible with the \texttt{\$} dollar operator. For instance, say you want to
+remove the column \texttt{new\_column}. Use the \texttt{\$} operator to select this column,
+and assign it the value \texttt{NULL} (think of this as \emph{NULLifying} a column):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# deleting a column}
+\NormalTok{dat}\SpecialCharTok{$}\NormalTok{new\_column }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}   name gender height  jedi weight}
+\CommentTok{\#\textgreater{} 1 Leia female   1.50 FALSE     49}
+\CommentTok{\#\textgreater{} 2 Luke   male   1.72  TRUE     77}
+\CommentTok{\#\textgreater{} 3  Han   male   1.80 FALSE     85}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{renaming-a-column}{%
+\subsection{Renaming a column}\label{renaming-a-column}}
+
+What if you want to rename a column? There are various options to do this.
+One way is by changing the column \texttt{names} attribute:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# attributes}
+\FunctionTok{attributes}\NormalTok{(dat)}
+\CommentTok{\#\textgreater{} $names}
+\CommentTok{\#\textgreater{} [1] "name"   "gender" "height" "jedi"   "weight"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $row.names}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $class}
+\CommentTok{\#\textgreater{} [1] "data.frame"}
+\end{Highlighting}
+\end{Shaded}
+
+which is more commonly accessed with the \texttt{names()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# column names}
+\FunctionTok{names}\NormalTok{(dat)}
+\CommentTok{\#\textgreater{} [1] "name"   "gender" "height" "jedi"   "weight"}
+\end{Highlighting}
+\end{Shaded}
+
+Notice that \texttt{dat} has a list of attributes. The element \texttt{names} is the vector
+of column names.
+
+You can directly modify the vector of \texttt{names}; for example let's change
+\texttt{gender} to \texttt{sex}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# changing rookie to rooky}
+\FunctionTok{attributes}\NormalTok{(dat)}\SpecialCharTok{$}\NormalTok{names[}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"sex"}
+
+\CommentTok{\# display column names}
+\FunctionTok{names}\NormalTok{(dat)}
+\CommentTok{\#\textgreater{} [1] "name"   "sex"    "height" "jedi"   "weight"}
+\end{Highlighting}
+\end{Shaded}
+
+By the way: this approach of changing the name of a variable is very low level,
+and probably unfamiliar to most useRs.
+
+\hypertarget{moving-a-column}{%
+\subsection{Moving a column}\label{moving-a-column}}
+
+A more challenging operation is when you want to move a column to a different
+position. What if you want to move \texttt{salary} to the last position (last column)?
+One option is to create a vector of column names in the desired order, and then
+use this vector (for the index of columns) to reassign the data frame like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reordered\_names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"name"}\NormalTok{, }\StringTok{"jedi"}\NormalTok{, }\StringTok{"height"}\NormalTok{, }\StringTok{"weight"}\NormalTok{, }\StringTok{"sex"}\NormalTok{)}
+\NormalTok{dat }\OtherTok{\textless{}{-}}\NormalTok{ dat[ ,reordered\_names]}
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}   name  jedi height weight    sex}
+\CommentTok{\#\textgreater{} 1 Leia FALSE   1.50     49 female}
+\CommentTok{\#\textgreater{} 2 Luke  TRUE   1.72     77   male}
+\CommentTok{\#\textgreater{} 3  Han FALSE   1.80     85   male}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{transforming-a-column}{%
+\subsection{Transforming a column}\label{transforming-a-column}}
+
+A more common operation than deleting or moving a column, is to transform the
+values in a column. This can be easily accomplished with the \texttt{\$} operator.
+For instance, let's say that we want to transform \texttt{height} from meters to
+centimeters:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# converting height to centimeters}
+\NormalTok{dat}\SpecialCharTok{$}\NormalTok{height }\OtherTok{\textless{}{-}}\NormalTok{ dat}\SpecialCharTok{$}\NormalTok{height }\SpecialCharTok{*} \DecValTok{100}
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}   name  jedi height weight    sex}
+\CommentTok{\#\textgreater{} 1 Leia FALSE    150     49 female}
+\CommentTok{\#\textgreater{} 2 Luke  TRUE    172     77   male}
+\CommentTok{\#\textgreater{} 3  Han FALSE    180     85   male}
+\end{Highlighting}
+\end{Shaded}
+
+Likewise, instead of using the \texttt{\$} operator, you can refer to the column using
+bracket notation. Here's how to transform weight from kilograms to pounds
+(1 kg = 2.20462 pounds):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# weight into pounds}
+\NormalTok{dat[ ,}\StringTok{"weight"}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ dat[ ,}\StringTok{"weight"}\NormalTok{] }\SpecialCharTok{*} \FloatTok{2.20462}
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}   name  jedi height   weight    sex}
+\CommentTok{\#\textgreater{} 1 Leia FALSE    150 108.0264 female}
+\CommentTok{\#\textgreater{} 2 Luke  TRUE    172 169.7557   male}
+\CommentTok{\#\textgreater{} 3  Han FALSE    180 187.3927   male}
+\end{Highlighting}
+\end{Shaded}
+
+There is also the \texttt{transform()} function which transform values \emph{interactively},
+that is, temporarily:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# transform weight to kgs}
+\FunctionTok{transform}\NormalTok{(dat, }\AttributeTok{weight =}\NormalTok{ weight }\SpecialCharTok{/} \FloatTok{0.453592}\NormalTok{)}
+\CommentTok{\#\textgreater{}   name  jedi height   weight    sex}
+\CommentTok{\#\textgreater{} 1 Leia FALSE    150 238.1576 female}
+\CommentTok{\#\textgreater{} 2 Luke  TRUE    172 374.2476   male}
+\CommentTok{\#\textgreater{} 3  Han FALSE    180 413.1305   male}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{transform()} does its job of modifying the values of \texttt{weight} but only
+temporarily; if you inspect \texttt{dat} you'll see what this means:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# did weight really change?}
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}   name  jedi height   weight    sex}
+\CommentTok{\#\textgreater{} 1 Leia FALSE    150 108.0264 female}
+\CommentTok{\#\textgreater{} 2 Luke  TRUE    172 169.7557   male}
+\CommentTok{\#\textgreater{} 3  Han FALSE    180 187.3927   male}
+\end{Highlighting}
+\end{Shaded}
+
+To make the changes permanent with \texttt{transform()}, you need to reassign them
+to the data frame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# transform weight to inches (permanently)}
+\NormalTok{dat }\OtherTok{\textless{}{-}} \FunctionTok{transform}\NormalTok{(dat, }\AttributeTok{weight =}\NormalTok{ weight }\SpecialCharTok{/} \FloatTok{0.453592}\NormalTok{)}
+\NormalTok{dat}
+\CommentTok{\#\textgreater{}   name  jedi height   weight    sex}
+\CommentTok{\#\textgreater{} 1 Leia FALSE    150 238.1576 female}
+\CommentTok{\#\textgreater{} 2 Luke  TRUE    172 374.2476   male}
+\CommentTok{\#\textgreater{} 3  Han FALSE    180 413.1305   male}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-3}{%
+\section{Exercises}\label{exercises-3}}
+
+\textbf{1)} Consider the following data frame \texttt{df}:
+
+\begin{verbatim}
+      first      last  gender  born         spell
+1     Harry    Potter    male  1980  sectumsempra
+2  Hermione   Granger  female  1979     alohomora
+3       Ron   Weasley    male  1980    riddikulus
+4      Luna  Lovegood  female  1981       episkey
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  What commands will fail to return the data of individuals born in 1980?
+
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii})}
+  \item
+    \texttt{df{[}c(TRUE,\ FALSE,\ TRUE,\ FALSE),\ {]}}
+  \item
+    \texttt{df{[}df{[},4{]}\ ==\ 1980,\ {]}}
+  \item
+    \texttt{df{[}df\$born\ ==\ 1980{]}}
+  \item
+    \texttt{df{[}df\$born\ ==\ 1980,\ {]}}
+  \item
+    \texttt{df{[}\ ,df\$born\ ==\ 1980{]}}
+  \end{enumerate}
+\item
+  Select the command that does \textbf{not} provide information about the data
+  frame \texttt{df}:
+
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii})}
+  \item
+    \texttt{head(df)}
+  \item
+    \texttt{str(df)}
+  \item
+    \texttt{tail(df)}
+  \item
+    \texttt{rm(df)}
+  \item
+    \texttt{summary(df)}
+  \end{enumerate}
+\item
+  Your friend is trying to display the first three rows on columns 1 (\texttt{first})
+  and 2 (\texttt{last}), by unsuccessfully using the following command.
+  Why does the command print all columns?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{1} \SpecialCharTok{\&} \DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{}      first    last gender born        spell}
+\CommentTok{\#\textgreater{} 1    Harry  Potter   male 1980 sectumsempra}
+\CommentTok{\#\textgreater{} 2 Hermione Granger female 1979    alohomora}
+\CommentTok{\#\textgreater{} 3      Ron Weasley   male 1980   riddikulus}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\item
+  Write a command that would correctly display the first two columns.
+\item
+  Write a command that would give you the following data from \texttt{df}.
+\end{enumerate}
+
+\begin{verbatim}
+         spell    first
+1 sectumsempra    Harry
+2    alohomora Hermione
+3   riddikulus      Ron
+4      episkey     Luna
+\end{verbatim}
+
+\textbf{2)} Consider the following data frame \texttt{dat}
+
+\begin{verbatim}
+       first        last   gender      title   gpa
+1        Jon        Snow     male       lord   2.8
+2       Arya       Stark   female   princess   3.5
+3     Tyrion   Lannister     male     master   2.9
+4   Daenerys   Targaryen   female   khaleesi   3.7
+5       Yara     Greyjoy   female   princess    NA
+\end{verbatim}
+
+One of your friends wrote the following R code. Help your friend find all the
+errors and \textbf{explain what's wrong}.
+
+\begin{verbatim}
+# value of 'first' associated to maximum 'gpa'
+max_gpa <- max(dat$gpa, na.rm = TRUE)
+which_max_gpa <- dat$gpa = max_gpa
+dat$first(which_max_gpa)
+
+# gpa of title lord
+dat$gpa[dat[ ,title] = "lord"]
+
+# median gpa (of each gender)
+which_males <- dat$gender == 'male'
+which_females <- dat$gender == 'female'
+median_females <- median(dat$gpa[which_males])
+median_males <- median(dat$gpa[which_males])
+\end{verbatim}
 
 \hypertarget{part-programming-basics}{%
 \part{Programming Basics}\label{part-programming-basics}}
@@ -4809,8 +5754,8 @@ a long way to cover about the basics and not so basics of functions.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{exercises-3}{%
-\section{Exercises}\label{exercises-3}}
+\hypertarget{exercises-4}{%
+\section{Exercises}\label{exercises-4}}
 
 \textbf{1)} In the second part of the book we have talked about the Future Value (FV),
 and we have extensively used its simplest version of the FV formula. Let's now
@@ -4962,12 +5907,17 @@ Here's a less abstract example:
 
 Writing compound expressions like those in the previous example is not
 something common among R users. Although the expressions are perfectly valid,
-these examples are very dummy (just for illustration purposes).
+these examples are very dummy (just for illustration purposes). By the way,
+I strongly discourage you from grouping multiple expressions with semicolons
+because it makes it difficult to inspect things.
 
-I discourage you from grouping multiple expressions with semicolons because
-it makes it difficult to inspect things. As for the expressions separated by
-newlines, they do play an important role but they are typically used together
-with other programming structures (e.g.~functions, conditionals, loops).
+What does R do with a compound expression? When R encounters a compound
+expression, it handles everything inside of it as a single unit or a single
+block of code.
+
+What is the purpose of a compound expression? This type of expressions play an
+important role but they are typically used together with other programming
+structures (e.g.~functions, conditionals, loops).
 
 \hypertarget{every-expression-has-a-value}{%
 \subsection{Every expression has a value}\label{every-expression-has-a-value}}
@@ -5116,8 +6066,8 @@ Here's another example:
 \end{Highlighting}
 \end{Shaded}
 
-Now that we've introduced the concept of R expressions, we can move on to next
-chapter where we introduce conditional structures.
+Now that we've introduced the concept of compound expressions, we can move on
+to next chapter where we introduce conditional structures.
 
 \hypertarget{conditionals}{%
 \chapter{Conditionals}\label{conditionals}}
@@ -5174,7 +6124,7 @@ diagram below, with a generic rate of return:
 
 }
 
-\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-166}
+\caption{Timeline of an ordinary annuity: contributions made at the end of each year.}\label{fig:unnamed-chunk-204}
 \end{figure}
 
 The balance in your savings account at the end of year 3 is given by:
@@ -5255,7 +6205,7 @@ generic rate of return:
 
 }
 
-\caption{Timeline of an annuity due}\label{fig:unnamed-chunk-169}
+\caption{Timeline of an annuity due: contributions made at the beginning of each year.}\label{fig:unnamed-chunk-207}
 \end{figure}
 
 The balance in your savings account at the end of year 3 is given by:
@@ -5763,7 +6713,7 @@ but the formula can be easily generalized to any number of years.
 
 }
 
-\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-189}
+\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-227}
 \end{figure}
 
 The starting point is the following equation:
