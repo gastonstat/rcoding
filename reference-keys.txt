@@ -163,3 +163,10 @@ fig:unnamed-chunk-13
 fig:unnamed-chunk-16
 fig:unnamed-chunk-18
 fig:unnamed-chunk-19
+exercises-5
+exercises-6
+matrices
+what-kind-ob-object-is-a-matrix
+what-kind-of-object-is-a-matrix
+column-major-matrices
+giving-names-to-rows-and-columns
