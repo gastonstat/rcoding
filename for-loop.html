@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>14 Iterations: For Loop | Coding in R</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="14 Iterations: For Loop | Coding in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="14 Iterations: For Loop | Coding in R" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+<meta name="date" content="2022-03-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conditionals.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Coding in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yet-another-r-book"><i class="fa fa-check"></i>Yet Another R Book</a></li>
+</ul></li>
+<li class="part"><span><b>I Getting Started with R and RStudio</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#interacting-with-r"><i class="fa fa-check"></i><b>1.1</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>2</b> Breaking the Ice with R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-r-via-rstudio"><i class="fa fa-check"></i><b>2.1</b> First Contact with R (via RStudio)</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>2.1.1</b> R as a scientific calculator</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rintro.html"><a href="rintro.html#assigning-values-to-objects"><i class="fa fa-check"></i><b>2.1.2</b> Assigning values to objects</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>2.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="2.1.4" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>2.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="2.1.5" data-path="rintro.html"><a href="rintro.html#calling-functions"><i class="fa fa-check"></i><b>2.1.5</b> Calling Functions</a></li>
+<li class="chapter" data-level="2.1.6" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>2.1.6</b> Comments in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rintro.html"><a href="rintro.html#help-documentation"><i class="fa fa-check"></i><b>2.2</b> Getting Help</a></li>
+<li class="chapter" data-level="2.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rintro.html"><a href="rintro.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>3</b> A Quick Tour Around RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rstudio.html"><a href="rstudio.html#first-contact-with-rstudio"><i class="fa fa-check"></i><b>3.1</b> First Contact with RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="rstudio.html"><a href="rstudio.html#rstudio-panes-in-a-nutshell"><i class="fa fa-check"></i><b>3.2</b> RStudio Panes in a Nutshell</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>3.2.1</b> Console</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help"><i class="fa fa-check"></i><b>3.2.2</b> Files, Plots, Packages, Help</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rstudio.html"><a href="rstudio.html#source-or-editor"><i class="fa fa-check"></i><b>3.2.3</b> Source or Editor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rstudio.html"><a href="rstudio.html#environment-history-connections"><i class="fa fa-check"></i><b>3.2.4</b> Environment, History, Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rstudio.html"><a href="rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session.html"><a href="session.html"><i class="fa fa-check"></i><b>4</b> Session Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session.html"><a href="session.html#starting-a-session"><i class="fa fa-check"></i><b>4.1</b> Starting a Session</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="session.html"><a href="session.html#what-happens-when-you-open-an-r-session-via-rstudio"><i class="fa fa-check"></i><b>4.1.1</b> What happens when you open an R session via RStudio?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="session.html"><a href="session.html#opening-a-session-for-the-first-time"><i class="fa fa-check"></i><b>4.1.2</b> Opening a session for the first time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="session.html"><a href="session.html#working-directory"><i class="fa fa-check"></i><b>4.1.3</b> Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="session.html"><a href="session.html#working-during-a-session"><i class="fa fa-check"></i><b>4.2</b> Working During a Session</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#working-directory-1"><i class="fa fa-check"></i><b>4.2.1</b> Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="session.html"><a href="session.html#workspace-and-global-environment"><i class="fa fa-check"></i><b>4.2.2</b> Workspace and Global Environment</a></li>
+<li class="chapter" data-level="4.2.3" data-path="session.html"><a href="session.html#commands-history"><i class="fa fa-check"></i><b>4.2.3</b> Commands History</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="session.html"><a href="session.html#closing-a-session"><i class="fa fa-check"></i><b>4.3</b> Closing a Session</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Objects in R</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors.html"><a href="vectors.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="vectors.html"><a href="vectors.html#creating-objects"><i class="fa fa-check"></i><b>5.1.1</b> Creating Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html#about-r-vectors"><i class="fa fa-check"></i><b>5.2</b> About R Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="vectors.html"><a href="vectors.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>5.3</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="vectors.html"><a href="vectors.html#types-and-modes"><i class="fa fa-check"></i><b>5.3.1</b> Types and Modes</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vectors.html"><a href="vectors.html#special-values"><i class="fa fa-check"></i><b>5.3.2</b> Special Values</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vectors.html"><a href="vectors.html#length-of-vectors"><i class="fa fa-check"></i><b>5.3.3</b> Length of Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="vectors.html"><a href="vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.4</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="vectors.html"><a href="vectors.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>5.4.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="vectors.html"><a href="vectors.html#numeric-sequences"><i class="fa fa-check"></i><b>5.4.2</b> Numeric Sequences</a></li>
+<li class="chapter" data-level="5.4.3" data-path="vectors.html"><a href="vectors.html#replicated-vectors"><i class="fa fa-check"></i><b>5.4.3</b> Replicated Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="vectors.html"><a href="vectors.html#coercion"><i class="fa fa-check"></i><b>5.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="vectors.html"><a href="vectors.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>5.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="5.5.2" data-path="vectors.html"><a href="vectors.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>5.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="vectors.html"><a href="vectors.html#exercises-2"><i class="fa fa-check"></i><b>5.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-about-vectors.html"><a href="more-about-vectors.html"><i class="fa fa-check"></i><b>6</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#motivation-future-value"><i class="fa fa-check"></i><b>6.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#future-value-formula"><i class="fa fa-check"></i><b>6.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization"><i class="fa fa-check"></i><b>6.2</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#definition-of-vectorization"><i class="fa fa-check"></i><b>6.2.1</b> Definition of Vectorization</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#recycling"><i class="fa fa-check"></i><b>6.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>6.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>6.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#numeric-subsetting"><i class="fa fa-check"></i><b>6.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="6.4.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#character-subsetting"><i class="fa fa-check"></i><b>6.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="6.4.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#logical-subsetting"><i class="fa fa-check"></i><b>6.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="6.4.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#summary-of-subsetting"><i class="fa fa-check"></i><b>6.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="more-about-vectors.html"><a href="more-about-vectors.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> Factors</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>7.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="7.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>7.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="7.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>7.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>7.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>7.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>7.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="arrays.html"><a href="arrays.html"><i class="fa fa-check"></i><b>8</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="arrays.html"><a href="arrays.html#motivation"><i class="fa fa-check"></i><b>8.1</b> Motivation</a></li>
+<li class="chapter" data-level="8.2" data-path="arrays.html"><a href="arrays.html#matrices"><i class="fa fa-check"></i><b>8.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="arrays.html"><a href="arrays.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>8.2.1</b> What kind of object is a matrix?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="arrays.html"><a href="arrays.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>8.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="arrays.html"><a href="arrays.html#column-major-matrices"><i class="fa fa-check"></i><b>8.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="8.3.2" data-path="arrays.html"><a href="arrays.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>8.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="8.3.3" data-path="arrays.html"><a href="arrays.html#more-matrices"><i class="fa fa-check"></i><b>8.3.3</b> More Matrices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>9</b> Lists</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>9.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="9.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>9.2</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>9.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="9.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>9.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="9.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>9.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="9.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>9.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="9.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>9.2.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="lists.html"><a href="lists.html#exercises-4"><i class="fa fa-check"></i><b>9.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>10</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>10.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="10.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>10.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="10.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>10.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="10.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>10.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements"><i class="fa fa-check"></i><b>10.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="10.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column"><i class="fa fa-check"></i><b>10.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="10.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column"><i class="fa fa-check"></i><b>10.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="10.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>10.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="10.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column"><i class="fa fa-check"></i><b>10.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="10.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>10.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="dataframes.html"><a href="dataframes.html#exercises-5"><i class="fa fa-check"></i><b>10.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III Programming Basics</b></span></li>
+<li class="chapter" data-level="11" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>11</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="functions1.html"><a href="functions1.html#motivation-1"><i class="fa fa-check"></i><b>11.1</b> Motivation</a></li>
+<li class="chapter" data-level="11.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>11.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>11.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>11.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>11.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="11.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>11.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="functions1.html"><a href="functions1.html#exercises-6"><i class="fa fa-check"></i><b>11.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>12</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>12.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>12.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="12.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>12.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="12.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>12.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="12.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>12.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>13</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="conditionals.html"><a href="conditionals.html#motivation-2"><i class="fa fa-check"></i><b>13.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>13.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="13.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>13.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>13.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>13.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="13.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>13.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="13.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>13.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="13.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>13.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>13.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>13.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>13.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>14</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="for-loop.html"><a href="for-loop.html#motivation-3"><i class="fa fa-check"></i><b>14.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>14.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>14.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>14.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="14.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>14.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>14.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="14.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>14.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="14.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>14.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>14.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="14.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>14.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="14.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>14.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="14.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>14.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="14.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>14.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="for-loop" class="section level1" number="14">
+<h1><span class="header-section-number">14</span> Iterations: For Loop</h1>
+<p>In the previous chapter you got introduced to conditional statements, better
+known as if-else statements. In this chapter we introduce another common
+programming structure known as <strong>iterations</strong>. Simply put <em>iterative procedures</em>
+commonly referred to as <strong>loops</strong>, allow you to repeat a series of common steps.</p>
+<div id="motivation-3" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Motivation</h2>
+<p>Say you decide to invest $1000 in an investment fund that tracks the
+performance of the total US stock market. This type of financial asset, commonly
+referred to as a <em>total stock fund</em> is a mutual fund or an exchange traded fund
+(ETF) that holds every stock in a selected market. The purpose of a total stock
+fund is to replicate the broad market by holding the stock of every security
+that trades on a certain exchange. From the investing point of view, these funds
+are ideal for investors who want exposure to the overall equity market at a
+very low cost.</p>
+<p>Examples of such funds are:</p>
+<ul>
+<li><p>VTSAX: Vanguard Total Stock Market Index Fund</p></li>
+<li><p>FSKAX: Fidelity Total Stock Market Index Fund</p></li>
+<li><p>SWTSX: Schwab Total Stock Market Index Fund</p></li>
+</ul>
+<p>As we were saying, you decide to invest $1000 in a total stock market index
+fund (today).</p>
+<blockquote>
+<p>How much money would you <strong>expect</strong> to get in 10 years?</p>
+</blockquote>
+<p>If we knew the annual rate of return, we could use the future value formula
+(of compound interest)</p>
+<p><span class="math display">\[
+\text{FV} = \$1000 \times (1 + r)^{10}
+\]</span></p>
+<p>The problem, or the “interesting part”—depending on how you want to see
+it—is that <em>total stock funds</em> don’t have a constant annual rate of
+return. Why not? Well, because the stock market is <strong>volatile</strong>, permanently
+moving up and down every day, with prices of stocks fluctuating every minute.</p>
+<p>Despite the variability in prices of stocks, it turns out that in most (calendar)
+years, the annual return is positive. But not always. There are some years in
+which the annual return can be negative.</p>
+<div id="us-stock-market-historical-annual-returns" class="section level3" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> US Stock Market Historical Annual Returns</h3>
+<p>We can look at historical data to get an idea of the average annual return
+for investing in the total US stock market. One interesting resource that gives
+a nice perspective of the historical distribution of US stock market returns
+comes from amateur investor Joachim Klement</p>
+<p><a href="https://klementoninvesting.substack.com/p/the-distribution-of-stock-market" class="uri">https://klementoninvesting.substack.com/p/the-distribution-of-stock-market</a></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-235"></span>
+<img src="images/iterations/annual-returns-klement-investment.png" alt="Distribution of Annual Returns (by Joachim Klement)" width="90%" />
+<p class="caption">
+Figure 14.1: Distribution of Annual Returns (by Joachim Klement)
+</p>
+</div>
+<p>As you can tell, on an annual scale, market returns are basically random and
+follow the normal distribution fairly well.</p>
+<p>So let us assume that annual rates of return for the total US Stock Market
+have a <strong>Normal distribution</strong> with mean <span class="math inline">\(\mu = 10\%\)</span> and standard deviation
+<span class="math inline">\(\sigma = 18\%\)</span>.</p>
+<p>Mathematically, we can write something like this:</p>
+<p><span class="math display">\[
+r_t \sim \mathcal{N}(\mu = 0.10, \ \sigma = 0.18)
+\]</span></p>
+<p>where <span class="math inline">\(r_t\)</span> represents the annual rate of return in any given year <span class="math inline">\(t\)</span>.</p>
+<p>This means that, on average, we expect 10% return every year. But a return
+between 28% = 10% + 18%, and -2% = 10% - 18%, it’s also a perfectly reasonable
+return in every year.</p>
+<p>In other words, there is nothing surprising if you see years where the return
+is any value between -2% and 28%.</p>
+<p>Admittedly, we don’t know what’s going to happen with the US Stock Market in
+the next 10 years. But we can use our knowledge of the long-term regular
+behavior of the market to guesstimate an expected return in 10 years. If we
+assume that the (average) annual return for investing in a total market index
+fund is 10%, then we could estimate the expected future value as:</p>
+<p><span class="math display">\[
+\textsf{expected } \text{FV} = \$ 1000 \times (1 + 0.10)^{10} = \$ 2593.742
+\]</span></p>
+<p>Keep in mind that one of the limitations behind this assumption is that we are
+not taking into account the volatility of the stock market. This is illustrated
+in the following figure that compares a theoretical scenario with constant 10%
+annual returns, versus a plausible scenario with variable returns in each year.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-236"></span>
+<img src="images/iterations/timeline-investment-stock-market1.png" alt="Rates of Return: Fixed -vs- Variable" width="90%" />
+<p class="caption">
+Figure 14.2: Rates of Return: Fixed -vs- Variable
+</p>
+</div>
+</div>
+</div>
+<div id="simulating-normal-random-numbers" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Simulating Normal Random Numbers</h2>
+<p>Because the stock market is volatile, we need a way to simulate random rates
+of return. The good news is that we can use <code>rnorm()</code> to simulate generating
+numbers from a Normal distribution. By default, <code>rnorm()</code> generates a random
+number from a standard normal distribution (mean = 0, standard deviation = 1)</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="for-loop.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">345</span>)  <span class="co"># for replication purposes</span></span>
+<span id="cb232-2"><a href="for-loop.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb232-3"><a href="for-loop.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.7849082</span></span></code></pre></div>
+<p>Here’s how to simulate three rates from a Normal distribution with mean
+<span class="math inline">\(\mu = 0.10\)</span> and <span class="math inline">\(\sigma = 0.18\)</span></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="for-loop.html#cb233-1" aria-hidden="true" tabindex="-1"></a>rates <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">mean =</span> <span class="fl">0.10</span>, <span class="at">sd =</span> <span class="fl">0.18</span>)</span>
+<span id="cb233-2"><a href="for-loop.html#cb233-2" aria-hidden="true" tabindex="-1"></a>rates</span>
+<span id="cb233-3"><a href="for-loop.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.04968742 0.07093758 0.04769262</span></span></code></pre></div>
+<div id="investing-in-the-us-stock-market-during-three-years" class="section level3" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> Investing in the US stock market during three years</h3>
+<p>To understand what could happen with your investment, let’s focus on a three
+year horizon. For each yar, we need a random rate of return <span class="math inline">\(r_t\)</span> (<span class="math inline">\(t\)</span> = 1, 2, 3)</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-239"></span>
+<img src="images/iterations/timeline-investment-stock-market2.png" alt="Random rates of return following a normal distribution" width="95%" />
+<p class="caption">
+Figure 14.3: Random rates of return following a normal distribution
+</p>
+</div>
+<p>As we mentioned, we can use <code>rnorm()</code> to generate three random rates of return
+from a normal distribution with <span class="math inline">\(\mu = 0.10\)</span> and <span class="math inline">\(\sigma = 0.18\)</span></p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="for-loop.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs, consider investing during three years</span></span>
+<span id="cb234-2"><a href="for-loop.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">345</span>)   <span class="co"># for replication purposes</span></span>
+<span id="cb234-3"><a href="for-loop.html#cb234-3" aria-hidden="true" tabindex="-1"></a>amount0 <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb234-4"><a href="for-loop.html#cb234-4" aria-hidden="true" tabindex="-1"></a>rates <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">mean =</span> <span class="fl">0.10</span>, <span class="at">sd =</span> <span class="fl">0.18</span>)</span>
+<span id="cb234-5"><a href="for-loop.html#cb234-5" aria-hidden="true" tabindex="-1"></a>rates</span>
+<span id="cb234-6"><a href="for-loop.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.04128347  0.04968742  0.07093758</span></span></code></pre></div>
+<p>With these rates, we can then calculate the amounts in the investment fund that
+we could expect to have at the end of each year:</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="for-loop.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="co"># output: balance amount at the end of each year</span></span>
+<span id="cb235-2"><a href="for-loop.html#cb235-2" aria-hidden="true" tabindex="-1"></a>amount1 <span class="ot">=</span> amount0 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">1</span>])</span>
+<span id="cb235-3"><a href="for-loop.html#cb235-3" aria-hidden="true" tabindex="-1"></a>amount2 <span class="ot">=</span> amount1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">2</span>])</span>
+<span id="cb235-4"><a href="for-loop.html#cb235-4" aria-hidden="true" tabindex="-1"></a>amount3 <span class="ot">=</span> amount2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">3</span>])</span>
+<span id="cb235-5"><a href="for-loop.html#cb235-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-6"><a href="for-loop.html#cb235-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(amount1, amount2, amount3)</span>
+<span id="cb235-7"><a href="for-loop.html#cb235-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  958.7165 1006.3527 1077.7409</span></span></code></pre></div>
+<p>Notice the common structure in the commands used to obtain an <code>amount</code> value.
+Moreover, notice that we are <strong>repeating</strong> the same operation three times.
+At this point you may ask yourself whether we could vectorize this code. Let’s
+see if we can:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="for-loop.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized attempt 1</span></span>
+<span id="cb236-2"><a href="for-loop.html#cb236-2" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> amount0 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates)</span>
+<span id="cb236-3"><a href="for-loop.html#cb236-3" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb236-4"><a href="for-loop.html#cb236-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  958.7165 1049.6874 1070.9376</span></span></code></pre></div>
+<p>If we use the vector <code>rates</code>, we obtain some <code>amounts</code> but these are not the
+values that we are looking for.</p>
+<p>What if we vectorize both <code>rates</code> and years <code>1:3</code>?</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="for-loop.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized attempt 2</span></span>
+<span id="cb237-2"><a href="for-loop.html#cb237-2" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> amount0 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb237-3"><a href="for-loop.html#cb237-3" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb237-4"><a href="for-loop.html#cb237-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  958.7165 1101.8437 1228.2661</span></span></code></pre></div>
+<p>Once again, we obtain some <code>amounts</code> but these are not the values that we are
+looking for.</p>
+<p>Can you see why the above vectorized code options fail to capture the correct
+compounding return?</p>
+</div>
+<div id="investing-during-ten-years" class="section level3" number="14.2.2">
+<h3><span class="header-section-number">14.2.2</span> Investing during ten years</h3>
+<p>Let’s expand our time horizon from three to ten years, generating random
+rates of return for each year, and calculating a simulated amount year by
+year:</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="for-loop.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">345</span>)   <span class="co"># for replication purposes</span></span>
+<span id="cb238-2"><a href="for-loop.html#cb238-2" aria-hidden="true" tabindex="-1"></a>amount0 <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb238-3"><a href="for-loop.html#cb238-3" aria-hidden="true" tabindex="-1"></a>rates <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">0.10</span>, <span class="at">sd =</span> <span class="fl">0.18</span>)</span>
+<span id="cb238-4"><a href="for-loop.html#cb238-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb238-5"><a href="for-loop.html#cb238-5" aria-hidden="true" tabindex="-1"></a>amount1 <span class="ot">=</span> amount0 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">1</span>])</span>
+<span id="cb238-6"><a href="for-loop.html#cb238-6" aria-hidden="true" tabindex="-1"></a>amount2 <span class="ot">=</span> amount1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">2</span>])</span>
+<span id="cb238-7"><a href="for-loop.html#cb238-7" aria-hidden="true" tabindex="-1"></a>amount3 <span class="ot">=</span> amount2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">3</span>])</span>
+<span id="cb238-8"><a href="for-loop.html#cb238-8" aria-hidden="true" tabindex="-1"></a>amount4 <span class="ot">=</span> amount3 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">4</span>])</span>
+<span id="cb238-9"><a href="for-loop.html#cb238-9" aria-hidden="true" tabindex="-1"></a>amount5 <span class="ot">=</span> amount4 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">5</span>])</span>
+<span id="cb238-10"><a href="for-loop.html#cb238-10" aria-hidden="true" tabindex="-1"></a>amount6 <span class="ot">=</span> amount5 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">6</span>])</span>
+<span id="cb238-11"><a href="for-loop.html#cb238-11" aria-hidden="true" tabindex="-1"></a>amount7 <span class="ot">=</span> amount6 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">7</span>])</span>
+<span id="cb238-12"><a href="for-loop.html#cb238-12" aria-hidden="true" tabindex="-1"></a>amount8 <span class="ot">=</span> amount7 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">8</span>])</span>
+<span id="cb238-13"><a href="for-loop.html#cb238-13" aria-hidden="true" tabindex="-1"></a>amount9 <span class="ot">=</span> amount8 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">8</span>])</span>
+<span id="cb238-14"><a href="for-loop.html#cb238-14" aria-hidden="true" tabindex="-1"></a>amount10 <span class="ot">=</span> amount9 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">10</span>])</span></code></pre></div>
+<p>Note: we know that this is too repetitive, time consuming, boring and
+error prone. Can you spot the error?</p>
+</div>
+</div>
+<div id="iterations-to-the-rescue" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Iterations to the Rescue</h2>
+<p>Let’s first write some “inefficient” code in order to understand what is
+going on at each step.</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="for-loop.html#cb239-1" aria-hidden="true" tabindex="-1"></a>amount1 <span class="ot">=</span> amount0 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">1</span>])</span>
+<span id="cb239-2"><a href="for-loop.html#cb239-2" aria-hidden="true" tabindex="-1"></a>amount2 <span class="ot">=</span> amount1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">2</span>])</span>
+<span id="cb239-3"><a href="for-loop.html#cb239-3" aria-hidden="true" tabindex="-1"></a>amount3 <span class="ot">=</span> amount2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">3</span>])</span>
+<span id="cb239-4"><a href="for-loop.html#cb239-4" aria-hidden="true" tabindex="-1"></a>amount4 <span class="ot">=</span> amount3 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">4</span>])</span>
+<span id="cb239-5"><a href="for-loop.html#cb239-5" aria-hidden="true" tabindex="-1"></a><span class="co"># etc</span></span></code></pre></div>
+<blockquote>
+<p>What do these commands have in common?</p>
+</blockquote>
+<p>They all take an input amount, that gets compounded for one year at a certain
+rate. The output amount at each step is used as the input for the next amount.</p>
+<p>Instead of calculating a single <code>amount</code> at each step, we can start with
+an almost “empty” vector <code>amounts()</code>. This vector will contain the initial
+amount, as well as the amounts at the end of every year.</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="for-loop.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">345</span>)    <span class="co"># for replication purposes</span></span>
+<span id="cb240-2"><a href="for-loop.html#cb240-2" aria-hidden="true" tabindex="-1"></a>amount0 <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb240-3"><a href="for-loop.html#cb240-3" aria-hidden="true" tabindex="-1"></a>rates <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">0.10</span>, <span class="at">sd =</span> <span class="fl">0.18</span>)</span>
+<span id="cb240-4"><a href="for-loop.html#cb240-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-5"><a href="for-loop.html#cb240-5" aria-hidden="true" tabindex="-1"></a><span class="co"># output vector (to be populated)</span></span>
+<span id="cb240-6"><a href="for-loop.html#cb240-6" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> <span class="fu">c</span>(amount0, <span class="fu">double</span>(<span class="at">length =</span> <span class="dv">10</span>))</span>
+<span id="cb240-7"><a href="for-loop.html#cb240-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-8"><a href="for-loop.html#cb240-8" aria-hidden="true" tabindex="-1"></a><span class="co"># repetitive commands</span></span>
+<span id="cb240-9"><a href="for-loop.html#cb240-9" aria-hidden="true" tabindex="-1"></a>amounts[<span class="dv">2</span>] <span class="ot">=</span> amounts[<span class="dv">1</span>] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">1</span>])</span>
+<span id="cb240-10"><a href="for-loop.html#cb240-10" aria-hidden="true" tabindex="-1"></a>amounts[<span class="dv">3</span>] <span class="ot">=</span> amounts[<span class="dv">2</span>] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">2</span>])</span>
+<span id="cb240-11"><a href="for-loop.html#cb240-11" aria-hidden="true" tabindex="-1"></a><span class="co"># etc ...</span></span>
+<span id="cb240-12"><a href="for-loop.html#cb240-12" aria-hidden="true" tabindex="-1"></a>amounts[<span class="dv">10</span>] <span class="ot">=</span> amounts[<span class="dv">9</span>] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">9</span>])</span>
+<span id="cb240-13"><a href="for-loop.html#cb240-13" aria-hidden="true" tabindex="-1"></a>amounts[<span class="dv">11</span>] <span class="ot">=</span> amounts[<span class="dv">10</span>] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[<span class="dv">10</span>])</span></code></pre></div>
+<p>From the commands in the previous code chunk, notice that at step <code>s</code>, to
+compute the next value <code>amounts[s+1]</code>, we do this:</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="for-loop.html#cb241-1" aria-hidden="true" tabindex="-1"></a>amounts[s<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> amounts[s] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[s])</span></code></pre></div>
+<p>This operation is repeated 10 times (one for each year). At the end of the
+computations, the vector <code>amounts</code> contains the initial investment, and the 10
+values resulting from the compound return year-by-year.</p>
+</div>
+<div id="for-loop-example" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> For Loop Example</h2>
+<p>One programming structure that allows us to write code for carrying out
+these repetitive steps is a <strong>for</strong> loop, which is one of the iterative
+<em>control flow</em> structures in every programming language.</p>
+<p>In R, a <code>for()</code> loop has the following syntax</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="for-loop.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb242-2"><a href="for-loop.html#cb242-2" aria-hidden="true" tabindex="-1"></a>  amounts[s<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> amounts[s] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[s])</span>
+<span id="cb242-3"><a href="for-loop.html#cb242-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><p>You use the <code>for</code> statement</p></li>
+<li><p>Inside parenthesis, you specify three ingredients separated by blank spaces:</p>
+<ul>
+<li><p>an auxiliary iterator, e.g. <code>s</code></p></li>
+<li><p>the keyword <code>in</code></p></li>
+<li><p>a vector to iterate through, e.g. <code>1:10</code></p></li>
+</ul></li>
+<li><p>The code for the repetitive steps gets wrapped inside braces</p></li>
+</ul>
+<p>Let’s take a look at the entire piece of code:</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="for-loop.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">345</span>)    <span class="co"># for replication purposes</span></span>
+<span id="cb243-2"><a href="for-loop.html#cb243-2" aria-hidden="true" tabindex="-1"></a>amount0 <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb243-3"><a href="for-loop.html#cb243-3" aria-hidden="true" tabindex="-1"></a>rates <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">0.10</span>, <span class="at">sd =</span> <span class="fl">0.18</span>)</span>
+<span id="cb243-4"><a href="for-loop.html#cb243-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-5"><a href="for-loop.html#cb243-5" aria-hidden="true" tabindex="-1"></a><span class="co"># output vector (to be populated)</span></span>
+<span id="cb243-6"><a href="for-loop.html#cb243-6" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> <span class="fu">c</span>(amount0, <span class="fu">double</span>(<span class="at">length =</span> <span class="dv">10</span>))</span>
+<span id="cb243-7"><a href="for-loop.html#cb243-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-8"><a href="for-loop.html#cb243-8" aria-hidden="true" tabindex="-1"></a><span class="co"># for loop</span></span>
+<span id="cb243-9"><a href="for-loop.html#cb243-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb243-10"><a href="for-loop.html#cb243-10" aria-hidden="true" tabindex="-1"></a>  amounts[s<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> amounts[s] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rates[s])</span>
+<span id="cb243-11"><a href="for-loop.html#cb243-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-12"><a href="for-loop.html#cb243-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-13"><a href="for-loop.html#cb243-13" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb243-14"><a href="for-loop.html#cb243-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1000.0000  958.7165 1006.3527 1077.7409 1129.1412</span></span>
+<span id="cb243-15"><a href="for-loop.html#cb243-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] 1228.3298 1211.0918 1129.9604 1590.9151 2223.8740</span></span>
+<span id="cb243-16"><a href="for-loop.html#cb243-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] 3170.9926</span></span></code></pre></div>
+<p>There are a couple of important things worth noticing:</p>
+<ul>
+<li><p>You don’t need to declare or create the auxiliary iterator outside the loop</p></li>
+<li><p>R will automatically handle the auxiliary iterator (no need to explicitly
+increase its value)</p></li>
+<li><p>The length of the “iterations vector” determines the number of times the code
+inside the loop has to be repeated</p></li>
+<li><p>You use <strong>for</strong> loops when you know how many times a series of calculations
+need to be repeated.</p></li>
+</ul>
+<p>Having obtained the vector of <code>amounts</code>, we can then plot a timeline to
+visualize the behavior of the simulated returns against the hypothetical
+investment with a constant rate of return:</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="for-loop.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># random annual rates of return (blue)</span></span>
+<span id="cb244-2"><a href="for-loop.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, amounts, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb244-3"><a href="for-loop.html#cb244-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;years&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;amount (dollars)&quot;</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb244-4"><a href="for-loop.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, amounts, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb244-5"><a href="for-loop.html#cb244-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb244-6"><a href="for-loop.html#cb244-6" aria-hidden="true" tabindex="-1"></a><span class="co"># assuming constant 10% annual return (orange)</span></span>
+<span id="cb244-7"><a href="for-loop.html#cb244-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, amount0 <span class="sc">*</span> (<span class="dv">1</span><span class="fl">+0.10</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb244-8"><a href="for-loop.html#cb244-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, amount0 <span class="sc">*</span> (<span class="dv">1</span><span class="fl">+0.10</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/investing10-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="about-for-loops" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> About For Loops</h2>
+<p>To describe more details about <code>for</code> loops in R, let’s consider a super simple
+example. Say you have a vector <code>vec &lt;- c(3, 1, 4)</code>, and suppose you want to add
+1 to every element of <code>vec</code>. You know that this can easily be achieved using
+vectorized code:</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="for-loop.html#cb245-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>) </span>
+<span id="cb245-2"><a href="for-loop.html#cb245-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb245-3"><a href="for-loop.html#cb245-3" aria-hidden="true" tabindex="-1"></a>vec <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb245-4"><a href="for-loop.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 2 5</span></span></code></pre></div>
+<p>In order to learn about loops, I’m going to ask you to forget about the notion
+of vectorized code in R. That is, pretend that R does not have vectorized functions.</p>
+<p>Think about what you would need to do in order to add 1 to the elements
+in <code>vec</code>. This addition would involve taking the first element in <code>vec</code> and
+add 1, then taking the second element in <code>vec</code> and add 1, and finally the third
+element in <code>vec</code> and add 1, something like this:</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="for-loop.html#cb246-1" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">1</span>] <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb246-2"><a href="for-loop.html#cb246-2" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">2</span>] <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb246-3"><a href="for-loop.html#cb246-3" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">3</span>] <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<p>The code above does the job. From a purely arithmetic standpoint, the three
+lines of code reflect the operation that you would need to carry out to add
+1 to all the elements in <code>vec</code>.</p>
+<p>From a programming point of view, you are performing the same type of operation
+three times: selecting an element in <code>vec</code> and adding 1 to it. But there’s
+a lot of (unnecessary) repetition.</p>
+<p>This is where loops come very handy. Here’s how to use a <code>for ()</code> loop
+to add 1 to each element in <code>vec</code>:</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="for-loop.html#cb247-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb247-2"><a href="for-loop.html#cb247-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-3"><a href="for-loop.html#cb247-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb247-4"><a href="for-loop.html#cb247-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(vec[j] <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb247-5"><a href="for-loop.html#cb247-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb247-6"><a href="for-loop.html#cb247-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb247-7"><a href="for-loop.html#cb247-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb247-8"><a href="for-loop.html#cb247-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<p>In the code above we are taking each <code>vec</code> element <code>vec[j]</code>, adding 1 to it,
+and printing the outcome with <code>print()</code> so you can visualize the additions
+at each iteration of the loop.</p>
+<p>What if you want to create a vector <code>vec2</code>, in which you store the values
+produced at each iteration of the loop? Here’s one possibility:</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="for-loop.html#cb248-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)  <span class="co"># you can change these values</span></span>
+<span id="cb248-2"><a href="for-loop.html#cb248-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(vec))  <span class="co"># vector of zeros to be filled in the loop</span></span>
+<span id="cb248-3"><a href="for-loop.html#cb248-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-4"><a href="for-loop.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb248-5"><a href="for-loop.html#cb248-5" aria-hidden="true" tabindex="-1"></a>  vec2[j] <span class="ot">=</span> vec[j] <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb248-6"><a href="for-loop.html#cb248-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="anatomy-of-a-for-loop" class="section level3" number="14.5.1">
+<h3><span class="header-section-number">14.5.1</span> Anatomy of a For Loop</h3>
+<p>The anatomy of a <code>for</code> loop is as follows:</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="for-loop.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
+<span id="cb249-2"><a href="for-loop.html#cb249-2" aria-hidden="true" tabindex="-1"></a>  do_something</span>
+<span id="cb249-3"><a href="for-loop.html#cb249-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><code>for()</code> takes an <strong>iterator</strong> variable and a vector of <strong>times</strong> to iterate
+through.</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="for-loop.html#cb250-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb250-2"><a href="for-loop.html#cb250-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb250-3"><a href="for-loop.html#cb250-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) { </span>
+<span id="cb250-4"><a href="for-loop.html#cb250-4" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> value <span class="sc">*</span> <span class="dv">2</span> </span>
+<span id="cb250-5"><a href="for-loop.html#cb250-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(value)</span>
+<span id="cb250-6"><a href="for-loop.html#cb250-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb250-7"><a href="for-loop.html#cb250-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb250-8"><a href="for-loop.html#cb250-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 8</span></span>
+<span id="cb250-9"><a href="for-loop.html#cb250-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
+<span id="cb250-10"><a href="for-loop.html#cb250-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32</span></span>
+<span id="cb250-11"><a href="for-loop.html#cb250-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64</span></span></code></pre></div>
+<p>The vector of <em>times</em> does NOT have to be a numeric vector; it can be <strong>any</strong>
+vector</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="for-loop.html#cb251-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb251-2"><a href="for-loop.html#cb251-2" aria-hidden="true" tabindex="-1"></a>times <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;one&#39;</span>, <span class="st">&#39;two&#39;</span>, <span class="st">&#39;three&#39;</span>, <span class="st">&#39;four&#39;</span>)</span>
+<span id="cb251-3"><a href="for-loop.html#cb251-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-4"><a href="for-loop.html#cb251-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> times) { </span>
+<span id="cb251-5"><a href="for-loop.html#cb251-5" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> value <span class="sc">*</span> <span class="dv">2</span> </span>
+<span id="cb251-6"><a href="for-loop.html#cb251-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(value)</span>
+<span id="cb251-7"><a href="for-loop.html#cb251-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb251-8"><a href="for-loop.html#cb251-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb251-9"><a href="for-loop.html#cb251-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 8</span></span>
+<span id="cb251-10"><a href="for-loop.html#cb251-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
+<span id="cb251-11"><a href="for-loop.html#cb251-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32</span></span></code></pre></div>
+<p>However, if the <em>iterator</em> is used inside the loop in a numerical computation,
+then the vector of <em>times</em> will almost always be a numeric vector:</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="for-loop.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4321</span>)</span>
+<span id="cb252-2"><a href="for-loop.html#cb252-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5</span>)</span>
+<span id="cb252-3"><a href="for-loop.html#cb252-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-4"><a href="for-loop.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (h <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(numbers)) {</span>
+<span id="cb252-5"><a href="for-loop.html#cb252-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (numbers[h] <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb252-6"><a href="for-loop.html#cb252-6" aria-hidden="true" tabindex="-1"></a>    value <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="sc">-</span>numbers[h])</span>
+<span id="cb252-7"><a href="for-loop.html#cb252-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb252-8"><a href="for-loop.html#cb252-8" aria-hidden="true" tabindex="-1"></a>    value <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(numbers[h])</span>
+<span id="cb252-9"><a href="for-loop.html#cb252-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb252-10"><a href="for-loop.html#cb252-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(value)</span>
+<span id="cb252-11"><a href="for-loop.html#cb252-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb252-12"><a href="for-loop.html#cb252-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.6532667</span></span>
+<span id="cb252-13"><a href="for-loop.html#cb252-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.4728761</span></span>
+<span id="cb252-14"><a href="for-loop.html#cb252-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.8471168</span></span>
+<span id="cb252-15"><a href="for-loop.html#cb252-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9173035</span></span>
+<span id="cb252-16"><a href="for-loop.html#cb252-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3582698</span></span></code></pre></div>
+</div>
+<div id="for-loops-and-next-statement" class="section level3" number="14.5.2">
+<h3><span class="header-section-number">14.5.2</span> For Loops and Next statement</h3>
+<p>Sometimes we need to skip a loop iteration if a given condition is met, this
+can be done with the <code>next</code> statement</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="for-loop.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
+<span id="cb253-2"><a href="for-loop.html#cb253-2" aria-hidden="true" tabindex="-1"></a>  expr1</span>
+<span id="cb253-3"><a href="for-loop.html#cb253-3" aria-hidden="true" tabindex="-1"></a>  expr2</span>
+<span id="cb253-4"><a href="for-loop.html#cb253-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (condition) {</span>
+<span id="cb253-5"><a href="for-loop.html#cb253-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb253-6"><a href="for-loop.html#cb253-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb253-7"><a href="for-loop.html#cb253-7" aria-hidden="true" tabindex="-1"></a>  expr3</span>
+<span id="cb253-8"><a href="for-loop.html#cb253-8" aria-hidden="true" tabindex="-1"></a>  expr4</span>
+<span id="cb253-9"><a href="for-loop.html#cb253-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Example:</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="for-loop.html#cb254-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb254-2"><a href="for-loop.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb254-3"><a href="for-loop.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> x <span class="sc">*</span> i</span>
+<span id="cb254-4"><a href="for-loop.html#cb254-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">8</span>) {</span>
+<span id="cb254-5"><a href="for-loop.html#cb254-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb254-6"><a href="for-loop.html#cb254-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb254-7"><a href="for-loop.html#cb254-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(y)</span>
+<span id="cb254-8"><a href="for-loop.html#cb254-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb254-9"><a href="for-loop.html#cb254-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb254-10"><a href="for-loop.html#cb254-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb254-11"><a href="for-loop.html#cb254-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
+<span id="cb254-12"><a href="for-loop.html#cb254-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+</div>
+<div id="for-loops-and-break-statement" class="section level3" number="14.5.3">
+<h3><span class="header-section-number">14.5.3</span> For Loops and Break statement</h3>
+<p>Sometimes we need to stop a loop from iterating if a given condition is met,
+this can be done with the <code>break</code> statement</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="for-loop.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
+<span id="cb255-2"><a href="for-loop.html#cb255-2" aria-hidden="true" tabindex="-1"></a>  expr1</span>
+<span id="cb255-3"><a href="for-loop.html#cb255-3" aria-hidden="true" tabindex="-1"></a>  expr2</span>
+<span id="cb255-4"><a href="for-loop.html#cb255-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (stop_condition) {</span>
+<span id="cb255-5"><a href="for-loop.html#cb255-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb255-6"><a href="for-loop.html#cb255-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb255-7"><a href="for-loop.html#cb255-7" aria-hidden="true" tabindex="-1"></a>  expr3</span>
+<span id="cb255-8"><a href="for-loop.html#cb255-8" aria-hidden="true" tabindex="-1"></a>  expr4</span>
+<span id="cb255-9"><a href="for-loop.html#cb255-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Example:</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="for-loop.html#cb256-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb256-2"><a href="for-loop.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb256-3"><a href="for-loop.html#cb256-3" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> x <span class="sc">*</span> i</span>
+<span id="cb256-4"><a href="for-loop.html#cb256-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">8</span>) {</span>
+<span id="cb256-5"><a href="for-loop.html#cb256-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb256-6"><a href="for-loop.html#cb256-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb256-7"><a href="for-loop.html#cb256-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(y)</span>
+<span id="cb256-8"><a href="for-loop.html#cb256-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb256-9"><a href="for-loop.html#cb256-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb256-10"><a href="for-loop.html#cb256-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
+<span id="cb256-11"><a href="for-loop.html#cb256-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span></code></pre></div>
+</div>
+<div id="nested-loops" class="section level3" number="14.5.4">
+<h3><span class="header-section-number">14.5.4</span> Nested Loops</h3>
+<p>It is common to have nested loops</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="for-loop.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iterator1 <span class="cf">in</span> times1) { </span>
+<span id="cb257-2"><a href="for-loop.html#cb257-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (iterator2 <span class="cf">in</span> times2) {</span>
+<span id="cb257-3"><a href="for-loop.html#cb257-3" aria-hidden="true" tabindex="-1"></a>    expr1</span>
+<span id="cb257-4"><a href="for-loop.html#cb257-4" aria-hidden="true" tabindex="-1"></a>    expr2</span>
+<span id="cb257-5"><a href="for-loop.html#cb257-5" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb257-6"><a href="for-loop.html#cb257-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb257-7"><a href="for-loop.html#cb257-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="example-nested-loops" class="section level4 unnumbered">
+<h4>Example: Nested loops</h4>
+<p>Consider a matrix with 3 rows and 4 columns</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="for-loop.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some matrix</span></span>
+<span id="cb258-2"><a href="for-loop.html#cb258-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb258-3"><a href="for-loop.html#cb258-3" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb258-4"><a href="for-loop.html#cb258-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb258-5"><a href="for-loop.html#cb258-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    4    7   10</span></span>
+<span id="cb258-6"><a href="for-loop.html#cb258-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    5    8   11</span></span>
+<span id="cb258-7"><a href="for-loop.html#cb258-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    6    9   12</span></span></code></pre></div>
+<p>Suppose you want to transform those values less than 6 into their reciprocals
+(that is, dividing them by 1). You can use a pair of embedded loops: one to
+traverse the rows of the matrix, the other one to traverse the columns of the
+matrix:</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="for-loop.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reciprocal of values less than 6</span></span>
+<span id="cb259-2"><a href="for-loop.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(A)) { </span>
+<span id="cb259-3"><a href="for-loop.html#cb259-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(A)) {</span>
+<span id="cb259-4"><a href="for-loop.html#cb259-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (A[i,j] <span class="sc">&lt;</span> <span class="dv">6</span>) A[i,j] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> A[i,j] </span>
+<span id="cb259-5"><a href="for-loop.html#cb259-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb259-6"><a href="for-loop.html#cb259-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb259-7"><a href="for-loop.html#cb259-7" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb259-8"><a href="for-loop.html#cb259-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1] [,2] [,3] [,4]</span></span>
+<span id="cb259-9"><a href="for-loop.html#cb259-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 1.0000000 0.25    7   10</span></span>
+<span id="cb259-10"><a href="for-loop.html#cb259-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.5000000 0.20    8   11</span></span>
+<span id="cb259-11"><a href="for-loop.html#cb259-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] 0.3333333 6.00    9   12</span></span></code></pre></div>
+</div>
+</div>
+<div id="about-for-loops-and-vectorized-computations" class="section level3" number="14.5.5">
+<h3><span class="header-section-number">14.5.5</span> About <code>for</code> Loops and Vectorized Computations</h3>
+<ul>
+<li><p>R loops have a bad reputation for being slow.</p></li>
+<li><p>Experienced users will tell you: “tend to avoid <code>for</code> loops in R” (me included).</p></li>
+<li><p>It is not really that the loops are slow; the slowness has more to do with
+the way R handles the <em>boxing and unboxing</em> of data objects, which may be a bit
+inefficient.</p></li>
+<li><p>R provides a family of functions that are usually more efficient than loops
+(i.e. <code>apply()</code> functions).</p></li>
+<li><p>If you have NO programming experience, you should ignore any advice about
+avoiding loops in R.</p></li>
+<li><p>You should learn how to write loops, and understand how they work; every
+programming language provides some type of loop structure.</p></li>
+<li><p>In practice, many (programming) problems can be tackled using some loop structure.</p></li>
+<li><p>When using R, you may need to start solving a problem using a loop. Once you
+solved it, try to see if you can find a vectorized alternative.</p></li>
+<li><p>It takes practice and experience to find alternative solutions to <code>for</code> loops.</p></li>
+<li><p>There are cases when using <code>for</code> loops is not that bad.</p></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conditionals.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rcoding.pdf", "rcoding.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

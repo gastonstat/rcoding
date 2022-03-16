@@ -13,7 +13,7 @@
 \makeatother
 \subtitle{An introduction to practical programming in R}
 \author{Gaston Sanchez}
-\date{2022-02-13}
+\date{2022-03-16}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -161,7 +161,7 @@ After using R---almost on a daily basis---for more than 16 years, and
 having taught STAT 133 ``Concepts in Computing with Data'', for the past 6 years,
 I've accumulated a large body of notes, slides, scripts, exercises and that
 sort of things, that deserve a place such as this a textbook. In addition, and
-more important, it fits my needs for teaching courses such as STAT 133, STAT 33A,
+more important, it fits my needs when teaching courses such as STAT 133, STAT 33A,
 STAT 33B, STAT 243, and similar courses on programming, data analysis, data
 science, and related activities \ldots{} with R.
 
@@ -1566,7 +1566,7 @@ which in R can be computed as:
 \begin{Highlighting}[]
 \CommentTok{\# in two years}
 \DecValTok{1020} \SpecialCharTok{*}\NormalTok{ (}\FloatTok{1.02}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 1040}
+\CommentTok{\#\textgreater{} [1] 1040.4}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1583,7 +1583,7 @@ We can confirm this in R by running the following command:
 \begin{Highlighting}[]
 \CommentTok{\# in three years}
 \FloatTok{1040.40} \SpecialCharTok{*}\NormalTok{ (}\FloatTok{1.02}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 1061}
+\CommentTok{\#\textgreater{} [1] 1061.208}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1646,7 +1646,7 @@ Here are more assignments for each of the savings amounts at the end of years
 \NormalTok{a2 }\OtherTok{=}\NormalTok{ a1 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ r)}
 \NormalTok{a3 }\OtherTok{=}\NormalTok{ a2 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ r)}
 \NormalTok{a3}
-\CommentTok{\#\textgreater{} [1] 1061.21}
+\CommentTok{\#\textgreater{} [1] 1061.208}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1669,7 +1669,7 @@ we can use more descriptive names, for example:
 \NormalTok{amount2 }\OtherTok{=}\NormalTok{ amount1 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}
 \NormalTok{amount3 }\OtherTok{=}\NormalTok{ amount2 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}
 \NormalTok{amount3}
-\CommentTok{\#\textgreater{} [1] 1061.21}
+\CommentTok{\#\textgreater{} [1] 1061.208}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1706,7 +1706,7 @@ and 3.
 \CommentTok{\# combine (catenate) in a single object}
 \NormalTok{amounts }\OtherTok{=} \FunctionTok{c}\NormalTok{(amount1, amount2, amount3)}
 \NormalTok{amounts}
-\CommentTok{\#\textgreater{} [1] 1020.00 1040.40 1061.21}
+\CommentTok{\#\textgreater{} [1] 1020.000 1040.400 1061.208}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2224,6 +2224,139 @@ fruitless:
 \end{Highlighting}
 \end{Shaded}
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-2}{%
+\section{Exercises}\label{exercises-2}}
+
+\textbf{1)} Consider the data---about so-called \textbf{Terrestrial} planets---provided
+in the table below. These planets include Mercury, Venus, Earth, and Mars. They
+are called terrestrial because they are ``Earth-like'' planets in contrast to the
+\textbf{Jovian} planets that involve planets similar to Jupiter (i.e.~Jupiter,
+Saturn, Uranus and Neptune). The main characteristics of terrestrial planets is that they are relatively small in size and in mass, with a solid rocky surface,
+and metals deep in its interior.
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+planet & gravity & daylength & temp & moons & haswater \\
+\midrule
+\endhead
+Mercury & 3.7 & 4222.6 & 167 & 0 & FALSE \\
+Venus & 8.9 & 2802 & 464 & 0 & FALSE \\
+Earth & 9.8 & 24 & 15 & 1 & TRUE \\
+Mars & 3.7 & 24.7 & -65 & 2 & FALSE \\
+\bottomrule
+\end{longtable}
+
+Create vectors for each of the columns in the data table displayed above,
+according to the following data-type specifications:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{planet}: character vector
+\item
+  \texttt{gravity}: real (i.e.~double) vector (\(m/s^2\))
+\item
+  \texttt{daylength}: real (i.e.~double) vector (hours)
+\item
+  \texttt{temp}: integer vector (mean temperature in Celsius)
+\item
+  \texttt{moons}: integer vector (number of moons)
+\item
+  \texttt{haswater}: logical vector indicating whether a planet has known bodies of
+  liquid water on its surface
+\end{itemize}
+
+\textbf{2)} Refer to the vectors created in the previous question. Without running
+any R commands, try to guess the data type---as returned by \texttt{typeof()}---if you
+had to create a new vector by combining, using the function \texttt{c()}, the
+following:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  combine \texttt{planets} with \texttt{gravity}
+\item
+  combine \texttt{planets} with \texttt{temp}
+\item
+  combine \texttt{planets} with \texttt{haswater}
+\item
+  \texttt{gravity} with \texttt{daylength}
+\item
+  combine \texttt{gravity} with \texttt{temp}
+\item
+  combine \texttt{temp} with \texttt{moons}
+\item
+  combine \texttt{temp} with \texttt{haswater}
+\end{enumerate}
+
+\textbf{3)} What is the data type---as returned by \texttt{typeof()}---of each of the
+following vectors. Try guessing the data type without running any commands.
+
+\begin{itemize}
+\item
+  \texttt{x}: where \texttt{x\ \textless{}-\ c(TRUE,\ FALSE)}
+\item
+  \texttt{y}: where \texttt{y\ \textless{}-\ c(x,\ 10)}
+\item
+  \texttt{z}: where \texttt{z\ \textless{}-\ c(y,\ 10,\ "a")}
+\end{itemize}
+
+\textbf{4)} What is the data type---as returned by \texttt{typeof()}---of each of the
+following vectors. Try guessing the data type without running any commands.
+
+\begin{itemize}
+\item
+  \texttt{x}: where \texttt{x\ \textless{}-\ c(\textquotesingle{}1\textquotesingle{},\ \textquotesingle{}2\textquotesingle{},\ \textquotesingle{}3\textquotesingle{},\ \textquotesingle{}4\textquotesingle{})}
+\item
+  \texttt{y}: where \texttt{y\ \textless{}-\ (x\ ==\ 1)}
+\item
+  \texttt{z}: where \texttt{z\ \textless{}-\ y\ +\ 0}
+\item
+  \texttt{w}: where \texttt{w\ \textless{}-\ c(x,\ "5.5")}
+\item
+  \texttt{yz1}: where \texttt{yz1\ \textless{}-\ c(y,\ z,\ pi)}
+\end{itemize}
+
+\textbf{5)} How do you use the function \texttt{seq()} to create the following vector?
+
+\begin{verbatim}
+ [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0
+\end{verbatim}
+
+\textbf{6)} Write a command using the function \texttt{rep()} and the input vector \texttt{1:3} to
+create the following vector:
+
+\begin{verbatim}
+[1] 1 1 2 2 3 3
+\end{verbatim}
+
+\textbf{7)} Write a command using the function \texttt{rep()} and the input vector \texttt{1:3} to
+create the following vector:
+
+\begin{verbatim}
+[1] 1 2 3 1 2 3
+\end{verbatim}
+
+\textbf{8)} Suppose \texttt{y\ \textless{}-\ c(1,\ 4,\ 9,\ 16,\ 25)}. Write down the R command to return a
+vector \texttt{z}, in which each element of \texttt{z} is the square root of each element of
+the vector \texttt{y}.
+
+\textbf{9)} A student is trying to implement the following formula in R:
+
+\[e^{\frac{-(X - \mu)^2}{2 \sigma^2}}\]
+
+However, the student gets unexpected results when using the code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{(x }\SpecialCharTok{{-}}\NormalTok{ mu)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{/} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ sigma}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Explain what the problem is, and correct the code.
+
 \hypertarget{more-about-vectors}{%
 \chapter{More About Vectors}\label{more-about-vectors}}
 
@@ -2543,7 +2676,7 @@ In pictures, we have the following diagram:
 
 }
 
-\caption{Diagram depicting vectors of different lengths.}\label{fig:unnamed-chunk-76}
+\caption{Diagram depicting vectors of different lengths.}\label{fig:unnamed-chunk-77}
 \end{figure}
 
 How does R take care of this?
@@ -2820,6 +2953,92 @@ vectors are:
 \FunctionTok{rev}\NormalTok{(amounts3)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-3}{%
+\section{Exercises}\label{exercises-3}}
+
+\textbf{1)} Explain, with your own words, the concept of \emph{vectorization} a.k.a.
+vectorized operations.
+
+\textbf{2)} Write 2 different R commands to return the first five elements of a
+vector \texttt{x} (assume \texttt{x} has more than 5 elements).
+
+\textbf{3)} Which command will fail to return the first five elements of a vector
+\texttt{x}? (assume \texttt{x} has more than 5 elements).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \texttt{x{[}1:5{]}}
+\item
+  \texttt{x{[}c(1,2,3,4,5){]}}
+\item
+  \texttt{head(x,\ n\ =\ 5)}
+\item
+  \texttt{x{[}seq(1,\ 5){]}}
+\item
+  \texttt{x(1:5)}
+\end{enumerate}
+
+\textbf{4)} Consider the following code to obtain vectors \texttt{name} and \texttt{mpg} from the
+data set \texttt{mtcars} that contains data about 32 automobiles (1973--74 models).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vectors name and mpg}
+\NormalTok{name }\OtherTok{=} \FunctionTok{rownames}\NormalTok{(mtcars)}
+\NormalTok{mpg }\OtherTok{=}\NormalTok{ mtcars}\SpecialCharTok{$}\NormalTok{mpg}
+\end{Highlighting}
+\end{Shaded}
+
+Use \texttt{seq()}, and bracket notation, to subset (extract):
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  all the even elements in \texttt{name} (i.e.~extract positions 2, 4, 6, etc)
+\item
+  all the odd elements in \texttt{mpg} (i.e.~extract positions 1, 3, 5, etc)
+\item
+  all the elements in positions multiples of 5 (e.g.~extract positions 5, 10,
+  15, etc) of \texttt{mpg}
+\item
+  all the even elements in \texttt{name} but this time in reverse order; \emph{hint} the
+  \texttt{rev()} function is your friend.
+\end{enumerate}
+
+\textbf{5)} Consider the following code to obtain vectors \texttt{name}, \texttt{mpg} and \texttt{cyl}
+from the data set \texttt{mtcars} that contains data about 32 automobiles (1973--74
+models).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vectors name, mpg and cyl}
+\NormalTok{name }\OtherTok{=} \FunctionTok{rownames}\NormalTok{(mtcars)}
+\NormalTok{mpg }\OtherTok{=}\NormalTok{ mtcars}\SpecialCharTok{$}\NormalTok{mpg }\CommentTok{\# miles{-}per{-}gallon}
+\NormalTok{cyl }\OtherTok{=}\NormalTok{ mtcars}\SpecialCharTok{$}\NormalTok{cyl  }\CommentTok{\# number of cylinders}
+\end{Highlighting}
+\end{Shaded}
+
+Write commands, using bracket notation, to answer the parts listed below.
+You may need to use \texttt{is.na()}, \texttt{sum()}, \texttt{min()}, \texttt{max()}, \texttt{which()},
+\texttt{which.min()}, \texttt{which.max()}:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  name of cars that have a fuel consumption of less than 15 mpg
+\item
+  name of cars that have 6 cylinders
+\item
+  largest mpg value of all cars with 8 cylinders
+\item
+  name of car(s) with mpg equal to the median mpg
+\item
+  name of car(s) with mpg of at most 22, and at least 6 cylinders
+\end{enumerate}
 
 \hypertarget{factors}{%
 \chapter{Factors}\label{factors}}
@@ -3495,19 +3714,25 @@ behavior of \texttt{is.ordered()} on two factors:
 \hypertarget{arrays}{%
 \chapter{Matrices and Arrays}\label{arrays}}
 
-In this chapter we introduce R \texttt{arrays}, which are multidimensional
-data objects including 2-dimensional arrays better known as matrices, and
-N-dimensional arrays (generic arrays).
+In the previous three chapters, we discussed a number of ideas and concepts that basically have to do with vectors and their cousins factors. You can think of
+vectors and factors as one-dimensional objects. While many data sets can be
+handled through vectors and factors, there are occasions in which one dimension
+is not enough. The classic example for when one-dimensional objects are not
+enough involves working with data that fits better into a tabular structure
+consisting of a series of rows (one dimension) and columns (another dimension).
+
+In this chapter we introduce R \texttt{arrays}, which are multidimensional atomic
+objects including 2-dimensional arrays better known as matrices, and
+N-dimensional generic arrays.
 
 \hypertarget{motivation}{%
 \section{Motivation}\label{motivation}}
 
 Let us continue discussing the savings-investing scenario in which you deposit
-\$1000 into a savings account that pays you an annual interest rate of return
-of 2\%.
+\$1000 into a savings account that pays you an annual interest rate of 2\%.
 
-Assuming that you leave that money in the bank for several years, without
-changing the rate of return \(r\), you can use the Future Value (FV) formula to
+Assuming that you leave that money in the bank for several years, with a
+constant rate of return \(r\), you can use the Future Value (FV) formula to
 calculate how much money you'll have at the end of year \(t\):
 
 \[
@@ -3529,19 +3754,21 @@ where:
 \end{itemize}
 
 Here's some R code to obtain a vector \texttt{amounts} containing the amount of money
-that you would have at the end of every year during a 5 year period:
+that you would have from the beginning of time, and at the end of every year
+during a 5 year period:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# inputs}
 \NormalTok{deposit }\OtherTok{=} \DecValTok{1000}
 \NormalTok{rate }\OtherTok{=} \FloatTok{0.02}
-\NormalTok{years }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\NormalTok{years }\OtherTok{=} \DecValTok{0}\SpecialCharTok{:}\DecValTok{5}
 
 \CommentTok{\# future values}
 \NormalTok{amounts }\OtherTok{=}\NormalTok{ deposit }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rate)}\SpecialCharTok{\^{}}\NormalTok{years}
 \NormalTok{amounts}
-\CommentTok{\#\textgreater{} [1] 1020.000 1040.400 1061.208 1082.432 1104.081}
+\CommentTok{\#\textgreater{} [1] 1000.000 1020.000 1040.400 1061.208 1082.432}
+\CommentTok{\#\textgreater{} [6] 1104.081}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3570,46 +3797,25 @@ year & amount \\
 
 In other words, what if you are interested not in getting the set of future
 values in a vector, but instead you want them to be arranged in some sort of
-tabular object? How could you create a table in which the first column
-corresponds to the years and the second column corresponds to the future amounts?
-Well, let's find out.
+tabular object? How can you create a table in which the first column \texttt{year}
+corresponds to the years, and the second column \texttt{amount} corresponds to the
+future amounts? Well, let's find out.
 
-\hypertarget{tables-with-matrices}{%
-\section{Tables with Matrices}\label{tables-with-matrices}}
+\hypertarget{matrices}{%
+\section{Matrices}\label{matrices}}
 
-R provides two main ways to organize data in a tabular (i.e.~rectangular) object
+R provides two main ways to organize data in a tabular (i.e.~rectangular)
+object. One of them is a \texttt{matrix}---the topic of this chapter---and the other
+one is a \texttt{data.frame}---to be discussed in a subsequent chapter.
 
-\begin{itemize}
-\item
-  using an R \texttt{matrix}
-\item
-  using an R \texttt{data.frame}
-\end{itemize}
-
-Let's talk about the first one.
-
-\hypertarget{r-matrices}{%
-\subsection{R Matrices}\label{r-matrices}}
-
-\begin{itemize}
-\item
-  R matrices are rectangular arrays
-\item
-  While vectors are one-dimensional objects, matrices are \textbf{two-dimensional}
-  objects
-\item
-  Matrices are also \textbf{atomic} objects (all their elements must
-  be of the same type)
-\end{itemize}
-
-\begin{center}\includegraphics[width=0.6\linewidth]{images/objects/data-vector-matrix} \end{center}
-
-\hypertarget{column-binding-vectors}{%
-\subsubsection*{Column binding vectors}\label{column-binding-vectors}}
-\addcontentsline{toc}{subsubsection}{Column binding vectors}
+\hypertarget{creating-a-matrix-by-column-binding-vectors}{%
+\subsubsection*{Creating a matrix by column-binding vectors}\label{creating-a-matrix-by-column-binding-vectors}}
+\addcontentsline{toc}{subsubsection}{Creating a matrix by column-binding vectors}
 
 You can build a matrix by \textbf{column binding} vectors using the function
-\texttt{cbind()}:
+\texttt{cbind()}. In the code below we pass \texttt{years} and \texttt{amount} to the \texttt{cbind()}
+function, which returns a matrix having the tabular structure that we are
+looking for: \texttt{years} in the first column, and \texttt{amounts} in the second column.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3635,14 +3841,17 @@ You can build a matrix by \textbf{column binding} vectors using the function
 \end{Shaded}
 
 As you can tell, the use of \texttt{cbind()} is straightforward. All you have to do
-is indicate the name of the vectors, separating them with a comma. Each vector
-will become a column of the returned matrix.
+is pass the vectors, separating them with a comma. Each vector will become a
+column of the returned matrix.
 
-\hypertarget{row-binding-vectors}{%
-\subsubsection*{Row binding vectors}\label{row-binding-vectors}}
-\addcontentsline{toc}{subsubsection}{Row binding vectors}
+\hypertarget{creating-a-matrix-by-row-binding-vectors}{%
+\subsubsection*{Creating a matrix by row-binding vectors}\label{creating-a-matrix-by-row-binding-vectors}}
+\addcontentsline{toc}{subsubsection}{Creating a matrix by row-binding vectors}
 
-You can also build a matrix by \textbf{row binding} vectors.
+You can also build a matrix by \textbf{row binding} vectors. For instance, pretend
+for a minute that we are interested in obtaining a tabular object in which
+the first row corresponds to \texttt{years}, and the second row to \texttt{amounts}. To
+obtain this object we use \texttt{rbind()} as follows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3661,12 +3870,43 @@ The difference between \texttt{cbind()} and \texttt{rbind()} is that the latter 
 the given vectors on top of each other. That is, each vector will become a row
 of the returned matrix.
 
+\hypertarget{what-kind-of-object-is-a-matrix}{%
+\subsection{What kind of object is a matrix?}\label{what-kind-of-object-is-a-matrix}}
+
+In turns out that an R \texttt{matrix} is a special type of multi-dimensional atomic
+object called \texttt{array}. Both classes of objects, together with vectors and
+factors, form the triad of atomic objects. This is illustrated in the following
+diagram in terms of their number of dimensions.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/objects/obj-atomics} 
+
+}
+
+\caption{Triad of atomic data objects in R.}\label{fig:unnamed-chunk-104}
+\end{figure}
+
+Personally, I prefer to reserve the term \texttt{array} for three or more dimensional
+arrays. As you can tell from the above diagram, this is how I'm using this
+term in the book. However, you should always keep in mind that a \texttt{matrix} is an
+\texttt{array}. The other way around is not necessarily true: not all arrays are
+matrices.
+
 \hypertarget{creating-matrices-with-matrix}{%
 \section{\texorpdfstring{Creating matrices with \texttt{matrix()}}{Creating matrices with matrix()}}\label{creating-matrices-with-matrix}}
 
-More commonly, you use the function \texttt{matrix()} to create a matrix by providing
-an input vector, and defining the number of rows and columns
-(i.e.~the \emph{matrix dimensions}).
+The \texttt{cbind()} and \texttt{rbind()} functions provide a convenient way to create
+matrices from different input vectors. But the kind of matrices that you can
+create with them is limited if all you have is just one input vector.
+
+So, in addition to \texttt{cbind()} and \texttt{rbind()}, R comes with the function \texttt{matrix()}
+which is the workhorse function for creating matrices. Usually, you provide
+an input vector, and also the number of rows and columns (i.e.~the
+\emph{matrix dimensions}) that the returned matrix should have.
+
+Here is how to use \texttt{matrix()} to create the \texttt{savings} matrix that we are
+interested in obtaining:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3682,14 +3922,130 @@ an input vector, and defining the number of rows and columns
 \end{Highlighting}
 \end{Shaded}
 
-The input vector \texttt{c(years,\ amounts)} is arranged into 6 rows and 2
-columns.
+This is an interesting piece of code. Notice that \texttt{years} and \texttt{amounts} are
+combined into a single vector, which is the main input of \texttt{matrix()}. The two
+other arguments correspond to the matrix dimensions: \texttt{nrow\ =\ 6} tells R that
+we want to produce a matrix with 6 rows; \texttt{ncol\ =\ 2} indicates that we want the
+matrix to have 2 columns.
+
+\hypertarget{column-major-matrices}{%
+\subsection{Column-Major Matrices}\label{column-major-matrices}}
+
+When creating a matrix via the function \texttt{matrix()}, R takes into consideration
+three important aspects:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  the length of the input vector
+\item
+  the ``size'' of the matrix given by its number of rows and columns
+\item
+  whether the length of the input vector is a multiple or sub-multiple of the
+  size of the matrix
+\end{enumerate}
+
+In the current example, the input vector \texttt{c(years,\ amounts)} has 12 elements.
+In turn, the size of the desired matrix is given by the multiplication of the
+number of rows (2) times the number of columns (6), that is:
+
+\[
+\text{size of matrix} = 6 \times 2 = 12
+\]
+
+R then compares the length of the input against the size of the matrix. If
+these numbers are the same, like in this example, R proceeds to split the
+elements of the input vector into 2 sections or sub-vectors, each one
+containing 6 elements. Each of these sections will become a column of the
+output matrix.
+
+In other words, the vector \texttt{c(years,\ amounts)} is split into 2 sub-vectors:
+
+\begin{verbatim}
+# the first sub-vector is:
+0  1  2  3  4  5
+
+# the second sub-vector is:
+1000.000  1020.000  1040.400  1061.208  1082.432  1104.081
+\end{verbatim}
+
+The first sub-vector, which corresponds to \texttt{years}, becomes the first column.
+The second sub-vector, which corresponds to \texttt{amounts}, becomes the second
+column. In technical terms we say that R matrices are stored
+\textbf{column-major} because of the mechanism used by R to arrange the elements of
+an input vector in order to create a matrix.
+
+\hypertarget{mismatch-between-length-of-vector-and-size-of-matrix}{%
+\subsubsection*{Mismatch between length of vector and size of matrix}\label{mismatch-between-length-of-vector-and-size-of-matrix}}
+\addcontentsline{toc}{subsubsection}{Mismatch between length of vector and size of matrix}
+
+What about those cases in which the length of the input vector does not match
+the size of the desired matrix? For example, consider the following commands
+illustrating this type of situation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# examples in which length of input of vector}
+\CommentTok{\# doe snot match size of matrix}
+\NormalTok{m1 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+
+\NormalTok{m2 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+
+\NormalTok{m3 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+
+\NormalTok{m4 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} Warning in matrix(1:4, nrow = 3, ncol = 2): data}
+\CommentTok{\#\textgreater{} length [4] is not a sub{-}multiple or multiple of}
+\CommentTok{\#\textgreater{} the number of rows [3]}
+
+\NormalTok{m5 }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{} Warning in matrix(1:8, nrow = 2, ncol = 3): data}
+\CommentTok{\#\textgreater{} length [8] is not a sub{-}multiple or multiple of}
+\CommentTok{\#\textgreater{} the number of columns [3]}
+\end{Highlighting}
+\end{Shaded}
+
+In matrices \texttt{m1} and \texttt{m2} the input vector \texttt{1:3} is a sub-multiple of the size
+of the matrix 6.
+
+In matrix \texttt{m3} the input vector \texttt{1:12} is longer than the size of matrix: 6.
+Although the entire length of the vector, 12, is a multiple of the size 6.
+
+In matrices \texttt{m4} and \texttt{m5}, all the input vectors have lengths that are
+neither a multiple or sub-multiple of the size of the returned matrix.
+
+When the length of the input vector does not match the size of the desired
+matrix, R applies its recycling rules. Let's pay attention to \texttt{m1}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m1}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    1}
+\CommentTok{\#\textgreater{} [2,]    2    2}
+\CommentTok{\#\textgreater{} [3,]    3    3}
+\end{Highlighting}
+\end{Shaded}
+
+Note how the values of the input vector \texttt{1:3} are recycled to form the columns
+of \texttt{m1}. The values appear in the first column, but they also appear in the
+second column after being recycled.
+
+In contrast, matrix \texttt{m3} does not use all the elements in the input vector
+\texttt{1:12}. Instead, only the first six values are retained.
+
+As for the matrices \texttt{m4} and \texttt{m5}, they all have an input vector whose
+length is neither a multiple or sub-multiple of the size of the matrix. R will
+also apply its recycling rules, but it will also display a warning message
+letting us know that the length of the input vector is not a multiple or
+sub-multiple of either the number of rows or the number of columns.
 
 \hypertarget{giving-names-to-rows-and-columns}{%
-\subsubsection*{Giving names to rows and columns}\label{giving-names-to-rows-and-columns}}
-\addcontentsline{toc}{subsubsection}{Giving names to rows and columns}
+\subsection{Giving names to rows and columns}\label{giving-names-to-rows-and-columns}}
 
-Often, you may need to provide names for either rows and columns
+Often, you may need to provide names for either the rows and/or the columns.
+R comes with the functions \texttt{rownames()} and \texttt{colnames()} that can be used to
+assign names for the rows and columns, for example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3842,12 +4198,31 @@ Do you notice something funny with the matrix \texttt{investments}?
 
 As you can tell, all the values in \texttt{investments} are displayed being surrounded
 with double quotes. This indicates that all the values are of type \texttt{character}.
-Why?
 
-Recall that matrices are \textbf{atomic} objects. Therefore, all the values in a
-matrix must be of the same data type. In this example, because the first
-input vector to \texttt{cbind()} is a character vector, which dominates other data
-types, this will dictate the type of the produced matrix \texttt{investments}.
+Recall that matrices are \textbf{atomic} objects. Usually, you provide an input
+vector containing the elements to be arranged into a rectangular array with
+a certain number of rows and columns. Because vectors are atomic, this property
+is ``inherited'' to the returned matrix.
+
+It turns out that you can use other classes of data objects, not necessarily
+atomic, for creating a matrix. If the input object is non-atomic, R will
+coerce it into a vector, making the input an atomic object.
+
+So either way, whether you provide an atomic input or a non-atomic input,
+to any of the matrix-creation functions, R will always produce an atomic
+output. This is the reason why the below command produces a \texttt{character} matrix:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{investments }\OtherTok{=} \FunctionTok{cbind}\NormalTok{(}
+  \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"savings"}\NormalTok{, }\StringTok{"moneymkt"}\NormalTok{, }\StringTok{"certif"}\NormalTok{), }\AttributeTok{times =} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)),}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\DecValTok{0}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{0}\SpecialCharTok{:}\DecValTok{3}\NormalTok{), }
+  \FunctionTok{c}\NormalTok{(savings, moneymkt, certificate))}
+\end{Highlighting}
+\end{Shaded}
+
+The three input vectors are coerced into a single vector of \texttt{character} data
+type, causing the \texttt{investments} matrix to be of type \texttt{character}.
 
 \hypertarget{lists}{%
 \chapter{Lists}\label{lists}}
@@ -3910,7 +4285,7 @@ list with the following conceptual diagram.
 
 }
 
-\caption{A list containing three unnamed elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-112}
+\caption{A list containing three unnamed elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-118}
 \end{figure}
 
 Our intention with the depicted list as a set of discontinuous cells is to
@@ -3971,7 +4346,7 @@ The conceptual diagram in this case could look like this:
 
 }
 
-\caption{A list with named elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-115}
+\caption{A list with named elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-121}
 \end{figure}
 
 As we just said, the elements of a list can be any kind of R object. For
@@ -4042,7 +4417,7 @@ double brackets (e.g.~\texttt{lis{[}{[}1{]}{]}}).
 
 }
 
-\caption{Bracket notation with lists}\label{fig:unnamed-chunk-118}
+\caption{Bracket notation with lists}\label{fig:unnamed-chunk-124}
 \end{figure}
 
 \hypertarget{single-brackets}{%
@@ -4079,7 +4454,7 @@ a vector, but this vector is still \emph{inside} its ``box''.
 
 }
 
-\caption{Use single brackets to select an element}\label{fig:unnamed-chunk-120}
+\caption{Use single brackets to select an element}\label{fig:unnamed-chunk-126}
 \end{figure}
 
 \hypertarget{double-brackets}{%
@@ -4121,7 +4496,7 @@ double brackets followed by single brackets
 
 }
 
-\caption{Use double brackets to extract an element}\label{fig:unnamed-chunk-123}
+\caption{Use double brackets to extract an element}\label{fig:unnamed-chunk-129}
 \end{figure}
 
 \hypertarget{dollar-signs}{%
@@ -4136,7 +4511,7 @@ extracting \textbf{named elements} using the dollar sign \textbf{\texttt{\$}}
 
 }
 
-\caption{Dollar notation with lists}\label{fig:unnamed-chunk-124}
+\caption{Dollar notation with lists}\label{fig:unnamed-chunk-130}
 \end{figure}
 
 Let's use the named version of \texttt{lis}:
@@ -4278,8 +4653,8 @@ a \texttt{NULL} value, but this time using dollar notation:
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{exercises-2}{%
-\section{Exercises}\label{exercises-2}}
+\hypertarget{exercises-4}{%
+\section{Exercises}\label{exercises-4}}
 
 \textbf{1)} How would you create a list with your first name, middle name, and last
 name? For example, something like:
@@ -4432,8 +4807,10 @@ $gpa
 [1] 4
 
 $major_minor
-             major1              major2               minor 
-     "jedi studies"      "sith studies" "galactic policies" 
+             major1              major2 
+     "jedi studies"      "sith studies" 
+              minor 
+"galactic policies" 
 
 $grades
         course score
@@ -4460,7 +4837,7 @@ when such commands are executed:
 \end{enumerate}
 
 \hypertarget{dataframes}{%
-\chapter{R Data Frames}\label{dataframes}}
+\chapter{Data Frames}\label{dataframes}}
 
 The most common format/structure for a data set is a tabular format:
 with rows and columns (like a spreadsheet). When your data is in this shape,
@@ -4497,7 +4874,7 @@ that does not make much sense.
 
 }
 
-\caption{Abstract view of a data.frame}\label{fig:unnamed-chunk-137}
+\caption{Abstract view of a data.frame}\label{fig:unnamed-chunk-143}
 \end{figure}
 
 From the data manipulation point of view, data frames behave like a hybrid
@@ -4597,26 +4974,31 @@ Here's a list of useful functions to inspect a data frame:
 
 On a technical side, we should mention that a data frame is a list with special
 attributes: an attribute \texttt{names} for column names, an attribute
-\texttt{row.names} for column names, and of course its attribute \texttt{class}:
+\texttt{row.names} for row names, and of course its attribute \texttt{class}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{attributes}\NormalTok{(mtcars)}
 \CommentTok{\#\textgreater{} $names}
-\CommentTok{\#\textgreater{}  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"}
-\CommentTok{\#\textgreater{} [11] "carb"}
+\CommentTok{\#\textgreater{}  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"  }
+\CommentTok{\#\textgreater{}  [7] "qsec" "vs"   "am"   "gear" "carb"}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $row.names}
-\CommentTok{\#\textgreater{}  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         }
-\CommentTok{\#\textgreater{}  [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            }
-\CommentTok{\#\textgreater{}  [7] "Duster 360"          "Merc 240D"           "Merc 230"           }
-\CommentTok{\#\textgreater{} [10] "Merc 280"            "Merc 280C"           "Merc 450SE"         }
-\CommentTok{\#\textgreater{} [13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" }
-\CommentTok{\#\textgreater{} [16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           }
-\CommentTok{\#\textgreater{} [19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      }
-\CommentTok{\#\textgreater{} [22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         }
-\CommentTok{\#\textgreater{} [25] "Pontiac Firebird"    "Fiat X1{-}9"           "Porsche 914{-}2"      }
-\CommentTok{\#\textgreater{} [28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       }
+\CommentTok{\#\textgreater{}  [1] "Mazda RX4"           "Mazda RX4 Wag"      }
+\CommentTok{\#\textgreater{}  [3] "Datsun 710"          "Hornet 4 Drive"     }
+\CommentTok{\#\textgreater{}  [5] "Hornet Sportabout"   "Valiant"            }
+\CommentTok{\#\textgreater{}  [7] "Duster 360"          "Merc 240D"          }
+\CommentTok{\#\textgreater{}  [9] "Merc 230"            "Merc 280"           }
+\CommentTok{\#\textgreater{} [11] "Merc 280C"           "Merc 450SE"         }
+\CommentTok{\#\textgreater{} [13] "Merc 450SL"          "Merc 450SLC"        }
+\CommentTok{\#\textgreater{} [15] "Cadillac Fleetwood"  "Lincoln Continental"}
+\CommentTok{\#\textgreater{} [17] "Chrysler Imperial"   "Fiat 128"           }
+\CommentTok{\#\textgreater{} [19] "Honda Civic"         "Toyota Corolla"     }
+\CommentTok{\#\textgreater{} [21] "Toyota Corona"       "Dodge Challenger"   }
+\CommentTok{\#\textgreater{} [23] "AMC Javelin"         "Camaro Z28"         }
+\CommentTok{\#\textgreater{} [25] "Pontiac Firebird"    "Fiat X1{-}9"          }
+\CommentTok{\#\textgreater{} [27] "Porsche 914{-}2"       "Lotus Europa"       }
+\CommentTok{\#\textgreater{} [29] "Ford Pantera L"      "Ferrari Dino"       }
 \CommentTok{\#\textgreater{} [31] "Maserati Bora"       "Volvo 142E"         }
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $class}
@@ -4685,8 +5067,9 @@ Remember that a \texttt{data.frame} is nothing more than a \texttt{list}. So as 
 elements in the list (vectors or factors) are of the same length, we can simply
 convert the list into a data frame.
 
-By default, \texttt{data.frame()} converts character vectors into factors. You can
-check that by examining the structure of the data frame with \texttt{str()}:
+Keep in mind that in old versions of R (3.1.0 or older), \texttt{data.frame()} used to
+convert character vectors into factors. You can always check the data type of
+each column in a data frame with \texttt{str()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4796,7 +5179,7 @@ working with data frames in this form: \texttt{dat{[}\ ,\ {]}}.
 
 }
 
-\caption{Bracket notation in data frames}\label{fig:unnamed-chunk-144}
+\caption{Bracket notation in data frames}\label{fig:unnamed-chunk-150}
 \end{figure}
 
 In other words, you have to specify values inside the
@@ -4812,7 +5195,7 @@ brackets for the 1st index, and the 2nd index: \texttt{dat{[}index1,\ index2{]}}
 
 }
 
-\caption{Several ways to select cells}\label{fig:unnamed-chunk-145}
+\caption{Several ways to select cells}\label{fig:unnamed-chunk-151}
 \end{figure}
 
 \begin{Shaded}
@@ -4842,7 +5225,7 @@ numeric indices:
 
 }
 
-\caption{Several ways to exclude cells}\label{fig:unnamed-chunk-147}
+\caption{Several ways to exclude cells}\label{fig:unnamed-chunk-153}
 \end{figure}
 
 \hypertarget{selecting-rows}{%
@@ -4855,7 +5238,7 @@ numeric indices:
 
 }
 
-\caption{Several ways to select rows}\label{fig:unnamed-chunk-148}
+\caption{Several ways to select rows}\label{fig:unnamed-chunk-154}
 \end{figure}
 
 If no value is specified for \texttt{index1} then all rows are included. Likewise,
@@ -4881,7 +5264,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to exclude rows}\label{fig:unnamed-chunk-150}
+\caption{Several ways to exclude rows}\label{fig:unnamed-chunk-156}
 \end{figure}
 
 \hypertarget{selecting-columns}{%
@@ -4894,7 +5277,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to select columns}\label{fig:unnamed-chunk-151}
+\caption{Several ways to select columns}\label{fig:unnamed-chunk-157}
 \end{figure}
 
 \begin{Shaded}
@@ -4918,7 +5301,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to exclude columns}\label{fig:unnamed-chunk-153}
+\caption{Several ways to exclude columns}\label{fig:unnamed-chunk-159}
 \end{figure}
 
 \hypertarget{more-options-to-access-columns}{%
@@ -4931,7 +5314,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Other options to select columns of a data frame}\label{fig:unnamed-chunk-154}
+\caption{Other options to select columns of a data frame}\label{fig:unnamed-chunk-160}
 \end{figure}
 
 The dollar sign also works for selecting a column of a data frame
@@ -4940,9 +5323,10 @@ using its name
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{mtcars}\SpecialCharTok{$}\NormalTok{mpg}
-\CommentTok{\#\textgreater{}  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4}
-\CommentTok{\#\textgreater{} [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7}
-\CommentTok{\#\textgreater{} [31] 15.0 21.4}
+\CommentTok{\#\textgreater{}  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8}
+\CommentTok{\#\textgreater{} [10] 19.2 17.8 16.4 17.3 15.2 10.4 10.4 14.7 32.4}
+\CommentTok{\#\textgreater{} [19] 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0}
+\CommentTok{\#\textgreater{} [28] 30.4 15.8 19.7 15.0 21.4}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5164,8 +5548,8 @@ to the data frame:
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{exercises-3}{%
-\section{Exercises}\label{exercises-3}}
+\hypertarget{exercises-5}{%
+\section{Exercises}\label{exercises-5}}
 
 \textbf{1)} Consider the following data frame \texttt{df}:
 
@@ -5248,12 +5632,18 @@ to the data frame:
 \textbf{2)} Consider the following data frame \texttt{dat}
 
 \begin{verbatim}
-       first        last   gender      title   gpa
-1        Jon        Snow     male       lord   2.8
-2       Arya       Stark   female   princess   3.5
-3     Tyrion   Lannister     male     master   2.9
-4   Daenerys   Targaryen   female   khaleesi   3.7
-5       Yara     Greyjoy   female   princess    NA
+       first        last   gender      title
+1        Jon        Snow     male       lord
+2       Arya       Stark   female   princess
+3     Tyrion   Lannister     male     master
+4   Daenerys   Targaryen   female   khaleesi
+5       Yara     Greyjoy   female   princess
+    gpa
+1   2.8
+2   3.5
+3   2.9
+4   3.7
+5    NA
 \end{verbatim}
 
 One of your friends wrote the following R code. Help your friend find all the
@@ -5754,8 +6144,8 @@ a long way to cover about the basics and not so basics of functions.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{exercises-4}{%
-\section{Exercises}\label{exercises-4}}
+\hypertarget{exercises-6}{%
+\section{Exercises}\label{exercises-6}}
 
 \textbf{1)} In the second part of the book we have talked about the Future Value (FV),
 and we have extensively used its simplest version of the FV formula. Let's now
@@ -6124,7 +6514,7 @@ diagram below, with a generic rate of return:
 
 }
 
-\caption{Timeline of an ordinary annuity: contributions made at the end of each year.}\label{fig:unnamed-chunk-204}
+\caption{Timeline of an ordinary annuity: contributions made at the end of each year.}\label{fig:unnamed-chunk-210}
 \end{figure}
 
 The balance in your savings account at the end of year 3 is given by:
@@ -6205,7 +6595,7 @@ generic rate of return:
 
 }
 
-\caption{Timeline of an annuity due: contributions made at the beginning of each year.}\label{fig:unnamed-chunk-207}
+\caption{Timeline of an annuity due: contributions made at the beginning of each year.}\label{fig:unnamed-chunk-213}
 \end{figure}
 
 The balance in your savings account at the end of year 3 is given by:
@@ -6713,7 +7103,7 @@ but the formula can be easily generalized to any number of years.
 
 }
 
-\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-227}
+\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-233}
 \end{figure}
 
 The starting point is the following equation:
@@ -6752,6 +7142,727 @@ Therefore:
 \[
 \text{FV} = \text{C} + \text{C} (1 + r) + \text{C} (1 + r)^2 = \text{C} \left[ \frac{(1+r)^3 -1}{r} \right]
 \]
+
+\hypertarget{for-loop}{%
+\chapter{Iterations: For Loop}\label{for-loop}}
+
+In the previous chapter you got introduced to conditional statements, better
+known as if-else statements. In this chapter we introduce another common
+programming structure known as \textbf{iterations}. Simply put \emph{iterative procedures}
+commonly referred to as \textbf{loops}, allow you to repeat a series of common steps.
+
+\hypertarget{motivation-3}{%
+\section{Motivation}\label{motivation-3}}
+
+Say you decide to invest \$1000 in an investment fund that tracks the
+performance of the total US stock market. This type of financial asset, commonly
+referred to as a \emph{total stock fund} is a mutual fund or an exchange traded fund
+(ETF) that holds every stock in a selected market. The purpose of a total stock
+fund is to replicate the broad market by holding the stock of every security
+that trades on a certain exchange. From the investing point of view, these funds
+are ideal for investors who want exposure to the overall equity market at a
+very low cost.
+
+Examples of such funds are:
+
+\begin{itemize}
+\item
+  VTSAX: Vanguard Total Stock Market Index Fund
+\item
+  FSKAX: Fidelity Total Stock Market Index Fund
+\item
+  SWTSX: Schwab Total Stock Market Index Fund
+\end{itemize}
+
+As we were saying, you decide to invest \$1000 in a total stock market index
+fund (today).
+
+\begin{quote}
+How much money would you \textbf{expect} to get in 10 years?
+\end{quote}
+
+If we knew the annual rate of return, we could use the future value formula
+(of compound interest)
+
+\[
+\text{FV} = \$1000 \times (1 + r)^{10}
+\]
+
+The problem, or the ``interesting part''---depending on how you want to see
+it---is that \emph{total stock funds} don't have a constant annual rate of
+return. Why not? Well, because the stock market is \textbf{volatile}, permanently
+moving up and down every day, with prices of stocks fluctuating every minute.
+
+Despite the variability in prices of stocks, it turns out that in most (calendar)
+years, the annual return is positive. But not always. There are some years in
+which the annual return can be negative.
+
+\hypertarget{us-stock-market-historical-annual-returns}{%
+\subsection{US Stock Market Historical Annual Returns}\label{us-stock-market-historical-annual-returns}}
+
+We can look at historical data to get an idea of the average annual return
+for investing in the total US stock market. One interesting resource that gives
+a nice perspective of the historical distribution of US stock market returns
+comes from amateur investor Joachim Klement
+
+\url{https://klementoninvesting.substack.com/p/the-distribution-of-stock-market}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{images/iterations/annual-returns-klement-investment} 
+
+}
+
+\caption{Distribution of Annual Returns (by Joachim Klement)}\label{fig:unnamed-chunk-235}
+\end{figure}
+
+As you can tell, on an annual scale, market returns are basically random and
+follow the normal distribution fairly well.
+
+So let us assume that annual rates of return for the total US Stock Market
+have a \textbf{Normal distribution} with mean \(\mu = 10\%\) and standard deviation
+\(\sigma = 18\%\).
+
+Mathematically, we can write something like this:
+
+\[
+r_t \sim \mathcal{N}(\mu = 0.10, \ \sigma = 0.18)
+\]
+
+where \(r_t\) represents the annual rate of return in any given year \(t\).
+
+This means that, on average, we expect 10\% return every year. But a return
+between 28\% = 10\% + 18\%, and -2\% = 10\% - 18\%, it's also a perfectly reasonable
+return in every year.
+
+In other words, there is nothing surprising if you see years where the return
+is any value between -2\% and 28\%.
+
+Admittedly, we don't know what's going to happen with the US Stock Market in
+the next 10 years. But we can use our knowledge of the long-term regular
+behavior of the market to guesstimate an expected return in 10 years. If we
+assume that the (average) annual return for investing in a total market index
+fund is 10\%, then we could estimate the expected future value as:
+
+\[
+\textsf{expected } \text{FV} = \$ 1000 \times (1 + 0.10)^{10} = \$ 2593.742
+\]
+
+Keep in mind that one of the limitations behind this assumption is that we are
+not taking into account the volatility of the stock market. This is illustrated
+in the following figure that compares a theoretical scenario with constant 10\%
+annual returns, versus a plausible scenario with variable returns in each year.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{images/iterations/timeline-investment-stock-market1} 
+
+}
+
+\caption{Rates of Return: Fixed -vs- Variable}\label{fig:unnamed-chunk-236}
+\end{figure}
+
+\hypertarget{simulating-normal-random-numbers}{%
+\section{Simulating Normal Random Numbers}\label{simulating-normal-random-numbers}}
+
+Because the stock market is volatile, we need a way to simulate random rates
+of return. The good news is that we can use \texttt{rnorm()} to simulate generating
+numbers from a Normal distribution. By default, \texttt{rnorm()} generates a random
+number from a standard normal distribution (mean = 0, standard deviation = 1)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{345}\NormalTok{)  }\CommentTok{\# for replication purposes}
+\FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{1}\NormalTok{, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] {-}0.7849082}
+\end{Highlighting}
+\end{Shaded}
+
+Here's how to simulate three rates from a Normal distribution with mean
+\(\mu = 0.10\) and \(\sigma = 0.18\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rates }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{3}\NormalTok{, }\AttributeTok{mean =} \FloatTok{0.10}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.18}\NormalTok{)}
+\NormalTok{rates}
+\CommentTok{\#\textgreater{} [1] 0.04968742 0.07093758 0.04769262}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{investing-in-the-us-stock-market-during-three-years}{%
+\subsection{Investing in the US stock market during three years}\label{investing-in-the-us-stock-market-during-three-years}}
+
+To understand what could happen with your investment, let's focus on a three
+year horizon. For each yar, we need a random rate of return \(r_t\) (\(t\) = 1, 2, 3)
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/iterations/timeline-investment-stock-market2} 
+
+}
+
+\caption{Random rates of return following a normal distribution}\label{fig:unnamed-chunk-239}
+\end{figure}
+
+As we mentioned, we can use \texttt{rnorm()} to generate three random rates of return
+from a normal distribution with \(\mu = 0.10\) and \(\sigma = 0.18\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# inputs, consider investing during three years}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{345}\NormalTok{)   }\CommentTok{\# for replication purposes}
+\NormalTok{amount0 }\OtherTok{=} \DecValTok{1000}
+\NormalTok{rates }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{3}\NormalTok{, }\AttributeTok{mean =} \FloatTok{0.10}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.18}\NormalTok{)}
+\NormalTok{rates}
+\CommentTok{\#\textgreater{} [1] {-}0.04128347  0.04968742  0.07093758}
+\end{Highlighting}
+\end{Shaded}
+
+With these rates, we can then calculate the amounts in the investment fund that
+we could expect to have at the end of each year:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# output: balance amount at the end of each year}
+\NormalTok{amount1 }\OtherTok{=}\NormalTok{ amount0 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{1}\NormalTok{])}
+\NormalTok{amount2 }\OtherTok{=}\NormalTok{ amount1 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{2}\NormalTok{])}
+\NormalTok{amount3 }\OtherTok{=}\NormalTok{ amount2 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{3}\NormalTok{])}
+
+\FunctionTok{c}\NormalTok{(amount1, amount2, amount3)}
+\CommentTok{\#\textgreater{} [1]  958.7165 1006.3527 1077.7409}
+\end{Highlighting}
+\end{Shaded}
+
+Notice the common structure in the commands used to obtain an \texttt{amount} value.
+Moreover, notice that we are \textbf{repeating} the same operation three times.
+At this point you may ask yourself whether we could vectorize this code. Let's
+see if we can:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vectorized attempt 1}
+\NormalTok{amounts }\OtherTok{=}\NormalTok{ amount0 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates)}
+\NormalTok{amounts}
+\CommentTok{\#\textgreater{} [1]  958.7165 1049.6874 1070.9376}
+\end{Highlighting}
+\end{Shaded}
+
+If we use the vector \texttt{rates}, we obtain some \texttt{amounts} but these are not the
+values that we are looking for.
+
+What if we vectorize both \texttt{rates} and years \texttt{1:3}?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# vectorized attempt 2}
+\NormalTok{amounts }\OtherTok{=}\NormalTok{ amount0 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
+\NormalTok{amounts}
+\CommentTok{\#\textgreater{} [1]  958.7165 1101.8437 1228.2661}
+\end{Highlighting}
+\end{Shaded}
+
+Once again, we obtain some \texttt{amounts} but these are not the values that we are
+looking for.
+
+Can you see why the above vectorized code options fail to capture the correct
+compounding return?
+
+\hypertarget{investing-during-ten-years}{%
+\subsection{Investing during ten years}\label{investing-during-ten-years}}
+
+Let's expand our time horizon from three to ten years, generating random
+rates of return for each year, and calculating a simulated amount year by
+year:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{345}\NormalTok{)   }\CommentTok{\# for replication purposes}
+\NormalTok{amount0 }\OtherTok{=} \DecValTok{1000}
+\NormalTok{rates }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{mean =} \FloatTok{0.10}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.18}\NormalTok{)}
+
+\NormalTok{amount1 }\OtherTok{=}\NormalTok{ amount0 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{1}\NormalTok{])}
+\NormalTok{amount2 }\OtherTok{=}\NormalTok{ amount1 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{2}\NormalTok{])}
+\NormalTok{amount3 }\OtherTok{=}\NormalTok{ amount2 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{3}\NormalTok{])}
+\NormalTok{amount4 }\OtherTok{=}\NormalTok{ amount3 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{4}\NormalTok{])}
+\NormalTok{amount5 }\OtherTok{=}\NormalTok{ amount4 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{5}\NormalTok{])}
+\NormalTok{amount6 }\OtherTok{=}\NormalTok{ amount5 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{6}\NormalTok{])}
+\NormalTok{amount7 }\OtherTok{=}\NormalTok{ amount6 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{7}\NormalTok{])}
+\NormalTok{amount8 }\OtherTok{=}\NormalTok{ amount7 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{8}\NormalTok{])}
+\NormalTok{amount9 }\OtherTok{=}\NormalTok{ amount8 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{8}\NormalTok{])}
+\NormalTok{amount10 }\OtherTok{=}\NormalTok{ amount9 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+Note: we know that this is too repetitive, time consuming, boring and
+error prone. Can you spot the error?
+
+\hypertarget{iterations-to-the-rescue}{%
+\section{Iterations to the Rescue}\label{iterations-to-the-rescue}}
+
+Let's first write some ``inefficient'' code in order to understand what is
+going on at each step.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{amount1 }\OtherTok{=}\NormalTok{ amount0 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{1}\NormalTok{])}
+\NormalTok{amount2 }\OtherTok{=}\NormalTok{ amount1 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{2}\NormalTok{])}
+\NormalTok{amount3 }\OtherTok{=}\NormalTok{ amount2 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{3}\NormalTok{])}
+\NormalTok{amount4 }\OtherTok{=}\NormalTok{ amount3 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{4}\NormalTok{])}
+\CommentTok{\# etc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+What do these commands have in common?
+\end{quote}
+
+They all take an input amount, that gets compounded for one year at a certain
+rate. The output amount at each step is used as the input for the next amount.
+
+Instead of calculating a single \texttt{amount} at each step, we can start with
+an almost ``empty'' vector \texttt{amounts()}. This vector will contain the initial
+amount, as well as the amounts at the end of every year.
+
+\bigskip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{345}\NormalTok{)    }\CommentTok{\# for replication purposes}
+\NormalTok{amount0 }\OtherTok{=} \DecValTok{1000}
+\NormalTok{rates }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{mean =} \FloatTok{0.10}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.18}\NormalTok{)}
+
+\CommentTok{\# output vector (to be populated)}
+\NormalTok{amounts }\OtherTok{=} \FunctionTok{c}\NormalTok{(amount0, }\FunctionTok{double}\NormalTok{(}\AttributeTok{length =} \DecValTok{10}\NormalTok{))}
+
+\CommentTok{\# repetitive commands}
+\NormalTok{amounts[}\DecValTok{2}\NormalTok{] }\OtherTok{=}\NormalTok{ amounts[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{1}\NormalTok{])}
+\NormalTok{amounts[}\DecValTok{3}\NormalTok{] }\OtherTok{=}\NormalTok{ amounts[}\DecValTok{2}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{2}\NormalTok{])}
+\CommentTok{\# etc ...}
+\NormalTok{amounts[}\DecValTok{10}\NormalTok{] }\OtherTok{=}\NormalTok{ amounts[}\DecValTok{9}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{9}\NormalTok{])}
+\NormalTok{amounts[}\DecValTok{11}\NormalTok{] }\OtherTok{=}\NormalTok{ amounts[}\DecValTok{10}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[}\DecValTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+From the commands in the previous code chunk, notice that at step \texttt{s}, to
+compute the next value \texttt{amounts{[}s+1{]}}, we do this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{amounts[s}\SpecialCharTok{+}\DecValTok{1}\NormalTok{] }\OtherTok{=}\NormalTok{ amounts[s] }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[s])}
+\end{Highlighting}
+\end{Shaded}
+
+This operation is repeated 10 times (one for each year). At the end of the
+computations, the vector \texttt{amounts} contains the initial investment, and the 10
+values resulting from the compound return year-by-year.
+
+\hypertarget{for-loop-example}{%
+\section{For Loop Example}\label{for-loop-example}}
+
+One programming structure that allows us to write code for carrying out
+these repetitive steps is a \textbf{for} loop, which is one of the iterative
+\emph{control flow} structures in every programming language.
+
+In R, a \texttt{for()} loop has the following syntax
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (s }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) \{}
+\NormalTok{  amounts[s}\SpecialCharTok{+}\DecValTok{1}\NormalTok{] }\OtherTok{=}\NormalTok{ amounts[s] }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[s])}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  You use the \texttt{for} statement
+\item
+  Inside parenthesis, you specify three ingredients separated by blank spaces:
+
+  \begin{itemize}
+  \item
+    an auxiliary iterator, e.g.~\texttt{s}
+  \item
+    the keyword \texttt{in}
+  \item
+    a vector to iterate through, e.g.~\texttt{1:10}
+  \end{itemize}
+\item
+  The code for the repetitive steps gets wrapped inside braces
+\end{itemize}
+
+Let's take a look at the entire piece of code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{345}\NormalTok{)    }\CommentTok{\# for replication purposes}
+\NormalTok{amount0 }\OtherTok{=} \DecValTok{1000}
+\NormalTok{rates }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{10}\NormalTok{, }\AttributeTok{mean =} \FloatTok{0.10}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.18}\NormalTok{)}
+
+\CommentTok{\# output vector (to be populated)}
+\NormalTok{amounts }\OtherTok{=} \FunctionTok{c}\NormalTok{(amount0, }\FunctionTok{double}\NormalTok{(}\AttributeTok{length =} \DecValTok{10}\NormalTok{))}
+
+\CommentTok{\# for loop}
+\ControlFlowTok{for}\NormalTok{ (s }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) \{}
+\NormalTok{  amounts[s}\SpecialCharTok{+}\DecValTok{1}\NormalTok{] }\OtherTok{=}\NormalTok{ amounts[s] }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ rates[s])}
+\NormalTok{\}}
+
+\NormalTok{amounts}
+\CommentTok{\#\textgreater{}  [1] 1000.0000  958.7165 1006.3527 1077.7409 1129.1412}
+\CommentTok{\#\textgreater{}  [6] 1228.3298 1211.0918 1129.9604 1590.9151 2223.8740}
+\CommentTok{\#\textgreater{} [11] 3170.9926}
+\end{Highlighting}
+\end{Shaded}
+
+There are a couple of important things worth noticing:
+
+\begin{itemize}
+\item
+  You don't need to declare or create the auxiliary iterator outside the loop
+\item
+  R will automatically handle the auxiliary iterator (no need to explicitly
+  increase its value)
+\item
+  The length of the ``iterations vector'' determines the number of times the code
+  inside the loop has to be repeated
+\item
+  You use \textbf{for} loops when you know how many times a series of calculations
+  need to be repeated.
+\end{itemize}
+
+Having obtained the vector of \texttt{amounts}, we can then plot a timeline to
+visualize the behavior of the simulated returns against the hypothetical
+investment with a constant rate of return:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# random annual rates of return (blue)}
+\FunctionTok{plot}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, amounts, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"years"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"amount (dollars)"}\NormalTok{, }\AttributeTok{las =} \DecValTok{1}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, amounts, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{)}
+
+\CommentTok{\# assuming constant 10\% annual return (orange)}
+\FunctionTok{lines}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, amount0 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\FloatTok{+0.10}\NormalTok{)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{10}\NormalTok{), }\AttributeTok{col =} \StringTok{"orange"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, amount0 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\FloatTok{+0.10}\NormalTok{)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{10}\NormalTok{), }\AttributeTok{col =} \StringTok{"orange"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{rcoding_files/figure-latex/investing10-1} \end{center}
+
+\hypertarget{about-for-loops}{%
+\section{About For Loops}\label{about-for-loops}}
+
+To describe more details about \texttt{for} loops in R, let's consider a super simple
+example. Say you have a vector \texttt{vec\ \textless{}-\ c(3,\ 1,\ 4)}, and suppose you want to add
+1 to every element of \texttt{vec}. You know that this can easily be achieved using
+vectorized code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{) }
+
+\NormalTok{vec }\SpecialCharTok{+} \DecValTok{1}
+\CommentTok{\#\textgreater{} [1] 4 2 5}
+\end{Highlighting}
+\end{Shaded}
+
+In order to learn about loops, I'm going to ask you to forget about the notion
+of vectorized code in R. That is, pretend that R does not have vectorized functions.
+
+Think about what you would need to do in order to add 1 to the elements
+in \texttt{vec}. This addition would involve taking the first element in \texttt{vec} and
+add 1, then taking the second element in \texttt{vec} and add 1, and finally the third
+element in \texttt{vec} and add 1, something like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{vec[}\DecValTok{2}\NormalTok{] }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{vec[}\DecValTok{3}\NormalTok{] }\SpecialCharTok{+} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+The code above does the job. From a purely arithmetic standpoint, the three
+lines of code reflect the operation that you would need to carry out to add
+1 to all the elements in \texttt{vec}.
+
+From a programming point of view, you are performing the same type of operation
+three times: selecting an element in \texttt{vec} and adding 1 to it. But there's
+a lot of (unnecessary) repetition.
+
+This is where loops come very handy. Here's how to use a \texttt{for\ ()} loop
+to add 1 to each element in \texttt{vec}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(vec[j] }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 4}
+\CommentTok{\#\textgreater{} [1] 2}
+\CommentTok{\#\textgreater{} [1] 5}
+\end{Highlighting}
+\end{Shaded}
+
+In the code above we are taking each \texttt{vec} element \texttt{vec{[}j{]}}, adding 1 to it,
+and printing the outcome with \texttt{print()} so you can visualize the additions
+at each iteration of the loop.
+
+What if you want to create a vector \texttt{vec2}, in which you store the values
+produced at each iteration of the loop? Here's one possibility:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{)  }\CommentTok{\# you can change these values}
+\NormalTok{vec2 }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FunctionTok{length}\NormalTok{(vec))  }\CommentTok{\# vector of zeros to be filled in the loop}
+
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{) \{}
+\NormalTok{  vec2[j] }\OtherTok{=}\NormalTok{ vec[j] }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{anatomy-of-a-for-loop}{%
+\subsection{Anatomy of a For Loop}\label{anatomy-of-a-for-loop}}
+
+The anatomy of a \texttt{for} loop is as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (iterator }\ControlFlowTok{in}\NormalTok{ times) \{ }
+\NormalTok{  do\_something}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{for()} takes an \textbf{iterator} variable and a vector of \textbf{times} to iterate
+through.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{value }\OtherTok{\textless{}{-}} \DecValTok{2}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{ }
+\NormalTok{  value }\OtherTok{\textless{}{-}}\NormalTok{ value }\SpecialCharTok{*} \DecValTok{2} 
+  \FunctionTok{print}\NormalTok{(value)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 4}
+\CommentTok{\#\textgreater{} [1] 8}
+\CommentTok{\#\textgreater{} [1] 16}
+\CommentTok{\#\textgreater{} [1] 32}
+\CommentTok{\#\textgreater{} [1] 64}
+\end{Highlighting}
+\end{Shaded}
+
+The vector of \emph{times} does NOT have to be a numeric vector; it can be \textbf{any}
+vector
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{value }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{times }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}one\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}two\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}three\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}four\textquotesingle{}}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ times) \{ }
+\NormalTok{  value }\OtherTok{\textless{}{-}}\NormalTok{ value }\SpecialCharTok{*} \DecValTok{2} 
+  \FunctionTok{print}\NormalTok{(value)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 4}
+\CommentTok{\#\textgreater{} [1] 8}
+\CommentTok{\#\textgreater{} [1] 16}
+\CommentTok{\#\textgreater{} [1] 32}
+\end{Highlighting}
+\end{Shaded}
+
+However, if the \emph{iterator} is used inside the loop in a numerical computation,
+then the vector of \emph{times} will almost always be a numeric vector:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{4321}\NormalTok{)}
+\NormalTok{numbers }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (h }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(numbers)) \{}
+  \ControlFlowTok{if}\NormalTok{ (numbers[h] }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{    value }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{numbers[h])}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    value }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(numbers[h])}
+\NormalTok{  \}}
+  \FunctionTok{print}\NormalTok{(value)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 0.6532667}
+\CommentTok{\#\textgreater{} [1] 0.4728761}
+\CommentTok{\#\textgreater{} [1] 0.8471168}
+\CommentTok{\#\textgreater{} [1] 0.9173035}
+\CommentTok{\#\textgreater{} [1] 0.3582698}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{for-loops-and-next-statement}{%
+\subsection{For Loops and Next statement}\label{for-loops-and-next-statement}}
+
+Sometimes we need to skip a loop iteration if a given condition is met, this
+can be done with the \texttt{next} statement
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (iterator }\ControlFlowTok{in}\NormalTok{ times) \{ }
+\NormalTok{  expr1}
+\NormalTok{  expr2}
+  \ControlFlowTok{if}\NormalTok{ (condition) \{}
+    \ControlFlowTok{next}
+\NormalTok{  \}}
+\NormalTok{  expr3}
+\NormalTok{  expr4}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{2}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+\NormalTok{  y }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ i}
+  \ControlFlowTok{if}\NormalTok{ (y }\SpecialCharTok{==} \DecValTok{8}\NormalTok{) \{}
+    \ControlFlowTok{next}
+\NormalTok{  \}}
+  \FunctionTok{print}\NormalTok{(y)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 2}
+\CommentTok{\#\textgreater{} [1] 4}
+\CommentTok{\#\textgreater{} [1] 6}
+\CommentTok{\#\textgreater{} [1] 10}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{for-loops-and-break-statement}{%
+\subsection{For Loops and Break statement}\label{for-loops-and-break-statement}}
+
+Sometimes we need to stop a loop from iterating if a given condition is met,
+this can be done with the \texttt{break} statement
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (iterator }\ControlFlowTok{in}\NormalTok{ times) \{ }
+\NormalTok{  expr1}
+\NormalTok{  expr2}
+  \ControlFlowTok{if}\NormalTok{ (stop\_condition) \{}
+    \ControlFlowTok{break}
+\NormalTok{  \}}
+\NormalTok{  expr3}
+\NormalTok{  expr4}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{2}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+\NormalTok{  y }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ i}
+  \ControlFlowTok{if}\NormalTok{ (y }\SpecialCharTok{==} \DecValTok{8}\NormalTok{) \{}
+    \ControlFlowTok{break}
+\NormalTok{  \}}
+  \FunctionTok{print}\NormalTok{(y)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 2}
+\CommentTok{\#\textgreater{} [1] 4}
+\CommentTok{\#\textgreater{} [1] 6}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{nested-loops}{%
+\subsection{Nested Loops}\label{nested-loops}}
+
+It is common to have nested loops
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (iterator1 }\ControlFlowTok{in}\NormalTok{ times1) \{ }
+  \ControlFlowTok{for}\NormalTok{ (iterator2 }\ControlFlowTok{in}\NormalTok{ times2) \{}
+\NormalTok{    expr1}
+\NormalTok{    expr2}
+\NormalTok{    ...}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{example-nested-loops}{%
+\subsubsection*{Example: Nested loops}\label{example-nested-loops}}
+\addcontentsline{toc}{subsubsection}{Example: Nested loops}
+
+Consider a matrix with 3 rows and 4 columns
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# some matrix}
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{4}\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4]}
+\CommentTok{\#\textgreater{} [1,]    1    4    7   10}
+\CommentTok{\#\textgreater{} [2,]    2    5    8   11}
+\CommentTok{\#\textgreater{} [3,]    3    6    9   12}
+\end{Highlighting}
+\end{Shaded}
+
+Suppose you want to transform those values less than 6 into their reciprocals
+(that is, dividing them by 1). You can use a pair of embedded loops: one to
+traverse the rows of the matrix, the other one to traverse the columns of the
+matrix:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# reciprocal of values less than 6}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(A)) \{ }
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(A)) \{}
+    \ControlFlowTok{if}\NormalTok{ (A[i,j] }\SpecialCharTok{\textless{}} \DecValTok{6}\NormalTok{) A[i,j] }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{/}\NormalTok{ A[i,j] }
+\NormalTok{  \}}
+\NormalTok{\}}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}           [,1] [,2] [,3] [,4]}
+\CommentTok{\#\textgreater{} [1,] 1.0000000 0.25    7   10}
+\CommentTok{\#\textgreater{} [2,] 0.5000000 0.20    8   11}
+\CommentTok{\#\textgreater{} [3,] 0.3333333 6.00    9   12}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{about-for-loops-and-vectorized-computations}{%
+\subsection{\texorpdfstring{About \texttt{for} Loops and Vectorized Computations}{About for Loops and Vectorized Computations}}\label{about-for-loops-and-vectorized-computations}}
+
+\begin{itemize}
+\item
+  R loops have a bad reputation for being slow.
+\item
+  Experienced users will tell you: ``tend to avoid \texttt{for} loops in R'' (me included).
+\item
+  It is not really that the loops are slow; the slowness has more to do with
+  the way R handles the \emph{boxing and unboxing} of data objects, which may be a bit
+  inefficient.
+\item
+  R provides a family of functions that are usually more efficient than loops
+  (i.e.~\texttt{apply()} functions).
+\item
+  If you have NO programming experience, you should ignore any advice about
+  avoiding loops in R.
+\item
+  You should learn how to write loops, and understand how they work; every
+  programming language provides some type of loop structure.
+\item
+  In practice, many (programming) problems can be tackled using some loop structure.
+\item
+  When using R, you may need to start solving a problem using a loop. Once you
+  solved it, try to see if you can find a vectorized alternative.
+\item
+  It takes practice and experience to find alternative solutions to \texttt{for} loops.
+\item
+  There are cases when using \texttt{for} loops is not that bad.
+\end{itemize}
 
   \bibliography{book.bib}
 

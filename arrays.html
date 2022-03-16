@@ -24,7 +24,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-02-14" />
+<meta name="date" content="2022-03-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,6 +340,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>13.4</b> Derivation of FVOA</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>14</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="for-loop.html"><a href="for-loop.html#motivation-3"><i class="fa fa-check"></i><b>14.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>14.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>14.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>14.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="14.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>14.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>14.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="14.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>14.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="14.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>14.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>14.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="14.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>14.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="14.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>14.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="14.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>14.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="14.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>14.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
 
@@ -391,16 +413,16 @@ calculate how much money you’ll have at the end of year <span class="math inli
 <p>Here’s some R code to obtain a vector <code>amounts</code> containing the amount of money
 that you would have from the beginning of time, and at the end of every year
 during a 5 year period:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="arrays.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
-<span id="cb1-2"><a href="arrays.html#cb1-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb1-3"><a href="arrays.html#cb1-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb1-4"><a href="arrays.html#cb1-4" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb1-5"><a href="arrays.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="arrays.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># future values</span></span>
-<span id="cb1-7"><a href="arrays.html#cb1-7" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
-<span id="cb1-8"><a href="arrays.html#cb1-8" aria-hidden="true" tabindex="-1"></a>amounts</span>
-<span id="cb1-9"><a href="arrays.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1000.000 1020.000 1040.400 1061.208 1082.432</span></span>
-<span id="cb1-10"><a href="arrays.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] 1104.081</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="arrays.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb115-2"><a href="arrays.html#cb115-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb115-3"><a href="arrays.html#cb115-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb115-4"><a href="arrays.html#cb115-4" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb115-5"><a href="arrays.html#cb115-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-6"><a href="arrays.html#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="co"># future values</span></span>
+<span id="cb115-7"><a href="arrays.html#cb115-7" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb115-8"><a href="arrays.html#cb115-8" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb115-9"><a href="arrays.html#cb115-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1000.000 1020.000 1040.400 1061.208 1082.432</span></span>
+<span id="cb115-10"><a href="arrays.html#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] 1104.081</span></span></code></pre></div>
 <p>Recall that this code is an example of vectorized (and recycling) code because
 the FV formula is applied to all the elements of the involved vectors, some
 of which have different lengths.</p>
@@ -458,24 +480,24 @@ one is a <code>data.frame</code>—to be discussed in a subsequent chapter.</p>
 <code>cbind()</code>. In the code below we pass <code>years</code> and <code>amount</code> to the <code>cbind()</code>
 function, which returns a matrix having the tabular structure that we are
 looking for: <code>years</code> in the first column, and <code>amounts</code> in the second column.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="arrays.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
-<span id="cb2-2"><a href="arrays.html#cb2-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb2-3"><a href="arrays.html#cb2-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb2-4"><a href="arrays.html#cb2-4" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb2-5"><a href="arrays.html#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="arrays.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># future values</span></span>
-<span id="cb2-7"><a href="arrays.html#cb2-7" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
-<span id="cb2-8"><a href="arrays.html#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="arrays.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output as a matrix via cbind()</span></span>
-<span id="cb2-10"><a href="arrays.html#cb2-10" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">cbind</span>(years, amounts)</span>
-<span id="cb2-11"><a href="arrays.html#cb2-11" aria-hidden="true" tabindex="-1"></a>savings</span>
-<span id="cb2-12"><a href="arrays.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      years  amounts</span></span>
-<span id="cb2-13"><a href="arrays.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]     0 1000.000</span></span>
-<span id="cb2-14"><a href="arrays.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]     1 1020.000</span></span>
-<span id="cb2-15"><a href="arrays.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]     2 1040.400</span></span>
-<span id="cb2-16"><a href="arrays.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]     3 1061.208</span></span>
-<span id="cb2-17"><a href="arrays.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]     4 1082.432</span></span>
-<span id="cb2-18"><a href="arrays.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]     5 1104.081</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="arrays.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb116-2"><a href="arrays.html#cb116-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb116-3"><a href="arrays.html#cb116-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb116-4"><a href="arrays.html#cb116-4" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb116-5"><a href="arrays.html#cb116-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-6"><a href="arrays.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="co"># future values</span></span>
+<span id="cb116-7"><a href="arrays.html#cb116-7" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb116-8"><a href="arrays.html#cb116-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-9"><a href="arrays.html#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output as a matrix via cbind()</span></span>
+<span id="cb116-10"><a href="arrays.html#cb116-10" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">cbind</span>(years, amounts)</span>
+<span id="cb116-11"><a href="arrays.html#cb116-11" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb116-12"><a href="arrays.html#cb116-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      years  amounts</span></span>
+<span id="cb116-13"><a href="arrays.html#cb116-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]     0 1000.000</span></span>
+<span id="cb116-14"><a href="arrays.html#cb116-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]     1 1020.000</span></span>
+<span id="cb116-15"><a href="arrays.html#cb116-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]     2 1040.400</span></span>
+<span id="cb116-16"><a href="arrays.html#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]     3 1061.208</span></span>
+<span id="cb116-17"><a href="arrays.html#cb116-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]     4 1082.432</span></span>
+<span id="cb116-18"><a href="arrays.html#cb116-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]     5 1104.081</span></span></code></pre></div>
 <p>As you can tell, the use of <code>cbind()</code> is straightforward. All you have to do
 is pass the vectors, separating them with a comma. Each vector will become a
 column of the returned matrix.</p>
@@ -486,14 +508,14 @@ column of the returned matrix.</p>
 for a minute that we are interested in obtaining a tabular object in which
 the first row corresponds to <code>years</code>, and the second row to <code>amounts</code>. To
 obtain this object we use <code>rbind()</code> as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="arrays.html#cb3-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">rbind</span>(years, amounts)</span>
-<span id="cb3-2"><a href="arrays.html#cb3-2" aria-hidden="true" tabindex="-1"></a>savings</span>
-<span id="cb3-3"><a href="arrays.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         [,1] [,2]   [,3]     [,4]     [,5]</span></span>
-<span id="cb3-4"><a href="arrays.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; years      0    1    2.0    3.000    4.000</span></span>
-<span id="cb3-5"><a href="arrays.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; amounts 1000 1020 1040.4 1061.208 1082.432</span></span>
-<span id="cb3-6"><a href="arrays.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             [,6]</span></span>
-<span id="cb3-7"><a href="arrays.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; years      5.000</span></span>
-<span id="cb3-8"><a href="arrays.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; amounts 1104.081</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="arrays.html#cb117-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">rbind</span>(years, amounts)</span>
+<span id="cb117-2"><a href="arrays.html#cb117-2" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb117-3"><a href="arrays.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         [,1] [,2]   [,3]     [,4]     [,5]</span></span>
+<span id="cb117-4"><a href="arrays.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; years      0    1    2.0    3.000    4.000</span></span>
+<span id="cb117-5"><a href="arrays.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; amounts 1000 1020 1040.4 1061.208 1082.432</span></span>
+<span id="cb117-6"><a href="arrays.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             [,6]</span></span>
+<span id="cb117-7"><a href="arrays.html#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; years      5.000</span></span>
+<span id="cb117-8"><a href="arrays.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; amounts 1104.081</span></span></code></pre></div>
 <p>The difference between <code>cbind()</code> and <code>rbind()</code> is that the latter will “stack”
 the given vectors on top of each other. That is, each vector will become a row
 of the returned matrix.</p>
@@ -504,7 +526,7 @@ of the returned matrix.</p>
 object called <code>array</code>. Both classes of objects, together with vectors and
 factors, form the triad of atomic objects. This is illustrated in the following
 diagram in terms of their number of dimensions.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-104"></span>
 <img src="images/objects/obj-atomics.png" alt="Triad of atomic data objects in R." width="50%" />
 <p class="caption">
 Figure 8.1: Triad of atomic data objects in R.
@@ -528,15 +550,15 @@ an input vector, and also the number of rows and columns (i.e. the
 <em>matrix dimensions</em>) that the returned matrix should have.</p>
 <p>Here is how to use <code>matrix()</code> to create the <code>savings</code> matrix that we are
 interested in obtaining:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="arrays.html#cb4-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(years, amounts), <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb4-2"><a href="arrays.html#cb4-2" aria-hidden="true" tabindex="-1"></a>savings</span>
-<span id="cb4-3"><a href="arrays.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]     [,2]</span></span>
-<span id="cb4-4"><a href="arrays.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    0 1000.000</span></span>
-<span id="cb4-5"><a href="arrays.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1 1020.000</span></span>
-<span id="cb4-6"><a href="arrays.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    2 1040.400</span></span>
-<span id="cb4-7"><a href="arrays.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    3 1061.208</span></span>
-<span id="cb4-8"><a href="arrays.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    4 1082.432</span></span>
-<span id="cb4-9"><a href="arrays.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]    5 1104.081</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="arrays.html#cb118-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(years, amounts), <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb118-2"><a href="arrays.html#cb118-2" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb118-3"><a href="arrays.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]     [,2]</span></span>
+<span id="cb118-4"><a href="arrays.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    0 1000.000</span></span>
+<span id="cb118-5"><a href="arrays.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1 1020.000</span></span>
+<span id="cb118-6"><a href="arrays.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    2 1040.400</span></span>
+<span id="cb118-7"><a href="arrays.html#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    3 1061.208</span></span>
+<span id="cb118-8"><a href="arrays.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    4 1082.432</span></span>
+<span id="cb118-9"><a href="arrays.html#cb118-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]    5 1104.081</span></span></code></pre></div>
 <p>This is an interesting piece of code. Notice that <code>years</code> and <code>amounts</code> are
 combined into a single vector, which is the main input of <code>matrix()</code>. The two
 other arguments correspond to the matrix dimensions: <code>nrow = 6</code> tells R that
@@ -579,21 +601,23 @@ an input vector in order to create a matrix.</p>
 <p>What about those cases in which the length of the input vector does not match
 the size of the desired matrix? For example, consider the following commands
 illustrating this type of situation:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="arrays.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># examples in which length of input of vector</span></span>
-<span id="cb6-2"><a href="arrays.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># doe snot match size of matrix</span></span>
-<span id="cb6-3"><a href="arrays.html#cb6-3" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb6-4"><a href="arrays.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="arrays.html#cb6-5" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb6-6"><a href="arrays.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="arrays.html#cb6-7" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb6-8"><a href="arrays.html#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="arrays.html#cb6-9" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb6-10"><a href="arrays.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in matrix(1:4, nrow = 3, ncol = 2): data length [4] is not a sub-</span></span>
-<span id="cb6-11"><a href="arrays.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; multiple or multiple of the number of rows [3]</span></span>
-<span id="cb6-12"><a href="arrays.html#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="arrays.html#cb6-13" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb6-14"><a href="arrays.html#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in matrix(1:8, nrow = 2, ncol = 3): data length [8] is not a sub-</span></span>
-<span id="cb6-15"><a href="arrays.html#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; multiple or multiple of the number of columns [3]</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="arrays.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># examples in which length of input of vector</span></span>
+<span id="cb120-2"><a href="arrays.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="co"># doe snot match size of matrix</span></span>
+<span id="cb120-3"><a href="arrays.html#cb120-3" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb120-4"><a href="arrays.html#cb120-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-5"><a href="arrays.html#cb120-5" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb120-6"><a href="arrays.html#cb120-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-7"><a href="arrays.html#cb120-7" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb120-8"><a href="arrays.html#cb120-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-9"><a href="arrays.html#cb120-9" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb120-10"><a href="arrays.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in matrix(1:4, nrow = 3, ncol = 2): data</span></span>
+<span id="cb120-11"><a href="arrays.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; length [4] is not a sub-multiple or multiple of</span></span>
+<span id="cb120-12"><a href="arrays.html#cb120-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; the number of rows [3]</span></span>
+<span id="cb120-13"><a href="arrays.html#cb120-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-14"><a href="arrays.html#cb120-14" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb120-15"><a href="arrays.html#cb120-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in matrix(1:8, nrow = 2, ncol = 3): data</span></span>
+<span id="cb120-16"><a href="arrays.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; length [8] is not a sub-multiple or multiple of</span></span>
+<span id="cb120-17"><a href="arrays.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; the number of columns [3]</span></span></code></pre></div>
 <p>In matrices <code>m1</code> and <code>m2</code> the input vector <code>1:3</code> is a sub-multiple of the size
 of the matrix 6.</p>
 <p>In matrix <code>m3</code> the input vector <code>1:12</code> is longer than the size of matrix: 6.
@@ -602,11 +626,11 @@ Although the entire length of the vector, 12, is a multiple of the size 6.</p>
 neither a multiple or sub-multiple of the size of the returned matrix.</p>
 <p>When the length of the input vector does not match the size of the desired
 matrix, R applies its recycling rules. Let’s pay attention to <code>m1</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="arrays.html#cb7-1" aria-hidden="true" tabindex="-1"></a>m1</span>
-<span id="cb7-2"><a href="arrays.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb7-3"><a href="arrays.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    1</span></span>
-<span id="cb7-4"><a href="arrays.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    2</span></span>
-<span id="cb7-5"><a href="arrays.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    3</span></span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="arrays.html#cb121-1" aria-hidden="true" tabindex="-1"></a>m1</span>
+<span id="cb121-2"><a href="arrays.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb121-3"><a href="arrays.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    1</span></span>
+<span id="cb121-4"><a href="arrays.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    2</span></span>
+<span id="cb121-5"><a href="arrays.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3    3</span></span></code></pre></div>
 <p>Note how the values of the input vector <code>1:3</code> are recycled to form the columns
 of <code>m1</code>. The values appear in the first column, but they also appear in the
 second column after being recycled.</p>
@@ -624,17 +648,17 @@ sub-multiple of either the number of rows or the number of columns.</p>
 <p>Often, you may need to provide names for either the rows and/or the columns.
 R comes with the functions <code>rownames()</code> and <code>colnames()</code> that can be used to
 assign names for the rows and columns, for example:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="arrays.html#cb8-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(years, amounts), <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb8-2"><a href="arrays.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(savings) <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb8-3"><a href="arrays.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(savings) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;amount&quot;</span>)</span>
-<span id="cb8-4"><a href="arrays.html#cb8-4" aria-hidden="true" tabindex="-1"></a>savings</span>
-<span id="cb8-5"><a href="arrays.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   year   amount</span></span>
-<span id="cb8-6"><a href="arrays.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    0 1000.000</span></span>
-<span id="cb8-7"><a href="arrays.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    1 1020.000</span></span>
-<span id="cb8-8"><a href="arrays.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    2 1040.400</span></span>
-<span id="cb8-9"><a href="arrays.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    3 1061.208</span></span>
-<span id="cb8-10"><a href="arrays.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    4 1082.432</span></span>
-<span id="cb8-11"><a href="arrays.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    5 1104.081</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="arrays.html#cb122-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(years, amounts), <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb122-2"><a href="arrays.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(savings) <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb122-3"><a href="arrays.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(savings) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;amount&quot;</span>)</span>
+<span id="cb122-4"><a href="arrays.html#cb122-4" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb122-5"><a href="arrays.html#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   year   amount</span></span>
+<span id="cb122-6"><a href="arrays.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    0 1000.000</span></span>
+<span id="cb122-7"><a href="arrays.html#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    1 1020.000</span></span>
+<span id="cb122-8"><a href="arrays.html#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    2 1040.400</span></span>
+<span id="cb122-9"><a href="arrays.html#cb122-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    3 1061.208</span></span>
+<span id="cb122-10"><a href="arrays.html#cb122-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    4 1082.432</span></span>
+<span id="cb122-11"><a href="arrays.html#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    5 1104.081</span></span></code></pre></div>
 </div>
 <div id="more-matrices" class="section level3" number="8.3.3">
 <h3><span class="header-section-number">8.3.3</span> More Matrices</h3>
@@ -647,41 +671,41 @@ assign names for the rows and columns, for example:</p>
 3 years</p></li>
 </ul>
 <p>In R, we can calculate the future values of each type of investment product:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="arrays.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># savings account</span></span>
-<span id="cb9-2"><a href="arrays.html#cb9-2" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb9-3"><a href="arrays.html#cb9-3" aria-hidden="true" tabindex="-1"></a>savings</span>
-<span id="cb9-4"><a href="arrays.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1000.000 1020.000 1040.400 1061.208 1082.432</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="arrays.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># money market</span></span>
-<span id="cb10-2"><a href="arrays.html#cb10-2" aria-hidden="true" tabindex="-1"></a>moneymkt <span class="ot">=</span> <span class="dv">2000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.025</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>)</span>
-<span id="cb10-3"><a href="arrays.html#cb10-3" aria-hidden="true" tabindex="-1"></a>moneymkt</span>
-<span id="cb10-4"><a href="arrays.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2000.00 2050.00 2101.25</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="arrays.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># certificate of deposit</span></span>
-<span id="cb11-2"><a href="arrays.html#cb11-2" aria-hidden="true" tabindex="-1"></a>certificate <span class="ot">=</span> <span class="dv">5000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.03</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb11-3"><a href="arrays.html#cb11-3" aria-hidden="true" tabindex="-1"></a>certificate</span>
-<span id="cb11-4"><a href="arrays.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5000.000 5150.000 5304.500 5463.635</span></span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="arrays.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># savings account</span></span>
+<span id="cb123-2"><a href="arrays.html#cb123-2" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb123-3"><a href="arrays.html#cb123-3" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb123-4"><a href="arrays.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1000.000 1020.000 1040.400 1061.208 1082.432</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="arrays.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># money market</span></span>
+<span id="cb124-2"><a href="arrays.html#cb124-2" aria-hidden="true" tabindex="-1"></a>moneymkt <span class="ot">=</span> <span class="dv">2000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.025</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb124-3"><a href="arrays.html#cb124-3" aria-hidden="true" tabindex="-1"></a>moneymkt</span>
+<span id="cb124-4"><a href="arrays.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2000.00 2050.00 2101.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="arrays.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># certificate of deposit</span></span>
+<span id="cb125-2"><a href="arrays.html#cb125-2" aria-hidden="true" tabindex="-1"></a>certificate <span class="ot">=</span> <span class="dv">5000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.03</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb125-3"><a href="arrays.html#cb125-3" aria-hidden="true" tabindex="-1"></a>certificate</span>
+<span id="cb125-4"><a href="arrays.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5000.000 5150.000 5304.500 5463.635</span></span></code></pre></div>
 <div id="separated-matrices" class="section level4 unnumbered">
 <h4>Separated matrices</h4>
 <p>We can create individual matrices:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="arrays.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sav_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, savings)</span>
-<span id="cb12-2"><a href="arrays.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="arrays.html#cb12-3" aria-hidden="true" tabindex="-1"></a>mm_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, moneymkt)</span>
-<span id="cb12-4"><a href="arrays.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="arrays.html#cb12-5" aria-hidden="true" tabindex="-1"></a>cd_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, certificate)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="arrays.html#cb126-1" aria-hidden="true" tabindex="-1"></a>sav_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, savings)</span>
+<span id="cb126-2"><a href="arrays.html#cb126-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-3"><a href="arrays.html#cb126-3" aria-hidden="true" tabindex="-1"></a>mm_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, moneymkt)</span>
+<span id="cb126-4"><a href="arrays.html#cb126-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-5"><a href="arrays.html#cb126-5" aria-hidden="true" tabindex="-1"></a>cd_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, certificate)</span></code></pre></div>
 <p>Or we can stack everything into a single matrix:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="arrays.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), <span class="fu">c</span>(savings, moneymkt, certificate))</span>
-<span id="cb13-2"><a href="arrays.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [,1]     [,2]</span></span>
-<span id="cb13-3"><a href="arrays.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1,]    0 1000.000</span></span>
-<span id="cb13-4"><a href="arrays.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2,]    1 1020.000</span></span>
-<span id="cb13-5"><a href="arrays.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3,]    2 1040.400</span></span>
-<span id="cb13-6"><a href="arrays.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4,]    3 1061.208</span></span>
-<span id="cb13-7"><a href="arrays.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5,]    4 1082.432</span></span>
-<span id="cb13-8"><a href="arrays.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6,]    0 2000.000</span></span>
-<span id="cb13-9"><a href="arrays.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7,]    1 2050.000</span></span>
-<span id="cb13-10"><a href="arrays.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8,]    2 2101.250</span></span>
-<span id="cb13-11"><a href="arrays.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9,]    0 5000.000</span></span>
-<span id="cb13-12"><a href="arrays.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10,]    1 5150.000</span></span>
-<span id="cb13-13"><a href="arrays.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11,]    2 5304.500</span></span>
-<span id="cb13-14"><a href="arrays.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [12,]    3 5463.635</span></span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="arrays.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), <span class="fu">c</span>(savings, moneymkt, certificate))</span>
+<span id="cb127-2"><a href="arrays.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [,1]     [,2]</span></span>
+<span id="cb127-3"><a href="arrays.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1,]    0 1000.000</span></span>
+<span id="cb127-4"><a href="arrays.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2,]    1 1020.000</span></span>
+<span id="cb127-5"><a href="arrays.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3,]    2 1040.400</span></span>
+<span id="cb127-6"><a href="arrays.html#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4,]    3 1061.208</span></span>
+<span id="cb127-7"><a href="arrays.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5,]    4 1082.432</span></span>
+<span id="cb127-8"><a href="arrays.html#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6,]    0 2000.000</span></span>
+<span id="cb127-9"><a href="arrays.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7,]    1 2050.000</span></span>
+<span id="cb127-10"><a href="arrays.html#cb127-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8,]    2 2101.250</span></span>
+<span id="cb127-11"><a href="arrays.html#cb127-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9,]    0 5000.000</span></span>
+<span id="cb127-12"><a href="arrays.html#cb127-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10,]    1 5150.000</span></span>
+<span id="cb127-13"><a href="arrays.html#cb127-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11,]    2 5304.500</span></span>
+<span id="cb127-14"><a href="arrays.html#cb127-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [12,]    3 5463.635</span></span></code></pre></div>
 <p>What if you want some table like this:</p>
 <table>
 <thead>
@@ -756,25 +780,25 @@ assign names for the rows and columns, for example:</p>
 </table>
 <p>We could use the <code>cbind()</code> function in an attempt to obtain a matrix having
 a similar rectangular structure as in the above table:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="arrays.html#cb14-1" aria-hidden="true" tabindex="-1"></a>investments <span class="ot">=</span> <span class="fu">cbind</span>(</span>
-<span id="cb14-2"><a href="arrays.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;moneymkt&quot;</span>, <span class="st">&quot;certif&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)),</span>
-<span id="cb14-3"><a href="arrays.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), </span>
-<span id="cb14-4"><a href="arrays.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(savings, moneymkt, certificate))</span>
-<span id="cb14-5"><a href="arrays.html#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="arrays.html#cb14-6" aria-hidden="true" tabindex="-1"></a>investments</span>
-<span id="cb14-7"><a href="arrays.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [,1]       [,2] [,3]        </span></span>
-<span id="cb14-8"><a href="arrays.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1,] &quot;savings&quot;  &quot;0&quot;  &quot;1000&quot;      </span></span>
-<span id="cb14-9"><a href="arrays.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2,] &quot;savings&quot;  &quot;1&quot;  &quot;1020&quot;      </span></span>
-<span id="cb14-10"><a href="arrays.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3,] &quot;savings&quot;  &quot;2&quot;  &quot;1040.4&quot;    </span></span>
-<span id="cb14-11"><a href="arrays.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4,] &quot;savings&quot;  &quot;3&quot;  &quot;1061.208&quot;  </span></span>
-<span id="cb14-12"><a href="arrays.html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5,] &quot;savings&quot;  &quot;4&quot;  &quot;1082.43216&quot;</span></span>
-<span id="cb14-13"><a href="arrays.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6,] &quot;moneymkt&quot; &quot;0&quot;  &quot;2000&quot;      </span></span>
-<span id="cb14-14"><a href="arrays.html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7,] &quot;moneymkt&quot; &quot;1&quot;  &quot;2050&quot;      </span></span>
-<span id="cb14-15"><a href="arrays.html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8,] &quot;moneymkt&quot; &quot;2&quot;  &quot;2101.25&quot;   </span></span>
-<span id="cb14-16"><a href="arrays.html#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9,] &quot;certif&quot;   &quot;0&quot;  &quot;5000&quot;      </span></span>
-<span id="cb14-17"><a href="arrays.html#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10,] &quot;certif&quot;   &quot;1&quot;  &quot;5150&quot;      </span></span>
-<span id="cb14-18"><a href="arrays.html#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11,] &quot;certif&quot;   &quot;2&quot;  &quot;5304.5&quot;    </span></span>
-<span id="cb14-19"><a href="arrays.html#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [12,] &quot;certif&quot;   &quot;3&quot;  &quot;5463.635&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="arrays.html#cb128-1" aria-hidden="true" tabindex="-1"></a>investments <span class="ot">=</span> <span class="fu">cbind</span>(</span>
+<span id="cb128-2"><a href="arrays.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;moneymkt&quot;</span>, <span class="st">&quot;certif&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)),</span>
+<span id="cb128-3"><a href="arrays.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), </span>
+<span id="cb128-4"><a href="arrays.html#cb128-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(savings, moneymkt, certificate))</span>
+<span id="cb128-5"><a href="arrays.html#cb128-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-6"><a href="arrays.html#cb128-6" aria-hidden="true" tabindex="-1"></a>investments</span>
+<span id="cb128-7"><a href="arrays.html#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [,1]       [,2] [,3]        </span></span>
+<span id="cb128-8"><a href="arrays.html#cb128-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1,] &quot;savings&quot;  &quot;0&quot;  &quot;1000&quot;      </span></span>
+<span id="cb128-9"><a href="arrays.html#cb128-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2,] &quot;savings&quot;  &quot;1&quot;  &quot;1020&quot;      </span></span>
+<span id="cb128-10"><a href="arrays.html#cb128-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3,] &quot;savings&quot;  &quot;2&quot;  &quot;1040.4&quot;    </span></span>
+<span id="cb128-11"><a href="arrays.html#cb128-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4,] &quot;savings&quot;  &quot;3&quot;  &quot;1061.208&quot;  </span></span>
+<span id="cb128-12"><a href="arrays.html#cb128-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5,] &quot;savings&quot;  &quot;4&quot;  &quot;1082.43216&quot;</span></span>
+<span id="cb128-13"><a href="arrays.html#cb128-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6,] &quot;moneymkt&quot; &quot;0&quot;  &quot;2000&quot;      </span></span>
+<span id="cb128-14"><a href="arrays.html#cb128-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7,] &quot;moneymkt&quot; &quot;1&quot;  &quot;2050&quot;      </span></span>
+<span id="cb128-15"><a href="arrays.html#cb128-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8,] &quot;moneymkt&quot; &quot;2&quot;  &quot;2101.25&quot;   </span></span>
+<span id="cb128-16"><a href="arrays.html#cb128-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9,] &quot;certif&quot;   &quot;0&quot;  &quot;5000&quot;      </span></span>
+<span id="cb128-17"><a href="arrays.html#cb128-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10,] &quot;certif&quot;   &quot;1&quot;  &quot;5150&quot;      </span></span>
+<span id="cb128-18"><a href="arrays.html#cb128-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11,] &quot;certif&quot;   &quot;2&quot;  &quot;5304.5&quot;    </span></span>
+<span id="cb128-19"><a href="arrays.html#cb128-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [12,] &quot;certif&quot;   &quot;3&quot;  &quot;5463.635&quot;</span></span></code></pre></div>
 <p>Do you notice something funny with the matrix <code>investments</code>?</p>
 <p>As you can tell, all the values in <code>investments</code> are displayed being surrounded
 with double quotes. This indicates that all the values are of type <code>character</code>.</p>
@@ -788,10 +812,10 @@ coerce it into a vector, making the input an atomic object.</p>
 <p>So either way, whether you provide an atomic input or a non-atomic input,
 to any of the matrix-creation functions, R will always produce an atomic
 output. This is the reason why the below command produces a <code>character</code> matrix:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="arrays.html#cb15-1" aria-hidden="true" tabindex="-1"></a>investments <span class="ot">=</span> <span class="fu">cbind</span>(</span>
-<span id="cb15-2"><a href="arrays.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;moneymkt&quot;</span>, <span class="st">&quot;certif&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)),</span>
-<span id="cb15-3"><a href="arrays.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), </span>
-<span id="cb15-4"><a href="arrays.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(savings, moneymkt, certificate))</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="arrays.html#cb129-1" aria-hidden="true" tabindex="-1"></a>investments <span class="ot">=</span> <span class="fu">cbind</span>(</span>
+<span id="cb129-2"><a href="arrays.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;moneymkt&quot;</span>, <span class="st">&quot;certif&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)),</span>
+<span id="cb129-3"><a href="arrays.html#cb129-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), </span>
+<span id="cb129-4"><a href="arrays.html#cb129-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(savings, moneymkt, certificate))</span></code></pre></div>
 <p>The three input vectors are coerced into a single vector of <code>character</code> data
 type, causing the <code>investments</code> matrix to be of type <code>character</code>.</p>
 
