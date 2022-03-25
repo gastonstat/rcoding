@@ -180,3 +180,9 @@ for-loops-and-next-statement
 for-loops-and-break-statement
 nested-loops
 about-for-loops-and-vectorized-computations
+while-loop
+motivation-4
+anatomy-of-a-while-loop
+another-example
+while-loops-and-next-statement
+while-loops-and-break-statement

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14 Iterations: For Loop | Coding in R</title>
+  <title>14 Iterations: For Loop | Learning to Code in R</title>
   <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14 Iterations: For Loop | Coding in R" />
+  <meta property="og:title" content="14 Iterations: For Loop | Learning to Code in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14 Iterations: For Loop | Coding in R" />
+  <meta name="twitter:title" content="14 Iterations: For Loop | Learning to Code in R" />
   
   <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-03-16" />
+<meta name="date" content="2022-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="conditionals.html"/>
-
+<link rel="next" href="while-loop.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -134,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Coding in R</a></li>
+<li><a href="./"><b>Learning to Code in R</b><br><small>Gaston Sanchez</small></a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
@@ -320,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>12.1.4</b> Assignments within Compound Expressions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>13</b> Conditionals</a>
+<li class="chapter" data-level="13" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>13</b> Conditionals: If-Else</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="conditionals.html"><a href="conditionals.html#motivation-2"><i class="fa fa-check"></i><b>13.1</b> Motivation</a>
 <ul>
@@ -362,6 +362,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>14.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>15</b> Iterations: While Loop</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="while-loop.html"><a href="while-loop.html#motivation-4"><i class="fa fa-check"></i><b>15.1</b> Motivation</a></li>
+<li class="chapter" data-level="15.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>15.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="15.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>15.3</b> Another Example</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>15.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="15.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>15.3.2</b> While Loops and Break statement</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
 
@@ -374,7 +384,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding in R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learning to Code in R</a>
           </h1>
         </div>
 
@@ -684,8 +694,8 @@ to add 1 to each element in <code>vec</code>:</p>
 <span id="cb247-6"><a href="for-loop.html#cb247-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
 <span id="cb247-7"><a href="for-loop.html#cb247-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
 <span id="cb247-8"><a href="for-loop.html#cb247-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
-<p>In the code above we are taking each <code>vec</code> element <code>vec[j]</code>, adding 1 to it,
-and printing the outcome with <code>print()</code> so you can visualize the additions
+<p>In the code above we are taking each element <code>vec[j]</code>, adding 1 to it,
+and printing the outcome with <code>print()</code> so that we can visualize the additions
 at each iteration of the loop.</p>
 <p>What if you want to create a vector <code>vec2</code>, in which you store the values
 produced at each iteration of the loop? Here’s one possibility:</p>
@@ -702,7 +712,8 @@ produced at each iteration of the loop? Here’s one possibility:</p>
 <span id="cb249-2"><a href="for-loop.html#cb249-2" aria-hidden="true" tabindex="-1"></a>  do_something</span>
 <span id="cb249-3"><a href="for-loop.html#cb249-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><code>for()</code> takes an <strong>iterator</strong> variable and a vector of <strong>times</strong> to iterate
-through.</p>
+through. For example, in the following code the auxiliary iterator is <code>i</code>
+and the vector of times is the numeric sequence <code>1:5</code>.</p>
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="for-loop.html#cb250-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb250-2"><a href="for-loop.html#cb250-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb250-3"><a href="for-loop.html#cb250-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) { </span>
@@ -714,8 +725,12 @@ through.</p>
 <span id="cb250-9"><a href="for-loop.html#cb250-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
 <span id="cb250-10"><a href="for-loop.html#cb250-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32</span></span>
 <span id="cb250-11"><a href="for-loop.html#cb250-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64</span></span></code></pre></div>
+<p>As you can tell, <code>print()</code> is used to display the updated <code>value</code> at each
+iteration. This print statement is used here for illustration purposes; in
+practice you rarely need to print any output in a loop.</p>
 <p>The vector of <em>times</em> does NOT have to be a numeric vector; it can be <strong>any</strong>
-vector</p>
+vector. The important thing about this vector is its length, which R uses to
+determine the number of iterations in the <code>for</code> loop.</p>
 <div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="for-loop.html#cb251-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb251-2"><a href="for-loop.html#cb251-2" aria-hidden="true" tabindex="-1"></a>times <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;one&#39;</span>, <span class="st">&#39;two&#39;</span>, <span class="st">&#39;three&#39;</span>, <span class="st">&#39;four&#39;</span>)</span>
 <span id="cb251-3"><a href="for-loop.html#cb251-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -748,7 +763,7 @@ then the vector of <em>times</em> will almost always be a numeric vector:</p>
 </div>
 <div id="for-loops-and-next-statement" class="section level3" number="14.5.2">
 <h3><span class="header-section-number">14.5.2</span> For Loops and Next statement</h3>
-<p>Sometimes we need to skip a loop iteration if a given condition is met, this
+<p>Sometimes we need to skip a certain iteration if a given condition is met, this
 can be done with the <code>next</code> statement</p>
 <div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="for-loop.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
 <span id="cb253-2"><a href="for-loop.html#cb253-2" aria-hidden="true" tabindex="-1"></a>  expr1</span>
@@ -775,8 +790,9 @@ can be done with the <code>next</code> statement</p>
 </div>
 <div id="for-loops-and-break-statement" class="section level3" number="14.5.3">
 <h3><span class="header-section-number">14.5.3</span> For Loops and Break statement</h3>
-<p>Sometimes we need to stop a loop from iterating if a given condition is met,
-this can be done with the <code>break</code> statement</p>
+<p>In addition to skipping certain iterations, sometimes we need to stop a loop
+from iterating if a given condition is met, this can be done with the <code>break</code>
+statement:</p>
 <div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="for-loop.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> times) { </span>
 <span id="cb255-2"><a href="for-loop.html#cb255-2" aria-hidden="true" tabindex="-1"></a>  expr1</span>
 <span id="cb255-3"><a href="for-loop.html#cb255-3" aria-hidden="true" tabindex="-1"></a>  expr2</span>
@@ -865,8 +881,8 @@ solved it, try to see if you can find a vectorized alternative.</p></li>
           </div>
         </div>
       </div>
-<a href="conditionals.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="conditionals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="while-loop.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
