@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Session Management | Learning to Code in R</title>
+  <title>12 More Base Graphics | Learning to Code in R</title>
   <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Session Management | Learning to Code in R" />
+  <meta property="og:title" content="12 More Base Graphics | Learning to Code in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Session Management | Learning to Code in R" />
+  <meta name="twitter:title" content="12 More Base Graphics | Learning to Code in R" />
   
   <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstudio.html"/>
-<link rel="next" href="vectors.html"/>
+<link rel="prev" href="graphics1.html"/>
+<link rel="next" href="graphics3.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -446,219 +446,351 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Session Management</h1>
-<p>In this chapter I review some important aspects about managing your
-interactive session with R using RStudio.</p>
-<p>From the point of view of a session, all the work, activities, and actions you
-do with R can be classified into three categories:</p>
+<div id="graphics2" class="section level1" number="12">
+<h1><span class="header-section-number">12</span> More Base Graphics</h1>
+<p>R comes with many functions that let us produce a wide variety of graphics,
+plots, diagrams, charts, maps, … you name it.</p>
+<p>In this chapter we describe the behavior of the <code>plot()</code> method and it
+can be used to produce a large number of graphics.</p>
+<div id="the-plot-function-1" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> The <code>plot()</code> function</h2>
+<p><code>plot()</code> is the most important high-level function in traditional graphics</p>
 <ul>
-<li><p>when starting a session</p></li>
-<li><p>during the session</p></li>
-<li><p>when closing a session</p></li>
+<li><p>The first argument to <code>plot()</code> provides the data to plot</p></li>
+<li><p>The provided data can take different forms: e.g. vectors, factors, matrices,
+data frames.</p></li>
+<li><p>To be more precise, <code>plot()</code> is a generic function</p></li>
+<li><p>You can create your own <code>plot()</code> method function</p></li>
 </ul>
-<p>Because there are several things going on behind the scenes in each of the
-categories listed above, it is important that we talk about them—at least
-briefly.</p>
-<div id="starting-a-session" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Starting a Session</h2>
-<p>Starting a session can be done in two primary ways:</p>
+<p>In its basic form, we can use <code>plot()</code> to make graphics of:</p>
 <ul>
-<li><p>launching the R application program, which will give you access to its
-graphical usier interface; or via RStudio or any other IDE that has the
-ability to open an R session.</p></li>
-<li><p>by clicking on a file that your computer associates with R (or RStudio).
-For example, R-script files (with file extension <code>.R</code> or <code>.r</code>), R-Markdown
-files (<code>.Rmd</code> extension), R-Noweb files (<code>.Rnw</code> extension), RStudio project
-files (<code>.Rproj</code> extension), etc.</p></li>
-</ul>
-<div id="what-happens-when-you-open-an-r-session-via-rstudio" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> What happens when you open an R session via RStudio?</h3>
-<p>This is an important question that many users never stop to think about.
-However, it’s worth reviewing what happens when a session is started. So let’s
-talk about this.</p>
-<ul>
-<li><p>Every time you open RStudio, the console pane will display R’s welcome message.</p></li>
-<li><p>The console is always linked to a working directory.</p></li>
-<li><p>Typically, the working directory of the console will be your home directory,
-unless you specified a different location when you installed R in your computer.</p></li>
-<li><p>You can change the working directory to a different directory if you want.
-This change can be permanent (for future sessions), or temporary (for current
-session).</p></li>
-<li><p>To permanently modify working directory (when a session is opened), go to the
-menu bar, select “RStudio” tab, click on “Preferences,” and modify the
-“R General” options.</p></li>
-<li><p>To temporary change the working directory, go to the menu bar, select the
-“Session” tab, and click on “Set Working Directory,” or simply specify a
-working directory with the <code>setwd()</code> function executed from R’s console.</p></li>
+<li><p>one single variable</p></li>
+<li><p>two variables</p></li>
+<li><p>multiple variables</p></li>
 </ul>
 </div>
-<div id="opening-a-session-for-the-first-time" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Opening a session for the first time</h3>
-<p>If you are opening a session in RStudio for the very fist time:</p>
-<ul>
-<li><p>the “Editor” pane will be collapsed, and</p></li>
-<li><p>all the tabs in the “Environment, History, Connections” pane will be empty</p></li>
-</ul>
-<p>In general, when you open a session (<strong>not</strong> for the very fist time):</p>
-<ul>
-<li>the “Environment” tab may display some objects, which means you have some
-existing objects in your global environment. You can also invoke the list
-function <code>ls()</code> to list any available objects in your current session:</li>
-</ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="session.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what objects are in my global environment?</span></span>
-<span id="cb18-2"><a href="session.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<ul>
-<li>the “History” tab may contain lines of previously used commands; if this is
-the case it means that there is an associated a text file called <code>.Rhistory</code> in
-your working directory. You can also use the <code>history()</code> function to display
-the <em>Commands History</em>, that is, all the commands invoked in your interactive
-sessions:</li>
-</ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="session.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is my history of commands being tracked?</span></span>
-<span id="cb19-2"><a href="session.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>()</span></code></pre></div>
-</div>
-<div id="working-directory" class="section level3" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Working Directory</h3>
-<p>If you open R via launching an application program (e.g. RStudio) that lets
-you interact with R’s console, your session will have an associated working
-directory, sometimes also referred to as the <em>current</em> working directory.</p>
-<p>When you install R in your computer, during the installation process a default
-working directory is assigned to R. By default, this directory is your home
-directory. You can check whether this is the case if you run the
-<em>get working directory</em> function <code>getwd()</code> in your console.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="session.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run this command in the console to find out </span></span>
-<span id="cb20-2"><a href="session.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the working directory of your session</span></span>
-<span id="cb20-3"><a href="session.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<p>In RStudio, you can also look at the console pane, and inspect the text right
-below the <code>Console</code> tab that always displays the working directory of your
-session. If you see the symbols <code>~/</code> it means that the home directory
-(represented by the tilde) is your working directory.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
-<img src="images/rstudio/rstudio-console-working-directory.png" alt="The working directory is indicated right below the Console tab." width="70%" />
+<div id="one-variable-graphics" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> One variable graphics</h2>
+<p>High-level graphics of a single variable</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Data</th>
+<th align="left">Graphic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>plot()</code></td>
+<td align="left">numeric</td>
+<td align="left">scatterplot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>plot()</code></td>
+<td align="left">factor</td>
+<td align="left">barplot</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plot()</code></td>
+<td align="left">1-D table</td>
+<td align="left">barplot</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>numeric</code> object can be either a vector or a 1-D array (e.g. row or column
+from a matrix)</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-185"></span>
+<img src="images/plots/one_variable_objs.png" alt="One-variable objects can take multiple forms." width="50%" />
 <p class="caption">
-Figure 4.1: The working directory is indicated right below the Console tab.
+Figure 12.1: One-variable objects can take multiple forms.
 </p>
 </div>
+<p>Here’s an example:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="graphics2.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot numeric vector</span></span>
+<span id="cb191-2"><a href="graphics2.html#cb191-2" aria-hidden="true" tabindex="-1"></a>num_vec <span class="ot">&lt;-</span> (<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb191-3"><a href="graphics2.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(num_vec)</span>
+<span id="cb191-4"><a href="graphics2.html#cb191-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-5"><a href="graphics2.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot factor</span></span>
+<span id="cb191-6"><a href="graphics2.html#cb191-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4</span>)</span>
+<span id="cb191-7"><a href="graphics2.html#cb191-7" aria-hidden="true" tabindex="-1"></a>abc <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>), <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb191-8"><a href="graphics2.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(abc)</span>
+<span id="cb191-9"><a href="graphics2.html#cb191-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-10"><a href="graphics2.html#cb191-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 1D-table</span></span>
+<span id="cb191-11"><a href="graphics2.html#cb191-11" aria-hidden="true" tabindex="-1"></a>abc_table <span class="ot">&lt;-</span> <span class="fu">table</span>(abc)</span>
+<span id="cb191-12"><a href="graphics2.html#cb191-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(abc_table)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/plot-single1-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div id="more-high-level-graphics-of-a-single-variable" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> More high-level graphics of a single variable</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Data</th>
+<th align="left">Graphic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>barplot()</code></td>
+<td align="left">numeric</td>
+<td align="left">barchart</td>
+</tr>
+<tr class="even">
+<td align="left"><code>pie()</code></td>
+<td align="left">numeric</td>
+<td align="left">piechart</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>dotchart()</code></td>
+<td align="left">numeric</td>
+<td align="left">dotplot</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>boxplot()</code></td>
+<td align="left">numeric</td>
+<td align="left">boxplot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>hist()</code></td>
+<td align="left">numeric</td>
+<td align="left">histogram</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>stripchart()</code></td>
+<td align="left">numeric</td>
+<td align="left">1-D scatterplot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>stem()</code></td>
+<td align="left">numeric</td>
+<td align="left">stem-and-leaf plot</td>
+</tr>
+</tbody>
+</table>
+<p>Examples: one signle variable plots</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="graphics2.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot numeric vector</span></span>
+<span id="cb192-2"><a href="graphics2.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(num_vec)</span>
+<span id="cb192-3"><a href="graphics2.html#cb192-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-4"><a href="graphics2.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pie chart</span></span>
+<span id="cb192-5"><a href="graphics2.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb192-6"><a href="graphics2.html#cb192-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-7"><a href="graphics2.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dot plot</span></span>
+<span id="cb192-8"><a href="graphics2.html#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(num_vec)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/plot-single2-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Examples: one single variable plots</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="graphics2.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot numeric vector</span></span>
+<span id="cb193-2"><a href="graphics2.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(num_vec)</span>
+<span id="cb193-3"><a href="graphics2.html#cb193-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-4"><a href="graphics2.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pie chart</span></span>
+<span id="cb193-5"><a href="graphics2.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(num_vec)</span>
+<span id="cb193-6"><a href="graphics2.html#cb193-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-7"><a href="graphics2.html#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dot plot</span></span>
+<span id="cb193-8"><a href="graphics2.html#cb193-8" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(num_vec)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/plot-single3-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="working-during-a-session" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Working During a Session</h2>
-<p>Working with R involves a series of common actions:</p>
-<ul>
-<li><p>writing commands (on a source document or on the console)</p></li>
-<li><p>executing commands (from a source doc or from the console)</p></li>
-<li><p>looking or examining outputs</p></li>
-<li><p>reading or importing files (e.g. data files, script files)</p></li>
-<li><p>saving or exporting output to files (e.g. data files, images, results)</p></li>
-</ul>
-<p>From the logistical point of vew, it all boils down to executing commands,
-taking into account the following:</p>
-<ul>
-<li><p>where a command is being executed from</p></li>
-<li><p>if the command requires an input, where does that input come from?</p></li>
-<li><p>if the command produces an output, where does that output go to?</p></li>
-</ul>
-<p>This is why we need to describe the following:</p>
-<ol style="list-style-type: decimal">
-<li><p>Working Directory</p></li>
-<li><p>Workspace and Global Environment</p></li>
-<li><p>History of commands</p></li>
-</ol>
-<div id="working-directory-1" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Working Directory</h3>
-<p>You will be writing commands either directly in the console or in a source
-document (e.g. <code>R</code> script file, <code>Rmd</code> file, etc.)</p>
-<p>The console is always associated to a working directory (usually your home
-directory).</p>
-<p>A source document, once it has been saved, will live in some directory.
-<strong>Ideally</strong>, a source document’s directory would be used as its working directory,
-using relative filepaths to handle all input and output resources required in
-thecode of the source document. Unfortunately, this ideal is far from what
-happens in practice.</p>
-<ul>
-<li><p>By default, when you execute code chunks in a <strong>saved</strong> <code>Rmd</code> file, the
-working directory is the directory where the <code>Rmd</code> file resides in.</p></li>
-<li><p>By default, when you execute code from an <code>R</code> file, the working directory
-is that of the console.</p></li>
-</ul>
-</div>
-<div id="workspace-and-global-environment" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Workspace and Global Environment</h3>
-<p>Regardless of where commands are being executed from, R will carry out
-all the necessary computations, and objects will be created along the way.</p>
-<p>The collection of objects that are being created (<em>and kept alive</em>) during a
-session are part of what is considered to be your <strong>workspace</strong>.</p>
-<p>At a more technical level, all the objects in your workspace are part of an R
-<strong>environment</strong>. To be more precise, the workspace is the <strong>Global Environment</strong>.</p>
-<p>On the console, if you type <code>ls()</code>, R will display all the available objects
-in your workspace.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="session.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># available objects in your workspace</span></span>
-<span id="cb21-2"><a href="session.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<p>You can also go to the pane “Environment, History, …” and
-click on the <code>Environment</code> tab to see the objects in your workspace which are
-displayed by default under the option “Global Environment.”</p>
-</div>
-<div id="commands-history" class="section level3" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Commands History</h3>
-<p>When you start a session, R will track all the commands that you execute during
-that session. As you execute commands, they will become part of what is called
-the <strong>Commands History</strong>.</p>
-<p>You can find the list of all used commands in the <code>History</code> tab,
-located in the <em>Environment, History, Connections</em> pane of RStudio. You can
-also access the commands history with the function <code>history()</code>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
-<img src="images/rstudio/rstudio-history-tab.png" alt="The comands history is avaialble in the History tab." width="65%" />
+<div id="plots-of-two-variables" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Plots of Two Variables</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Data</th>
+<th align="left">Graphic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>plot()</code></td>
+<td align="left">numeric</td>
+<td align="left">scatterplot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>plot()</code></td>
+<td align="left">numeric</td>
+<td align="left">stripcharts</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plot()</code></td>
+<td align="left">factor</td>
+<td align="left">boxplots</td>
+</tr>
+<tr class="even">
+<td align="left"><code>plot()</code></td>
+<td align="left">factor</td>
+<td align="left">spineplot</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plot()</code></td>
+<td align="left">2-column numeric matrix</td>
+<td align="left">scatterplot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>plot()</code></td>
+<td align="left">2-column numeric data.frame</td>
+<td align="left">scatterplot</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plot()</code></td>
+<td align="left">2-D table</td>
+<td align="left">mosaicplot</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>numeric</code> object can be either a vector or a 1-D array (e.g. row or column
+from a matrix)</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-186"></span>
+<img src="images/plots/two_variable_objs.png" alt="One-variable objects can take multiple forms." width="60%" />
 <p class="caption">
-Figure 4.2: The comands history is avaialble in the History tab.
+Figure 12.2: One-variable objects can take multiple forms.
 </p>
 </div>
-<p>By default, the history of commands are stored in a text file called <code>.Rhistory</code>
-that is saved in your session’s working directory.</p>
+<p>Here’s an example:</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="graphics2.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot numeric, numeric</span></span>
+<span id="cb194-2"><a href="graphics2.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Petal.Length, iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb194-3"><a href="graphics2.html#cb194-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-4"><a href="graphics2.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot numeric, factor</span></span>
+<span id="cb194-5"><a href="graphics2.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Petal.Length, iris<span class="sc">$</span>Species)</span>
+<span id="cb194-6"><a href="graphics2.html#cb194-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-7"><a href="graphics2.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot factor, numeric</span></span>
+<span id="cb194-8"><a href="graphics2.html#cb194-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Species, iris<span class="sc">$</span>Petal.Length)</span>
+<span id="cb194-9"><a href="graphics2.html#cb194-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-10"><a href="graphics2.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot factor, factor</span></span>
+<span id="cb194-11"><a href="graphics2.html#cb194-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Species, iris<span class="sc">$</span>Species)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-187-1.png" width="85%" style="display: block; margin: auto;" /></p>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-188-1.png" width="85%" style="display: block; margin: auto;" /></p>
+<div id="example-plots-of-two-variables" class="section level3" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Example: Plots of two variables</h3>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="graphics2.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some fake data</span></span>
+<span id="cb195-2"><a href="graphics2.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb195-3"><a href="graphics2.html#cb195-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-4"><a href="graphics2.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="co"># hair color</span></span>
+<span id="cb195-5"><a href="graphics2.html#cb195-5" aria-hidden="true" tabindex="-1"></a>hair <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb195-6"><a href="graphics2.html#cb195-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;blond&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;brown&#39;</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb195-7"><a href="graphics2.html#cb195-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-8"><a href="graphics2.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="co"># eye color</span></span>
+<span id="cb195-9"><a href="graphics2.html#cb195-9" aria-hidden="true" tabindex="-1"></a>eye <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb195-10"><a href="graphics2.html#cb195-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;brown&#39;</span>, <span class="st">&#39;green&#39;</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="graphics2.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot factor, factor</span></span>
+<span id="cb196-2"><a href="graphics2.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hair, eye)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-190-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
+<div id="more-high-level-graphics-of-two-variables" class="section level3" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> More high-level graphics of two variables</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Data</th>
+<th align="left">Graphic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>sunflowerplot()</code></td>
+<td align="left">numeric, numeric</td>
+<td align="left">sunflower scatterplot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>smoothScatter()</code></td>
+<td align="left">numeric, numeric</td>
+<td align="left">smooth scatterplot</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>boxplot()</code></td>
+<td align="left">list of numeric</td>
+<td align="left">boxplots</td>
+</tr>
+<tr class="even">
+<td align="left"><code>barplot()</code></td>
+<td align="left">matrix</td>
+<td align="left">stacked barplot</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>dotchart()</code></td>
+<td align="left">matrix</td>
+<td align="left">dotplot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>stripchart()</code></td>
+<td align="left">list of numeric</td>
+<td align="left">stripcharts</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>spineplot()</code></td>
+<td align="left">numeric, factor</td>
+<td align="left">spinogram</td>
+</tr>
+<tr class="even">
+<td align="left"><code>cdplot()</code></td>
+<td align="left">numeric, factor</td>
+<td align="left">conditional density plot</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>fourfoldplot()</code></td>
+<td align="left">2x2 table</td>
+<td align="left">fourfold display</td>
+</tr>
+<tr class="even">
+<td align="left"><code>assocplot()</code></td>
+<td align="left">2-D table</td>
+<td align="left">association plot</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mosaicplot()</code></td>
+<td align="left">2-D table</td>
+<td align="left">mosaicplot</td>
+</tr>
+</tbody>
+</table>
+<div id="sunflower-plot" class="section level4 unnumbered">
+<h4>Sunflower plot</h4>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="graphics2.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sunflower plot (numeric, numeric)</span></span>
+<span id="cb197-2"><a href="graphics2.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sunflowerplot</span>(iris<span class="sc">$</span>Petal.Length, iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-191-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="closing-a-session" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Closing a Session</h2>
-<p>When closing a session, what should you do?</p>
-<p>This is a somewhat “very personal” type of question, because it is up to you to
-decide what should happen to all the work that you’ve done in R.</p>
-<p>Having said that, you can always decide whether or not to:</p>
-<ul>
-<li><p>save changes in your source document(s)</p></li>
-<li><p>save the commands history in a text file</p></li>
-<li><p>save the objects in your workspace (i.e. objects in Global Environment) in
-a binary file</p></li>
-</ul>
-<p>It turns out that RStudio comes with default actions that take place
-when you close a session:</p>
-<ul>
-<li><p>it will ask you if you want to save changes in your source documents</p></li>
-<li><p>it will ask you if you want to save the workspace in an <code>.RData</code> file
-(this is a file that uses R’s native binary format; this is saved in your
-session’s working directory)</p></li>
-<li><p>it will automatically save your commands history in a text file called
-<code>.Rhistory</code> (saved in your session’s working directory)</p></li>
-</ul>
-<p>Also, because of RStudio’s default settings, the next time you open a new
-session it will:</p>
-<ul>
-<li><p>restore the previously open source document</p></li>
-<li><p>restore objects in the <code>.RData</code> file into your workspace</p></li>
-<li><p>give you access to all the commands stored in the <code>.Rhistory</code> file</p></li>
-</ul>
+<div id="smooth-scatter-plot" class="section level4 unnumbered">
+<h4>Smooth scatter plot</h4>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="graphics2.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># smooth scatter plot (numeric, numeric)</span></span>
+<span id="cb198-2"><a href="graphics2.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">smoothScatter</span>(iris<span class="sc">$</span>Petal.Length, iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-192-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="boxplots" class="section level4 unnumbered">
+<h4>Boxplots</h4>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="graphics2.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplots (numeric, numeric)</span></span>
+<span id="cb199-2"><a href="graphics2.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(iris<span class="sc">$</span>Petal.Length, iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-193-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="barplot" class="section level4 unnumbered">
+<h4>Barplot</h4>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="graphics2.html#cb200-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb200-2"><a href="graphics2.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot (numeric matrix)</span></span>
+<span id="cb200-3"><a href="graphics2.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(m, <span class="at">beside =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-194-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="conditional-density-plot" class="section level4 unnumbered">
+<h4>Conditional Density Plot</h4>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="graphics2.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conditional density plot (numeric, factor)</span></span>
+<span id="cb201-2"><a href="graphics2.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cdplot</span>(iris<span class="sc">$</span>Petal.Length, iris<span class="sc">$</span>Species)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-195-1.png" width="75%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
-
-
-
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="graphics1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphics3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

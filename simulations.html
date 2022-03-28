@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Session Management | Learning to Code in R</title>
+  <title>19 Simulations | Learning to Code in R</title>
   <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Session Management | Learning to Code in R" />
+  <meta property="og:title" content="19 Simulations | Learning to Code in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Session Management | Learning to Code in R" />
+  <meta name="twitter:title" content="19 Simulations | Learning to Code in R" />
   
   <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstudio.html"/>
-<link rel="next" href="vectors.html"/>
+<link rel="prev" href="while-loop.html"/>
+<link rel="next" href="input-output.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -446,206 +446,260 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Session Management</h1>
-<p>In this chapter I review some important aspects about managing your
-interactive session with R using RStudio.</p>
-<p>From the point of view of a session, all the work, activities, and actions you
-do with R can be classified into three categories:</p>
-<ul>
-<li><p>when starting a session</p></li>
-<li><p>during the session</p></li>
-<li><p>when closing a session</p></li>
-</ul>
-<p>Because there are several things going on behind the scenes in each of the
-categories listed above, it is important that we talk about them—at least
-briefly.</p>
-<div id="starting-a-session" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Starting a Session</h2>
-<p>Starting a session can be done in two primary ways:</p>
-<ul>
-<li><p>launching the R application program, which will give you access to its
-graphical usier interface; or via RStudio or any other IDE that has the
-ability to open an R session.</p></li>
-<li><p>by clicking on a file that your computer associates with R (or RStudio).
-For example, R-script files (with file extension <code>.R</code> or <code>.r</code>), R-Markdown
-files (<code>.Rmd</code> extension), R-Noweb files (<code>.Rnw</code> extension), RStudio project
-files (<code>.Rproj</code> extension), etc.</p></li>
-</ul>
-<div id="what-happens-when-you-open-an-r-session-via-rstudio" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> What happens when you open an R session via RStudio?</h3>
-<p>This is an important question that many users never stop to think about.
-However, it’s worth reviewing what happens when a session is started. So let’s
-talk about this.</p>
-<ul>
-<li><p>Every time you open RStudio, the console pane will display R’s welcome message.</p></li>
-<li><p>The console is always linked to a working directory.</p></li>
-<li><p>Typically, the working directory of the console will be your home directory,
-unless you specified a different location when you installed R in your computer.</p></li>
-<li><p>You can change the working directory to a different directory if you want.
-This change can be permanent (for future sessions), or temporary (for current
-session).</p></li>
-<li><p>To permanently modify working directory (when a session is opened), go to the
-menu bar, select “RStudio” tab, click on “Preferences,” and modify the
-“R General” options.</p></li>
-<li><p>To temporary change the working directory, go to the menu bar, select the
-“Session” tab, and click on “Set Working Directory,” or simply specify a
-working directory with the <code>setwd()</code> function executed from R’s console.</p></li>
-</ul>
+<div id="simulations" class="section level1" number="19">
+<h1><span class="header-section-number">19</span> Simulations</h1>
+<p>In this chapter we are going to write code to simulate investing a lump-sum
+in the stock market. We will use some functions from the collection of
+<code>"tidyverse"</code> packages.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="simulations.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># required package</span></span>
+<span id="cb304-2"><a href="simulations.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="motivation-5" class="section level2" number="19.1">
+<h2><span class="header-section-number">19.1</span> Motivation</h2>
+<p>We are going to consider investing in a total stock market index fund
+which is a financial instrument that tracks the performance of the U.S. stock
+market. This type of instrument typically takes the form of a mutual fund
+or an exchange-traded fund (ETF) that invests in a basket of stocks that
+passively tracks the performance of the U.S. stock market.</p>
+<div id="investing-a-lump-sum" class="section level3" number="19.1.1">
+<h3><span class="header-section-number">19.1.1</span> Investing a Lump-sum</h3>
+<p>Say you are going to start your investment with a lump-sum of $1000 in a U.S.
+total stock market index fund. In theory, this is money that you don’t plan to
+use within the next 5 years, and you are willing to invest it for the long run
+(10 years or more). How much money would you expect to get at the end of a
+10-year period? Or after 15 years? Or after 20 years? Or after a longer period?</p>
 </div>
-<div id="opening-a-session-for-the-first-time" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Opening a session for the first time</h3>
-<p>If you are opening a session in RStudio for the very fist time:</p>
+<div id="example-with-future-value" class="section level3" number="19.1.2">
+<h3><span class="header-section-number">19.1.2</span> Example with Future Value</h3>
+<p>Suppose you want to invest $1000 in a financial product (e.g. Money Market,
+Certificate of Deposit, Mutual Fund, ETF) that has a hypothetical annual return
+rate of 5%. Assume that you will keep this investment for 10 years. How much
+money would you expect to get at the end of this period?</p>
+<p>To answer this question, you can use the <strong>Future Value</strong> formula, assuming
+compound interest.</p>
+<p>Here are the ingredients for the Future Value formula:</p>
 <ul>
-<li><p>the “Editor” pane will be collapsed, and</p></li>
-<li><p>all the tabs in the “Environment, History, Connections” pane will be empty</p></li>
+<li><span class="math inline">\(C_0\)</span> = cash flow at period 0 (i.e. how much you invest)</li>
+<li><span class="math inline">\(r\)</span> = rate of return (in a given period)</li>
+<li><span class="math inline">\(n\)</span> = number of periods</li>
+<li><span class="math inline">\(\text{FV}\)</span> = future value (i.e. what you’ll get)</li>
 </ul>
-<p>In general, when you open a session (<strong>not</strong> for the very fist time):</p>
-<ul>
-<li>the “Environment” tab may display some objects, which means you have some
-existing objects in your global environment. You can also invoke the list
-function <code>ls()</code> to list any available objects in your current session:</li>
-</ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="session.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what objects are in my global environment?</span></span>
-<span id="cb18-2"><a href="session.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<ul>
-<li>the “History” tab may contain lines of previously used commands; if this is
-the case it means that there is an associated a text file called <code>.Rhistory</code> in
-your working directory. You can also use the <code>history()</code> function to display
-the <em>Commands History</em>, that is, all the commands invoked in your interactive
-sessions:</li>
-</ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="session.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is my history of commands being tracked?</span></span>
-<span id="cb19-2"><a href="session.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>()</span></code></pre></div>
+<p><span class="math display">\[
+\text{FV} = C_0 (1 + r)^n
+\]</span></p>
+<p>One of the critical ingredients to calculate the future of your investment is
+the annual rate of return <span class="math inline">\(r\)</span>. The issue is that annual rates of return when
+investing in the stock market fluctuate every year—because the market is
+volatile. Consequently, the exact answer to the above question is impossible
+to know.</p>
+<p>However, we are going to make some assumptions, and run some simulations to get
+an idea of the behavior for this type of investment. For the sake of simplicity,
+we will ignore inflation.</p>
 </div>
-<div id="working-directory" class="section level3" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Working Directory</h3>
-<p>If you open R via launching an application program (e.g. RStudio) that lets
-you interact with R’s console, your session will have an associated working
-directory, sometimes also referred to as the <em>current</em> working directory.</p>
-<p>When you install R in your computer, during the installation process a default
-working directory is assigned to R. By default, this directory is your home
-directory. You can check whether this is the case if you run the
-<em>get working directory</em> function <code>getwd()</code> in your console.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="session.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run this command in the console to find out </span></span>
-<span id="cb20-2"><a href="session.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the working directory of your session</span></span>
-<span id="cb20-3"><a href="session.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<p>In RStudio, you can also look at the console pane, and inspect the text right
-below the <code>Console</code> tab that always displays the working directory of your
-session. If you see the symbols <code>~/</code> it means that the home directory
-(represented by the tilde) is your working directory.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
-<img src="images/rstudio/rstudio-console-working-directory.png" alt="The working directory is indicated right below the Console tab." width="70%" />
+</div>
+<div id="variable-rates-of-return-and-volatility" class="section level2" number="19.2">
+<h2><span class="header-section-number">19.2</span> Variable rates of return and volatility</h2>
+<p>For simulation purposes, we are going to assume a probability distribution on
+the rates of return. More specifically, we are going to assume that annual rates
+of return <span class="math inline">\(r_y\)</span> follow a <strong>normal distribution</strong> with a certain mean <span class="math inline">\(\mu\)</span> and
+a certain standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p><span class="math display">\[
+\text{rate}_y \sim \mathcal{N}(\mu = \text{avg rate}, \hspace{1mm} \sigma = \text{avg volatility})
+\]</span></p>
+<p>Which <span class="math inline">\(\mu\)</span> and which <span class="math inline">\(\sigma\)</span>? We could look for historical data and use an
+average annual rate of return for <span class="math inline">\(\mu\)</span>, as well as an average annual volatility
+for <span class="math inline">\(\sigma\)</span></p>
+<ul>
+<li><p><strong>average annual return</strong>: <span class="math inline">\(\mu = 10\%\)</span></p></li>
+<li><p><strong>average annual volatility</strong>: <span class="math inline">\(\sigma = 18\%\)</span></p></li>
+</ul>
+<p>The following diagram illustrates the flow of compounding for a certain invested
+amount <span class="math inline">\(amt_0\)</span>. Observe that a random rate of return <span class="math inline">\(t_t\)</span> is generated for
+each year <span class="math inline">\(t = 1, 2, 3, ...\)</span></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-301"></span>
+<img src="images/iterations/timeline-investment-future-value.png" alt="Random rates of return following a normal distribution" width="95%" />
 <p class="caption">
-Figure 4.1: The working directory is indicated right below the Console tab.
+Figure 19.1: Random rates of return following a normal distribution
 </p>
 </div>
+<div id="example-running-3-simulations" class="section level3" number="19.2.1">
+<h3><span class="header-section-number">19.2.1</span> Example: Running 3 simulations</h3>
+<p>One the goals of this project is to run various simulations that give you a
+theoretical idea for the behavior of this investment.</p>
+<p>Here’s a toy example with the annual balance of 3 simulations (see table below).
+The first row (0) shows the
+initial investment amount of $1000. Each year $360 are contributed at the end
+of the year. The last row (6) shows the balance of the investment at the end
+of year 5. Column 1 corresponds to the 1st simulation, column 2 to the 2nd
+simulation, etc. Rates of return for each year are generated via <code>rnorm()</code> in
+such a way that <span class="math inline">\(r_y \sim N(\mu = 10\%, \sigma = 18\%)\)</span></p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="simulations.html#cb305-1" aria-hidden="true" tabindex="-1"></a>initial_amount <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb305-2"><a href="simulations.html#cb305-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb305-3"><a href="simulations.html#cb305-3" aria-hidden="true" tabindex="-1"></a>repetitions <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb305-4"><a href="simulations.html#cb305-4" aria-hidden="true" tabindex="-1"></a>annual_return <span class="ot">&lt;-</span> <span class="fl">0.10</span></span>
+<span id="cb305-5"><a href="simulations.html#cb305-5" aria-hidden="true" tabindex="-1"></a>annual_volatility <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
+<span id="cb305-6"><a href="simulations.html#cb305-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-7"><a href="simulations.html#cb305-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb305-8"><a href="simulations.html#cb305-8" aria-hidden="true" tabindex="-1"></a>balances <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> years<span class="sc">+</span><span class="dv">1</span>, <span class="at">ncol =</span> repetitions)</span>
+<span id="cb305-9"><a href="simulations.html#cb305-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-10"><a href="simulations.html#cb305-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (rept <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>repetitions) {</span>
+<span id="cb305-11"><a href="simulations.html#cb305-11" aria-hidden="true" tabindex="-1"></a>  balance <span class="ot">&lt;-</span> <span class="fu">rep</span>(initial_amount, years<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb305-12"><a href="simulations.html#cb305-12" aria-hidden="true" tabindex="-1"></a>  return_rates <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(years, <span class="at">mean =</span> annual_return, <span class="at">sd =</span> annual_volatility)</span>
+<span id="cb305-13"><a href="simulations.html#cb305-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (y <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years) {</span>
+<span id="cb305-14"><a href="simulations.html#cb305-14" aria-hidden="true" tabindex="-1"></a>    balance[y<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> balance[y] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> return_rates[y])<span class="sc">^</span><span class="dv">1</span></span>
+<span id="cb305-15"><a href="simulations.html#cb305-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb305-16"><a href="simulations.html#cb305-16" aria-hidden="true" tabindex="-1"></a>  balances[ ,rept] <span class="ot">&lt;-</span> balance</span>
+<span id="cb305-17"><a href="simulations.html#cb305-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb305-18"><a href="simulations.html#cb305-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-19"><a href="simulations.html#cb305-19" aria-hidden="true" tabindex="-1"></a><span class="co"># adding row-and-column names</span></span>
+<span id="cb305-20"><a href="simulations.html#cb305-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(balances) <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb305-21"><a href="simulations.html#cb305-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(balances) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;sim&quot;</span>, <span class="dv">1</span><span class="sc">:</span>repetitions)</span>
+<span id="cb305-22"><a href="simulations.html#cb305-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-23"><a href="simulations.html#cb305-23" aria-hidden="true" tabindex="-1"></a><span class="co"># converting into data.frame (for tidyverse convenience)</span></span>
+<span id="cb305-24"><a href="simulations.html#cb305-24" aria-hidden="true" tabindex="-1"></a>balances <span class="ot">=</span> <span class="fu">as.data.frame</span>(balances)</span>
+<span id="cb305-25"><a href="simulations.html#cb305-25" aria-hidden="true" tabindex="-1"></a>balances<span class="sc">$</span>year <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb305-26"><a href="simulations.html#cb305-26" aria-hidden="true" tabindex="-1"></a>balances</span></code></pre></div>
+<pre><code>#&gt;         sim1        sim2       sim3   year
+#&gt; 0   1000.000   1000.0000   1000.000      0
+#&gt; 1   1205.395    772.7679   1079.075      1
+#&gt; 2   1479.868    937.6903   1539.966      2
+#&gt; 3   1598.739    984.8438   1796.698      3
+#&gt; 4   1628.109   1032.9547   2144.609      4
+#&gt; 5   1968.481    965.3189   2069.342      5</code></pre>
+</div>
+<div id="reshaping-the-table-of-simulations" class="section level3" number="19.2.2">
+<h3><span class="header-section-number">19.2.2</span> Reshaping the table of simulations</h3>
+<p>To graph timelines with <code>"ggplot2"</code>, it is more convenient to arrange the
+content in what is called “tall” format. One option to do this is with the
+<code>melt()</code> function from package <code>"reshape2"</code>. Assuming that the data displayed
+above is in an object <code>balances</code>, we can <em>melt it</em> as follows:</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="simulations.html#cb307-1" aria-hidden="true" tabindex="-1"></a>sim_dat <span class="ot">=</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb307-2"><a href="simulations.html#cb307-2" aria-hidden="true" tabindex="-1"></a>  balances, </span>
+<span id="cb307-3"><a href="simulations.html#cb307-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;sim&quot;</span>),</span>
+<span id="cb307-4"><a href="simulations.html#cb307-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;simulation&quot;</span>),</span>
+<span id="cb307-5"><a href="simulations.html#cb307-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;amount&quot;</span>)</span>
+<span id="cb307-6"><a href="simulations.html#cb307-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb307-7"><a href="simulations.html#cb307-7" aria-hidden="true" tabindex="-1"></a>sim_dat</span>
+<span id="cb307-8"><a href="simulations.html#cb307-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 18 x 3</span></span>
+<span id="cb307-9"><a href="simulations.html#cb307-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     year simulation amount</span></span>
+<span id="cb307-10"><a href="simulations.html#cb307-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;</span></span>
+<span id="cb307-11"><a href="simulations.html#cb307-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1     0 sim1        1000 </span></span>
+<span id="cb307-12"><a href="simulations.html#cb307-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2     0 sim2        1000 </span></span>
+<span id="cb307-13"><a href="simulations.html#cb307-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3     0 sim3        1000 </span></span>
+<span id="cb307-14"><a href="simulations.html#cb307-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4     1 sim1        1205.</span></span>
+<span id="cb307-15"><a href="simulations.html#cb307-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5     1 sim2         773.</span></span>
+<span id="cb307-16"><a href="simulations.html#cb307-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6     1 sim3        1079.</span></span>
+<span id="cb307-17"><a href="simulations.html#cb307-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7     2 sim1        1480.</span></span>
+<span id="cb307-18"><a href="simulations.html#cb307-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8     2 sim2         938.</span></span>
+<span id="cb307-19"><a href="simulations.html#cb307-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9     2 sim3        1540.</span></span>
+<span id="cb307-20"><a href="simulations.html#cb307-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     3 sim1        1599.</span></span>
+<span id="cb307-21"><a href="simulations.html#cb307-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     3 sim2         985.</span></span>
+<span id="cb307-22"><a href="simulations.html#cb307-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     3 sim3        1797.</span></span>
+<span id="cb307-23"><a href="simulations.html#cb307-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     4 sim1        1628.</span></span>
+<span id="cb307-24"><a href="simulations.html#cb307-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     4 sim2        1033.</span></span>
+<span id="cb307-25"><a href="simulations.html#cb307-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15     4 sim3        2145.</span></span>
+<span id="cb307-26"><a href="simulations.html#cb307-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16     5 sim1        1968.</span></span>
+<span id="cb307-27"><a href="simulations.html#cb307-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17     5 sim2         965.</span></span>
+<span id="cb307-28"><a href="simulations.html#cb307-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18     5 sim3        2069.</span></span></code></pre></div>
+</div>
+<div id="graphing-the-simulations" class="section level3" number="19.2.3">
+<h3><span class="header-section-number">19.2.3</span> Graphing the Simulations</h3>
+<p>Having the data in this “tall’ format, we can easily graph it with <code>ggplot()</code>
+and friends (<em>btw:</em> by now you should be abe to figure out the <code>ggplot()</code> command
+that produces the following graph):</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="simulations.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sim_dat, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount)) <span class="sc">+</span></span>
+<span id="cb308-2"><a href="simulations.html#cb308-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> simulation), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb308-3"><a href="simulations.html#cb308-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb308-4"><a href="simulations.html#cb308-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span></span>
+<span id="cb308-5"><a href="simulations.html#cb308-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Years&quot;</span>) <span class="sc">+</span></span>
+<span id="cb308-6"><a href="simulations.html#cb308-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Portfolio balance&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-305-1.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="working-during-a-session" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Working During a Session</h2>
-<p>Working with R involves a series of common actions:</p>
-<ul>
-<li><p>writing commands (on a source document or on the console)</p></li>
-<li><p>executing commands (from a source doc or from the console)</p></li>
-<li><p>looking or examining outputs</p></li>
-<li><p>reading or importing files (e.g. data files, script files)</p></li>
-<li><p>saving or exporting output to files (e.g. data files, images, results)</p></li>
-</ul>
-<p>From the logistical point of vew, it all boils down to executing commands,
-taking into account the following:</p>
-<ul>
-<li><p>where a command is being executed from</p></li>
-<li><p>if the command requires an input, where does that input come from?</p></li>
-<li><p>if the command produces an output, where does that output go to?</p></li>
-</ul>
-<p>This is why we need to describe the following:</p>
-<ol style="list-style-type: decimal">
-<li><p>Working Directory</p></li>
-<li><p>Workspace and Global Environment</p></li>
-<li><p>History of commands</p></li>
-</ol>
-<div id="working-directory-1" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Working Directory</h3>
-<p>You will be writing commands either directly in the console or in a source
-document (e.g. <code>R</code> script file, <code>Rmd</code> file, etc.)</p>
-<p>The console is always associated to a working directory (usually your home
-directory).</p>
-<p>A source document, once it has been saved, will live in some directory.
-<strong>Ideally</strong>, a source document’s directory would be used as its working directory,
-using relative filepaths to handle all input and output resources required in
-thecode of the source document. Unfortunately, this ideal is far from what
-happens in practice.</p>
-<ul>
-<li><p>By default, when you execute code chunks in a <strong>saved</strong> <code>Rmd</code> file, the
-working directory is the directory where the <code>Rmd</code> file resides in.</p></li>
-<li><p>By default, when you execute code from an <code>R</code> file, the working directory
-is that of the console.</p></li>
-</ul>
+<div id="running-100-simulations" class="section level2" number="19.3">
+<h2><span class="header-section-number">19.3</span> Running 100 simulations</h2>
+<p>What if we decide to increase the number of simulations to say 100? Here’s
+what could happen.</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="simulations.html#cb309-1" aria-hidden="true" tabindex="-1"></a>initial_amount <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb309-2"><a href="simulations.html#cb309-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb309-3"><a href="simulations.html#cb309-3" aria-hidden="true" tabindex="-1"></a>repetitions <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb309-4"><a href="simulations.html#cb309-4" aria-hidden="true" tabindex="-1"></a>annual_return <span class="ot">&lt;-</span> <span class="fl">0.10</span></span>
+<span id="cb309-5"><a href="simulations.html#cb309-5" aria-hidden="true" tabindex="-1"></a>annual_volatility <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
+<span id="cb309-6"><a href="simulations.html#cb309-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-7"><a href="simulations.html#cb309-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb309-8"><a href="simulations.html#cb309-8" aria-hidden="true" tabindex="-1"></a>balances <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> years<span class="sc">+</span><span class="dv">1</span>, <span class="at">ncol =</span> repetitions)</span>
+<span id="cb309-9"><a href="simulations.html#cb309-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-10"><a href="simulations.html#cb309-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (rept <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>repetitions) {</span>
+<span id="cb309-11"><a href="simulations.html#cb309-11" aria-hidden="true" tabindex="-1"></a>  balance <span class="ot">&lt;-</span> <span class="fu">rep</span>(initial_amount, years<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb309-12"><a href="simulations.html#cb309-12" aria-hidden="true" tabindex="-1"></a>  return_rates <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(years, <span class="at">mean =</span> annual_return, <span class="at">sd =</span> annual_volatility)</span>
+<span id="cb309-13"><a href="simulations.html#cb309-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (y <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years) {</span>
+<span id="cb309-14"><a href="simulations.html#cb309-14" aria-hidden="true" tabindex="-1"></a>    balance[y<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> balance[y] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> return_rates[y])<span class="sc">^</span><span class="dv">1</span></span>
+<span id="cb309-15"><a href="simulations.html#cb309-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb309-16"><a href="simulations.html#cb309-16" aria-hidden="true" tabindex="-1"></a>  balances[ ,rept] <span class="ot">&lt;-</span> balance</span>
+<span id="cb309-17"><a href="simulations.html#cb309-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb309-18"><a href="simulations.html#cb309-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-19"><a href="simulations.html#cb309-19" aria-hidden="true" tabindex="-1"></a><span class="co"># adding row-and-column names</span></span>
+<span id="cb309-20"><a href="simulations.html#cb309-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(balances) <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb309-21"><a href="simulations.html#cb309-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(balances) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;sim&quot;</span>, <span class="dv">1</span><span class="sc">:</span>repetitions)</span>
+<span id="cb309-22"><a href="simulations.html#cb309-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-23"><a href="simulations.html#cb309-23" aria-hidden="true" tabindex="-1"></a><span class="co"># converting into data.frame (for tidyverse convenience)</span></span>
+<span id="cb309-24"><a href="simulations.html#cb309-24" aria-hidden="true" tabindex="-1"></a>balances <span class="ot">=</span> <span class="fu">as.data.frame</span>(balances)</span>
+<span id="cb309-25"><a href="simulations.html#cb309-25" aria-hidden="true" tabindex="-1"></a>balances<span class="sc">$</span>year <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb309-26"><a href="simulations.html#cb309-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-27"><a href="simulations.html#cb309-27" aria-hidden="true" tabindex="-1"></a>sim_dat <span class="ot">=</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb309-28"><a href="simulations.html#cb309-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>(balances), </span>
+<span id="cb309-29"><a href="simulations.html#cb309-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;sim&quot;</span>),</span>
+<span id="cb309-30"><a href="simulations.html#cb309-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;simulation&quot;</span>),</span>
+<span id="cb309-31"><a href="simulations.html#cb309-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;amount&quot;</span>)</span></code></pre></div>
+<p>And then graph them:</p>
+<p>In an attempt to provide a better way to observe the general behavior of the
+simulations, we can add reference lines for the 10-th and 90-th percentiles
+(colored in yellow), as well as the median line (blue line).</p>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-308-1.png" width="85%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="workspace-and-global-environment" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Workspace and Global Environment</h3>
-<p>Regardless of where commands are being executed from, R will carry out
-all the necessary computations, and objects will be created along the way.</p>
-<p>The collection of objects that are being created (<em>and kept alive</em>) during a
-session are part of what is considered to be your <strong>workspace</strong>.</p>
-<p>At a more technical level, all the objects in your workspace are part of an R
-<strong>environment</strong>. To be more precise, the workspace is the <strong>Global Environment</strong>.</p>
-<p>On the console, if you type <code>ls()</code>, R will display all the available objects
-in your workspace.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="session.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># available objects in your workspace</span></span>
-<span id="cb21-2"><a href="session.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<p>You can also go to the pane “Environment, History, …” and
-click on the <code>Environment</code> tab to see the objects in your workspace which are
-displayed by default under the option “Global Environment.”</p>
-</div>
-<div id="commands-history" class="section level3" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Commands History</h3>
-<p>When you start a session, R will track all the commands that you execute during
-that session. As you execute commands, they will become part of what is called
-the <strong>Commands History</strong>.</p>
-<p>You can find the list of all used commands in the <code>History</code> tab,
-located in the <em>Environment, History, Connections</em> pane of RStudio. You can
-also access the commands history with the function <code>history()</code>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
-<img src="images/rstudio/rstudio-history-tab.png" alt="The comands history is avaialble in the History tab." width="65%" />
-<p class="caption">
-Figure 4.2: The comands history is avaialble in the History tab.
-</p>
-</div>
-<p>By default, the history of commands are stored in a text file called <code>.Rhistory</code>
-that is saved in your session’s working directory.</p>
-</div>
-</div>
-<div id="closing-a-session" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Closing a Session</h2>
-<p>When closing a session, what should you do?</p>
-<p>This is a somewhat “very personal” type of question, because it is up to you to
-decide what should happen to all the work that you’ve done in R.</p>
-<p>Having said that, you can always decide whether or not to:</p>
-<ul>
-<li><p>save changes in your source document(s)</p></li>
-<li><p>save the commands history in a text file</p></li>
-<li><p>save the objects in your workspace (i.e. objects in Global Environment) in
-a binary file</p></li>
-</ul>
-<p>It turns out that RStudio comes with default actions that take place
-when you close a session:</p>
-<ul>
-<li><p>it will ask you if you want to save changes in your source documents</p></li>
-<li><p>it will ask you if you want to save the workspace in an <code>.RData</code> file
-(this is a file that uses R’s native binary format; this is saved in your
-session’s working directory)</p></li>
-<li><p>it will automatically save your commands history in a text file called
-<code>.Rhistory</code> (saved in your session’s working directory)</p></li>
-</ul>
-<p>Also, because of RStudio’s default settings, the next time you open a new
-session it will:</p>
-<ul>
-<li><p>restore the previously open source document</p></li>
-<li><p>restore objects in the <code>.RData</code> file into your workspace</p></li>
-<li><p>give you access to all the commands stored in the <code>.Rhistory</code> file</p></li>
-</ul>
+<div id="more-summary-statistics" class="section level2" number="19.4">
+<h2><span class="header-section-number">19.4</span> More Summary Statistics</h2>
+<p>Something of interest, could be the computation of numeric
+summaries that help us make sense of the obtained results from 100 simulations.
+For instance, we could calculate some quantiles of the portfolio balance along
+the retirement period.</p>
+<p>We can then compute statistics</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="simulations.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average and median returns</span></span>
+<span id="cb310-2"><a href="simulations.html#cb310-2" aria-hidden="true" tabindex="-1"></a>ret_mean <span class="ot">&lt;-</span> <span class="fu">apply</span>(balances, <span class="dv">1</span>, mean)</span>
+<span id="cb310-3"><a href="simulations.html#cb310-3" aria-hidden="true" tabindex="-1"></a>ret_median <span class="ot">&lt;-</span> <span class="fu">apply</span>(balances, <span class="dv">1</span>, median)</span>
+<span id="cb310-4"><a href="simulations.html#cb310-4" aria-hidden="true" tabindex="-1"></a>ret_perc10 <span class="ot">&lt;-</span> <span class="fu">apply</span>(balances, <span class="dv">1</span>, quantile, <span class="fl">0.1</span>)</span>
+<span id="cb310-5"><a href="simulations.html#cb310-5" aria-hidden="true" tabindex="-1"></a>ret_perc90 <span class="ot">&lt;-</span> <span class="fu">apply</span>(balances, <span class="dv">1</span>, quantile, <span class="fl">0.9</span>)</span>
+<span id="cb310-6"><a href="simulations.html#cb310-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-7"><a href="simulations.html#cb310-7" aria-hidden="true" tabindex="-1"></a><span class="co"># assembling separate data frames</span></span>
+<span id="cb310-8"><a href="simulations.html#cb310-8" aria-hidden="true" tabindex="-1"></a>dat_median <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb310-9"><a href="simulations.html#cb310-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span>years,</span>
+<span id="cb310-10"><a href="simulations.html#cb310-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">amount =</span> ret_median</span>
+<span id="cb310-11"><a href="simulations.html#cb310-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb310-12"><a href="simulations.html#cb310-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-13"><a href="simulations.html#cb310-13" aria-hidden="true" tabindex="-1"></a>dat_perc10 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb310-14"><a href="simulations.html#cb310-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span>years,</span>
+<span id="cb310-15"><a href="simulations.html#cb310-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">amount =</span> ret_perc10</span>
+<span id="cb310-16"><a href="simulations.html#cb310-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb310-17"><a href="simulations.html#cb310-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-18"><a href="simulations.html#cb310-18" aria-hidden="true" tabindex="-1"></a>dat_perc90 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb310-19"><a href="simulations.html#cb310-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span>years,</span>
+<span id="cb310-20"><a href="simulations.html#cb310-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">amount =</span> ret_perc90</span>
+<span id="cb310-21"><a href="simulations.html#cb310-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>With these statistics, we can enrich the plot</p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="simulations.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb311-2"><a href="simulations.html#cb311-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> sim_dat, </span>
+<span id="cb311-3"><a href="simulations.html#cb311-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount, <span class="at">group =</span> simulation), </span>
+<span id="cb311-4"><a href="simulations.html#cb311-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb311-5"><a href="simulations.html#cb311-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_perc10, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount),</span>
+<span id="cb311-6"><a href="simulations.html#cb311-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb311-7"><a href="simulations.html#cb311-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_perc90, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount),</span>
+<span id="cb311-8"><a href="simulations.html#cb311-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb311-9"><a href="simulations.html#cb311-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_median, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount),</span>
+<span id="cb311-10"><a href="simulations.html#cb311-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb311-11"><a href="simulations.html#cb311-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb311-12"><a href="simulations.html#cb311-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span></span>
+<span id="cb311-13"><a href="simulations.html#cb311-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Years&quot;</span>) <span class="sc">+</span></span>
+<span id="cb311-14"><a href="simulations.html#cb311-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Portfolio balance&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-310-1.png" width="85%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -657,8 +711,8 @@ session it will:</p>
           </div>
         </div>
       </div>
-<a href="rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="while-loop.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="input-output.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

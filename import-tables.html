@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Session Management | Learning to Code in R</title>
+  <title>21 Importing Data Tables | Learning to Code in R</title>
   <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Session Management | Learning to Code in R" />
+  <meta property="og:title" content="21 Importing Data Tables | Learning to Code in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Session Management | Learning to Code in R" />
+  <meta name="twitter:title" content="21 Importing Data Tables | Learning to Code in R" />
   
   <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-03-27" />
+<meta name="date" content="2022-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstudio.html"/>
-<link rel="next" href="vectors.html"/>
+<link rel="prev" href="input-output.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -426,6 +426,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="20.1" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>20.1</b> Connections</a></li>
 </ul></li>
+<li class="chapter" data-level="21" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>21</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="import-tables.html"><a href="import-tables.html#motivation-6"><i class="fa fa-check"></i><b>21.1</b> Motivation</a></li>
+<li class="chapter" data-level="21.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text"><i class="fa fa-check"></i><b>21.2</b> Character Delimited Text</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="import-tables.html"><a href="import-tables.html#delimited-formats"><i class="fa fa-check"></i><b>21.2.1</b> Delimited Formats</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>21.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>21.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="21.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>21.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="21.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>21.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>21.4</b> In Summary</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
 
@@ -446,219 +461,422 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Session Management</h1>
-<p>In this chapter I review some important aspects about managing your
-interactive session with R using RStudio.</p>
-<p>From the point of view of a session, all the work, activities, and actions you
-do with R can be classified into three categories:</p>
+<div id="import-tables" class="section level1" number="21">
+<h1><span class="header-section-number">21</span> Importing Data Tables</h1>
+<p>In this chapter we describe various “standard” ways to import tabular data.
+By standard I mean using base functions such as <code>read.table()</code> and friends.
+This is in contrast to alternative functions from packages such as <code>"readr"</code>,
+and other packages.</p>
+<p>There’s a wide range of ways and options to import data tables in R.
+The authoritative document to know almost all about importing (and exporting)
+data is the manual <strong>R Data Import/Export</strong></p>
+<p><a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-data.html</a></p>
+<div id="motivation-6" class="section level2" number="21.1">
+<h2><span class="header-section-number">21.1</span> Motivation</h2>
+<p>Say we have a table (see below) with data about the different accounts, the
+type of bank (brick-and-mortar or online), the annual rate of return, and the
+balance amount.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">account</th>
+<th align="left">bank</th>
+<th align="left">rate</th>
+<th align="left">balance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">savings</td>
+<td align="left">brick-n-mortar</td>
+<td align="left">0.020</td>
+<td align="left">1000</td>
+</tr>
+<tr class="even">
+<td align="left">money market</td>
+<td align="left">online</td>
+<td align="left">0.025</td>
+<td align="left">2000</td>
+</tr>
+<tr class="odd">
+<td align="left">certificate</td>
+<td align="left">brick-n-mortar</td>
+<td align="left">0.030</td>
+<td align="left">3000</td>
+</tr>
+<tr class="even">
+<td align="left">brokerage</td>
+<td align="left">online</td>
+<td align="left">0.070</td>
+<td align="left">5000</td>
+</tr>
+<tr class="odd">
+<td align="left">retirement</td>
+<td align="left">online</td>
+<td align="left">0.050</td>
+<td align="left">9000</td>
+</tr>
+</tbody>
+</table>
+<p>A data table like this one could be stored in various types of files. For
+example, it could be stored in a <em>Comma Separated Value</em> (CSV), which is a
+very common kind of text file format to stored tables. Another possible way
+in which this table could be stored is in a spreadsheet (e.g. Excel, Google
+Sheets, Mac Numbers).</p>
+<p>Let’s assume that the table is stored in a text file. Here I want to be a bit
+more specific about what I mean by <em>text</em> file:</p>
 <ul>
-<li><p>when starting a session</p></li>
-<li><p>during the session</p></li>
-<li><p>when closing a session</p></li>
-</ul>
-<p>Because there are several things going on behind the scenes in each of the
-categories listed above, it is important that we talk about them—at least
-briefly.</p>
-<div id="starting-a-session" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Starting a Session</h2>
-<p>Starting a session can be done in two primary ways:</p>
-<ul>
-<li><p>launching the R application program, which will give you access to its
-graphical usier interface; or via RStudio or any other IDE that has the
-ability to open an R session.</p></li>
-<li><p>by clicking on a file that your computer associates with R (or RStudio).
-For example, R-script files (with file extension <code>.R</code> or <code>.r</code>), R-Markdown
-files (<code>.Rmd</code> extension), R-Noweb files (<code>.Rnw</code> extension), RStudio project
-files (<code>.Rproj</code> extension), etc.</p></li>
-</ul>
-<div id="what-happens-when-you-open-an-r-session-via-rstudio" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> What happens when you open an R session via RStudio?</h3>
-<p>This is an important question that many users never stop to think about.
-However, it’s worth reviewing what happens when a session is started. So let’s
-talk about this.</p>
-<ul>
-<li><p>Every time you open RStudio, the console pane will display R’s welcome message.</p></li>
-<li><p>The console is always linked to a working directory.</p></li>
-<li><p>Typically, the working directory of the console will be your home directory,
-unless you specified a different location when you installed R in your computer.</p></li>
-<li><p>You can change the working directory to a different directory if you want.
-This change can be permanent (for future sessions), or temporary (for current
-session).</p></li>
-<li><p>To permanently modify working directory (when a session is opened), go to the
-menu bar, select “RStudio” tab, click on “Preferences,” and modify the
-“R General” options.</p></li>
-<li><p>To temporary change the working directory, go to the menu bar, select the
-“Session” tab, and click on “Set Working Directory,” or simply specify a
-working directory with the <code>setwd()</code> function executed from R’s console.</p></li>
-</ul>
-</div>
-<div id="opening-a-session-for-the-first-time" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Opening a session for the first time</h3>
-<p>If you are opening a session in RStudio for the very fist time:</p>
-<ul>
-<li><p>the “Editor” pane will be collapsed, and</p></li>
-<li><p>all the tabs in the “Environment, History, Connections” pane will be empty</p></li>
-</ul>
-<p>In general, when you open a session (<strong>not</strong> for the very fist time):</p>
-<ul>
-<li>the “Environment” tab may display some objects, which means you have some
-existing objects in your global environment. You can also invoke the list
-function <code>ls()</code> to list any available objects in your current session:</li>
-</ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="session.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what objects are in my global environment?</span></span>
-<span id="cb18-2"><a href="session.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<ul>
-<li>the “History” tab may contain lines of previously used commands; if this is
-the case it means that there is an associated a text file called <code>.Rhistory</code> in
-your working directory. You can also use the <code>history()</code> function to display
-the <em>Commands History</em>, that is, all the commands invoked in your interactive
-sessions:</li>
-</ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="session.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is my history of commands being tracked?</span></span>
-<span id="cb19-2"><a href="session.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>()</span></code></pre></div>
-</div>
-<div id="working-directory" class="section level3" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Working Directory</h3>
-<p>If you open R via launching an application program (e.g. RStudio) that lets
-you interact with R’s console, your session will have an associated working
-directory, sometimes also referred to as the <em>current</em> working directory.</p>
-<p>When you install R in your computer, during the installation process a default
-working directory is assigned to R. By default, this directory is your home
-directory. You can check whether this is the case if you run the
-<em>get working directory</em> function <code>getwd()</code> in your console.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="session.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run this command in the console to find out </span></span>
-<span id="cb20-2"><a href="session.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the working directory of your session</span></span>
-<span id="cb20-3"><a href="session.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<p>In RStudio, you can also look at the console pane, and inspect the text right
-below the <code>Console</code> tab that always displays the working directory of your
-session. If you see the symbols <code>~/</code> it means that the home directory
-(represented by the tilde) is your working directory.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
-<img src="images/rstudio/rstudio-console-working-directory.png" alt="The working directory is indicated right below the Console tab." width="70%" />
-<p class="caption">
-Figure 4.1: The working directory is indicated right below the Console tab.
-</p>
-</div>
-</div>
-</div>
-<div id="working-during-a-session" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Working During a Session</h2>
-<p>Working with R involves a series of common actions:</p>
-<ul>
-<li><p>writing commands (on a source document or on the console)</p></li>
-<li><p>executing commands (from a source doc or from the console)</p></li>
-<li><p>looking or examining outputs</p></li>
-<li><p>reading or importing files (e.g. data files, script files)</p></li>
-<li><p>saving or exporting output to files (e.g. data files, images, results)</p></li>
-</ul>
-<p>From the logistical point of vew, it all boils down to executing commands,
-taking into account the following:</p>
-<ul>
-<li><p>where a command is being executed from</p></li>
-<li><p>if the command requires an input, where does that input come from?</p></li>
-<li><p>if the command produces an output, where does that output go to?</p></li>
-</ul>
-<p>This is why we need to describe the following:</p>
-<ol style="list-style-type: decimal">
-<li><p>Working Directory</p></li>
-<li><p>Workspace and Global Environment</p></li>
-<li><p>History of commands</p></li>
-</ol>
-<div id="working-directory-1" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Working Directory</h3>
-<p>You will be writing commands either directly in the console or in a source
-document (e.g. <code>R</code> script file, <code>Rmd</code> file, etc.)</p>
-<p>The console is always associated to a working directory (usually your home
-directory).</p>
-<p>A source document, once it has been saved, will live in some directory.
-<strong>Ideally</strong>, a source document’s directory would be used as its working directory,
-using relative filepaths to handle all input and output resources required in
-thecode of the source document. Unfortunately, this ideal is far from what
-happens in practice.</p>
-<ul>
-<li><p>By default, when you execute code chunks in a <strong>saved</strong> <code>Rmd</code> file, the
-working directory is the directory where the <code>Rmd</code> file resides in.</p></li>
-<li><p>By default, when you execute code from an <code>R</code> file, the working directory
-is that of the console.</p></li>
+<li><p>By text file I mean a plain text file</p></li>
+<li><p>Plain text as an umbrella term for any file that is in a human-readable form
+(<code>.txt</code>, <code>.csv</code>, <code>.xml</code>, <code>.html</code>)</p></li>
+<li><p>Text file stored as a sequence of characters</p></li>
+<li><p>Each character stored as a single byte of data</p></li>
+<li><p>Data is arranged in rows, with several values stored on each row</p></li>
+<li><p>Text file that can be read and manipulated with a text editor</p></li>
 </ul>
 </div>
-<div id="workspace-and-global-environment" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Workspace and Global Environment</h3>
-<p>Regardless of where commands are being executed from, R will carry out
-all the necessary computations, and objects will be created along the way.</p>
-<p>The collection of objects that are being created (<em>and kept alive</em>) during a
-session are part of what is considered to be your <strong>workspace</strong>.</p>
-<p>At a more technical level, all the objects in your workspace are part of an R
-<strong>environment</strong>. To be more precise, the workspace is the <strong>Global Environment</strong>.</p>
-<p>On the console, if you type <code>ls()</code>, R will display all the available objects
-in your workspace.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="session.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># available objects in your workspace</span></span>
-<span id="cb21-2"><a href="session.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<p>You can also go to the pane “Environment, History, …” and
-click on the <code>Environment</code> tab to see the objects in your workspace which are
-displayed by default under the option “Global Environment.”</p>
-</div>
-<div id="commands-history" class="section level3" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Commands History</h3>
-<p>When you start a session, R will track all the commands that you execute during
-that session. As you execute commands, they will become part of what is called
-the <strong>Commands History</strong>.</p>
-<p>You can find the list of all used commands in the <code>History</code> tab,
-located in the <em>Environment, History, Connections</em> pane of RStudio. You can
-also access the commands history with the function <code>history()</code>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
-<img src="images/rstudio/rstudio-history-tab.png" alt="The comands history is avaialble in the History tab." width="65%" />
-<p class="caption">
-Figure 4.2: The comands history is avaialble in the History tab.
-</p>
-</div>
-<p>By default, the history of commands are stored in a text file called <code>.Rhistory</code>
-that is saved in your session’s working directory.</p>
-</div>
-</div>
-<div id="closing-a-session" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Closing a Session</h2>
-<p>When closing a session, what should you do?</p>
-<p>This is a somewhat “very personal” type of question, because it is up to you to
-decide what should happen to all the work that you’ve done in R.</p>
-<p>Having said that, you can always decide whether or not to:</p>
+<div id="character-delimited-text" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> Character Delimited Text</h2>
+<p>A common storage option is to find a way in which we could organize the data
+in a form that resembles a table or rectangular format. The most common storage
+option to do this is by using the so-called field-delimiter formats such as
+comma separated values or CSV.</p>
 <ul>
-<li><p>save changes in your source document(s)</p></li>
-<li><p>save the commands history in a text file</p></li>
-<li><p>save the objects in your workspace (i.e. objects in Global Environment) in
-a binary file</p></li>
+<li><p>A common way to store data in tabular form is via text files</p></li>
+<li><p>To store the data we need a way to separate data values</p></li>
+<li><p>Each line represents a “row”</p></li>
+<li><p>The idea of “columns” is conveyed with delimiters</p></li>
+<li><p>In summary, fields within each line are separated by the <strong>delimiter</strong></p></li>
+<li><p>Quotation marks are used when the delimiter character occurs within one of
+the fields</p></li>
 </ul>
-<p>It turns out that RStudio comes with default actions that take place
-when you close a session:</p>
+<p>There are two main subtypes of plain text format, depending on how the
+separated values are identified in a row</p>
 <ul>
-<li><p>it will ask you if you want to save changes in your source documents</p></li>
-<li><p>it will ask you if you want to save the workspace in an <code>.RData</code> file
-(this is a file that uses R’s native binary format; this is saved in your
-session’s working directory)</p></li>
-<li><p>it will automatically save your commands history in a text file called
-<code>.Rhistory</code> (saved in your session’s working directory)</p></li>
+<li><p>Delimited formats</p></li>
+<li><p>Fixed-width formats</p></li>
 </ul>
-<p>Also, because of RStudio’s default settings, the next time you open a new
-session it will:</p>
+<div id="delimited-formats" class="section level3" number="21.2.1">
+<h3><span class="header-section-number">21.2.1</span> Delimited Formats</h3>
+<p>In a delimited format, values within a row are separated by a special
+character, or <strong>delimiter</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Delimiter</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>" "</code></td>
+<td align="left">white space</td>
+</tr>
+<tr class="even">
+<td align="left"><code>","</code></td>
+<td align="left">comma</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>"\t"</code></td>
+<td align="left">tab</td>
+</tr>
+<tr class="even">
+<td align="left"><code>";"</code></td>
+<td align="left">semicolon</td>
+</tr>
+</tbody>
+</table>
+<div id="space-delimited" class="section level4 unnumbered">
+<h4>Space Delimited</h4>
+<p>Example of a <strong>space</strong> delimited file (common file extension <code>.txt</code>)</p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+</div>
+<div id="tab-delimited" class="section level4 unnumbered">
+<h4>Tab Delimited</h4>
+<p>Example of a <strong>tab</strong> delimited file (common file extensions <code>.txt</code> or <code>.tsv</code>)</p>
+<pre><code>account   bank    rate    balance
+savings   bricknmor   0.020   1000
+monmarket   online    0.025   2000
+certificate   bricknmor   0.030   3000
+brokerage   online    0.070   5000
+retirement    online    0.050   9000</code></pre>
+</div>
+<div id="comma-delimited" class="section level4 unnumbered">
+<h4>Comma Delimited</h4>
+<p>Example of a <strong>comma</strong> delimited file (common file extension <code>.csv</code>)</p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,1000
+monmarket,online,0.025,2000
+certificate,bricknmor,0.030,3000
+brokerage,online,0.070,5000
+retirement,online,0.050,9000</code></pre>
+</div>
+<div id="fixed-width-format" class="section level4 unnumbered">
+<h4>Fixed-Width Format</h4>
+<p>Example of a <strong>fixed width</strong> delimited file (common file extension <code>.txt</code>)</p>
+<pre><code>account     bank      rate  balance
+savings     bricknmor 0.020 1000
+monmarket   online    0.025 2000
+certificate bricknmor 0.030 3000
+brokerage   online    0.070 5000
+retirement  online    0.050 9000</code></pre>
+</div>
+</div>
+</div>
+<div id="importing-data-tables" class="section level2" number="21.3">
+<h2><span class="header-section-number">21.3</span> Importing Data Tables</h2>
+<p>Considerations before importing a data table in R</p>
 <ul>
-<li><p>restore the previously open source document</p></li>
-<li><p>restore objects in the <code>.RData</code> file into your workspace</p></li>
-<li><p>give you access to all the commands stored in the <code>.Rhistory</code> file</p></li>
+<li><p>What is the character(s) used as field delimiter?</p></li>
+<li><p>Does the file contain names of columns?</p></li>
+<li><p>Does the file contain a column for row names?</p></li>
+<li><p>Are there any missing values?</p></li>
+<li><p>How are missing values codified?</p></li>
+<li><p>Do you want to read in all rows?</p></li>
+<li><p>Do you need to convert delimiter characters? (e.g. from space to comma)</p></li>
+<li><p>Can you determine the data-type of each column?</p></li>
+<li><p>Are there any uninformative numbers?</p></li>
+<li><p>Can you convert those uninformative numbers to informative labels?</p></li>
+</ul>
+<div id="function-read.table-and-friends" class="section level3" number="21.3.1">
+<h3><span class="header-section-number">21.3.1</span> Function <code>read.table()</code> and friends</h3>
+<p>The most common way to read and import tables in R is by using
+<code>read.table()</code> and friends (<code>read.csv()</code>, <code>read.delim()</code>, etc)</p>
+<pre><code>read.table(file, header = FALSE, sep = &quot;&quot;, quote = &quot;\&quot;&#39;&quot;,
+           dec = &quot;.&quot;, row.names, col.names,
+           as.is = !stringsAsFactors,
+           na.strings = &quot;NA&quot;, colClasses = NA, nrows = -1,
+           skip = 0, check.names = TRUE,
+           fill = !blank.lines.skip,
+           strip.white = FALSE, blank.lines.skip = TRUE,
+           comment.char = &quot;#&quot;,
+           allowEscapes = FALSE, flush = FALSE,
+           stringsAsFactors = default.stringsAsFactors(),
+           fileEncoding = &quot;&quot;, encoding = &quot;unknown&quot;, text,
+           skipNul = FALSE)</code></pre>
+<p>Some <code>read.table()</code> arguments</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>file</code></td>
+<td align="left">Name of file</td>
+</tr>
+<tr class="even">
+<td align="left"><code>header</code></td>
+<td align="left">Whether column names are in 1st line</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>sep</code></td>
+<td align="left">Character used as field separator</td>
+</tr>
+<tr class="even">
+<td align="left"><code>quote</code></td>
+<td align="left">Quoting characters</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>dec</code></td>
+<td align="left">Character for decimal point</td>
+</tr>
+<tr class="even">
+<td align="left"><code>row.names</code></td>
+<td align="left">Optional vector of row names</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>col.names</code></td>
+<td align="left">Optional vector of column names</td>
+</tr>
+<tr class="even">
+<td align="left"><code>na.strings</code></td>
+<td align="left">Characters treated as missing values</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>colClasses</code></td>
+<td align="left">Optional vector of data types for columns</td>
+</tr>
+<tr class="even">
+<td align="left"><code>nrows</code></td>
+<td align="left">Maximum number of rows to read in</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>skip</code></td>
+<td align="left">Number of lines to skip before reading data</td>
+</tr>
+<tr class="even">
+<td align="left"><code>check.names</code></td>
+<td align="left">Check valid column names</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>stringsAsFactors</code></td>
+<td align="left">Should characters be converted to factors</td>
+</tr>
+</tbody>
+</table>
+<p>In versions of R <code>&lt; 4.0.0</code>, <code>read.table()</code> and friends convert character
+strings into factors by default.</p>
+<p>In addition to <code>read.table()</code>, there’s a handful of sibling functions to
+read other types of text files:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>read.csv()</code></td>
+<td align="left">comma separated values</td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.csv2()</code></td>
+<td align="left">semicolon separated values (Europe)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>read.delim()</code></td>
+<td align="left">tab separated values</td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.delim2()</code></td>
+<td align="left">tab separated values (Europe)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="reading-space-separated-files" class="section level3" number="21.3.2">
+<h3><span class="header-section-number">21.3.2</span> Reading space-separated files</h3>
+<p>For simplicity’s sake, we’ll assume that all data files are located in your
+working directory.</p>
+<p>Suppose you have the following data in a file: <code>accounts.txt</code></p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+<p><strong>Example 1</strong>. Importing table in blank separated file</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="import-tables.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.table()</span></span>
+<span id="cb7-2"><a href="import-tables.html#cb7-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb7-3"><a href="import-tables.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb7-4"><a href="import-tables.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>#&gt;        account       bank   rate  balance
+#&gt; 1      savings  bricknmor  0.020     1000
+#&gt; 2    monmarket     online  0.025     2000
+#&gt; 3  certificate  bricknmor  0.030     3000
+#&gt; 4    brokerage     online  0.070     5000
+#&gt; 5   retirement     online  0.050     9000</code></pre>
+<p><strong>Example 2</strong>. Limit the number of rows to read in (first 2 rows):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="import-tables.html#cb9-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb9-2"><a href="import-tables.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb9-3"><a href="import-tables.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-4"><a href="import-tables.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrows =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>#&gt;      account       bank   rate  balance
+#&gt; 1    savings  bricknmor  0.020     1000
+#&gt; 2  monmarket     online  0.025     2000</code></pre>
+<p><strong>Example 3</strong>. Skip the first row (no header) and limit the number of rows to
+read in (4 rows)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="import-tables.html#cb11-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb11-2"><a href="import-tables.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb11-3"><a href="import-tables.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-4"><a href="import-tables.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">1</span>,</span>
+<span id="cb11-5"><a href="import-tables.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrows =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>#&gt;             V1         V2     V3    V4
+#&gt; 1      savings  bricknmor  0.020  1000
+#&gt; 2    monmarket     online  0.025  2000
+#&gt; 3  certificate  bricknmor  0.030  3000
+#&gt; 4    brokerage     online  0.070  5000</code></pre>
+<p><strong>Example 4</strong>. Skip importing the second column (<code>bank</code>)</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="import-tables.html#cb13-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb13-2"><a href="import-tables.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb13-3"><a href="import-tables.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb13-4"><a href="import-tables.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colClasses =</span> <span class="fu">c</span>(</span>
+<span id="cb13-5"><a href="import-tables.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;character&quot;</span>,</span>
+<span id="cb13-6"><a href="import-tables.html#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NULL&quot;</span>,</span>
+<span id="cb13-7"><a href="import-tables.html#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;numeric&quot;</span>,</span>
+<span id="cb13-8"><a href="import-tables.html#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;numeric&quot;</span>))</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>#&gt;        account   rate  balance
+#&gt; 1      savings  0.020     1000
+#&gt; 2    monmarket  0.025     2000
+#&gt; 3  certificate  0.030     3000
+#&gt; 4    brokerage  0.070     5000
+#&gt; 5   retirement  0.050     9000</code></pre>
+</div>
+<div id="reading-comma-separated-files-with-read.csv" class="section level3" number="21.3.3">
+<h3><span class="header-section-number">21.3.3</span> Reading comma-separated files with <code>read.csv()</code></h3>
+<p>Let’s now consider a data table stored in a CSV file: <code>accounts.csv</code></p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,1000
+monmarket,online,0.025,2000
+certificate,bricknmor,0.030,3000
+brokerage,online,0.070,5000
+retirement,online,0.050,9000</code></pre>
+<p><strong>Example 1.</strong> Data in comma separated value (CSV) file</p>
+<p>We can use <code>read.table()</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="import-tables.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.table()</span></span>
+<span id="cb16-2"><a href="import-tables.html#cb16-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb16-3"><a href="import-tables.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.csv&quot;</span>,</span>
+<span id="cb16-4"><a href="import-tables.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-5"><a href="import-tables.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<p>Or more conveniently, we can use <code>read.csv()</code></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="import-tables.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.csv()</span></span>
+<span id="cb17-2"><a href="import-tables.html#cb17-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;accounts.csv&quot;</span>)</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>#&gt;        account       bank   rate  balance
+#&gt; 1      savings  bricknmor  0.020     1000
+#&gt; 2    monmarket     online  0.025     2000
+#&gt; 3  certificate  bricknmor  0.030     3000
+#&gt; 4    brokerage     online  0.070     5000
+#&gt; 5   retirement     online  0.050     9000</code></pre>
+</div>
+</div>
+<div id="in-summary-1" class="section level2" number="21.4">
+<h2><span class="header-section-number">21.4</span> In Summary</h2>
+<p>What is the field separator?</p>
+<ul>
+<li><p>space <code>" "</code></p></li>
+<li><p>tab <code>"\t"</code></p></li>
+<li><p>comma <code>","</code></p></li>
+<li><p>semicolon <code>";"</code></p></li>
+<li><p>other?</p></li>
+</ul>
+<p>Does the data file contains:</p>
+<ul>
+<li><p>row names?</p></li>
+<li><p>column names?</p></li>
+<li><p>missing values?</p></li>
+<li><p>special characters?</p></li>
+</ul>
+<p>So far …</p>
+<ul>
+<li><p>There are multiple ways to import data tables</p></li>
+<li><p>The workhorse function is <code>read.table()</code></p></li>
+<li><p>But you can use the other wrappers, e.g. <code>read.csv()</code></p></li>
+<li><p>The output is a <code>"data.frame"</code> object</p></li>
 </ul>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="input-output.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -712,20 +930,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

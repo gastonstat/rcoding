@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Session Management | Learning to Code in R</title>
+  <title>11 Base Graphics | Learning to Code in R</title>
   <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Session Management | Learning to Code in R" />
+  <meta property="og:title" content="11 Base Graphics | Learning to Code in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Session Management | Learning to Code in R" />
+  <meta name="twitter:title" content="11 Base Graphics | Learning to Code in R" />
   
   <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstudio.html"/>
-<link rel="next" href="vectors.html"/>
+<link rel="prev" href="dataframes.html"/>
+<link rel="next" href="graphics2.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -446,219 +446,270 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Session Management</h1>
-<p>In this chapter I review some important aspects about managing your
-interactive session with R using RStudio.</p>
-<p>From the point of view of a session, all the work, activities, and actions you
-do with R can be classified into three categories:</p>
+<div id="graphics1" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Base Graphics</h1>
+<p>R comes with many functions that let us produce a wide variety of graphics,
+plots, diagrams, charts, maps, … you name it.</p>
+<p>In this chapter we’ll describe the traditional system to produce plots using
+functions from the underlying package <code>"graphics"</code>.</p>
+<div id="basics-of-graphics-in-r" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Basics of Graphics in R</h2>
+<p>The package <code>"graphics"</code> is the traditional system; it provides functions for
+complete plots, as well as low-level facilities.</p>
+<p>Many other graphics packages are built on top of <code>"graphics"</code> like <code>"maps"</code>,
+<code>"diagram"</code>, <code>"pixmap"</code>, and many more.</p>
+<p>Graphics functions can be divided into two main types:</p>
 <ul>
-<li><p>when starting a session</p></li>
-<li><p>during the session</p></li>
-<li><p>when closing a session</p></li>
+<li><p><strong>high-level</strong> functions produce complete plots, for example</p>
+<ul>
+<li><code>barplot()</code></li>
+<li><code>hist()</code></li>
+<li><code>boxplot()</code></li>
+<li><code>dotchart()</code></li>
+</ul></li>
+<li><p><strong>low-level</strong> functions add further output to an existing plot</p>
+<ul>
+<li><code>text()</code></li>
+<li><code>points()</code></li>
+<li><code>lines()</code></li>
+<li><code>legend()</code></li>
+<li><em>etc</em></li>
+</ul></li>
 </ul>
-<p>Because there are several things going on behind the scenes in each of the
-categories listed above, it is important that we talk about them—at least
-briefly.</p>
-<div id="starting-a-session" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Starting a Session</h2>
-<p>Starting a session can be done in two primary ways:</p>
+<p>About R graphics:</p>
 <ul>
-<li><p>launching the R application program, which will give you access to its
-graphical usier interface; or via RStudio or any other IDE that has the
-ability to open an R session.</p></li>
-<li><p>by clicking on a file that your computer associates with R (or RStudio).
-For example, R-script files (with file extension <code>.R</code> or <code>.r</code>), R-Markdown
-files (<code>.Rmd</code> extension), R-Noweb files (<code>.Rnw</code> extension), RStudio project
-files (<code>.Rproj</code> extension), etc.</p></li>
-</ul>
-<div id="what-happens-when-you-open-an-r-session-via-rstudio" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> What happens when you open an R session via RStudio?</h3>
-<p>This is an important question that many users never stop to think about.
-However, it’s worth reviewing what happens when a session is started. So let’s
-talk about this.</p>
-<ul>
-<li><p>Every time you open RStudio, the console pane will display R’s welcome message.</p></li>
-<li><p>The console is always linked to a working directory.</p></li>
-<li><p>Typically, the working directory of the console will be your home directory,
-unless you specified a different location when you installed R in your computer.</p></li>
-<li><p>You can change the working directory to a different directory if you want.
-This change can be permanent (for future sessions), or temporary (for current
-session).</p></li>
-<li><p>To permanently modify working directory (when a session is opened), go to the
-menu bar, select “RStudio” tab, click on “Preferences,” and modify the
-“R General” options.</p></li>
-<li><p>To temporary change the working directory, go to the menu bar, select the
-“Session” tab, and click on “Set Working Directory,” or simply specify a
-working directory with the <code>setwd()</code> function executed from R’s console.</p></li>
+<li><p>R <code>"graphics"</code> follow a static, “painting on canvas” model.</p></li>
+<li><p>Graphics elements are drawn, and remain visible until painted over.</p></li>
+<li><p>For dynamic and/or interactive graphics, R is limited. However, several
+packages have been (and continue to be) developed in order to provide more
+flexibility and interactivity.</p></li>
 </ul>
 </div>
-<div id="opening-a-session-for-the-first-time" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Opening a session for the first time</h3>
-<p>If you are opening a session in RStudio for the very fist time:</p>
+<div id="the-plot-function" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> The <code>plot()</code> function</h2>
+<p><code>plot()</code> is the most important high-level function in traditional graphics</p>
 <ul>
-<li><p>the “Editor” pane will be collapsed, and</p></li>
-<li><p>all the tabs in the “Environment, History, Connections” pane will be empty</p></li>
+<li><p>The first argument to <code>plot()</code> provides the data to plot</p></li>
+<li><p>The provided data can take different forms: e.g. vectors, factors, matrices,
+data frames.</p></li>
+<li><p>To be more precise, <code>plot()</code> is a generic function</p></li>
+<li><p>You can create your own <code>plot()</code> method function</p></li>
 </ul>
-<p>In general, when you open a session (<strong>not</strong> for the very fist time):</p>
+<p>In its basic form, we can use <code>plot()</code> to make graphics of:</p>
 <ul>
-<li>the “Environment” tab may display some objects, which means you have some
-existing objects in your global environment. You can also invoke the list
-function <code>ls()</code> to list any available objects in your current session:</li>
-</ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="session.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what objects are in my global environment?</span></span>
-<span id="cb18-2"><a href="session.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<ul>
-<li>the “History” tab may contain lines of previously used commands; if this is
-the case it means that there is an associated a text file called <code>.Rhistory</code> in
-your working directory. You can also use the <code>history()</code> function to display
-the <em>Commands History</em>, that is, all the commands invoked in your interactive
-sessions:</li>
-</ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="session.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is my history of commands being tracked?</span></span>
-<span id="cb19-2"><a href="session.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>()</span></code></pre></div>
-</div>
-<div id="working-directory" class="section level3" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Working Directory</h3>
-<p>If you open R via launching an application program (e.g. RStudio) that lets
-you interact with R’s console, your session will have an associated working
-directory, sometimes also referred to as the <em>current</em> working directory.</p>
-<p>When you install R in your computer, during the installation process a default
-working directory is assigned to R. By default, this directory is your home
-directory. You can check whether this is the case if you run the
-<em>get working directory</em> function <code>getwd()</code> in your console.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="session.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run this command in the console to find out </span></span>
-<span id="cb20-2"><a href="session.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the working directory of your session</span></span>
-<span id="cb20-3"><a href="session.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<p>In RStudio, you can also look at the console pane, and inspect the text right
-below the <code>Console</code> tab that always displays the working directory of your
-session. If you see the symbols <code>~/</code> it means that the home directory
-(represented by the tilde) is your working directory.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
-<img src="images/rstudio/rstudio-console-working-directory.png" alt="The working directory is indicated right below the Console tab." width="70%" />
-<p class="caption">
-Figure 4.1: The working directory is indicated right below the Console tab.
-</p>
-</div>
-</div>
-</div>
-<div id="working-during-a-session" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Working During a Session</h2>
-<p>Working with R involves a series of common actions:</p>
-<ul>
-<li><p>writing commands (on a source document or on the console)</p></li>
-<li><p>executing commands (from a source doc or from the console)</p></li>
-<li><p>looking or examining outputs</p></li>
-<li><p>reading or importing files (e.g. data files, script files)</p></li>
-<li><p>saving or exporting output to files (e.g. data files, images, results)</p></li>
-</ul>
-<p>From the logistical point of vew, it all boils down to executing commands,
-taking into account the following:</p>
-<ul>
-<li><p>where a command is being executed from</p></li>
-<li><p>if the command requires an input, where does that input come from?</p></li>
-<li><p>if the command produces an output, where does that output go to?</p></li>
-</ul>
-<p>This is why we need to describe the following:</p>
-<ol style="list-style-type: decimal">
-<li><p>Working Directory</p></li>
-<li><p>Workspace and Global Environment</p></li>
-<li><p>History of commands</p></li>
-</ol>
-<div id="working-directory-1" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Working Directory</h3>
-<p>You will be writing commands either directly in the console or in a source
-document (e.g. <code>R</code> script file, <code>Rmd</code> file, etc.)</p>
-<p>The console is always associated to a working directory (usually your home
-directory).</p>
-<p>A source document, once it has been saved, will live in some directory.
-<strong>Ideally</strong>, a source document’s directory would be used as its working directory,
-using relative filepaths to handle all input and output resources required in
-thecode of the source document. Unfortunately, this ideal is far from what
-happens in practice.</p>
-<ul>
-<li><p>By default, when you execute code chunks in a <strong>saved</strong> <code>Rmd</code> file, the
-working directory is the directory where the <code>Rmd</code> file resides in.</p></li>
-<li><p>By default, when you execute code from an <code>R</code> file, the working directory
-is that of the console.</p></li>
+<li><p>one single variable</p></li>
+<li><p>two variables</p></li>
+<li><p>multiple variables</p></li>
 </ul>
 </div>
-<div id="workspace-and-global-environment" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Workspace and Global Environment</h3>
-<p>Regardless of where commands are being executed from, R will carry out
-all the necessary computations, and objects will be created along the way.</p>
-<p>The collection of objects that are being created (<em>and kept alive</em>) during a
-session are part of what is considered to be your <strong>workspace</strong>.</p>
-<p>At a more technical level, all the objects in your workspace are part of an R
-<strong>environment</strong>. To be more precise, the workspace is the <strong>Global Environment</strong>.</p>
-<p>On the console, if you type <code>ls()</code>, R will display all the available objects
-in your workspace.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="session.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># available objects in your workspace</span></span>
-<span id="cb21-2"><a href="session.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<p>You can also go to the pane “Environment, History, …” and
-click on the <code>Environment</code> tab to see the objects in your workspace which are
-displayed by default under the option “Global Environment.”</p>
+<div id="traditional-graphics-in-r" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Traditional Graphics in R</h2>
+<p>In the traditional model, we create a plot by first calling a high-level
+function that creates a complete plot, and then we call low-level functions
+to add more output if necessary</p>
+<p>Consider the data set <code>mtcars</code> (a few rows shown below)</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="graphics1.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
+<span id="cb179-2"><a href="graphics1.html#cb179-2" aria-hidden="true" tabindex="-1"></a>                   mpg cyl disp  hp drat    wt</span>
+<span id="cb179-3"><a href="graphics1.html#cb179-3" aria-hidden="true" tabindex="-1"></a>Mazda RX4         <span class="fl">21.0</span>   <span class="dv">6</span>  <span class="dv">160</span> <span class="dv">110</span> <span class="fl">3.90</span> <span class="fl">2.620</span></span>
+<span id="cb179-4"><a href="graphics1.html#cb179-4" aria-hidden="true" tabindex="-1"></a>Mazda RX4 Wag     <span class="fl">21.0</span>   <span class="dv">6</span>  <span class="dv">160</span> <span class="dv">110</span> <span class="fl">3.90</span> <span class="fl">2.875</span></span>
+<span id="cb179-5"><a href="graphics1.html#cb179-5" aria-hidden="true" tabindex="-1"></a>Datsun <span class="dv">710</span>        <span class="fl">22.8</span>   <span class="dv">4</span>  <span class="dv">108</span>  <span class="dv">93</span> <span class="fl">3.85</span> <span class="fl">2.320</span></span>
+<span id="cb179-6"><a href="graphics1.html#cb179-6" aria-hidden="true" tabindex="-1"></a>Hornet <span class="dv">4</span> Drive    <span class="fl">21.4</span>   <span class="dv">6</span>  <span class="dv">258</span> <span class="dv">110</span> <span class="fl">3.08</span> <span class="fl">3.215</span></span>
+<span id="cb179-7"><a href="graphics1.html#cb179-7" aria-hidden="true" tabindex="-1"></a>Hornet Sportabout <span class="fl">18.7</span>   <span class="dv">8</span>  <span class="dv">360</span> <span class="dv">175</span> <span class="fl">3.15</span> <span class="fl">3.440</span></span>
+<span id="cb179-8"><a href="graphics1.html#cb179-8" aria-hidden="true" tabindex="-1"></a>Valiant           <span class="fl">18.1</span>   <span class="dv">6</span>  <span class="dv">225</span> <span class="dv">105</span> <span class="fl">2.76</span> <span class="fl">3.460</span></span>
+<span id="cb179-9"><a href="graphics1.html#cb179-9" aria-hidden="true" tabindex="-1"></a>                   qsec vs am gear carb</span>
+<span id="cb179-10"><a href="graphics1.html#cb179-10" aria-hidden="true" tabindex="-1"></a>Mazda RX4         <span class="fl">16.46</span>  <span class="dv">0</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">4</span></span>
+<span id="cb179-11"><a href="graphics1.html#cb179-11" aria-hidden="true" tabindex="-1"></a>Mazda RX4 Wag     <span class="fl">17.02</span>  <span class="dv">0</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">4</span></span>
+<span id="cb179-12"><a href="graphics1.html#cb179-12" aria-hidden="true" tabindex="-1"></a>Datsun <span class="dv">710</span>        <span class="fl">18.61</span>  <span class="dv">1</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">1</span></span>
+<span id="cb179-13"><a href="graphics1.html#cb179-13" aria-hidden="true" tabindex="-1"></a>Hornet <span class="dv">4</span> Drive    <span class="fl">19.44</span>  <span class="dv">1</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">1</span></span>
+<span id="cb179-14"><a href="graphics1.html#cb179-14" aria-hidden="true" tabindex="-1"></a>Hornet Sportabout <span class="fl">17.02</span>  <span class="dv">0</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">2</span></span>
+<span id="cb179-15"><a href="graphics1.html#cb179-15" aria-hidden="true" tabindex="-1"></a>Valiant           <span class="fl">20.22</span>  <span class="dv">1</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">1</span></span></code></pre></div>
+<p>Let’s start with a scatterplot of <code>hp</code> (horse power) and <code>mpg</code> (miles per
+gallon). Perhaps the most common way to get this graph is with the high-level
+function <code>plot()</code></p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="graphics1.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb180-2"><a href="graphics1.html#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-180-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>We can specify values for its large number of arguments. For instance, we
+can set better axis names with <code>xlab</code> and <code>ylab</code></p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="graphics1.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis and y-axis labels</span></span>
+<span id="cb181-2"><a href="graphics1.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb181-3"><a href="graphics1.html#cb181-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>,</span>
+<span id="cb181-4"><a href="graphics1.html#cb181-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-181-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Likewise, we can add a title with the <code>main</code> argument:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="graphics1.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># title and subtitle</span></span>
+<span id="cb182-2"><a href="graphics1.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb182-3"><a href="graphics1.html#cb182-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb182-4"><a href="graphics1.html#cb182-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>, <span class="at">sub =</span> <span class="st">&#39;data matcars&#39;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-182-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Or we can change the range of x-axis as well as the range of the y-axis
+with <code>xlim</code> and <code>ylim</code>, respectively:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="graphics1.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;xlim&#39; and &#39;ylim&#39;</span></span>
+<span id="cb183-2"><a href="graphics1.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb183-3"><a href="graphics1.html#cb183-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb183-4"><a href="graphics1.html#cb183-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>, <span class="at">sub =</span> <span class="st">&#39;data matcars&#39;</span>,</span>
+<span id="cb183-5"><a href="graphics1.html#cb183-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">400</span>))</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-183-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Here’s a more sophisticated example</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="graphics1.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using plot()</span></span>
+<span id="cb184-2"><a href="graphics1.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, </span>
+<span id="cb184-3"><a href="graphics1.html#cb184-3" aria-hidden="true" tabindex="-1"></a>     mtcars<span class="sc">$</span>hp, </span>
+<span id="cb184-4"><a href="graphics1.html#cb184-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), </span>
+<span id="cb184-5"><a href="graphics1.html#cb184-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">400</span>),</span>
+<span id="cb184-6"><a href="graphics1.html#cb184-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>,</span>
+<span id="cb184-7"><a href="graphics1.html#cb184-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb184-8"><a href="graphics1.html#cb184-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>,</span>
+<span id="cb184-9"><a href="graphics1.html#cb184-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">&quot;data matcars&quot;</span>, </span>
+<span id="cb184-10"><a href="graphics1.html#cb184-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, </span>
+<span id="cb184-11"><a href="graphics1.html#cb184-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, </span>
+<span id="cb184-12"><a href="graphics1.html#cb184-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/plot_mtcars-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="commands-history" class="section level3" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Commands History</h3>
-<p>When you start a session, R will track all the commands that you execute during
-that session. As you execute commands, they will become part of what is called
-the <strong>Commands History</strong>.</p>
-<p>You can find the list of all used commands in the <code>History</code> tab,
-located in the <em>Environment, History, Connections</em> pane of RStudio. You can
-also access the commands history with the function <code>history()</code>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
-<img src="images/rstudio/rstudio-history-tab.png" alt="The comands history is avaialble in the History tab." width="65%" />
-<p class="caption">
-Figure 4.2: The comands history is avaialble in the History tab.
-</p>
-</div>
-<p>By default, the history of commands are stored in a text file called <code>.Rhistory</code>
-that is saved in your session’s working directory.</p>
-</div>
-</div>
-<div id="closing-a-session" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Closing a Session</h2>
-<p>When closing a session, what should you do?</p>
-<p>This is a somewhat “very personal” type of question, because it is up to you to
-decide what should happen to all the work that you’ve done in R.</p>
-<p>Having said that, you can always decide whether or not to:</p>
+<div id="low-level-functions" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> Low-Level Functions</h2>
+<p>High and Low level functions</p>
 <ul>
-<li><p>save changes in your source document(s)</p></li>
-<li><p>save the commands history in a text file</p></li>
-<li><p>save the objects in your workspace (i.e. objects in Global Environment) in
-a binary file</p></li>
+<li><p>Usually we call a high-level function</p></li>
+<li><p>Most times we change the default arguments</p></li>
+<li><p>Then we call low-level functions</p></li>
 </ul>
-<p>It turns out that RStudio comes with default actions that take place
-when you close a session:</p>
-<ul>
-<li><p>it will ask you if you want to save changes in your source documents</p></li>
-<li><p>it will ask you if you want to save the workspace in an <code>.RData</code> file
-(this is a file that uses R’s native binary format; this is saved in your
-session’s working directory)</p></li>
-<li><p>it will automatically save your commands history in a text file called
-<code>.Rhistory</code> (saved in your session’s working directory)</p></li>
-</ul>
-<p>Also, because of RStudio’s default settings, the next time you open a new
-session it will:</p>
-<ul>
-<li><p>restore the previously open source document</p></li>
-<li><p>restore objects in the <code>.RData</code> file into your workspace</p></li>
-<li><p>give you access to all the commands stored in the <code>.Rhistory</code> file</p></li>
-</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="graphics1.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb185-2"><a href="graphics1.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp)</span>
+<span id="cb185-3"><a href="graphics1.html#cb185-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-4"><a href="graphics1.html#cb185-4" aria-hidden="true" tabindex="-1"></a><span class="co"># adding text</span></span>
+<span id="cb185-5"><a href="graphics1.html#cb185-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">labels =</span> <span class="fu">rownames</span>(mtcars))</span>
+<span id="cb185-6"><a href="graphics1.html#cb185-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-7"><a href="graphics1.html#cb185-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy legend</span></span>
+<span id="cb185-8"><a href="graphics1.html#cb185-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="st">&quot;a legend&quot;</span>)</span>
+<span id="cb185-9"><a href="graphics1.html#cb185-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-10"><a href="graphics1.html#cb185-10" aria-hidden="true" tabindex="-1"></a><span class="co"># graphic title</span></span>
+<span id="cb185-11"><a href="graphics1.html#cb185-11" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Miles Per Galon -vs- Horsepower&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/mtcars_plot1-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
+<p>Another example:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="graphics1.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb186-2"><a href="graphics1.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb186-3"><a href="graphics1.html#cb186-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>)</span>
+<span id="cb186-4"><a href="graphics1.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grid lines</span></span>
+<span id="cb186-5"><a href="graphics1.html#cb186-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">30</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>)</span>
+<span id="cb186-6"><a href="graphics1.html#cb186-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">50</span>, <span class="at">to =</span> <span class="dv">300</span>, <span class="at">by =</span> <span class="dv">50</span>), <span class="at">col =</span> <span class="st">&#39; gray&#39;</span>)</span>
+<span id="cb186-7"><a href="graphics1.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot points</span></span>
+<span id="cb186-8"><a href="graphics1.html#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb186-9"><a href="graphics1.html#cb186-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plot text</span></span>
+<span id="cb186-10"><a href="graphics1.html#cb186-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">labels =</span> <span class="fu">rownames</span>(mtcars),</span>
+<span id="cb186-11"><a href="graphics1.html#cb186-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;gray50&quot;</span>)</span>
+<span id="cb186-12"><a href="graphics1.html#cb186-12" aria-hidden="true" tabindex="-1"></a><span class="co"># graphic title</span></span>
+<span id="cb186-13"><a href="graphics1.html#cb186-13" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Miles Per Galon -vs- Horsepower&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/mtcars_plot2-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
+<div id="low-level-functions-1" class="section level3" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Low-level functions</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>points()</code></td>
+<td align="left">points</td>
+</tr>
+<tr class="even">
+<td align="left"><code>lines()</code></td>
+<td align="left">connected line segments</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>abline()</code></td>
+<td align="left">straight lines across a plot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>segments()</code></td>
+<td align="left">disconnected line segments</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>arrows()</code></td>
+<td align="left">arrows</td>
+</tr>
+<tr class="even">
+<td align="left"><code>rect()</code></td>
+<td align="left">rectangles</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>polygon()</code></td>
+<td align="left">polygons</td>
+</tr>
+<tr class="even">
+<td align="left"><code>text()</code></td>
+<td align="left">text</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>symbols()</code></td>
+<td align="left">various symbols</td>
+</tr>
+<tr class="even">
+<td align="left"><code>legend()</code></td>
+<td align="left">legends</td>
+</tr>
+</tbody>
+</table>
+<div id="lines" class="section level4 unnumbered">
+<h4>Lines</h4>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="graphics1.html#cb187-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2005</span><span class="sc">:</span><span class="dv">2015</span></span>
+<span id="cb187-2"><a href="graphics1.html#cb187-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-3"><a href="graphics1.html#cb187-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">81</span>, <span class="dv">83</span>, <span class="fl">84.3</span>, <span class="dv">85</span>, <span class="fl">85.4</span>, <span class="fl">86.5</span>, <span class="fl">88.3</span>, </span>
+<span id="cb187-4"><a href="graphics1.html#cb187-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">88.6</span>, <span class="fl">90.8</span>, <span class="fl">91.1</span>, <span class="fl">91.3</span>)</span>
+<span id="cb187-5"><a href="graphics1.html#cb187-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-6"><a href="graphics1.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>, <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Values&quot;</span>)</span>
+<span id="cb187-7"><a href="graphics1.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb187-8"><a href="graphics1.html#cb187-8" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Line Graph Example&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/line_segs-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="drawing-line-segments" class="section level4" number="11.4.1.1">
+<h4><span class="header-section-number">11.4.1.1</span> Drawing Line Segments</h4>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="graphics1.html#cb188-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb188-2"><a href="graphics1.html#cb188-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, <span class="at">length =</span> n <span class="sc">+</span> <span class="dv">1</span>)[<span class="dv">1</span><span class="sc">:</span>n]</span>
+<span id="cb188-3"><a href="graphics1.html#cb188-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sin</span>(theta)</span>
+<span id="cb188-4"><a href="graphics1.html#cb188-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">cos</span>(theta)</span>
+<span id="cb188-5"><a href="graphics1.html#cb188-5" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, n)</span>
+<span id="cb188-6"><a href="graphics1.html#cb188-6" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="fu">rep</span>(n, n))</span>
+<span id="cb188-7"><a href="graphics1.html#cb188-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-8"><a href="graphics1.html#cb188-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb188-9"><a href="graphics1.html#cb188-9" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(x[v1], y[v1], x[v2], y[v2])</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/segments-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="drawing-polygons" class="section level4 unnumbered">
+<h4>Drawing Polygons</h4>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="graphics1.html#cb189-1" aria-hidden="true" tabindex="-1"></a>mpg_dens <span class="ot">&lt;-</span> <span class="fu">density</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb189-2"><a href="graphics1.html#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-3"><a href="graphics1.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg_dens, <span class="at">main =</span> <span class="st">&quot;Kernel Density Curve&quot;</span>)</span>
+<span id="cb189-4"><a href="graphics1.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(mpg_dens, <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/polygons-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="drawing-text" class="section level4 unnumbered">
+<h4>Drawing Text</h4>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="graphics1.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb190-2"><a href="graphics1.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(.<span class="dv">2</span>, .<span class="dv">5</span>, .<span class="dv">8</span>),</span>
+<span id="cb190-3"><a href="graphics1.html#cb190-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">v =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">2</span>, .<span class="dv">8</span>), <span class="at">col =</span> <span class="st">&quot;lightgrey&quot;</span>)</span>
+<span id="cb190-4"><a href="graphics1.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">&quot;srt = 45, adj = c(.5, .5)&quot;</span>,</span>
+<span id="cb190-5"><a href="graphics1.html#cb190-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">srt =</span> <span class="dv">45</span>, <span class="at">adj =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">5</span>))</span>
+<span id="cb190-6"><a href="graphics1.html#cb190-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="st">&quot;adj = c(0, .5)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">5</span>))</span>
+<span id="cb190-7"><a href="graphics1.html#cb190-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="st">&quot;adj = c(1, .5)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">5</span>))</span>
+<span id="cb190-8"><a href="graphics1.html#cb190-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="st">&quot;adj = c(1, 1)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb190-9"><a href="graphics1.html#cb190-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.8</span>, <span class="fl">0.5</span>, <span class="st">&quot;adj = c(0, 0)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/draw_text-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
-
-
-
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dataframes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphics2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
