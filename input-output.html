@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>20 Importing and Exporting | Learning to Code in R</title>
+  <title>20 Introduction | Learning to Code in R</title>
   <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="20 Importing and Exporting | Learning to Code in R" />
+  <meta property="og:title" content="20 Introduction | Learning to Code in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="20 Importing and Exporting | Learning to Code in R" />
+  <meta name="twitter:title" content="20 Introduction | Learning to Code in R" />
   
   <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-03-27" />
+<meta name="date" content="2022-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="simulations.html"/>
-
+<link rel="next" href="import-tables.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -422,9 +422,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.4" data-path="simulations.html"><a href="simulations.html#more-summary-statistics"><i class="fa fa-check"></i><b>19.4</b> More Summary Statistics</a></li>
 </ul></li>
 <li class="part"><span><b>V Import / Export</b></span></li>
-<li class="chapter" data-level="20" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>20</b> Importing and Exporting</a>
+<li class="chapter" data-level="20" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>20</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>20.1</b> Connections</a></li>
+<li class="chapter" data-level="20.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>20.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>20.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>20.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>21</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="import-tables.html"><a href="import-tables.html#motivation-6"><i class="fa fa-check"></i><b>21.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>21.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>21.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>21.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="21.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>21.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="21.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>21.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="21.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>21.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>21.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>21.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="21.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>21.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="21.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>21.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>21.4</b> In Summary</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
@@ -447,56 +472,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="input-output" class="section level1" number="20">
-<h1><span class="header-section-number">20</span> Importing and Exporting</h1>
+<h1><span class="header-section-number">20</span> Introduction</h1>
 <p>This part of the book is dedicated to describe the various mechanisms available
 in R to import and export “data” and other “resources.” Here I’m using the term
-“data” in a very losely-defined way that may involve data as in a data table
-but also data in a non-tabular form. Likewise, I’m using the term “resources”
-in an informal sense to refer to script files, binary files, text files,
-image files, and things like that.</p>
-<div id="connections" class="section level2" number="20.1">
-<h2><span class="header-section-number">20.1</span> Connections</h2>
-<p>Before talking about the wide array of functions available in R to import
-external resources, and to export internal resources, I need to talk about the
-concept of <strong>connections</strong>.</p>
-<p>In order for R to be able to import external resources (e.g. data files, script
-files, image files), it needs to have a way to communicate with the outside
-world. The same can be said for any resource-exporting activity: R needs to
-open its doors to let resources enter and exit its territory.</p>
+“resources” in an informal sense to refer to various types of files such as
+script files, binary files, text files, image files, and things like that.
+Likewise, I’m using the term “data” in a loosely way to indicate R data objects
+(e.g. vectors, arrays, lists, data-frames), graphics, code, as well as content
+of any kind of file.</p>
+<p>You should know upfront that there’s a wide range of ways and options to
+import/export “data” in R. To go beyond the topics discussed in the book,
+and/or to know more about many of the technicalities behind importing and
+exporting resources in R, the authoritative document to look at is the
+manual <strong>R Data Import/Export</strong> available at:</p>
+<p><a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-data.html</a></p>
+<div id="importing-and-exporting-resources" class="section level2" number="20.1">
+<h2><span class="header-section-number">20.1</span> Importing and Exporting Resources</h2>
+<p>R has a large number of functions and packages to import and to export a wide
+variety of resources and files (e.g. script files, binary files, text files,
+image files).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="images/inout/import-export-resources.png" alt="Conceptual diagram illustrating some importing and exporting resources" width="60%" />
+<p class="caption">
+Figure 20.1: Conceptual diagram illustrating some importing and exporting resources
+</p>
+</div>
+<p>A common type of importing operation is when we have some data table
+that we want to read in. Likewise, a common type of exporting operation
+is when we have a data object, say a data frame, that we want to export into
+a text file.</p>
+<div id="behind-importexport-functions" class="section level3" number="20.1.1">
+<h3><span class="header-section-number">20.1.1</span> Behind import/export functions</h3>
+<p>When importing information from an external file, we need to use a
+certain data-import function, e.g. <code>read.table()</code>, <code>readLines()</code>,
+<code>scan()</code>, etc. As you might expect, each data-import function has specific
+arguments that let you specify further options for how R should handle this
+task. Despite their different arguments, all these functions have one thing in
+common which is the mandatory argument: the name of the input file.</p>
+<p>The same thing goes for the data-export functions such as <code>write.table()</code>,
+<code>writeLines()</code>, <code>cat()</code>, <code>png()</code>, etc. Even though each of these functions
+differs in its structure and arguments, they all have one thing in common:
+the mandatory argument consisting of the name of the output file.</p>
+<p>The figure below illustrates both types of generic situations: importing
+from an input file, and exporting to an output file. In this diagram, I’m using
+the names <code>import()</code> and <code>export()</code> as generic labels for data-import and
+data-export functions.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="images/inout/import-export-functions.png" alt="Conceptual diagram illustrating generic import and export tasks" width="70%" />
+<p class="caption">
+Figure 20.2: Conceptual diagram illustrating generic import and export tasks
+</p>
+</div>
+<p>As I said, the primary argument to the import and export functions is the
+“name” of the external file. Here the term “name” refers to the <em>file path</em>.
+In other words, the “name” is not just the name of the file but also its
+location on the file-system where the file is located.</p>
+<p>The external file can be located in your computer or somewhere else, like
+in the “cloud,” which at the end of the day it’s going to be another
+computer located remotely.</p>
+<p>Another thing to notice in the diagram has to do with the so-called connections.
+What I’m trying to indicate in the diagram is that all import and export
+functions use—under the hood—an internal <code>connection()</code> function which plays
+a fundamental role in this type of operations.</p>
+</div>
+</div>
+<div id="connections" class="section level2" number="20.2">
+<h2><span class="header-section-number">20.2</span> Connections</h2>
+<p>In order for R to be able to import external resources (e.g. data files,
+script files, image files), it needs to have a way to communicate with the
+outside world. The same can be said for any resource-exporting activity: R
+needs to open its doors to let resources enter and exit its territory.</p>
 <p>The mechanism used by R to establish channels of communication with the
 outside world is given by the so-called <strong>connections</strong>. To explain this
 concept let me give you an analogy.</p>
 <p>In this analogy I’m going to play the role of R. My family, friends, coworkers
 and students will play the generic role of resources. For example, if I want to
-communicate with one of my teaching assistants (TA), I need a mechanism to reach
-out to them. One way to communicate with a TA could be talking in-person.
+communicate with my teaching assistants (TA), I need a mechanism to reach
+out to them. One way to communicate with my TAs could be talking to them in-person.
 Another way of communication could be via email (or old-fashion mail). Another
 possibility may involve me sending them a text-message, or maybe calling them
 by phone. In summary, there are several ways for me to <em>connect</em> with my TAs.
 This is precisely the main idea behind R connections.</p>
-<p>Formally speaking, a connection is the construct used by R to establish a line
-of communication to external resources or files. Connections are implemented by
-a set of functions, such as <code>file()</code>, <code>url()</code>, and <code>gzfile()</code>—to mention but
-a few—that allow us to create, open and close connections.</p>
+<p>Formally speaking, a connection is the mechanism used by R to establish a line
+of communication to external resources or files. Technically, connections
+are implemented by a set of functions, such as <code>file()</code>, <code>url()</code>, and
+<code>gzfile()</code>—to mention but a few—that allow us to create, open and close
+connections. You can find more information about these functions in their help
+documentation page:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="input-output.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(connections)</span></code></pre></div>
 <p>Let’s go back to my analogy. Say I want to reach out to one my of my teaching
-assistants, and I decide to communicate with a text message (that I will send
-with my cellphone). In this case we can say that the connection consists of a
-text message. To write the text message I need to use a text-messaging
-application, specify the phone number to which my message will be sent, write
-the content of the message, and of course I need to hit the “send” button.
-We can say that I created a connection.</p>
-<p>The good news is that you rarely need to explicitly call any of the connection
-functions. If you were using other programming languages, chances are you may
-very well need to explicitly call a connection function (or its equivalent) to
-tell the program the kind of operation that you want to perform: for instance
+assistants, and I decide to communicate with a text message sent from my
+cellphone. In this case we can say that the connection consists of sending a
+text message. If you think about this exporting operation I need to:</p>
+<ul>
+<li><p>use a text-messaging application; this would be the equivalent of an
+<code>export()</code> function</p></li>
+<li><p>specify the phone number to which my message will be sent; this would be the
+equivalent of the <em>file path</em></p></li>
+<li><p>write the content of the message; this would be the equivalent of the “data”
+to be exported</p></li>
+</ul>
+<p>Now, the text-messaging application will take the phone number and “do its
+magic” to sent my message. This “magical” part is the equivalent of the
+internal connection function.</p>
+<p>It turns out that you rarely need to explicitly call any of the connection
+functions in R. If you were using other programming languages, chances are you
+may very well need to explicitly call a connection function (or its equivalent)
+to tell the program the kind of operation that you want to perform: for instance
 open a file in reading mode, or open a file in writing mode, or closing a file.
-For better or worse, this type of low-level of communication is not necessary
-in R.</p>
+Most of the time in R, though, we don’t need to specify this kind of low-level
+communication.</p>
 <p>So why bother talking about connections?</p>
 <p>I just want you to know that behind any function that allows you to import from
-a file, and export to a file, there is a connection function. And if you want
+a file, and export to a file, there is a connection function. Typically you
+don’t need to anything with these internal functions. But if you want or need
 to take full control over all the details in an importing/exporting operation,
-you will need to get your hands dirty with connection functions.</p>
+connection functions are there for you.</p>
 
 </div>
 </div>
@@ -505,8 +596,8 @@ you will need to get your hands dirty with connection functions.</p>
           </div>
         </div>
       </div>
-<a href="simulations.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="simulations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="import-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -560,20 +651,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
