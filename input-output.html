@@ -24,7 +24,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-04-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -449,7 +449,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>21.3.2</b> Reading space-separated files</a></li>
 <li class="chapter" data-level="21.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>21.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>21.4</b> In Summary</a></li>
+<li class="chapter" data-level="21.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>21.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="21.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>21.5</b> In Summary</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
@@ -491,7 +492,7 @@ manual <strong>R Data Import/Export</strong> available at:</p>
 <p>R has a large number of functions and packages to import and to export a wide
 variety of resources and files (e.g. script files, binary files, text files,
 image files).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-312"></span>
 <img src="images/inout/import-export-resources.png" alt="Conceptual diagram illustrating some importing and exporting resources" width="60%" />
 <p class="caption">
 Figure 20.1: Conceptual diagram illustrating some importing and exporting resources
@@ -517,7 +518,7 @@ the mandatory argument consisting of the name of the output file.</p>
 from an input file, and exporting to an output file. In this diagram, I’m using
 the names <code>import()</code> and <code>export()</code> as generic labels for data-import and
 data-export functions.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-313"></span>
 <img src="images/inout/import-export-functions.png" alt="Conceptual diagram illustrating generic import and export tasks" width="70%" />
 <p class="caption">
 Figure 20.2: Conceptual diagram illustrating generic import and export tasks
@@ -559,7 +560,7 @@ are implemented by a set of functions, such as <code>file()</code>, <code>url()<
 <code>gzfile()</code>—to mention but a few—that allow us to create, open and close
 connections. You can find more information about these functions in their help
 documentation page:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="input-output.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(connections)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="input-output.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(connections)</span></code></pre></div>
 <p>Let’s go back to my analogy. Say I want to reach out to one my of my teaching
 assistants, and I decide to communicate with a text message sent from my
 cellphone. In this case we can say that the connection consists of sending a
@@ -651,6 +652,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

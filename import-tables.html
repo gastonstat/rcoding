@@ -24,7 +24,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-03-29" />
+<meta name="date" content="2022-04-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -422,9 +422,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.4" data-path="simulations.html"><a href="simulations.html#more-summary-statistics"><i class="fa fa-check"></i><b>19.4</b> More Summary Statistics</a></li>
 </ul></li>
 <li class="part"><span><b>V Import / Export</b></span></li>
-<li class="chapter" data-level="20" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>20</b> Importing and Exporting</a>
+<li class="chapter" data-level="20" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>20</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting"><i class="fa fa-check"></i><b>20.1</b> Importing and Exporting</a></li>
+<li class="chapter" data-level="20.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>20.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>20.1.1</b> Behind import/export functions</a></li>
+</ul></li>
 <li class="chapter" data-level="20.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>20.2</b> Connections</a></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>21</b> Importing Data Tables</a>
@@ -446,7 +449,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>21.3.2</b> Reading space-separated files</a></li>
 <li class="chapter" data-level="21.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>21.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>21.4</b> In Summary</a></li>
+<li class="chapter" data-level="21.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>21.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="21.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>21.5</b> In Summary</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
@@ -547,10 +551,10 @@ text editor (do not confuse with a word-processor)</p></li>
 <h2><span class="header-section-number">21.2</span> Character Delimited Text Files</h2>
 <p>A common way to store data tables is via text files. But how is this actually
 done? How can a data table be stored in a text file?</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-314"></span>
-<img src="images/inout/table-storing-data.png" alt="How data tables are stored in text files?" width="70%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-315"></span>
+<img src="images/inout/table-storing-data.png" alt="How are data tables stored in text files?" width="65%" />
 <p class="caption">
-Figure 21.1: How data tables are stored in text files?
+Figure 21.1: How are data tables stored in text files?
 </p>
 </div>
 <p>You may not have thought about this before. This was certainly the case for
@@ -558,9 +562,9 @@ me back when I was an undergraduate student. I could perfectly picture a data
 table in my head, with a bunch of rows and columns forming its grid-like
 structure. But I never considered a table’s storage format in a text file.</p>
 <p>Think about it: a table is made of cells that come from the intersection of
-rows and columns. So the two fundamental questions are: 1) how to represent
-rows?, and 2) how to represent columns? Or in other words: how to convey the
-notion of cells in a text file?</p>
+rows and columns. So the two fundamental questions when storing data in a text
+file are: 1) how to represent rows?, and 2) how to represent columns? Or in
+other words: how to convey the notion of cells in a text file?</p>
 <p>The answer to this question comes from realizing what a data cell does. A
 cell is basically a placeholder for a data value. Cells let us separate or
 delimit one data value from another. So all we have to do is to come up with
@@ -618,7 +622,7 @@ monmarket|online|0.025|2000
 certificate|bricknmor|0.030|3000
 brokerage|online|0.070|5000
 retirement|online|0.050|9000</code></pre>
-<p>Or even use double colons:</p>
+<p>Or even use double colons as delimiters:</p>
 <pre><code>account::bank::rate::balance
 savings::bricknmor::0.020::1000
 monmarket::online::0.025::2000
@@ -627,8 +631,9 @@ brokerage::online::0.070::5000
 retirement::online::0.050::9000</code></pre>
 <p>To be honest, if you have to choose a certain character for delimiting
 purposes, I would recommend to not be creative, and instead to stick with one
-of the conventional delimiters. Here are various examples of the accounts
-table.</p>
+of the conventional delimiters. Below are some examples of what the content of
+a text file—storing the accounts table—could look like when using different
+delimiters.</p>
 <div id="space-delimited" class="section level4 unnumbered">
 <h4>Space Delimited</h4>
 <p>Example of a <strong>space</strong> delimited file (common file extension <code>.txt</code>)</p>
@@ -731,8 +736,9 @@ retirement,online,0.050,&quot;9,000&quot;</code></pre>
 <p>In addition to character-delimited files, there is another kind of plain text
 format that can also be used to store data tables: the so-called
 <strong>fixed-width formats</strong> (fwf).</p>
-<p>The way in which values are separated is not with a character. Instead, values
-in a column are given a fixed width expressed in a certain number of characters.</p>
+<p>In a fixed-width format file, the way in which values are separated is not with
+a character. Instead, values in a column are given a fixed width expressed in a
+certain number of characters.</p>
 <p>Here’s an example of a <strong>fixed width</strong> delimited file (common file extension
 <code>.txt</code>). For sake of illustration, I’m adding a sequence of digits at the top.
 In real life, the first line of digits is not supposed to be part of the file.</p>
@@ -935,22 +941,22 @@ read in (4 rows)</p>
 #&gt; 2    monmarket     online  0.025  2000
 #&gt; 3  certificate  bricknmor  0.030  3000
 #&gt; 4    brokerage     online  0.070  5000</code></pre>
-<p><strong>Example 4</strong>. Skip importing the second column (<code>bank</code>)</p>
+<p><strong>Example 4</strong>. Skip importing the second and third columns</p>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="import-tables.html#cb330-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
 <span id="cb330-2"><a href="import-tables.html#cb330-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
 <span id="cb330-3"><a href="import-tables.html#cb330-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb330-4"><a href="import-tables.html#cb330-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colClasses =</span> <span class="fu">c</span>(</span>
 <span id="cb330-5"><a href="import-tables.html#cb330-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;character&quot;</span>,</span>
 <span id="cb330-6"><a href="import-tables.html#cb330-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NULL&quot;</span>,</span>
-<span id="cb330-7"><a href="import-tables.html#cb330-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;numeric&quot;</span>,</span>
+<span id="cb330-7"><a href="import-tables.html#cb330-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NULL&quot;</span>,</span>
 <span id="cb330-8"><a href="import-tables.html#cb330-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;numeric&quot;</span>))</span></code></pre></div>
 <p>The imported data frame <code>dat</code> will be:</p>
-<pre><code>#&gt;        account   rate  balance
-#&gt; 1      savings  0.020     1000
-#&gt; 2    monmarket  0.025     2000
-#&gt; 3  certificate  0.030     3000
-#&gt; 4    brokerage  0.070     5000
-#&gt; 5   retirement  0.050     9000</code></pre>
+<pre><code>#&gt;        account  balance
+#&gt; 1      savings     1000
+#&gt; 2    monmarket     2000
+#&gt; 3  certificate     3000
+#&gt; 4    brokerage     5000
+#&gt; 5   retirement     9000</code></pre>
 </div>
 <div id="reading-comma-separated-files-with-read.csv" class="section level3" number="21.3.3">
 <h3><span class="header-section-number">21.3.3</span> Reading comma-separated files with <code>read.csv()</code></h3>
@@ -980,8 +986,89 @@ retirement,online,0.050,9000</code></pre>
 #&gt; 5   retirement     online  0.050     9000</code></pre>
 </div>
 </div>
-<div id="in-summary-1" class="section level2" number="21.4">
-<h2><span class="header-section-number">21.4</span> In Summary</h2>
+<div id="importing-with-scan" class="section level2" number="21.4">
+<h2><span class="header-section-number">21.4</span> Importing with <code>scan()</code></h2>
+<p>The <code>scan()</code> function allows you to read data into a vector or list from the
+console or from a file.</p>
+<p>Let’s see an example for how to use <code>scan()</code> with a <strong>space</strong> delimited file.
+Suppose that we have the data in the file <code>accounts.txt</code>, located in our
+working directory.</p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+<p><code>scan()</code> is what I call a “low-level function.” What I mean by that is that
+we typically need to write more code when using this kind of functions. To be
+more precise, we usually have to specify more arguments when <code>scan()</code> than
+when other high-level functions like <code>read.table()</code> and friends.</p>
+<p>Like all other data-import functions, the first argument of <code>scan()</code> is the
+the name of the file (i.e. file path) to be imported. The second argument is
+called <code>what</code>, and this has to do with the <em>type of data</em> to be read.</p>
+<p>If you look at the content of <code>accounts.txt</code>, the first line contains the
+column names: <code>account bank rate balance</code>. Because the data in this first line
+is to be used as names, their data-type is <code>"character"</code>.</p>
+<p>The rest of the lines have to do with the actual data of the accounts. Each
+line contains four pieces of data:</p>
+<ul>
+<li><p>the kind of <code>account</code>, to be encoded as <code>"character"</code></p></li>
+<li><p>the kind of <code>bank</code>, to be encoded also as <code>"character"</code></p></li>
+<li><p>the <code>rate</code> of return, to be encoded as <code>"double"</code> (or <code>"numeric"</code>)</p></li>
+<li><p>the <code>balance</code> amount, to be encoded as <code>"integer"</code> or if you prefer as
+<code>"double"</code> (or generically as <code>"numeric"</code>)</p></li>
+</ul>
+<p>In order to import the <code>accounts.txt</code> data into R, we must use a two-step
+process:</p>
+<ol style="list-style-type: decimal">
+<li><p>first we import the column names into a character vector</p></li>
+<li><p>then we import the rest of the lines into a list</p></li>
+</ol>
+<p>Here is how to do it:</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="import-tables.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 1) scan column names</span></span>
+<span id="cb337-2"><a href="import-tables.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ins a character vector</span></span>
+<span id="cb337-3"><a href="import-tables.html#cb337-3" aria-hidden="true" tabindex="-1"></a>header <span class="ot">=</span> <span class="fu">scan</span>(</span>
+<span id="cb337-4"><a href="import-tables.html#cb337-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb337-5"><a href="import-tables.html#cb337-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">what =</span> <span class="fu">list</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>), </span>
+<span id="cb337-6"><a href="import-tables.html#cb337-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">nmax =</span> <span class="dv">1</span>)</span>
+<span id="cb337-7"><a href="import-tables.html#cb337-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb337-8"><a href="import-tables.html#cb337-8" aria-hidden="true" tabindex="-1"></a>header</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;account&quot; &quot;bank&quot;    &quot;rate&quot;    &quot;balance&quot;</code></pre>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="import-tables.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 2) scan the rest of the lines</span></span>
+<span id="cb339-2"><a href="import-tables.html#cb339-2" aria-hidden="true" tabindex="-1"></a><span class="co"># into a list</span></span>
+<span id="cb339-3"><a href="import-tables.html#cb339-3" aria-hidden="true" tabindex="-1"></a>dat_list <span class="ot">=</span> <span class="fu">scan</span>(</span>
+<span id="cb339-4"><a href="import-tables.html#cb339-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb339-5"><a href="import-tables.html#cb339-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">what =</span> <span class="fu">list</span>(<span class="fu">character</span>(), <span class="fu">character</span>(), <span class="fu">double</span>(), <span class="fu">integer</span>()),</span>
+<span id="cb339-6"><a href="import-tables.html#cb339-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb339-7"><a href="import-tables.html#cb339-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-8"><a href="import-tables.html#cb339-8" aria-hidden="true" tabindex="-1"></a>dat_list</span></code></pre></div>
+<pre><code>#&gt; [[1]]
+#&gt; [1] &quot;savings&quot;     &quot;monmarket&quot;   &quot;certificate&quot; &quot;brokerage&quot;   &quot;retirement&quot; 
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] &quot;bricknmor&quot; &quot;online&quot;    &quot;bricknmor&quot; &quot;online&quot;    &quot;online&quot;   
+#&gt; 
+#&gt; [[3]]
+#&gt; [1] 0.020 0.025 0.030 0.070 0.050
+#&gt; 
+#&gt; [[4]]
+#&gt; [1] 1000 2000 3000 5000 9000</code></pre>
+<p>Once we have the vector of column names <code>header</code> and the list with the data
+for each of the columns, we can then assemble the data into a data table using
+the <code>as.data.frame()</code> function as follows:</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="import-tables.html#cb341-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">as.data.frame</span>(dat_list, <span class="at">col.names =</span> header)</span>
+<span id="cb341-2"><a href="import-tables.html#cb341-2" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div>
+<pre><code>#&gt;       account      bank  rate balance
+#&gt; 1     savings bricknmor 0.020    1000
+#&gt; 2   monmarket    online 0.025    2000
+#&gt; 3 certificate bricknmor 0.030    3000
+#&gt; 4   brokerage    online 0.070    5000
+#&gt; 5  retirement    online 0.050    9000</code></pre>
+</div>
+<div id="in-summary-1" class="section level2" number="21.5">
+<h2><span class="header-section-number">21.5</span> In Summary</h2>
+<p>When importing a data table, you should keep in mind the following
+considerations.</p>
 <p>What is the field separator?</p>
 <ul>
 <li><p>space <code>" "</code></p></li>
