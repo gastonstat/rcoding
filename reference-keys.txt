@@ -48,6 +48,7 @@ fig:unnamed-chunk-301
 fig:unnamed-chunk-312
 fig:unnamed-chunk-313
 fig:unnamed-chunk-315
+fig:unnamed-chunk-336
 install
 interacting-with-r
 installing-r
@@ -239,3 +240,11 @@ reading-space-separated-files
 reading-comma-separated-files-with-read.csv
 importing-with-scan
 in-summary-1
+export-data
+exporting-tables
+exporting-text
+sending-output-with-cat
+sending-output-with-cat-1
+redirecting-output-with-sink
+exporting-rs-binary-data
+fig:unnamed-chunk-2

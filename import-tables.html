@@ -24,7 +24,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-04-04" />
+<meta name="date" content="2022-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="input-output.html"/>
-
+<link rel="next" href="export-data.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -451,6 +451,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="21.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>21.4</b> Importing with <code>scan()</code></a></li>
 <li class="chapter" data-level="21.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>21.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>22</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>22.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="22.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>22.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="22.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>22.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>22.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>22.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="22.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>22.5</b> Exporting R’s Binary Data</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
@@ -988,8 +999,11 @@ retirement,online,0.050,9000</code></pre>
 </div>
 <div id="importing-with-scan" class="section level2" number="21.4">
 <h2><span class="header-section-number">21.4</span> Importing with <code>scan()</code></h2>
-<p>The <code>scan()</code> function allows you to read data into a vector or list from the
-console or from a file.</p>
+<p>To finish this chapter, I want to briefly talk to you about the <code>scan()</code>
+function. This is another function that you can use to read data into a vector
+or list from the console or from a file. As a matter of fact, <code>scan()</code> is
+under the hood of <code>read.table()</code> and friends. Because of this, I often refer
+to <code>scan()</code> as a low-level function.</p>
 <p>Let’s see an example for how to use <code>scan()</code> with a <strong>space</strong> delimited file.
 Suppose that we have the data in the file <code>accounts.txt</code>, located in our
 working directory.</p>
@@ -1099,8 +1113,8 @@ considerations.</p>
           </div>
         </div>
       </div>
-<a href="input-output.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="input-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="export-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

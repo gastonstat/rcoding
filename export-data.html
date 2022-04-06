@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13 Plots from Scratch | Learning to Code in R</title>
+  <title>22 Exporting Data | Learning to Code in R</title>
   <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13 Plots from Scratch | Learning to Code in R" />
+  <meta property="og:title" content="22 Exporting Data | Learning to Code in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13 Plots from Scratch | Learning to Code in R" />
+  <meta name="twitter:title" content="22 Exporting Data | Learning to Code in R" />
   
   <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphics2.html"/>
-<link rel="next" href="functions1.html"/>
+<link rel="prev" href="import-tables.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -483,164 +483,198 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graphics3" class="section level1" number="13">
-<h1><span class="header-section-number">13</span> Plots from Scratch</h1>
-<p>In this chapter we describe one of my favorite graphing approaches to create
-what I like to call <em>plots from scratch</em>. That is, making a graph in a way
-that we have full control of all the nitty-gritty details of a plot.</p>
-<div id="making-a-graphic-from-scratch" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Making a graphic from scratch</h2>
-<p>In addition to using <code>plot()</code>, possibly calling one or more low-level
-functions, you should know that it is also possible to create a plot from
-scratch. Although this procedure is less documented, it is extremely flexible
-and powerful. The general recipe to create a plot with this approach is as
-follows:</p>
-<ul>
-<li><p>call <code>plot.new()</code> to start a new plot frame</p></li>
-<li><p>call <code>plot.window()</code> to define coordinates</p></li>
-<li><p>then call low-level functions:</p></li>
-<li><p>typical options involve <code>axis()</code></p></li>
-<li><p>then <code>title()</code> (title, subtitle)</p></li>
-<li><p>after that call other function: e.g. <code>points()</code>, <code>lines()</code>, etc</p></li>
-</ul>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="graphics3.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb202-2"><a href="graphics3.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>), <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>)</span>
-<span id="cb202-3"><a href="graphics3.html#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">col.axis =</span> <span class="st">&quot;grey30&quot;</span>)</span>
-<span id="cb202-4"><a href="graphics3.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>, <span class="at">col.axis =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb202-5"><a href="graphics3.html#cb202-5" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Main Title&quot;</span>,</span>
-<span id="cb202-6"><a href="graphics3.html#cb202-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.main =</span> <span class="st">&quot;tomato&quot;</span>,</span>
-<span id="cb202-7"><a href="graphics3.html#cb202-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">sub =</span> <span class="st">&quot;Plot Subtitle&quot;</span>,</span>
-<span id="cb202-8"><a href="graphics3.html#cb202-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.sub =</span> <span class="st">&quot;orange&quot;</span>,</span>
-<span id="cb202-9"><a href="graphics3.html#cb202-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&quot;x-axis&quot;</span>, </span>
-<span id="cb202-10"><a href="graphics3.html#cb202-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;y-axis&quot;</span>,</span>
-<span id="cb202-11"><a href="graphics3.html#cb202-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.lab =</span> <span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb202-12"><a href="graphics3.html#cb202-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">font.lab =</span> <span class="dv">3</span>)</span>
-<span id="cb202-13"><a href="graphics3.html#cb202-13" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(<span class="st">&quot;figure&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey90&quot;</span>)</span></code></pre></div>
-<p><img src="rcoding_files/figure-html/bare_plot-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
-<p>Here’s another example:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="graphics3.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
-<span id="cb203-2"><a href="graphics3.html#cb203-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">200</span>)</span>
-<span id="cb203-3"><a href="graphics3.html#cb203-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">200</span>)</span>
-<span id="cb203-4"><a href="graphics3.html#cb203-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-5"><a href="graphics3.html#cb203-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb203-6"><a href="graphics3.html#cb203-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.5</span>, <span class="fl">4.5</span>), <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>, </span>
-<span id="cb203-7"><a href="graphics3.html#cb203-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.5</span>, <span class="fl">4.5</span>), <span class="at">yaxs =</span> <span class="st">&quot;i&quot;</span>)</span>
-<span id="cb203-8"><a href="graphics3.html#cb203-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb203-9"><a href="graphics3.html#cb203-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">v =</span> <span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;lightgrey&quot;</span>)</span>
-<span id="cb203-10"><a href="graphics3.html#cb203-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="fu">coef</span>(z)[<span class="dv">1</span>], <span class="at">b =</span> <span class="fu">coef</span>(z)[<span class="dv">2</span>], <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb203-11"><a href="graphics3.html#cb203-11" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x, y)</span>
-<span id="cb203-12"><a href="graphics3.html#cb203-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>)</span>
-<span id="cb203-13"><a href="graphics3.html#cb203-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb203-14"><a href="graphics3.html#cb203-14" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span>
-<span id="cb203-15"><a href="graphics3.html#cb203-15" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;A Fitted Regression Line&quot;</span>)</span></code></pre></div>
-<p><img src="rcoding_files/figure-html/ablines-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
-<div id="how-does-it-work" class="section level3" number="13.1.1">
-<h3><span class="header-section-number">13.1.1</span> How does it work</h3>
-<p>You start a new plot with <code>plot.new()</code></p>
-<ul>
-<li><p><code>plot.new()</code> opens a new (empty) plot frame</p></li>
-<li><p><code>plot.new()</code> chooses a default plotting region</p></li>
-</ul>
-<p>After starting with <code>plot.new()</code>, use <code>plot.window()</code> to set up the coordinate
-system for the plotting frame</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="graphics3.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="co"># axis limits (0,1)x(0,1)</span></span>
-<span id="cb204-2"><a href="graphics3.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
-<p>By default <code>plot.window()</code> produces axis limits which are expanded by 6%
-over those actually specified.</p>
-<p>The default limits expansion can be turned-off by specifying <code>xaxs = "i"</code>
-and/or <code>yaxs = "i"</code></p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="graphics3.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(xlim, ylim, <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>)</span></code></pre></div>
-<div id="aspect-ratio-control" class="section level4 unnumbered">
-<h4>Aspect Ratio Control</h4>
-<p>Another important argument is <code>asp</code>, which allows us to specify the
-<strong>aspect ratio</strong></p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="graphics3.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(xlim, ylim, <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><code>asp = 1</code> means that unit steps in the <code>x</code> and <code>y</code> directions produce equal
-distances in the <code>x</code> and <code>y</code> directions on the plot.</p>
-<p>(Important for avoiding distortion of circles that look like ellipses)</p>
+<div id="export-data" class="section level1" number="22">
+<h1><span class="header-section-number">22</span> Exporting Data</h1>
+<p>One common task in most data analysis projects involves exporting data to
+external files.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="images/inout/export-resources.png" alt="Conceptual diagram illustrating some exporting resources" width="60%" />
+<p class="caption">
+Figure 22.1: Conceptual diagram illustrating some exporting resources
+</p>
 </div>
-<div id="drawing-axes" class="section level4 unnumbered">
-<h4>Drawing Axes</h4>
-<p>The <code>axis()</code> function can be used to draw axes at any of the four sides of a plot.</p>
-<ul>
-<li><p><code>side = 1</code> below the graph</p></li>
-<li><p><code>side = 2</code> to the left of the graph</p></li>
-<li><p><code>side = 3</code> above the graph</p></li>
-<li><p><code>side = 4</code> to the right of the graph</p></li>
-</ul>
-<p>Axes can be customized via several arguments (see <code>?axis</code>)</p>
-<ul>
-<li><p>location of tick-marks</p></li>
-<li><p>labels of axis</p></li>
-<li><p>colors</p></li>
-<li><p>sizes</p></li>
-<li><p>text fonts</p></li>
-<li><p>text orientation</p></li>
-</ul>
+<div id="exporting-tables" class="section level2" number="22.1">
+<h2><span class="header-section-number">22.1</span> Exporting Tables</h2>
+<p>One common task in most data analysis projects involves exporting derived
+data tables (e.g. clean data sets, or processed tables). To accomplish this
+task you can use any of write-table functions such as <code>write.table()</code>,
+<code>write.csv()</code>, etc.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="export-data.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># blank separated (default)</span></span>
+<span id="cb1-2"><a href="export-data.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(mtcars, <span class="at">file =</span> <span class="st">&#39;mtcars.txt&#39;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-3"><a href="export-data.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="export-data.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tab-separated value</span></span>
+<span id="cb1-5"><a href="export-data.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(mtcars, <span class="at">file =</span> <span class="st">&#39;mtcars.tsv&#39;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-6"><a href="export-data.html#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="export-data.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># comma-separated value</span></span>
+<span id="cb1-8"><a href="export-data.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(mtcars, <span class="at">file =</span> <span class="st">&#39;mtcars.csv&#39;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
-<div id="plot-annotatiosn" class="section level4 unnumbered">
-<h4>Plot Annotatiosn</h4>
-<p>The function <code>title()</code> allows us to include labels in the margins</p>
-<ul>
-<li><p><code>main</code> main title above the graph</p></li>
-<li><p><code>sub</code> subtitle below the graph</p></li>
-<li><p><code>xlab</code> label for the x-axis</p></li>
-<li><p><code>ylab</code> label for the y-axis</p></li>
-</ul>
-<p>The annotations can be customized with additional arguments for the fonts,
-colors, and size (expansion)</p>
-<ul>
-<li><p><code>font.main</code>, <code>col.main</code>, <code>cex.main</code></p></li>
-<li><p><code>font.sub</code>, <code>col.sub</code>, <code>cex.sub</code></p></li>
-<li><p><code>font.lab</code>, <code>col.lab</code>, <code>cex.lab</code></p></li>
-</ul>
+<div id="exporting-text" class="section level2" number="22.2">
+<h2><span class="header-section-number">22.2</span> Exporting Text</h2>
+<p>Another type of data-exporting operation has to do with “unstructured” text,
+and text output in general. By “unstructured” I mean non-tabular data.</p>
+<p>Consider the following piece of code, which writes the elements of a character
+vector <code>some_text</code>, one element per line (via a file connection) to the file
+<code>mytext.txt</code> in the local working directory:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="export-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a connection to a file</span></span>
+<span id="cb2-2"><a href="export-data.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (assuming output file in working directory)</span></span>
+<span id="cb2-3"><a href="export-data.html#cb2-3" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">file</span>(<span class="st">&quot;mytext.txt&quot;</span>)</span>
+<span id="cb2-4"><a href="export-data.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="export-data.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># write contents to the file </span></span>
+<span id="cb2-6"><a href="export-data.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="at">text =</span> some_text, <span class="at">con =</span> txt)</span></code></pre></div>
+<p>Note: Calling <code>file()</code> just creates the connection object but it does not open
+it. The function <code>writeLines()</code> is the one that opens the connection, writes
+the content to the file <code>mytext.txt</code>, and then closes the connection on exiting.</p>
+<p>The previous code can be compactly written with one command without the need
+to explicitly use the connection function <code>file()</code> as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="export-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write contents to the file </span></span>
+<span id="cb3-2"><a href="export-data.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="at">text =</span> some_text, <span class="at">con =</span> <span class="st">&quot;mytext.txt&quot;</span>)</span></code></pre></div>
+</div>
+<div id="sending-output-with-cat" class="section level2" number="22.3">
+<h2><span class="header-section-number">22.3</span> Sending output with <code>cat()</code></h2>
+<p>You can use <code>cat()</code> to concatenate and print information to a file.
+For instance, say you are interested in some descriptive statistics about
+the column <code>mpg</code> (miles per gallon) from the <code>mtcars</code> data frame:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="export-data.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics of mpg</span></span>
+<span id="cb4-2"><a href="export-data.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb4-3"><a href="export-data.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb4-4"><a href="export-data.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb4-5"><a href="export-data.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb4-6"><a href="export-data.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+<p>Suppose the goal is to generate a file <code>mpg-statistics.txt</code> with the following
+contents:</p>
+<pre><code>Miles per Gallon Statistics
+
+Minimum: 10.4 
+Maximum: 33.9 
+Median : 19.2 
+Mean   : 20.09062 
+Std Dev: 6.026948</code></pre>
+<p>How can this goal be achieved? We can create objects for all the summary
+statistics, and then involke <code>cat()</code> as many times as there are lines of text
+to be exported in the output file.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="export-data.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics of mpg</span></span>
+<span id="cb6-2"><a href="export-data.html#cb6-2" aria-hidden="true" tabindex="-1"></a>mpg_min <span class="ot">&lt;-</span> <span class="fu">min</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb6-3"><a href="export-data.html#cb6-3" aria-hidden="true" tabindex="-1"></a>mpg_max <span class="ot">&lt;-</span> <span class="fu">max</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb6-4"><a href="export-data.html#cb6-4" aria-hidden="true" tabindex="-1"></a>mpg_med <span class="ot">&lt;-</span> <span class="fu">median</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb6-5"><a href="export-data.html#cb6-5" aria-hidden="true" tabindex="-1"></a>mpg_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb6-6"><a href="export-data.html#cb6-6" aria-hidden="true" tabindex="-1"></a>mpg_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb6-7"><a href="export-data.html#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="export-data.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># name of output file</span></span>
+<span id="cb6-9"><a href="export-data.html#cb6-9" aria-hidden="true" tabindex="-1"></a>outfile <span class="ot">&lt;-</span> <span class="st">&quot;mpg-statistics.txt&quot;</span></span>
+<span id="cb6-10"><a href="export-data.html#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="export-data.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># first line of the file</span></span>
+<span id="cb6-12"><a href="export-data.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Miles per Gallon Statistics</span><span class="sc">\n\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile)</span>
+<span id="cb6-13"><a href="export-data.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># subsequent lines appended to the output file</span></span>
+<span id="cb6-14"><a href="export-data.html#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Minimum:&quot;</span>, mpg_min, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-15"><a href="export-data.html#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Maximum:&quot;</span>, mpg_max, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-16"><a href="export-data.html#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Median :&quot;</span>, mpg_med, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-17"><a href="export-data.html#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Mean   :&quot;</span>, mpg_avg, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-18"><a href="export-data.html#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Std Dev:&quot;</span>, mpg_sd, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Notice that the first call to <code>cat()</code> exports the text that is supposed to be
+in the first line of content in the output file <code>outfile</code>. The subsequent calls
+to <code>cat()</code> use the argument <code>append = TRUE</code> so that the next lines of content
+are appended to the existing <code>outfile</code>. If we don’t use <code>append = TRUE</code>, R will
+override the existing contents in <code>outfile</code>.</p>
+<div id="sending-output-with-cat-1" class="section level3" number="22.3.1">
+<h3><span class="header-section-number">22.3.1</span> Sending output with <code>cat()</code></h3>
+<p>To make the content in <code>"mpg-statistics.txt"</code> look “prettier,” limiting the
+number of decimals digits to just 2, you may consider using <code>sprintf()</code>. This
+functions allows you to print strings using C-style formatting.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="export-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Australia Unemployment Statistics</span><span class="sc">\n\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile)</span>
+<span id="cb7-2"><a href="export-data.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Minimum: %0.2f&quot;</span>, mpg_min), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-3"><a href="export-data.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Maximum: %0.2f&quot;</span>, mpg_max), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-4"><a href="export-data.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Median : %0.2f&quot;</span>, mpg_med), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-5"><a href="export-data.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Mean   : %0.2f&quot;</span>, mpg_avg), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-6"><a href="export-data.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Std Dev: %0.2f&quot;</span>, mpg_sd), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Look at the call of <code>sprintf()</code> in the second line: the one that prints the
+minimum value of miles-per-gallon:</p>
+<pre><code>sprintf(&quot;Minimum: %0.2f&quot;, mpg_min)</code></pre>
+<p>What does <code>sprintf()</code> do in this example? It takes the string <code>"Minimum: %0.2f"</code>
+and the numeric value <code>mpg_min</code>. Observe that the provided string contains
+some weird-looking characters: <code>%0.2f</code>. This set of characters have a meaning
+and they are used as a place holder to be replaced with the formatted value
+<code>mpg_min</code>. Specifically, the notation <code>%0.2f</code> indicates two decimal digits
+of a double precision value. In other words, a numeric value <code>10.4</code> will be
+printed using two decimal digits as: <code>10.40</code>. Likewise, a number such as
+<code>20.09062</code> will be printed as <code>20.09</code>. If you are curious about the various
+types of <em>C-style string formatting</em> place-holders, check the documentation
+of <code>sprintf()</code></p>
+<pre><code>help(sprintf)</code></pre>
 </div>
 </div>
-<div id="drawing-arrows" class="section level3" number="13.1.2">
-<h3><span class="header-section-number">13.1.2</span> Drawing Arrows</h3>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="graphics3.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb207-2"><a href="graphics3.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb207-3"><a href="graphics3.html#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.05</span>, <span class="fl">0.075</span>, <span class="fl">0.45</span>, <span class="fl">0.9</span>, <span class="at">code =</span> <span class="dv">1</span>)</span>
-<span id="cb207-4"><a href="graphics3.html#cb207-4" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.55</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.075</span>, <span class="at">code =</span> <span class="dv">2</span>)</span>
-<span id="cb207-5"><a href="graphics3.html#cb207-5" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.1</span>, <span class="dv">0</span>, <span class="fl">0.9</span>, <span class="dv">0</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
-<span id="cb207-6"><a href="graphics3.html#cb207-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="st">&quot;A&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
-<span id="cb207-7"><a href="graphics3.html#cb207-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="st">&quot;B&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
-<span id="cb207-8"><a href="graphics3.html#cb207-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="st">&quot;C&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
-<p><img src="rcoding_files/figure-html/arrows-1.png" width="70%" height="70%" style="display: block; margin: auto;" /></p>
+<div id="redirecting-output-with-sink" class="section level2" number="22.4">
+<h2><span class="header-section-number">22.4</span> Redirecting output with <code>sink()</code></h2>
+<p>Another interesting function is <code>sink()</code>. This function is very useful when
+you want to export R output <strong>as it is displayed in R’s console</strong>.</p>
+<p>For example, consider the following output from <code>summary()</code> applied on three
+columns of <code>mtcars</code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="export-data.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars[ ,<span class="fu">c</span>(<span class="st">&#39;mpg&#39;</span>, <span class="st">&#39;hp&#39;</span>, <span class="st">&#39;cyl&#39;</span>)])</span>
+<span id="cb10-2"><a href="export-data.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       mpg              hp             cyl       </span></span>
+<span id="cb10-3"><a href="export-data.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :10.40   Min.   : 52.0   Min.   :4.000  </span></span>
+<span id="cb10-4"><a href="export-data.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:15.43   1st Qu.: 96.5   1st Qu.:4.000  </span></span>
+<span id="cb10-5"><a href="export-data.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median :19.20   Median :123.0   Median :6.000  </span></span>
+<span id="cb10-6"><a href="export-data.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   :20.09   Mean   :146.7   Mean   :6.188  </span></span>
+<span id="cb10-7"><a href="export-data.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:22.80   3rd Qu.:180.0   3rd Qu.:8.000  </span></span>
+<span id="cb10-8"><a href="export-data.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :33.90   Max.   :335.0   Max.   :8.000</span></span></code></pre></div>
+<p>To be able to keep the same output displayed by R, you must use <code>sink()</code>. This
+function will <strong>divert</strong> R output to the specified file.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="export-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sink output</span></span>
+<span id="cb11-2"><a href="export-data.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="at">file =</span> <span class="st">&quot;mtcars-stats.txt&quot;</span>)</span>
+<span id="cb11-3"><a href="export-data.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="export-data.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
+<span id="cb11-5"><a href="export-data.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars[ ,<span class="fu">c</span>(<span class="st">&#39;mpg&#39;</span>, <span class="st">&#39;hp&#39;</span>, <span class="st">&#39;cyl&#39;</span>)])</span>
+<span id="cb11-6"><a href="export-data.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="export-data.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># stops diverting output</span></span>
+<span id="cb11-8"><a href="export-data.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span></code></pre></div>
+<p>The use of <code>sink()</code> is a bit different from other data-exporting functions. As
+you can tell from this example, we start by invoking <code>sink()</code> and specifying
+the name of the output file. Then we include the commands whose outputs will
+be redirected to the target file. In order to stop the redirecting mechanism,
+we need to invoke <code>sink()</code> again, without specifying any arguments.</p>
+<p>Consider one more example involving the use of <code>sink()</code> to send the output
+from running a linear regression of <code>mpg</code> on <code>hp</code> with the function <code>lm()</code>.
+To make things more interesting, we will also export the results from using
+<code>summary()</code> on the regression object. And not only that; we will also run a
+t-test between <code>am</code> and <code>hp</code> with <code>t.test()</code>, and export the results of such test.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="export-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sink output</span></span>
+<span id="cb12-2"><a href="export-data.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="at">file =</span> <span class="st">&quot;regression-output.txt&quot;</span>)</span>
+<span id="cb12-3"><a href="export-data.html#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="export-data.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># regression on mpg onto hp</span></span>
+<span id="cb12-5"><a href="export-data.html#cb12-5" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">=</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span>
+<span id="cb12-6"><a href="export-data.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span>
+<span id="cb12-7"><a href="export-data.html#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="export-data.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test</span></span>
+<span id="cb12-9"><a href="export-data.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(hp <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb12-10"><a href="export-data.html#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="export-data.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># stop sinking process</span></span>
+<span id="cb12-12"><a href="export-data.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span></code></pre></div>
 </div>
-<div id="drawing-rectangles" class="section level3" number="13.1.3">
-<h3><span class="header-section-number">13.1.3</span> Drawing Rectangles</h3>
-<p>Rectangles can be drawn with the function:</p>
-<pre><code>rect(x0, y0, x1, y1, col = str, border = str)</code></pre>
-<ul>
-<li><p><code>x0, y0, x1, y1</code> give the coordinates of diagonally opposite corners of the
-rectangles/</p></li>
-<li><p><code>col</code> specifies the color of the interior.</p></li>
-<li><p><code>border</code> specifies the color of the border/</p></li>
-</ul>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="graphics3.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot &quot;manually&quot; constructed</span></span>
-<span id="cb209-2"><a href="graphics3.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb209-3"><a href="graphics3.html#cb209-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
-<span id="cb209-4"><a href="graphics3.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">3</span>), </span>
-<span id="cb209-5"><a href="graphics3.html#cb209-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;turquoise&quot;</span>,</span>
-<span id="cb209-6"><a href="graphics3.html#cb209-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span>
-<span id="cb209-7"><a href="graphics3.html#cb209-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>)</span>
-<span id="cb209-8"><a href="graphics3.html#cb209-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="rcoding_files/figure-html/rectangles-1.png" width="60%" height="70%" style="display: block; margin: auto;" /></p>
+<div id="exporting-rs-binary-data" class="section level2" number="22.5">
+<h2><span class="header-section-number">22.5</span> Exporting R’s Binary Data</h2>
+<p>R also allows you to save objects in R’s binary format with the functions
+<code>save()</code> and <code>save.image()</code>. It is customary to use the <code>RData</code> extension for
+the files created by <code>save()</code> and <code>save.image()</code>. You may also encounter
+users specifying the old extension <code>.rda</code> or some other variation.</p>
+<p>You can use <code>save()</code> to save specific objects from your current session.
+For example, here is how to save the data frame <code>mtcars3</code></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="export-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>mtcars3 <span class="ot">=</span> mtcars[ ,<span class="fu">c</span>(<span class="st">&#39;mpg&#39;</span>, <span class="st">&#39;hp&#39;</span>, <span class="st">&#39;cyl&#39;</span>)]</span>
+<span id="cb13-2"><a href="export-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(mtcars3, <span class="at">file =</span> <span class="st">&#39;mtcars3.RData&#39;</span>)</span></code></pre></div>
+<p>The difference between <code>save()</code> and <code>save.image()</code> is that the latter saves
+all the objects in your current session. This is actually the function that is
+run behind the scenes every time you quit R and accept to save the so-called
+<em>workspace image</em>.</p>
+<p>You can share <code>mtcars3.RData</code> with any other R user, regardless of the
+operating system that they use. To read in binary R files, use <code>load()</code>.</p>
 
 </div>
 </div>
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="graphics2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="functions1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="import-tables.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -694,20 +728,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
