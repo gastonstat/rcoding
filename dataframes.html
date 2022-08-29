@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10 Data Frames | Learning to Code in R</title>
+  <title>13 Data Frames | Learning to Code in R</title>
   <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10 Data Frames | Learning to Code in R" />
+  <meta property="og:title" content="13 Data Frames | Learning to Code in R" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10 Data Frames | Learning to Code in R" />
+  <meta name="twitter:title" content="13 Data Frames | Learning to Code in R" />
   
   <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-04-06" />
+<meta name="date" content="2022-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="lists.html"/>
 <link rel="next" href="graphics1.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -185,283 +184,327 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="session.html"><a href="session.html#working-during-a-session"><i class="fa fa-check"></i><b>4.2</b> Working During a Session</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#working-directory-1"><i class="fa fa-check"></i><b>4.2.1</b> Working Directory</a></li>
+<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#sessions-working-directory"><i class="fa fa-check"></i><b>4.2.1</b> Session’s Working Directory</a></li>
 <li class="chapter" data-level="4.2.2" data-path="session.html"><a href="session.html#workspace-and-global-environment"><i class="fa fa-check"></i><b>4.2.2</b> Workspace and Global Environment</a></li>
 <li class="chapter" data-level="4.2.3" data-path="session.html"><a href="session.html#commands-history"><i class="fa fa-check"></i><b>4.2.3</b> Commands History</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="session.html"><a href="session.html#closing-a-session"><i class="fa fa-check"></i><b>4.3</b> Closing a Session</a></li>
 </ul></li>
-<li class="part"><span><b>II Data Objects in R</b></span></li>
-<li class="chapter" data-level="5" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5</b> Vectors</a>
+<li class="part"><span><b>II Data Objects: Vectors</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors1.html"><a href="vectors1.html"><i class="fa fa-check"></i><b>5</b> First Contact with Vectors</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="vectors.html"><a href="vectors.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
+<li class="chapter" data-level="5.1" data-path="vectors1.html"><a href="vectors1.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="vectors.html"><a href="vectors.html#creating-objects"><i class="fa fa-check"></i><b>5.1.1</b> Creating Objects</a></li>
+<li class="chapter" data-level="5.1.1" data-path="vectors1.html"><a href="vectors1.html#comments"><i class="fa fa-check"></i><b>5.1.1</b> Comments</a></li>
+<li class="chapter" data-level="5.1.2" data-path="vectors1.html"><a href="vectors1.html#creating-objects"><i class="fa fa-check"></i><b>5.1.2</b> Creating Objects</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html#about-r-vectors"><i class="fa fa-check"></i><b>5.2</b> About R Vectors</a></li>
-<li class="chapter" data-level="5.3" data-path="vectors.html"><a href="vectors.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>5.3</b> Vectors are Atomic Objects</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="vectors.html"><a href="vectors.html#types-and-modes"><i class="fa fa-check"></i><b>5.3.1</b> Types and Modes</a></li>
-<li class="chapter" data-level="5.3.2" data-path="vectors.html"><a href="vectors.html#special-values"><i class="fa fa-check"></i><b>5.3.2</b> Special Values</a></li>
-<li class="chapter" data-level="5.3.3" data-path="vectors.html"><a href="vectors.html#length-of-vectors"><i class="fa fa-check"></i><b>5.3.3</b> Length of Vectors</a></li>
+<li class="chapter" data-level="5.2" data-path="vectors1.html"><a href="vectors1.html#exercises-2"><i class="fa fa-check"></i><b>5.2</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="vectors.html"><a href="vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.4</b> Creating Vectors</a>
+<li class="chapter" data-level="6" data-path="vectors2.html"><a href="vectors2.html"><i class="fa fa-check"></i><b>6</b> Properties of Vectors</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="vectors.html"><a href="vectors.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>5.4.1</b> Creating vectors with <code>c()</code></a></li>
-<li class="chapter" data-level="5.4.2" data-path="vectors.html"><a href="vectors.html#numeric-sequences"><i class="fa fa-check"></i><b>5.4.2</b> Numeric Sequences</a></li>
-<li class="chapter" data-level="5.4.3" data-path="vectors.html"><a href="vectors.html#replicated-vectors"><i class="fa fa-check"></i><b>5.4.3</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="6.1" data-path="vectors2.html"><a href="vectors2.html#motivation"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="vectors2.html"><a href="vectors2.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>6.2</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="vectors2.html"><a href="vectors2.html#complex-and-raw-types"><i class="fa fa-check"></i><b>6.2.1</b> Complex and Raw Types</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="vectors.html"><a href="vectors.html#coercion"><i class="fa fa-check"></i><b>5.5</b> Coercion</a>
-<ul>
-<li class="chapter" data-level="5.5.1" data-path="vectors.html"><a href="vectors.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>5.5.1</b> Implicit Coercion Rules</a></li>
-<li class="chapter" data-level="5.5.2" data-path="vectors.html"><a href="vectors.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>5.5.2</b> Explicit Coercion Functions</a></li>
+<li class="chapter" data-level="6.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>6.3</b> Types and Modes</a></li>
+<li class="chapter" data-level="6.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>6.4</b> Special Values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>6.5</b> Length of Vectors</a></li>
+<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-named"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have named</a></li>
+<li class="chapter" data-level="6.7" data-path="vectors2.html"><a href="vectors2.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="vectors.html"><a href="vectors.html#exercises-2"><i class="fa fa-check"></i><b>5.6</b> Exercises</a></li>
+<li class="chapter" data-level="7" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>7</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="vectors3.html"><a href="vectors3.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>7.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="7.2" data-path="vectors3.html"><a href="vectors3.html#default-vectors"><i class="fa fa-check"></i><b>7.2</b> Default Vectors</a></li>
+<li class="chapter" data-level="7.3" data-path="vectors3.html"><a href="vectors3.html#numeric-sequences"><i class="fa fa-check"></i><b>7.3</b> Numeric Sequences</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="vectors3.html"><a href="vectors3.html#sequences-with"><i class="fa fa-check"></i><b>7.3.1</b> Sequences with <code>:</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq"><i class="fa fa-check"></i><b>7.3.2</b> Sequences with <code>seq()</code></a></li>
+<li class="chapter" data-level="7.3.3" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq_len-and-seq_along"><i class="fa fa-check"></i><b>7.3.3</b> Sequences with <code>seq_len()</code> and <code>seq_along()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="more-about-vectors.html"><a href="more-about-vectors.html"><i class="fa fa-check"></i><b>6</b> More About Vectors</a>
+<li class="chapter" data-level="7.4" data-path="vectors3.html"><a href="vectors3.html#replicated-vectors"><i class="fa fa-check"></i><b>7.4</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="7.5" data-path="vectors3.html"><a href="vectors3.html#coercion"><i class="fa fa-check"></i><b>7.5</b> Coercion</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#motivation-future-value"><i class="fa fa-check"></i><b>6.1</b> Motivation: Future Value</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#future-value-formula"><i class="fa fa-check"></i><b>6.1.1</b> Future Value Formula</a></li>
+<li class="chapter" data-level="7.5.1" data-path="vectors3.html"><a href="vectors3.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>7.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="7.5.2" data-path="vectors3.html"><a href="vectors3.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>7.5.2</b> Explicit Coercion Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization"><i class="fa fa-check"></i><b>6.2</b> Vectorization</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#definition-of-vectorization"><i class="fa fa-check"></i><b>6.2.1</b> Definition of Vectorization</a></li>
+<li class="chapter" data-level="7.6" data-path="vectors3.html"><a href="vectors3.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#recycling"><i class="fa fa-check"></i><b>6.3</b> Recycling</a>
+<li class="chapter" data-level="8" data-path="vectors4.html"><a href="vectors4.html"><i class="fa fa-check"></i><b>8</b> More About Vectors</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>6.3.1</b> Vectorization and Recycling</a></li>
+<li class="chapter" data-level="8.1" data-path="vectors4.html"><a href="vectors4.html#motivation-future-value"><i class="fa fa-check"></i><b>8.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="vectors4.html"><a href="vectors4.html#future-value-formula"><i class="fa fa-check"></i><b>8.1.1</b> Future Value Formula</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>6.4</b> Manipulating Vectors: Subsetting</a>
+<li class="chapter" data-level="8.2" data-path="vectors4.html"><a href="vectors4.html#vectorization"><i class="fa fa-check"></i><b>8.2</b> Vectorization</a></li>
+<li class="chapter" data-level="8.3" data-path="vectors4.html"><a href="vectors4.html#recycling"><i class="fa fa-check"></i><b>8.3</b> Recycling</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="more-about-vectors.html"><a href="more-about-vectors.html#numeric-subsetting"><i class="fa fa-check"></i><b>6.4.1</b> Numeric Subsetting</a></li>
-<li class="chapter" data-level="6.4.2" data-path="more-about-vectors.html"><a href="more-about-vectors.html#character-subsetting"><i class="fa fa-check"></i><b>6.4.2</b> Character Subsetting</a></li>
-<li class="chapter" data-level="6.4.3" data-path="more-about-vectors.html"><a href="more-about-vectors.html#logical-subsetting"><i class="fa fa-check"></i><b>6.4.3</b> Logical Subsetting</a></li>
-<li class="chapter" data-level="6.4.4" data-path="more-about-vectors.html"><a href="more-about-vectors.html#summary-of-subsetting"><i class="fa fa-check"></i><b>6.4.4</b> Summary of Subsetting</a></li>
+<li class="chapter" data-level="8.3.1" data-path="vectors4.html"><a href="vectors4.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>8.3.1</b> Vectorization and Recycling</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="more-about-vectors.html"><a href="more-about-vectors.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
+<li class="chapter" data-level="8.4" data-path="vectors4.html"><a href="vectors4.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>8.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="vectors4.html"><a href="vectors4.html#numeric-subsetting"><i class="fa fa-check"></i><b>8.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="8.4.2" data-path="vectors4.html"><a href="vectors4.html#character-subsetting"><i class="fa fa-check"></i><b>8.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="8.4.3" data-path="vectors4.html"><a href="vectors4.html#logical-subsetting"><i class="fa fa-check"></i><b>8.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="8.4.4" data-path="vectors4.html"><a href="vectors4.html#summary-of-subsetting"><i class="fa fa-check"></i><b>8.4.4</b> Summary of Subsetting</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> Factors</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>7.1</b> Creating Factors</a></li>
-<li class="chapter" data-level="7.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>7.2</b> How R treats factors</a></li>
-<li class="chapter" data-level="7.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>7.3</b> A closer look at <code>factor()</code></a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>7.3.1</b> Function <code>factor()</code></a></li>
-<li class="chapter" data-level="7.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>7.3.2</b> Unclassing factors</a></li>
+<li class="chapter" data-level="8.5" data-path="vectors4.html"><a href="vectors4.html#exercises-5"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>7.4</b> Ordinal Factors</a></li>
+<li class="part"><span><b>III More Atomic Objects</b></span></li>
+<li class="chapter" data-level="9" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>9</b> Factors</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>9.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="9.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>9.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="9.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>9.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>9.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="9.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>9.3.2</b> Unclassing factors</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="arrays.html"><a href="arrays.html"><i class="fa fa-check"></i><b>8</b> Matrices and Arrays</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="arrays.html"><a href="arrays.html#motivation"><i class="fa fa-check"></i><b>8.1</b> Motivation</a></li>
-<li class="chapter" data-level="8.2" data-path="arrays.html"><a href="arrays.html#matrices"><i class="fa fa-check"></i><b>8.2</b> Matrices</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="arrays.html"><a href="arrays.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>8.2.1</b> What kind of object is a matrix?</a></li>
+<li class="chapter" data-level="9.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>9.4</b> Ordinal Factors</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="arrays.html"><a href="arrays.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>8.3</b> Creating matrices with <code>matrix()</code></a>
+<li class="chapter" data-level="10" data-path="matrices1.html"><a href="matrices1.html"><i class="fa fa-check"></i><b>10</b> Matrices and Arrays</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="arrays.html"><a href="arrays.html#column-major-matrices"><i class="fa fa-check"></i><b>8.3.1</b> Column-Major Matrices</a></li>
-<li class="chapter" data-level="8.3.2" data-path="arrays.html"><a href="arrays.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>8.3.2</b> Giving names to rows and columns</a></li>
-<li class="chapter" data-level="8.3.3" data-path="arrays.html"><a href="arrays.html#more-matrices"><i class="fa fa-check"></i><b>8.3.3</b> More Matrices</a></li>
+<li class="chapter" data-level="10.1" data-path="matrices1.html"><a href="matrices1.html#motivation-1"><i class="fa fa-check"></i><b>10.1</b> Motivation</a></li>
+<li class="chapter" data-level="10.2" data-path="matrices1.html"><a href="matrices1.html#matrices"><i class="fa fa-check"></i><b>10.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="matrices1.html"><a href="matrices1.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>10.2.1</b> What kind of object is a matrix?</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>9</b> Lists</a>
+<li class="chapter" data-level="10.3" data-path="matrices1.html"><a href="matrices1.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>10.3</b> Creating matrices with <code>matrix()</code></a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>9.1</b> Creating Lists</a></li>
-<li class="chapter" data-level="9.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>9.2</b> Manipulating Lists</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>9.2.1</b> Single brackets</a></li>
-<li class="chapter" data-level="9.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>9.2.2</b> Double Brackets</a></li>
-<li class="chapter" data-level="9.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>9.2.3</b> Dollar signs</a></li>
-<li class="chapter" data-level="9.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>9.2.4</b> Adding new elements</a></li>
-<li class="chapter" data-level="9.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>9.2.5</b> Removing elements</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="lists.html"><a href="lists.html#exercises-4"><i class="fa fa-check"></i><b>9.3</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>10</b> Data Frames</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>10.1</b> R Data Frames</a></li>
-<li class="chapter" data-level="10.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>10.2</b> Inspecting data frames</a></li>
-<li class="chapter" data-level="10.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>10.3</b> Creating data frames</a></li>
-<li class="chapter" data-level="10.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>10.4</b> Basic Operations with Data Frames</a>
-<ul>
-<li class="chapter" data-level="10.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements"><i class="fa fa-check"></i><b>10.4.1</b> Selecting elements</a></li>
-<li class="chapter" data-level="10.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column"><i class="fa fa-check"></i><b>10.4.2</b> Adding a column</a></li>
-<li class="chapter" data-level="10.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column"><i class="fa fa-check"></i><b>10.4.3</b> Deleting a column</a></li>
-<li class="chapter" data-level="10.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>10.4.4</b> Renaming a column</a></li>
-<li class="chapter" data-level="10.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column"><i class="fa fa-check"></i><b>10.4.5</b> Moving a column</a></li>
-<li class="chapter" data-level="10.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>10.4.6</b> Transforming a column</a></li>
-</ul></li>
-<li class="chapter" data-level="10.5" data-path="dataframes.html"><a href="dataframes.html#exercises-5"><i class="fa fa-check"></i><b>10.5</b> Exercises</a></li>
-</ul></li>
-<li class="part"><span><b>III Graphics</b></span></li>
-<li class="chapter" data-level="11" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>11</b> Base Graphics</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>11.1</b> Basics of Graphics in R</a></li>
-<li class="chapter" data-level="11.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>11.2</b> The <code>plot()</code> function</a></li>
-<li class="chapter" data-level="11.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>11.3</b> Traditional Graphics in R</a></li>
-<li class="chapter" data-level="11.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>11.4</b> Low-Level Functions</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>11.4.1</b> Low-level functions</a></li>
+<li class="chapter" data-level="10.3.1" data-path="matrices1.html"><a href="matrices1.html#column-major-matrices"><i class="fa fa-check"></i><b>10.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="10.3.2" data-path="matrices1.html"><a href="matrices1.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>10.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="10.3.3" data-path="matrices1.html"><a href="matrices1.html#more-matrices"><i class="fa fa-check"></i><b>10.3.3</b> More Matrices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>12</b> More Base Graphics</a>
+<li class="chapter" data-level="11" data-path="matrices2.html"><a href="matrices2.html"><i class="fa fa-check"></i><b>11</b> More About Matrices</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>12.1</b> The <code>plot()</code> function</a></li>
-<li class="chapter" data-level="12.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>12.2</b> One variable graphics</a>
+<li class="chapter" data-level="11.1" data-path="matrices2.html"><a href="matrices2.html#basic-operations-with-matrices"><i class="fa fa-check"></i><b>11.1</b> Basic Operations with Matrices</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>12.2.1</b> More high-level graphics of a single variable</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>12.3</b> Plots of Two Variables</a>
-<ul>
-<li class="chapter" data-level="12.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>12.3.1</b> Example: Plots of two variables</a></li>
-<li class="chapter" data-level="12.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>12.3.2</b> More high-level graphics of two variables</a></li>
+<li class="chapter" data-level="11.1.1" data-path="matrices2.html"><a href="matrices2.html#selecting-elements"><i class="fa fa-check"></i><b>11.1.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="11.1.2" data-path="matrices2.html"><a href="matrices2.html#adding-a-column"><i class="fa fa-check"></i><b>11.1.2</b> Adding a column</a></li>
+<li class="chapter" data-level="11.1.3" data-path="matrices2.html"><a href="matrices2.html#deleting-a-column"><i class="fa fa-check"></i><b>11.1.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="11.1.4" data-path="matrices2.html"><a href="matrices2.html#moving-a-column"><i class="fa fa-check"></i><b>11.1.4</b> Moving a column</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>13</b> Plots from Scratch</a>
+<li class="part"><span><b>IV Non-Atomic Objects</b></span></li>
+<li class="chapter" data-level="12" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>12</b> Lists</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>13.1</b> Making a graphic from scratch</a>
+<li class="chapter" data-level="12.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>12.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="12.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>12.2</b> Manipulating Lists</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>13.1.1</b> How does it work</a></li>
-<li class="chapter" data-level="13.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>13.1.2</b> Drawing Arrows</a></li>
-<li class="chapter" data-level="13.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>13.1.3</b> Drawing Rectangles</a></li>
+<li class="chapter" data-level="12.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>12.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="12.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>12.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="12.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>12.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="12.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>12.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="12.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>12.2.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="lists.html"><a href="lists.html#exercises-6"><i class="fa fa-check"></i><b>12.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>13</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>13.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="13.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>13.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="13.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>13.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="13.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>13.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements-1"><i class="fa fa-check"></i><b>13.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="13.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column-1"><i class="fa fa-check"></i><b>13.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="13.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column-1"><i class="fa fa-check"></i><b>13.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="13.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>13.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="13.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column-1"><i class="fa fa-check"></i><b>13.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="13.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>13.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="dataframes.html"><a href="dataframes.html#exercises-7"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>V Graphics</b></span></li>
+<li class="chapter" data-level="14" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>14</b> Base Graphics</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>14.1</b> Basics of Graphics in R</a></li>
+<li class="chapter" data-level="14.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>14.2</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="14.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>14.3</b> Traditional Graphics in R</a></li>
+<li class="chapter" data-level="14.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>14.4</b> Low-Level Functions</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>14.4.1</b> Low-level functions</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>IV Programming Basics</b></span></li>
-<li class="chapter" data-level="14" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>14</b> Intro to Functions</a>
+<li class="chapter" data-level="15" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>15</b> More Base Graphics</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="functions1.html"><a href="functions1.html#motivation-1"><i class="fa fa-check"></i><b>14.1</b> Motivation</a></li>
-<li class="chapter" data-level="14.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>14.2</b> Writing a Simple Function</a>
+<li class="chapter" data-level="15.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>15.1</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="15.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>15.2</b> One variable graphics</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>14.2.1</b> Arguments with default values</a></li>
+<li class="chapter" data-level="15.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>15.2.1</b> More high-level graphics of a single variable</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>14.3</b> Writing Functions for Humans</a>
+<li class="chapter" data-level="15.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>15.3</b> Plots of Two Variables</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>14.3.1</b> Naming Functions</a></li>
-<li class="chapter" data-level="14.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>14.3.2</b> Function’s Documentation</a></li>
-</ul></li>
-<li class="chapter" data-level="14.4" data-path="functions1.html"><a href="functions1.html#exercises-6"><i class="fa fa-check"></i><b>14.4</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>15</b> Expressions</a>
-<ul>
-<li class="chapter" data-level="15.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>15.1</b> R Expressions</a>
-<ul>
-<li class="chapter" data-level="15.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>15.1.1</b> Simple Expressions</a></li>
-<li class="chapter" data-level="15.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>15.1.2</b> Compound Expressions</a></li>
-<li class="chapter" data-level="15.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>15.1.3</b> Every expression has a value</a></li>
-<li class="chapter" data-level="15.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>15.1.4</b> Assignments within Compound Expressions</a></li>
+<li class="chapter" data-level="15.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>15.3.1</b> Example: Plots of two variables</a></li>
+<li class="chapter" data-level="15.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>15.3.2</b> More high-level graphics of two variables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>16</b> Conditionals: If-Else</a>
+<li class="chapter" data-level="16" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>16</b> Plots from Scratch</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="conditionals.html"><a href="conditionals.html#motivation-2"><i class="fa fa-check"></i><b>16.1</b> Motivation</a>
+<li class="chapter" data-level="16.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>16.1</b> Making a graphic from scratch</a>
 <ul>
-<li class="chapter" data-level="16.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>16.1.1</b> Future Value of Ordinary Annuity</a></li>
-<li class="chapter" data-level="16.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>16.1.2</b> Future Value of Annuity Due</a></li>
-</ul></li>
-<li class="chapter" data-level="16.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>16.2</b> Conditionals</a>
-<ul>
-<li class="chapter" data-level="16.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>16.2.1</b> If-else conditions</a></li>
-<li class="chapter" data-level="16.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>16.2.2</b> Anatomy of if-else statements</a></li>
-<li class="chapter" data-level="16.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>16.2.3</b> Minimalist If-then-else</a></li>
-<li class="chapter" data-level="16.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>16.2.4</b> Simple If’s</a></li>
-</ul></li>
-<li class="chapter" data-level="16.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>16.3</b> Multiple If’s</a>
-<ul>
-<li class="chapter" data-level="16.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>16.3.1</b> Switch statements</a></li>
-</ul></li>
-<li class="chapter" data-level="16.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>16.4</b> Derivation of FVOA</a></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>17</b> Iterations: For Loop</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="for-loop.html"><a href="for-loop.html#motivation-3"><i class="fa fa-check"></i><b>17.1</b> Motivation</a>
-<ul>
-<li class="chapter" data-level="17.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>17.1.1</b> US Stock Market Historical Annual Returns</a></li>
-</ul></li>
-<li class="chapter" data-level="17.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>17.2</b> Simulating Normal Random Numbers</a>
-<ul>
-<li class="chapter" data-level="17.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>17.2.1</b> Investing in the US stock market during three years</a></li>
-<li class="chapter" data-level="17.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>17.2.2</b> Investing during ten years</a></li>
-</ul></li>
-<li class="chapter" data-level="17.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>17.3</b> Iterations to the Rescue</a></li>
-<li class="chapter" data-level="17.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>17.4</b> For Loop Example</a></li>
-<li class="chapter" data-level="17.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>17.5</b> About For Loops</a>
-<ul>
-<li class="chapter" data-level="17.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>17.5.1</b> Anatomy of a For Loop</a></li>
-<li class="chapter" data-level="17.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>17.5.2</b> For Loops and Next statement</a></li>
-<li class="chapter" data-level="17.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>17.5.3</b> For Loops and Break statement</a></li>
-<li class="chapter" data-level="17.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>17.5.4</b> Nested Loops</a></li>
-<li class="chapter" data-level="17.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>17.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+<li class="chapter" data-level="16.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>16.1.1</b> How does it work</a></li>
+<li class="chapter" data-level="16.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>16.1.2</b> Drawing Arrows</a></li>
+<li class="chapter" data-level="16.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>16.1.3</b> Drawing Rectangles</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>18</b> Iterations: While Loop</a>
+<li class="part"><span><b>VI Programming Basics</b></span></li>
+<li class="chapter" data-level="17" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>17</b> Intro to Functions</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="while-loop.html"><a href="while-loop.html#motivation-4"><i class="fa fa-check"></i><b>18.1</b> Motivation</a></li>
-<li class="chapter" data-level="18.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>18.2</b> Anatomy of a While Loop</a></li>
-<li class="chapter" data-level="18.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>18.3</b> Another Example</a>
+<li class="chapter" data-level="17.1" data-path="functions1.html"><a href="functions1.html#motivation-2"><i class="fa fa-check"></i><b>17.1</b> Motivation</a></li>
+<li class="chapter" data-level="17.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>17.2</b> Writing a Simple Function</a>
 <ul>
-<li class="chapter" data-level="18.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>18.3.1</b> While Loops and Next statement</a></li>
-<li class="chapter" data-level="18.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>18.3.2</b> While Loops and Break statement</a></li>
+<li class="chapter" data-level="17.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>17.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>17.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>17.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="17.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>17.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="functions1.html"><a href="functions1.html#exercises-8"><i class="fa fa-check"></i><b>17.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>18</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>18.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>18.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="18.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>18.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="18.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>18.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="18.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>18.1.4</b> Assignments within Compound Expressions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="simulations.html"><a href="simulations.html"><i class="fa fa-check"></i><b>19</b> Simulations</a>
+<li class="chapter" data-level="19" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>19</b> Conditionals: If-Else</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="simulations.html"><a href="simulations.html#motivation-5"><i class="fa fa-check"></i><b>19.1</b> Motivation</a>
+<li class="chapter" data-level="19.1" data-path="conditionals.html"><a href="conditionals.html#motivation-3"><i class="fa fa-check"></i><b>19.1</b> Motivation</a>
 <ul>
-<li class="chapter" data-level="19.1.1" data-path="simulations.html"><a href="simulations.html#investing-a-lump-sum"><i class="fa fa-check"></i><b>19.1.1</b> Investing a Lump-sum</a></li>
-<li class="chapter" data-level="19.1.2" data-path="simulations.html"><a href="simulations.html#example-with-future-value"><i class="fa fa-check"></i><b>19.1.2</b> Example with Future Value</a></li>
+<li class="chapter" data-level="19.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>19.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="19.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>19.1.2</b> Future Value of Annuity Due</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="simulations.html"><a href="simulations.html#variable-rates-of-return-and-volatility"><i class="fa fa-check"></i><b>19.2</b> Variable rates of return and volatility</a>
+<li class="chapter" data-level="19.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>19.2</b> Conditionals</a>
 <ul>
-<li class="chapter" data-level="19.2.1" data-path="simulations.html"><a href="simulations.html#example-running-3-simulations"><i class="fa fa-check"></i><b>19.2.1</b> Example: Running 3 simulations</a></li>
-<li class="chapter" data-level="19.2.2" data-path="simulations.html"><a href="simulations.html#reshaping-the-table-of-simulations"><i class="fa fa-check"></i><b>19.2.2</b> Reshaping the table of simulations</a></li>
-<li class="chapter" data-level="19.2.3" data-path="simulations.html"><a href="simulations.html#graphing-the-simulations"><i class="fa fa-check"></i><b>19.2.3</b> Graphing the Simulations</a></li>
+<li class="chapter" data-level="19.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>19.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="19.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>19.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="19.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>19.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="19.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>19.2.4</b> Simple If’s</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="simulations.html"><a href="simulations.html#running-100-simulations"><i class="fa fa-check"></i><b>19.3</b> Running 100 simulations</a></li>
-<li class="chapter" data-level="19.4" data-path="simulations.html"><a href="simulations.html#more-summary-statistics"><i class="fa fa-check"></i><b>19.4</b> More Summary Statistics</a></li>
-</ul></li>
-<li class="part"><span><b>V Import / Export</b></span></li>
-<li class="chapter" data-level="20" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>20</b> Introduction</a>
+<li class="chapter" data-level="19.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>19.3</b> Multiple If’s</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>20.1</b> Importing and Exporting Resources</a>
-<ul>
-<li class="chapter" data-level="20.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>20.1.1</b> Behind import/export functions</a></li>
+<li class="chapter" data-level="19.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>19.3.1</b> Switch statements</a></li>
 </ul></li>
-<li class="chapter" data-level="20.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>20.2</b> Connections</a></li>
+<li class="chapter" data-level="19.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>19.4</b> Derivation of FVOA</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>21</b> Importing Data Tables</a>
+<li class="chapter" data-level="20" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>20</b> Iterations: For Loop</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="import-tables.html"><a href="import-tables.html#motivation-6"><i class="fa fa-check"></i><b>21.1</b> Motivation</a>
+<li class="chapter" data-level="20.1" data-path="for-loop.html"><a href="for-loop.html#motivation-4"><i class="fa fa-check"></i><b>20.1</b> Motivation</a>
 <ul>
-<li class="chapter" data-level="21.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>21.1.1</b> Data in Text Files</a></li>
+<li class="chapter" data-level="20.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>20.1.1</b> US Stock Market Historical Annual Returns</a></li>
 </ul></li>
-<li class="chapter" data-level="21.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>21.2</b> Character Delimited Text Files</a>
+<li class="chapter" data-level="20.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>20.2</b> Simulating Normal Random Numbers</a>
 <ul>
-<li class="chapter" data-level="21.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>21.2.1</b> Common Delimiters</a></li>
-<li class="chapter" data-level="21.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>21.2.2</b> Delimiters in Data Values</a></li>
-<li class="chapter" data-level="21.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>21.2.3</b> Fixed-Width Format Files</a></li>
-<li class="chapter" data-level="21.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>21.2.4</b> Summary</a></li>
+<li class="chapter" data-level="20.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>20.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="20.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>20.2.2</b> Investing during ten years</a></li>
 </ul></li>
-<li class="chapter" data-level="21.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>21.3</b> Importing Data Tables</a>
+<li class="chapter" data-level="20.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>20.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="20.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>20.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="20.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>20.5</b> About For Loops</a>
 <ul>
-<li class="chapter" data-level="21.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>21.3.1</b> Function <code>read.table()</code> and friends</a></li>
-<li class="chapter" data-level="21.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>21.3.2</b> Reading space-separated files</a></li>
-<li class="chapter" data-level="21.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>21.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+<li class="chapter" data-level="20.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>20.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="20.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>20.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="20.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>20.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="20.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>20.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="20.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>20.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>21.4</b> Importing with <code>scan()</code></a></li>
-<li class="chapter" data-level="21.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>21.5</b> In Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>22</b> Exporting Data</a>
+<li class="chapter" data-level="21" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>21</b> Iterations: While Loop</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>22.1</b> Exporting Tables</a></li>
-<li class="chapter" data-level="22.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>22.2</b> Exporting Text</a></li>
-<li class="chapter" data-level="22.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>22.3</b> Sending output with <code>cat()</code></a>
+<li class="chapter" data-level="21.1" data-path="while-loop.html"><a href="while-loop.html#motivation-5"><i class="fa fa-check"></i><b>21.1</b> Motivation</a></li>
+<li class="chapter" data-level="21.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>21.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="21.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>21.3</b> Another Example</a>
 <ul>
-<li class="chapter" data-level="22.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>22.3.1</b> Sending output with <code>cat()</code></a></li>
+<li class="chapter" data-level="21.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>21.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="21.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>21.3.2</b> While Loops and Break statement</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>22.4</b> Redirecting output with <code>sink()</code></a></li>
-<li class="chapter" data-level="22.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>22.5</b> Exporting R’s Binary Data</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>22</b> More About Functions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="functions2.html"><a href="functions2.html#functions-recap"><i class="fa fa-check"></i><b>22.1</b> Functions Recap</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="functions2.html"><a href="functions2.html#simple-expressions-1"><i class="fa fa-check"></i><b>22.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="22.1.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>22.1.2</b> Nested Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>22.2</b> Function Output</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="functions2.html"><a href="functions2.html#the-return-command"><i class="fa fa-check"></i><b>22.2.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="22.2.2" data-path="functions2.html"><a href="functions2.html#white-spaces"><i class="fa fa-check"></i><b>22.2.2</b> White Spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="functions2.html"><a href="functions2.html#indentation"><i class="fa fa-check"></i><b>22.3</b> Indentation</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="functions2.html"><a href="functions2.html#meaningful-names"><i class="fa fa-check"></i><b>22.3.1</b> Meaningful Names</a></li>
+<li class="chapter" data-level="22.3.2" data-path="functions2.html"><a href="functions2.html#syntax-parentheses"><i class="fa fa-check"></i><b>22.3.2</b> Syntax: Parentheses</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>22.4</b> Recommendations</a></li>
+</ul></li>
+<li class="part"><span><b>VII Import / Export</b></span></li>
+<li class="chapter" data-level="23" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>23</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>23.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="23.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>23.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>23.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>24</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="import-tables.html"><a href="import-tables.html#motivation-6"><i class="fa fa-check"></i><b>24.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>24.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>24.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>24.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="24.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>24.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="24.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>24.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="24.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>24.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>24.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>24.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="24.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>24.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="24.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>24.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>24.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="24.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>24.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>25</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>25.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="25.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>25.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="25.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>25.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="25.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>25.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="25.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>25.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="25.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>25.5</b> Exporting R’s Binary Data</a></li>
+<li class="chapter" data-level="25.6" data-path="export-data.html"><a href="export-data.html#exporting-images"><i class="fa fa-check"></i><b>25.6</b> Exporting Images</a></li>
+</ul></li>
+<li class="part"><span><b>VIII Simulations</b></span></li>
+<li class="chapter" data-level="26" data-path="simulations1.html"><a href="simulations1.html"><i class="fa fa-check"></i><b>26</b> Simulations (part 1)</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="simulations1.html"><a href="simulations1.html#motivation-7"><i class="fa fa-check"></i><b>26.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="simulations1.html"><a href="simulations1.html#investing-a-lump-sum"><i class="fa fa-check"></i><b>26.1.1</b> Investing a Lump-sum</a></li>
+<li class="chapter" data-level="26.1.2" data-path="simulations1.html"><a href="simulations1.html#example-with-future-value"><i class="fa fa-check"></i><b>26.1.2</b> Example with Future Value</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="simulations1.html"><a href="simulations1.html#variable-rates-of-return-and-volatility"><i class="fa fa-check"></i><b>26.2</b> Variable rates of return and volatility</a>
+<ul>
+<li class="chapter" data-level="26.2.1" data-path="simulations1.html"><a href="simulations1.html#example-running-3-simulations"><i class="fa fa-check"></i><b>26.2.1</b> Example: Running 3 simulations</a></li>
+<li class="chapter" data-level="26.2.2" data-path="simulations1.html"><a href="simulations1.html#reshaping-the-table-of-simulations"><i class="fa fa-check"></i><b>26.2.2</b> Reshaping the table of simulations</a></li>
+<li class="chapter" data-level="26.2.3" data-path="simulations1.html"><a href="simulations1.html#graphing-the-simulations"><i class="fa fa-check"></i><b>26.2.3</b> Graphing the Simulations</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="simulations1.html"><a href="simulations1.html#running-100-simulations"><i class="fa fa-check"></i><b>26.3</b> Running 100 simulations</a></li>
+<li class="chapter" data-level="26.4" data-path="simulations1.html"><a href="simulations1.html#more-summary-statistics"><i class="fa fa-check"></i><b>26.4</b> More Summary Statistics</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
@@ -483,8 +526,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dataframes" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> Data Frames</h1>
+<div id="dataframes" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> Data Frames<a href="dataframes.html#dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The most common format/structure for a data set is a tabular format:
 with rows and columns (like a spreadsheet). When your data is in this shape,
 most of the time you will work with R <strong>data frames</strong> (or similar rectangular
@@ -498,9 +541,9 @@ modern version based on the <em>tidy data</em> framework mainly developed by
 Hadley Wickham. We leave the discussion of this alternative approach for later.</p>
 <p>To make the most of the content covered in the next sections, I am assuming
 that you are familiar with the rest of data objects covered in the previous
-chapters of part “II Data Objects in R.”</p>
-<div id="r-data-frames" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> R Data Frames</h2>
+chapters of part “II Data Objects in R”.</p>
+<div id="r-data-frames" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> R Data Frames<a href="dataframes.html#r-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A data frame is a special type of R list. In most cases, a data frame is
 internally stored as a list of vectors or factors, in which each vector
 (or factor) corresponds to a column. This implies that columns in a data frame
@@ -509,10 +552,10 @@ data type. However, since a data frame is a list, you
 can technically have any kind of object as a column. In practice, though,
 having data frames with columns that are not vectors or factors is something
 that does not make much sense.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-143"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-189"></span>
 <img src="images/objects/obj-dataframe.png" alt="Abstract view of a data.frame" width="75%" />
 <p class="caption">
-Figure 10.1: Abstract view of a data.frame
+Figure 13.1: Abstract view of a data.frame
 </p>
 </div>
 <p>From the data manipulation point of view, data frames behave like a hybrid
@@ -524,8 +567,8 @@ bracket notation <code>dat[ , ]</code>. For these reasons, there is a wide array
 functions that allows you to manipulate data frames in very convenient ways.
 But to the inexperienced user, all these functions may feel overwhelming.</p>
 </div>
-<div id="inspecting-data-frames" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> Inspecting data frames</h2>
+<div id="inspecting-data-frames" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Inspecting data frames<a href="dataframes.html#inspecting-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the basic tasks when working with data frames involves inspecting its
 contents. Specially in the early stages of data exploration, when dealing for
 the first time with a new data frame, you will need to inspect things like
@@ -535,29 +578,29 @@ also be able to take a peak to some of its first or last rows, and usually
 obtain a summary of each column.</p>
 <p>Let’s see an example with one of the built-in data frames in R: <code>mtcars</code>.
 Just a few rows and columns of <code>mtcars</code> are displayed below:</p>
-<pre><code>#&gt;                    mpg cyl disp  hp drat    wt
-#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620
-#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875
-#&gt; Datsun 710        22.8   4  108  93 3.85 2.320
-#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215
-#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440</code></pre>
+<pre><code>&gt;                    mpg cyl disp  hp drat    wt
+&gt; Mazda RX4         21.0   6  160 110 3.90 2.620
+&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875
+&gt; Datsun 710        22.8   4  108  93 3.85 2.320
+&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215
+&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440</code></pre>
 <p>The main function to explore the <em>structure</em> of not just a data frame, but of
 any kind of object, is <code>str()</code>. When applied to data frames, <code>str()</code> returns a
 report of the dimensions of the data frame, a list with the name of all the
 variables, and their data types (e.g. <code>chr</code> character, <code>num</code> real, etc).</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="dataframes.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars, <span class="at">vec.len =</span> <span class="dv">1</span>)</span>
-<span id="cb150-2"><a href="dataframes.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    32 obs. of  11 variables:</span></span>
-<span id="cb150-3"><a href="dataframes.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ mpg : num  21 21 ...</span></span>
-<span id="cb150-4"><a href="dataframes.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ cyl : num  6 6 ...</span></span>
-<span id="cb150-5"><a href="dataframes.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ disp: num  160 160 ...</span></span>
-<span id="cb150-6"><a href="dataframes.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ hp  : num  110 110 ...</span></span>
-<span id="cb150-7"><a href="dataframes.html#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ drat: num  3.9 3.9 ...</span></span>
-<span id="cb150-8"><a href="dataframes.html#cb150-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ wt  : num  2.62 ...</span></span>
-<span id="cb150-9"><a href="dataframes.html#cb150-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ qsec: num  16.5 ...</span></span>
-<span id="cb150-10"><a href="dataframes.html#cb150-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ vs  : num  0 0 ...</span></span>
-<span id="cb150-11"><a href="dataframes.html#cb150-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ am  : num  1 1 ...</span></span>
-<span id="cb150-12"><a href="dataframes.html#cb150-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ gear: num  4 4 ...</span></span>
-<span id="cb150-13"><a href="dataframes.html#cb150-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ carb: num  4 4 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="dataframes.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars, <span class="at">vec.len =</span> <span class="dv">1</span>)</span>
+<span id="cb186-2"><a href="dataframes.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="st">&#39;data.frame&#39;</span><span class="sc">:</span> <span class="dv">32</span> obs. of  <span class="dv">11</span> variables<span class="sc">:</span></span>
+<span id="cb186-3"><a href="dataframes.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>  <span class="er">$</span> mpg <span class="sc">:</span> num  <span class="dv">21</span> <span class="dv">21</span> ...</span>
+<span id="cb186-4"><a href="dataframes.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> cyl <span class="sc">:</span> num  <span class="dv">6</span> <span class="dv">6</span> ...</span>
+<span id="cb186-5"><a href="dataframes.html#cb186-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> disp<span class="sc">:</span> num  <span class="dv">160</span> <span class="dv">160</span> ...</span>
+<span id="cb186-6"><a href="dataframes.html#cb186-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> hp  <span class="sc">:</span> num  <span class="dv">110</span> <span class="dv">110</span> ...</span>
+<span id="cb186-7"><a href="dataframes.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> drat<span class="sc">:</span> num  <span class="fl">3.9</span> <span class="fl">3.9</span> ...</span>
+<span id="cb186-8"><a href="dataframes.html#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> wt  <span class="sc">:</span> num  <span class="fl">2.62</span> ...</span>
+<span id="cb186-9"><a href="dataframes.html#cb186-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> qsec<span class="sc">:</span> num  <span class="fl">16.5</span> ...</span>
+<span id="cb186-10"><a href="dataframes.html#cb186-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> vs  <span class="sc">:</span> num  <span class="dv">0</span> <span class="dv">0</span> ...</span>
+<span id="cb186-11"><a href="dataframes.html#cb186-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> am  <span class="sc">:</span> num  <span class="dv">1</span> <span class="dv">1</span> ...</span>
+<span id="cb186-12"><a href="dataframes.html#cb186-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> gear<span class="sc">:</span> num  <span class="dv">4</span> <span class="dv">4</span> ...</span>
+<span id="cb186-13"><a href="dataframes.html#cb186-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> carb<span class="sc">:</span> num  <span class="dv">4</span> <span class="dv">4</span> ...</span></code></pre></div>
 <p>The argument <code>vec.len = 1</code> is optional but we like to use it because it
 indicates that just the first elements in each column should be displayed.
 Observe the output returned by <code>str()</code>. The first line tells us that <code>mtcars</code>
@@ -585,34 +628,29 @@ potential issues and avoid disastrous consequences or bugs in subsequent stages.
 <p>On a technical side, we should mention that a data frame is a list with special
 attributes: an attribute <code>names</code> for column names, an attribute
 <code>row.names</code> for row names, and of course its attribute <code>class</code>:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="dataframes.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(mtcars)</span>
-<span id="cb151-2"><a href="dataframes.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $names</span></span>
-<span id="cb151-3"><a href="dataframes.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;  </span></span>
-<span id="cb151-4"><a href="dataframes.html#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot; &quot;carb&quot;</span></span>
-<span id="cb151-5"><a href="dataframes.html#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb151-6"><a href="dataframes.html#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $row.names</span></span>
-<span id="cb151-7"><a href="dataframes.html#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;Mazda RX4&quot;           &quot;Mazda RX4 Wag&quot;      </span></span>
-<span id="cb151-8"><a href="dataframes.html#cb151-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;Datsun 710&quot;          &quot;Hornet 4 Drive&quot;     </span></span>
-<span id="cb151-9"><a href="dataframes.html#cb151-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;Hornet Sportabout&quot;   &quot;Valiant&quot;            </span></span>
-<span id="cb151-10"><a href="dataframes.html#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;Duster 360&quot;          &quot;Merc 240D&quot;          </span></span>
-<span id="cb151-11"><a href="dataframes.html#cb151-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;Merc 230&quot;            &quot;Merc 280&quot;           </span></span>
-<span id="cb151-12"><a href="dataframes.html#cb151-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;Merc 280C&quot;           &quot;Merc 450SE&quot;         </span></span>
-<span id="cb151-13"><a href="dataframes.html#cb151-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;Merc 450SL&quot;          &quot;Merc 450SLC&quot;        </span></span>
-<span id="cb151-14"><a href="dataframes.html#cb151-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [15] &quot;Cadillac Fleetwood&quot;  &quot;Lincoln Continental&quot;</span></span>
-<span id="cb151-15"><a href="dataframes.html#cb151-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;Chrysler Imperial&quot;   &quot;Fiat 128&quot;           </span></span>
-<span id="cb151-16"><a href="dataframes.html#cb151-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;Honda Civic&quot;         &quot;Toyota Corolla&quot;     </span></span>
-<span id="cb151-17"><a href="dataframes.html#cb151-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;Toyota Corona&quot;       &quot;Dodge Challenger&quot;   </span></span>
-<span id="cb151-18"><a href="dataframes.html#cb151-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [23] &quot;AMC Javelin&quot;         &quot;Camaro Z28&quot;         </span></span>
-<span id="cb151-19"><a href="dataframes.html#cb151-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;Pontiac Firebird&quot;    &quot;Fiat X1-9&quot;          </span></span>
-<span id="cb151-20"><a href="dataframes.html#cb151-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [27] &quot;Porsche 914-2&quot;       &quot;Lotus Europa&quot;       </span></span>
-<span id="cb151-21"><a href="dataframes.html#cb151-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] &quot;Ford Pantera L&quot;      &quot;Ferrari Dino&quot;       </span></span>
-<span id="cb151-22"><a href="dataframes.html#cb151-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] &quot;Maserati Bora&quot;       &quot;Volvo 142E&quot;         </span></span>
-<span id="cb151-23"><a href="dataframes.html#cb151-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb151-24"><a href="dataframes.html#cb151-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $class</span></span>
-<span id="cb151-25"><a href="dataframes.html#cb151-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="dataframes.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(mtcars)</span>
+<span id="cb187-2"><a href="dataframes.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>names</span>
+<span id="cb187-3"><a href="dataframes.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="st">&quot;mpg&quot;</span>  <span class="st">&quot;cyl&quot;</span>  <span class="st">&quot;disp&quot;</span> <span class="st">&quot;hp&quot;</span>   <span class="st">&quot;drat&quot;</span> <span class="st">&quot;wt&quot;</span>   <span class="st">&quot;qsec&quot;</span> <span class="st">&quot;vs&quot;</span>   <span class="st">&quot;am&quot;</span>   <span class="st">&quot;gear&quot;</span></span>
+<span id="cb187-4"><a href="dataframes.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">11</span>] <span class="st">&quot;carb&quot;</span></span>
+<span id="cb187-5"><a href="dataframes.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb187-6"><a href="dataframes.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>row.names</span>
+<span id="cb187-7"><a href="dataframes.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="st">&quot;Mazda RX4&quot;</span>           <span class="st">&quot;Mazda RX4 Wag&quot;</span>       <span class="st">&quot;Datsun 710&quot;</span>         </span>
+<span id="cb187-8"><a href="dataframes.html#cb187-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">4</span>] <span class="st">&quot;Hornet 4 Drive&quot;</span>      <span class="st">&quot;Hornet Sportabout&quot;</span>   <span class="st">&quot;Valiant&quot;</span>            </span>
+<span id="cb187-9"><a href="dataframes.html#cb187-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">7</span>] <span class="st">&quot;Duster 360&quot;</span>          <span class="st">&quot;Merc 240D&quot;</span>           <span class="st">&quot;Merc 230&quot;</span>           </span>
+<span id="cb187-10"><a href="dataframes.html#cb187-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">10</span>] <span class="st">&quot;Merc 280&quot;</span>            <span class="st">&quot;Merc 280C&quot;</span>           <span class="st">&quot;Merc 450SE&quot;</span>         </span>
+<span id="cb187-11"><a href="dataframes.html#cb187-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">13</span>] <span class="st">&quot;Merc 450SL&quot;</span>          <span class="st">&quot;Merc 450SLC&quot;</span>         <span class="st">&quot;Cadillac Fleetwood&quot;</span> </span>
+<span id="cb187-12"><a href="dataframes.html#cb187-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">16</span>] <span class="st">&quot;Lincoln Continental&quot;</span> <span class="st">&quot;Chrysler Imperial&quot;</span>   <span class="st">&quot;Fiat 128&quot;</span>           </span>
+<span id="cb187-13"><a href="dataframes.html#cb187-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">19</span>] <span class="st">&quot;Honda Civic&quot;</span>         <span class="st">&quot;Toyota Corolla&quot;</span>      <span class="st">&quot;Toyota Corona&quot;</span>      </span>
+<span id="cb187-14"><a href="dataframes.html#cb187-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">22</span>] <span class="st">&quot;Dodge Challenger&quot;</span>    <span class="st">&quot;AMC Javelin&quot;</span>         <span class="st">&quot;Camaro Z28&quot;</span>         </span>
+<span id="cb187-15"><a href="dataframes.html#cb187-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">25</span>] <span class="st">&quot;Pontiac Firebird&quot;</span>    <span class="st">&quot;Fiat X1-9&quot;</span>           <span class="st">&quot;Porsche 914-2&quot;</span>      </span>
+<span id="cb187-16"><a href="dataframes.html#cb187-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">28</span>] <span class="st">&quot;Lotus Europa&quot;</span>        <span class="st">&quot;Ford Pantera L&quot;</span>      <span class="st">&quot;Ferrari Dino&quot;</span>       </span>
+<span id="cb187-17"><a href="dataframes.html#cb187-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">31</span>] <span class="st">&quot;Maserati Bora&quot;</span>       <span class="st">&quot;Volvo 142E&quot;</span>         </span>
+<span id="cb187-18"><a href="dataframes.html#cb187-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb187-19"><a href="dataframes.html#cb187-19" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>class</span>
+<span id="cb187-20"><a href="dataframes.html#cb187-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;data.frame&quot;</span></span></code></pre></div>
 </div>
-<div id="creating-data-frames" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> Creating data frames</h2>
+<div id="creating-data-frames" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Creating data frames<a href="dataframes.html#creating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Most of the (raw) data tables you will be working with will already be in
 some data file. However, from time to time you will face the need to create
 some sort of data table in R. In these situations, you will likely have to
@@ -622,70 +660,70 @@ create such table with a data frame. So let’s look at various ways to
 You pass a series of vectors (or factors), of the same length, separated by commas.
 Each vector (or factor) will become a column in the generated data frame.
 Preferably, give names to each column like in the example below:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="dataframes.html#cb152-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb152-2"><a href="dataframes.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
-<span id="cb152-3"><a href="dataframes.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
-<span id="cb152-4"><a href="dataframes.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
-<span id="cb152-5"><a href="dataframes.html#cb152-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>)</span>
-<span id="cb152-6"><a href="dataframes.html#cb152-6" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb152-7"><a href="dataframes.html#cb152-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb152-8"><a href="dataframes.html#cb152-8" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb152-9"><a href="dataframes.html#cb152-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     name gender height weight</span></span>
-<span id="cb152-10"><a href="dataframes.html#cb152-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Anakin   male   1.88     84</span></span>
-<span id="cb152-11"><a href="dataframes.html#cb152-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  Padme female   1.65     45</span></span>
-<span id="cb152-12"><a href="dataframes.html#cb152-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   Luke   male   1.72     77</span></span>
-<span id="cb152-13"><a href="dataframes.html#cb152-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   Leia female   1.50     49</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="dataframes.html#cb188-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb188-2"><a href="dataframes.html#cb188-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
+<span id="cb188-3"><a href="dataframes.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
+<span id="cb188-4"><a href="dataframes.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
+<span id="cb188-5"><a href="dataframes.html#cb188-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>)</span>
+<span id="cb188-6"><a href="dataframes.html#cb188-6" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb188-7"><a href="dataframes.html#cb188-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-8"><a href="dataframes.html#cb188-8" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb188-9"><a href="dataframes.html#cb188-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>     name gender height weight</span>
+<span id="cb188-10"><a href="dataframes.html#cb188-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Anakin   male   <span class="fl">1.88</span>     <span class="dv">84</span></span>
+<span id="cb188-11"><a href="dataframes.html#cb188-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span>  Padme female   <span class="fl">1.65</span>     <span class="dv">45</span></span>
+<span id="cb188-12"><a href="dataframes.html#cb188-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>   Luke   male   <span class="fl">1.72</span>     <span class="dv">77</span></span>
+<span id="cb188-13"><a href="dataframes.html#cb188-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">4</span>   Leia female   <span class="fl">1.50</span>     <span class="dv">49</span></span></code></pre></div>
 <p><strong>Option 2</strong>: Another way to create data frames is with a <code>list</code> containing
 vectors or factors (of the same length), which you then convert into a data
 frame with <code>data.frame()</code>:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="dataframes.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># another way to create a basic data frame</span></span>
-<span id="cb153-2"><a href="dataframes.html#cb153-2" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb153-3"><a href="dataframes.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
-<span id="cb153-4"><a href="dataframes.html#cb153-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
-<span id="cb153-5"><a href="dataframes.html#cb153-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
-<span id="cb153-6"><a href="dataframes.html#cb153-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>)</span>
-<span id="cb153-7"><a href="dataframes.html#cb153-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb153-8"><a href="dataframes.html#cb153-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-9"><a href="dataframes.html#cb153-9" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(lst)</span>
-<span id="cb153-10"><a href="dataframes.html#cb153-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-11"><a href="dataframes.html#cb153-11" aria-hidden="true" tabindex="-1"></a>tbl</span>
-<span id="cb153-12"><a href="dataframes.html#cb153-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     name gender height weight</span></span>
-<span id="cb153-13"><a href="dataframes.html#cb153-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Anakin   male   1.88     84</span></span>
-<span id="cb153-14"><a href="dataframes.html#cb153-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  Padme female   1.65     45</span></span>
-<span id="cb153-15"><a href="dataframes.html#cb153-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   Luke   male   1.72     77</span></span>
-<span id="cb153-16"><a href="dataframes.html#cb153-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   Leia female   1.50     49</span></span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="dataframes.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># another way to create a basic data frame</span></span>
+<span id="cb189-2"><a href="dataframes.html#cb189-2" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb189-3"><a href="dataframes.html#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
+<span id="cb189-4"><a href="dataframes.html#cb189-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
+<span id="cb189-5"><a href="dataframes.html#cb189-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
+<span id="cb189-6"><a href="dataframes.html#cb189-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>)</span>
+<span id="cb189-7"><a href="dataframes.html#cb189-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb189-8"><a href="dataframes.html#cb189-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-9"><a href="dataframes.html#cb189-9" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(lst)</span>
+<span id="cb189-10"><a href="dataframes.html#cb189-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-11"><a href="dataframes.html#cb189-11" aria-hidden="true" tabindex="-1"></a>tbl</span>
+<span id="cb189-12"><a href="dataframes.html#cb189-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>     name gender height weight</span>
+<span id="cb189-13"><a href="dataframes.html#cb189-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Anakin   male   <span class="fl">1.88</span>     <span class="dv">84</span></span>
+<span id="cb189-14"><a href="dataframes.html#cb189-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span>  Padme female   <span class="fl">1.65</span>     <span class="dv">45</span></span>
+<span id="cb189-15"><a href="dataframes.html#cb189-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>   Luke   male   <span class="fl">1.72</span>     <span class="dv">77</span></span>
+<span id="cb189-16"><a href="dataframes.html#cb189-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">4</span>   Leia female   <span class="fl">1.50</span>     <span class="dv">49</span></span></code></pre></div>
 <p>Remember that a <code>data.frame</code> is nothing more than a <code>list</code>. So as long as the
 elements in the list (vectors or factors) are of the same length, we can simply
 convert the list into a data frame.</p>
 <p>Keep in mind that in old versions of R (3.1.0 or older), <code>data.frame()</code> used to
 convert character vectors into factors. You can always check the data type of
 each column in a data frame with <code>str()</code>:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="dataframes.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tbl)</span>
-<span id="cb154-2"><a href="dataframes.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    4 obs. of  4 variables:</span></span>
-<span id="cb154-3"><a href="dataframes.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name  : chr  &quot;Anakin&quot; &quot;Padme&quot; &quot;Luke&quot; &quot;Leia&quot;</span></span>
-<span id="cb154-4"><a href="dataframes.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ gender: chr  &quot;male&quot; &quot;female&quot; &quot;male&quot; &quot;female&quot;</span></span>
-<span id="cb154-5"><a href="dataframes.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ height: num  1.88 1.65 1.72 1.5</span></span>
-<span id="cb154-6"><a href="dataframes.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weight: num  84 45 77 49</span></span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="dataframes.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tbl)</span>
+<span id="cb190-2"><a href="dataframes.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="st">&#39;data.frame&#39;</span><span class="sc">:</span> <span class="dv">4</span> obs. of  <span class="dv">4</span> variables<span class="sc">:</span></span>
+<span id="cb190-3"><a href="dataframes.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>  <span class="er">$</span> name  <span class="sc">:</span> chr  <span class="st">&quot;Anakin&quot;</span> <span class="st">&quot;Padme&quot;</span> <span class="st">&quot;Luke&quot;</span> <span class="st">&quot;Leia&quot;</span></span>
+<span id="cb190-4"><a href="dataframes.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> gender<span class="sc">:</span> chr  <span class="st">&quot;male&quot;</span> <span class="st">&quot;female&quot;</span> <span class="st">&quot;male&quot;</span> <span class="st">&quot;female&quot;</span></span>
+<span id="cb190-5"><a href="dataframes.html#cb190-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> height<span class="sc">:</span> num  <span class="fl">1.88</span> <span class="fl">1.65</span> <span class="fl">1.72</span> <span class="fl">1.5</span></span>
+<span id="cb190-6"><a href="dataframes.html#cb190-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> weight<span class="sc">:</span> num  <span class="dv">84</span> <span class="dv">45</span> <span class="dv">77</span> <span class="dv">49</span></span></code></pre></div>
 <p>To prevent <code>data.frame()</code> from converting strings into factors, you must use
 the argument <code>stringsAsFactors = FALSE</code></p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="dataframes.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># strings as strings (not as factors)</span></span>
-<span id="cb155-2"><a href="dataframes.html#cb155-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb155-3"><a href="dataframes.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
-<span id="cb155-4"><a href="dataframes.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
-<span id="cb155-5"><a href="dataframes.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
-<span id="cb155-6"><a href="dataframes.html#cb155-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>),</span>
-<span id="cb155-7"><a href="dataframes.html#cb155-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
-<span id="cb155-8"><a href="dataframes.html#cb155-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb155-9"><a href="dataframes.html#cb155-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb155-10"><a href="dataframes.html#cb155-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat)</span>
-<span id="cb155-11"><a href="dataframes.html#cb155-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    4 obs. of  4 variables:</span></span>
-<span id="cb155-12"><a href="dataframes.html#cb155-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name  : chr  &quot;Anakin&quot; &quot;Padme&quot; &quot;Luke&quot; &quot;Leia&quot;</span></span>
-<span id="cb155-13"><a href="dataframes.html#cb155-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ gender: chr  &quot;male&quot; &quot;female&quot; &quot;male&quot; &quot;female&quot;</span></span>
-<span id="cb155-14"><a href="dataframes.html#cb155-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ height: num  1.88 1.65 1.72 1.5</span></span>
-<span id="cb155-15"><a href="dataframes.html#cb155-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weight: num  84 45 77 49</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="dataframes.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># strings as strings (not as factors)</span></span>
+<span id="cb191-2"><a href="dataframes.html#cb191-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb191-3"><a href="dataframes.html#cb191-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&#39;Anakin&#39;</span>, <span class="st">&#39;Padme&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Leia&#39;</span>),</span>
+<span id="cb191-4"><a href="dataframes.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>),</span>
+<span id="cb191-5"><a href="dataframes.html#cb191-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">1.65</span>, <span class="fl">1.72</span>, <span class="fl">1.50</span>),</span>
+<span id="cb191-6"><a href="dataframes.html#cb191-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">45</span>, <span class="dv">77</span>, <span class="dv">49</span>),</span>
+<span id="cb191-7"><a href="dataframes.html#cb191-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb191-8"><a href="dataframes.html#cb191-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb191-9"><a href="dataframes.html#cb191-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-10"><a href="dataframes.html#cb191-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat)</span>
+<span id="cb191-11"><a href="dataframes.html#cb191-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="st">&#39;data.frame&#39;</span><span class="sc">:</span> <span class="dv">4</span> obs. of  <span class="dv">4</span> variables<span class="sc">:</span></span>
+<span id="cb191-12"><a href="dataframes.html#cb191-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>  <span class="er">$</span> name  <span class="sc">:</span> chr  <span class="st">&quot;Anakin&quot;</span> <span class="st">&quot;Padme&quot;</span> <span class="st">&quot;Luke&quot;</span> <span class="st">&quot;Leia&quot;</span></span>
+<span id="cb191-13"><a href="dataframes.html#cb191-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> gender<span class="sc">:</span> chr  <span class="st">&quot;male&quot;</span> <span class="st">&quot;female&quot;</span> <span class="st">&quot;male&quot;</span> <span class="st">&quot;female&quot;</span></span>
+<span id="cb191-14"><a href="dataframes.html#cb191-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> height<span class="sc">:</span> num  <span class="fl">1.88</span> <span class="fl">1.65</span> <span class="fl">1.72</span> <span class="fl">1.5</span></span>
+<span id="cb191-15"><a href="dataframes.html#cb191-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="er">$</span> weight<span class="sc">:</span> num  <span class="dv">84</span> <span class="dv">45</span> <span class="dv">77</span> <span class="dv">49</span></span></code></pre></div>
 </div>
-<div id="basic-operations-with-data-frames" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> Basic Operations with Data Frames</h2>
+<div id="basic-operations-with-data-frames" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Basic Operations with Data Frames<a href="dataframes.html#basic-operations-with-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that you have seen some ways to create data frames, let’s discuss a number
 of basic manipulations of data frames. We will show you examples of various
 operations, and then you’ll have the chance to put them in practice with some
@@ -701,277 +739,276 @@ exercises listed at the end of the chapter.</p>
 <li>select a set of columns</li>
 </ul></li>
 <li>Adding a new column</li>
-<li>Deleting a new column</li>
+<li>Deleting a column</li>
 <li>Renaming a column</li>
 <li>Moving a column</li>
 <li>Transforming a column</li>
 </ul>
 <p>Let’s say you have a data frame <code>dat</code> with the following content:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="dataframes.html#cb156-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb156-2"><a href="dataframes.html#cb156-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&#39;Leia&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Han&#39;</span>),</span>
-<span id="cb156-3"><a href="dataframes.html#cb156-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;male&#39;</span>),</span>
-<span id="cb156-4"><a href="dataframes.html#cb156-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.50</span>, <span class="fl">1.72</span>, <span class="fl">1.80</span>),</span>
-<span id="cb156-5"><a href="dataframes.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">jedi =</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
-<span id="cb156-6"><a href="dataframes.html#cb156-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
-<span id="cb156-7"><a href="dataframes.html#cb156-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb156-8"><a href="dataframes.html#cb156-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-9"><a href="dataframes.html#cb156-9" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb156-10"><a href="dataframes.html#cb156-10" aria-hidden="true" tabindex="-1"></a>  name gender height  jedi</span>
-<span id="cb156-11"><a href="dataframes.html#cb156-11" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> Leia female   <span class="fl">1.50</span> <span class="cn">FALSE</span></span>
-<span id="cb156-12"><a href="dataframes.html#cb156-12" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> Luke   male   <span class="fl">1.72</span>  <span class="cn">TRUE</span></span>
-<span id="cb156-13"><a href="dataframes.html#cb156-13" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  Han   male   <span class="fl">1.80</span> <span class="cn">FALSE</span></span></code></pre></div>
-<div id="selecting-elements" class="section level3" number="10.4.1">
-<h3><span class="header-section-number">10.4.1</span> Selecting elements</h3>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="dataframes.html#cb192-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb192-2"><a href="dataframes.html#cb192-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&#39;Leia&#39;</span>, <span class="st">&#39;Luke&#39;</span>, <span class="st">&#39;Han&#39;</span>),</span>
+<span id="cb192-3"><a href="dataframes.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>, <span class="st">&#39;male&#39;</span>),</span>
+<span id="cb192-4"><a href="dataframes.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.50</span>, <span class="fl">1.72</span>, <span class="fl">1.80</span>),</span>
+<span id="cb192-5"><a href="dataframes.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">jedi =</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb192-6"><a href="dataframes.html#cb192-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb192-7"><a href="dataframes.html#cb192-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb192-8"><a href="dataframes.html#cb192-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-9"><a href="dataframes.html#cb192-9" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb192-10"><a href="dataframes.html#cb192-10" aria-hidden="true" tabindex="-1"></a>  name gender height  jedi</span>
+<span id="cb192-11"><a href="dataframes.html#cb192-11" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> Leia female   <span class="fl">1.50</span> <span class="cn">FALSE</span></span>
+<span id="cb192-12"><a href="dataframes.html#cb192-12" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> Luke   male   <span class="fl">1.72</span>  <span class="cn">TRUE</span></span>
+<span id="cb192-13"><a href="dataframes.html#cb192-13" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  Han   male   <span class="fl">1.80</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div id="selecting-elements-1" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Selecting elements<a href="dataframes.html#selecting-elements-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The data frame <code>dat</code> is a 2-dimensional object: the 1st dimension corresponds
 to the rows, while the 2nd dimension corresponds to the columns.
 Because <code>dat</code> has two dimensions, the bracket notation involves
 working with data frames in this form: <code>dat[ , ]</code>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-150"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-196"></span>
 <img src="images/objects/obj-dataframe-brackets.png" alt="Bracket notation in data frames" width="50%" />
 <p class="caption">
-Figure 10.2: Bracket notation in data frames
+Figure 13.2: Bracket notation in data frames
 </p>
 </div>
 <p>In other words, you have to specify values inside the
 brackets for the 1st index, and the 2nd index: <code>dat[index1, index2]</code>.</p>
-<div id="selecting-cells" class="section level4 unnumbered">
-<h4>Selecting cells</h4>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-151"></span>
+<div id="selecting-cells-1" class="section level4 unnumbered hasAnchor">
+<h4>Selecting cells<a href="dataframes.html#selecting-cells-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-197"></span>
 <img src="images/objects/obj-dataframe-cells1.png" alt="Several ways to select cells" width="80%" />
 <p class="caption">
-Figure 10.3: Several ways to select cells
+Figure 13.3: Several ways to select cells
 </p>
 </div>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="dataframes.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select value in row 1 and column 1</span></span>
-<span id="cb157-2"><a href="dataframes.html#cb157-2" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb157-3"><a href="dataframes.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Leia&quot;</span></span>
-<span id="cb157-4"><a href="dataframes.html#cb157-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-5"><a href="dataframes.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="co"># select value in row 2 and column 3</span></span>
-<span id="cb157-6"><a href="dataframes.html#cb157-6" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb157-7"><a href="dataframes.html#cb157-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.72</span></span>
-<span id="cb157-8"><a href="dataframes.html#cb157-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-9"><a href="dataframes.html#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="co"># select values in these cells</span></span>
-<span id="cb157-10"><a href="dataframes.html#cb157-10" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>]</span>
-<span id="cb157-11"><a href="dataframes.html#cb157-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   height  jedi</span></span>
-<span id="cb157-12"><a href="dataframes.html#cb157-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1.50 FALSE</span></span>
-<span id="cb157-13"><a href="dataframes.html#cb157-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   1.72  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="dataframes.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select value in row 1 and column 1</span></span>
+<span id="cb193-2"><a href="dataframes.html#cb193-2" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb193-3"><a href="dataframes.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;Leia&quot;</span></span>
+<span id="cb193-4"><a href="dataframes.html#cb193-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-5"><a href="dataframes.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="co"># select value in row 2 and column 3</span></span>
+<span id="cb193-6"><a href="dataframes.html#cb193-6" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb193-7"><a href="dataframes.html#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1.72</span></span>
+<span id="cb193-8"><a href="dataframes.html#cb193-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-9"><a href="dataframes.html#cb193-9" aria-hidden="true" tabindex="-1"></a><span class="co"># select values in these cells</span></span>
+<span id="cb193-10"><a href="dataframes.html#cb193-10" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb193-11"><a href="dataframes.html#cb193-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   height  jedi</span>
+<span id="cb193-12"><a href="dataframes.html#cb193-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span>   <span class="fl">1.50</span> <span class="cn">FALSE</span></span>
+<span id="cb193-13"><a href="dataframes.html#cb193-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span>   <span class="fl">1.72</span>  <span class="cn">TRUE</span></span></code></pre></div>
 <p>It is also possible to exclude certain rows-and-columns by passing negative
 numeric indices:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-153"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-199"></span>
 <img src="images/objects/obj-dataframe-cells2.png" alt="Several ways to exclude cells" width="80%" />
 <p class="caption">
-Figure 10.4: Several ways to exclude cells
+Figure 13.4: Several ways to exclude cells
 </p>
 </div>
 </div>
-<div id="selecting-rows" class="section level4 unnumbered">
-<h4>Selecting rows</h4>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-154"></span>
+<div id="selecting-rows-1" class="section level4 unnumbered hasAnchor">
+<h4>Selecting rows<a href="dataframes.html#selecting-rows-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-200"></span>
 <img src="images/objects/obj-dataframe-rows1.png" alt="Several ways to select rows" width="80%" />
 <p class="caption">
-Figure 10.5: Several ways to select rows
+Figure 13.5: Several ways to select rows
 </p>
 </div>
 <p>If no value is specified for <code>index1</code> then all rows are included. Likewise,
 if no value is specified for <code>index2</code> then all columns are included.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="dataframes.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting first row</span></span>
-<span id="cb158-2"><a href="dataframes.html#cb158-2" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">1</span>, ]</span>
-<span id="cb158-3"><a href="dataframes.html#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name gender height  jedi</span></span>
-<span id="cb158-4"><a href="dataframes.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia female    1.5 FALSE</span></span>
-<span id="cb158-5"><a href="dataframes.html#cb158-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-6"><a href="dataframes.html#cb158-6" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting third row</span></span>
-<span id="cb158-7"><a href="dataframes.html#cb158-7" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">3</span>, ]</span>
-<span id="cb158-8"><a href="dataframes.html#cb158-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name gender height  jedi</span></span>
-<span id="cb158-9"><a href="dataframes.html#cb158-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han   male    1.8 FALSE</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-156"></span>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="dataframes.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting first row</span></span>
+<span id="cb194-2"><a href="dataframes.html#cb194-2" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">1</span>, ]</span>
+<span id="cb194-3"><a href="dataframes.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name gender height  jedi</span>
+<span id="cb194-4"><a href="dataframes.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia female    <span class="fl">1.5</span> <span class="cn">FALSE</span></span>
+<span id="cb194-5"><a href="dataframes.html#cb194-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-6"><a href="dataframes.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting third row</span></span>
+<span id="cb194-7"><a href="dataframes.html#cb194-7" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">3</span>, ]</span>
+<span id="cb194-8"><a href="dataframes.html#cb194-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name gender height  jedi</span>
+<span id="cb194-9"><a href="dataframes.html#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han   male    <span class="fl">1.8</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-202"></span>
 <img src="images/objects/obj-dataframe-rows2.png" alt="Several ways to exclude rows" width="80%" />
 <p class="caption">
-Figure 10.6: Several ways to exclude rows
+Figure 13.6: Several ways to exclude rows
 </p>
 </div>
 </div>
-<div id="selecting-columns" class="section level4 unnumbered">
-<h4>Selecting columns</h4>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-157"></span>
+<div id="selecting-columns-1" class="section level4 unnumbered hasAnchor">
+<h4>Selecting columns<a href="dataframes.html#selecting-columns-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-203"></span>
 <img src="images/objects/obj-dataframe-cols1.png" alt="Several ways to select columns" width="80%" />
 <p class="caption">
-Figure 10.7: Several ways to select columns
+Figure 13.7: Several ways to select columns
 </p>
 </div>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="dataframes.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting second column</span></span>
-<span id="cb159-2"><a href="dataframes.html#cb159-2" aria-hidden="true" tabindex="-1"></a>dat[ ,<span class="dv">2</span>]</span>
-<span id="cb159-3"><a href="dataframes.html#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;female&quot; &quot;male&quot;   &quot;male&quot;</span></span>
-<span id="cb159-4"><a href="dataframes.html#cb159-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-5"><a href="dataframes.html#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting columns 2 to 4</span></span>
-<span id="cb159-6"><a href="dataframes.html#cb159-6" aria-hidden="true" tabindex="-1"></a>dat[ ,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
-<span id="cb159-7"><a href="dataframes.html#cb159-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   gender height  jedi</span></span>
-<span id="cb159-8"><a href="dataframes.html#cb159-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 female   1.50 FALSE</span></span>
-<span id="cb159-9"><a href="dataframes.html#cb159-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   male   1.72  TRUE</span></span>
-<span id="cb159-10"><a href="dataframes.html#cb159-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   male   1.80 FALSE</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-159"></span>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="dataframes.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting second column</span></span>
+<span id="cb195-2"><a href="dataframes.html#cb195-2" aria-hidden="true" tabindex="-1"></a>dat[ ,<span class="dv">2</span>]</span>
+<span id="cb195-3"><a href="dataframes.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;female&quot;</span> <span class="st">&quot;male&quot;</span>   <span class="st">&quot;male&quot;</span></span>
+<span id="cb195-4"><a href="dataframes.html#cb195-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-5"><a href="dataframes.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting columns 2 to 4</span></span>
+<span id="cb195-6"><a href="dataframes.html#cb195-6" aria-hidden="true" tabindex="-1"></a>dat[ ,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb195-7"><a href="dataframes.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   gender height  jedi</span>
+<span id="cb195-8"><a href="dataframes.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> female   <span class="fl">1.50</span> <span class="cn">FALSE</span></span>
+<span id="cb195-9"><a href="dataframes.html#cb195-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span>   male   <span class="fl">1.72</span>  <span class="cn">TRUE</span></span>
+<span id="cb195-10"><a href="dataframes.html#cb195-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>   male   <span class="fl">1.80</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-205"></span>
 <img src="images/objects/obj-dataframe-cols2.png" alt="Several ways to exclude columns" width="80%" />
 <p class="caption">
-Figure 10.8: Several ways to exclude columns
+Figure 13.8: Several ways to exclude columns
 </p>
 </div>
 </div>
-<div id="more-options-to-access-columns" class="section level4 unnumbered">
-<h4>More Options to Access Columns</h4>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-160"></span>
+<div id="more-options-to-access-columns" class="section level4 unnumbered hasAnchor">
+<h4>More Options to Access Columns<a href="dataframes.html#more-options-to-access-columns" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-206"></span>
 <img src="images/objects/obj-dataframe-names.png" alt="Other options to select columns of a data frame" width="50%" />
 <p class="caption">
-Figure 10.9: Other options to select columns of a data frame
+Figure 13.9: Other options to select columns of a data frame
 </p>
 </div>
 <p>The dollar sign also works for selecting a column of a data frame
 using its name</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="dataframes.html#cb160-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg</span>
-<span id="cb160-2"><a href="dataframes.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8</span></span>
-<span id="cb160-3"><a href="dataframes.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] 19.2 17.8 16.4 17.3 15.2 10.4 10.4 14.7 32.4</span></span>
-<span id="cb160-4"><a href="dataframes.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0</span></span>
-<span id="cb160-5"><a href="dataframes.html#cb160-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [28] 30.4 15.8 19.7 15.0 21.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="dataframes.html#cb196-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg</span>
+<span id="cb196-2"><a href="dataframes.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="fl">21.0</span> <span class="fl">21.0</span> <span class="fl">22.8</span> <span class="fl">21.4</span> <span class="fl">18.7</span> <span class="fl">18.1</span> <span class="fl">14.3</span> <span class="fl">24.4</span> <span class="fl">22.8</span> <span class="fl">19.2</span> <span class="fl">17.8</span> <span class="fl">16.4</span> <span class="fl">17.3</span> <span class="fl">15.2</span> <span class="fl">10.4</span></span>
+<span id="cb196-3"><a href="dataframes.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">16</span>] <span class="fl">10.4</span> <span class="fl">14.7</span> <span class="fl">32.4</span> <span class="fl">30.4</span> <span class="fl">33.9</span> <span class="fl">21.5</span> <span class="fl">15.5</span> <span class="fl">15.2</span> <span class="fl">13.3</span> <span class="fl">19.2</span> <span class="fl">27.3</span> <span class="fl">26.0</span> <span class="fl">30.4</span> <span class="fl">15.8</span> <span class="fl">19.7</span></span>
+<span id="cb196-4"><a href="dataframes.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">31</span>] <span class="fl">15.0</span> <span class="fl">21.4</span></span></code></pre></div>
 <p>You don’t need to use quote marks, but you can if you want. The following
 calls are equivalent.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="dataframes.html#cb161-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span><span class="st">&#39;mpg&#39;</span></span>
-<span id="cb161-2"><a href="dataframes.html#cb161-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span><span class="st">&quot;mpg&quot;</span></span>
-<span id="cb161-3"><a href="dataframes.html#cb161-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span><span class="st">`</span><span class="at">mpg</span><span class="st">`</span></span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="dataframes.html#cb197-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span><span class="st">&#39;mpg&#39;</span></span>
+<span id="cb197-2"><a href="dataframes.html#cb197-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span><span class="st">&quot;mpg&quot;</span></span>
+<span id="cb197-3"><a href="dataframes.html#cb197-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span><span class="st">`</span><span class="at">mpg</span><span class="st">`</span></span></code></pre></div>
 </div>
 </div>
-<div id="adding-a-column" class="section level3" number="10.4.2">
-<h3><span class="header-section-number">10.4.2</span> Adding a column</h3>
+<div id="adding-a-column-1" class="section level3 hasAnchor" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> Adding a column<a href="dataframes.html#adding-a-column-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Perhaps the simplest way to add a column is with the dollar operator <code>$</code>.
 You just need to give a name for the new column, and assign a vector (or factor):</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="dataframes.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adding a column</span></span>
-<span id="cb162-2"><a href="dataframes.html#cb162-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>new_column <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;i&#39;</span>)</span>
-<span id="cb162-3"><a href="dataframes.html#cb162-3" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb162-4"><a href="dataframes.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name gender height  jedi new_column</span></span>
-<span id="cb162-5"><a href="dataframes.html#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE          a</span></span>
-<span id="cb162-6"><a href="dataframes.html#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE          e</span></span>
-<span id="cb162-7"><a href="dataframes.html#cb162-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE          i</span></span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="dataframes.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adding a column</span></span>
+<span id="cb198-2"><a href="dataframes.html#cb198-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>new_column <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;i&#39;</span>)</span>
+<span id="cb198-3"><a href="dataframes.html#cb198-3" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb198-4"><a href="dataframes.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name gender height  jedi new_column</span>
+<span id="cb198-5"><a href="dataframes.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia female   <span class="fl">1.50</span> <span class="cn">FALSE</span>          a</span>
+<span id="cb198-6"><a href="dataframes.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke   male   <span class="fl">1.72</span>  <span class="cn">TRUE</span>          e</span>
+<span id="cb198-7"><a href="dataframes.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han   male   <span class="fl">1.80</span> <span class="cn">FALSE</span>          i</span></code></pre></div>
 <p>Another way to add a column is with the <em>column binding</em> function <code>cbind()</code>:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="dataframes.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of weights</span></span>
-<span id="cb163-2"><a href="dataframes.html#cb163-2" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">49</span>, <span class="dv">77</span>, <span class="dv">85</span>)</span>
-<span id="cb163-3"><a href="dataframes.html#cb163-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-4"><a href="dataframes.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="co"># adding weights to dat</span></span>
-<span id="cb163-5"><a href="dataframes.html#cb163-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat, weight)</span>
-<span id="cb163-6"><a href="dataframes.html#cb163-6" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb163-7"><a href="dataframes.html#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name gender height  jedi new_column weight</span></span>
-<span id="cb163-8"><a href="dataframes.html#cb163-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE          a     49</span></span>
-<span id="cb163-9"><a href="dataframes.html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE          e     77</span></span>
-<span id="cb163-10"><a href="dataframes.html#cb163-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE          i     85</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="dataframes.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of weights</span></span>
+<span id="cb199-2"><a href="dataframes.html#cb199-2" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">49</span>, <span class="dv">77</span>, <span class="dv">85</span>)</span>
+<span id="cb199-3"><a href="dataframes.html#cb199-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-4"><a href="dataframes.html#cb199-4" aria-hidden="true" tabindex="-1"></a><span class="co"># adding weights to dat</span></span>
+<span id="cb199-5"><a href="dataframes.html#cb199-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat, weight)</span>
+<span id="cb199-6"><a href="dataframes.html#cb199-6" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb199-7"><a href="dataframes.html#cb199-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name gender height  jedi new_column weight</span>
+<span id="cb199-8"><a href="dataframes.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia female   <span class="fl">1.50</span> <span class="cn">FALSE</span>          a     <span class="dv">49</span></span>
+<span id="cb199-9"><a href="dataframes.html#cb199-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke   male   <span class="fl">1.72</span>  <span class="cn">TRUE</span>          e     <span class="dv">77</span></span>
+<span id="cb199-10"><a href="dataframes.html#cb199-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han   male   <span class="fl">1.80</span> <span class="cn">FALSE</span>          i     <span class="dv">85</span></span></code></pre></div>
 </div>
-<div id="deleting-a-column" class="section level3" number="10.4.3">
-<h3><span class="header-section-number">10.4.3</span> Deleting a column</h3>
+<div id="deleting-a-column-1" class="section level3 hasAnchor" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> Deleting a column<a href="dataframes.html#deleting-a-column-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The inverse operation of adding a column consists of <strong>deleting</strong> a column.
 This is possible with the <code>$</code> dollar operator. For instance, say you want to
 remove the column <code>new_column</code>. Use the <code>$</code> operator to select this column,
 and assign it the value <code>NULL</code> (think of this as <em>NULLifying</em> a column):</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="dataframes.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># deleting a column</span></span>
-<span id="cb164-2"><a href="dataframes.html#cb164-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>new_column <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb164-3"><a href="dataframes.html#cb164-3" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb164-4"><a href="dataframes.html#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name gender height  jedi weight</span></span>
-<span id="cb164-5"><a href="dataframes.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia female   1.50 FALSE     49</span></span>
-<span id="cb164-6"><a href="dataframes.html#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke   male   1.72  TRUE     77</span></span>
-<span id="cb164-7"><a href="dataframes.html#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han   male   1.80 FALSE     85</span></span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="dataframes.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># deleting a column</span></span>
+<span id="cb200-2"><a href="dataframes.html#cb200-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>new_column <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb200-3"><a href="dataframes.html#cb200-3" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb200-4"><a href="dataframes.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name gender height  jedi weight</span>
+<span id="cb200-5"><a href="dataframes.html#cb200-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia female   <span class="fl">1.50</span> <span class="cn">FALSE</span>     <span class="dv">49</span></span>
+<span id="cb200-6"><a href="dataframes.html#cb200-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke   male   <span class="fl">1.72</span>  <span class="cn">TRUE</span>     <span class="dv">77</span></span>
+<span id="cb200-7"><a href="dataframes.html#cb200-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han   male   <span class="fl">1.80</span> <span class="cn">FALSE</span>     <span class="dv">85</span></span></code></pre></div>
 </div>
-<div id="renaming-a-column" class="section level3" number="10.4.4">
-<h3><span class="header-section-number">10.4.4</span> Renaming a column</h3>
+<div id="renaming-a-column" class="section level3 hasAnchor" number="13.4.4">
+<h3><span class="header-section-number">13.4.4</span> Renaming a column<a href="dataframes.html#renaming-a-column" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What if you want to rename a column? There are various options to do this.
 One way is by changing the column <code>names</code> attribute:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="dataframes.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attributes</span></span>
-<span id="cb165-2"><a href="dataframes.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(dat)</span>
-<span id="cb165-3"><a href="dataframes.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $names</span></span>
-<span id="cb165-4"><a href="dataframes.html#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;gender&quot; &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span>
-<span id="cb165-5"><a href="dataframes.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-6"><a href="dataframes.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $row.names</span></span>
-<span id="cb165-7"><a href="dataframes.html#cb165-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3</span></span>
-<span id="cb165-8"><a href="dataframes.html#cb165-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-9"><a href="dataframes.html#cb165-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $class</span></span>
-<span id="cb165-10"><a href="dataframes.html#cb165-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="dataframes.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attributes</span></span>
+<span id="cb201-2"><a href="dataframes.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(dat)</span>
+<span id="cb201-3"><a href="dataframes.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>names</span>
+<span id="cb201-4"><a href="dataframes.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;name&quot;</span>   <span class="st">&quot;gender&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;jedi&quot;</span>   <span class="st">&quot;weight&quot;</span></span>
+<span id="cb201-5"><a href="dataframes.html#cb201-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb201-6"><a href="dataframes.html#cb201-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>row.names</span>
+<span id="cb201-7"><a href="dataframes.html#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb201-8"><a href="dataframes.html#cb201-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb201-9"><a href="dataframes.html#cb201-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>class</span>
+<span id="cb201-10"><a href="dataframes.html#cb201-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;data.frame&quot;</span></span></code></pre></div>
 <p>which is more commonly accessed with the <code>names()</code> function:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="dataframes.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># column names</span></span>
-<span id="cb166-2"><a href="dataframes.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat)</span>
-<span id="cb166-3"><a href="dataframes.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;gender&quot; &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="dataframes.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># column names</span></span>
+<span id="cb202-2"><a href="dataframes.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat)</span>
+<span id="cb202-3"><a href="dataframes.html#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;name&quot;</span>   <span class="st">&quot;gender&quot;</span> <span class="st">&quot;height&quot;</span> <span class="st">&quot;jedi&quot;</span>   <span class="st">&quot;weight&quot;</span></span></code></pre></div>
 <p>Notice that <code>dat</code> has a list of attributes. The element <code>names</code> is the vector
 of column names.</p>
 <p>You can directly modify the vector of <code>names</code>; for example let’s change
 <code>gender</code> to <code>sex</code>:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="dataframes.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># changing rookie to rooky</span></span>
-<span id="cb167-2"><a href="dataframes.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(dat)<span class="sc">$</span>names[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;sex&quot;</span></span>
-<span id="cb167-3"><a href="dataframes.html#cb167-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-4"><a href="dataframes.html#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="co"># display column names</span></span>
-<span id="cb167-5"><a href="dataframes.html#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat)</span>
-<span id="cb167-6"><a href="dataframes.html#cb167-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;name&quot;   &quot;sex&quot;    &quot;height&quot; &quot;jedi&quot;   &quot;weight&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="dataframes.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># changing rookie to rooky</span></span>
+<span id="cb203-2"><a href="dataframes.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(dat)<span class="sc">$</span>names[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;sex&quot;</span></span>
+<span id="cb203-3"><a href="dataframes.html#cb203-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb203-4"><a href="dataframes.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="co"># display column names</span></span>
+<span id="cb203-5"><a href="dataframes.html#cb203-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat)</span>
+<span id="cb203-6"><a href="dataframes.html#cb203-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;name&quot;</span>   <span class="st">&quot;sex&quot;</span>    <span class="st">&quot;height&quot;</span> <span class="st">&quot;jedi&quot;</span>   <span class="st">&quot;weight&quot;</span></span></code></pre></div>
 <p>By the way: this approach of changing the name of a variable is very low level,
 and probably unfamiliar to most useRs.</p>
 </div>
-<div id="moving-a-column" class="section level3" number="10.4.5">
-<h3><span class="header-section-number">10.4.5</span> Moving a column</h3>
+<div id="moving-a-column-1" class="section level3 hasAnchor" number="13.4.5">
+<h3><span class="header-section-number">13.4.5</span> Moving a column<a href="dataframes.html#moving-a-column-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A more challenging operation is when you want to move a column to a different
 position. What if you want to move <code>salary</code> to the last position (last column)?
 One option is to create a vector of column names in the desired order, and then
 use this vector (for the index of columns) to reassign the data frame like this:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="dataframes.html#cb168-1" aria-hidden="true" tabindex="-1"></a>reordered_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;jedi&quot;</span>, <span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>, <span class="st">&quot;sex&quot;</span>)</span>
-<span id="cb168-2"><a href="dataframes.html#cb168-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat[ ,reordered_names]</span>
-<span id="cb168-3"><a href="dataframes.html#cb168-3" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb168-4"><a href="dataframes.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
-<span id="cb168-5"><a href="dataframes.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia FALSE   1.50     49 female</span></span>
-<span id="cb168-6"><a href="dataframes.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke  TRUE   1.72     77   male</span></span>
-<span id="cb168-7"><a href="dataframes.html#cb168-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han FALSE   1.80     85   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="dataframes.html#cb204-1" aria-hidden="true" tabindex="-1"></a>reordered_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;jedi&quot;</span>, <span class="st">&quot;height&quot;</span>, <span class="st">&quot;weight&quot;</span>, <span class="st">&quot;sex&quot;</span>)</span>
+<span id="cb204-2"><a href="dataframes.html#cb204-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat[ ,reordered_names]</span>
+<span id="cb204-3"><a href="dataframes.html#cb204-3" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb204-4"><a href="dataframes.html#cb204-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name  jedi height weight    sex</span>
+<span id="cb204-5"><a href="dataframes.html#cb204-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia <span class="cn">FALSE</span>   <span class="fl">1.50</span>     <span class="dv">49</span> female</span>
+<span id="cb204-6"><a href="dataframes.html#cb204-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke  <span class="cn">TRUE</span>   <span class="fl">1.72</span>     <span class="dv">77</span>   male</span>
+<span id="cb204-7"><a href="dataframes.html#cb204-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han <span class="cn">FALSE</span>   <span class="fl">1.80</span>     <span class="dv">85</span>   male</span></code></pre></div>
 </div>
-<div id="transforming-a-column" class="section level3" number="10.4.6">
-<h3><span class="header-section-number">10.4.6</span> Transforming a column</h3>
+<div id="transforming-a-column" class="section level3 hasAnchor" number="13.4.6">
+<h3><span class="header-section-number">13.4.6</span> Transforming a column<a href="dataframes.html#transforming-a-column" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A more common operation than deleting or moving a column, is to transform the
 values in a column. This can be easily accomplished with the <code>$</code> operator.
 For instance, let’s say that we want to transform <code>height</code> from meters to
 centimeters:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="dataframes.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># converting height to centimeters</span></span>
-<span id="cb169-2"><a href="dataframes.html#cb169-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>height <span class="ot">&lt;-</span> dat<span class="sc">$</span>height <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb169-3"><a href="dataframes.html#cb169-3" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb169-4"><a href="dataframes.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name  jedi height weight    sex</span></span>
-<span id="cb169-5"><a href="dataframes.html#cb169-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia FALSE    150     49 female</span></span>
-<span id="cb169-6"><a href="dataframes.html#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke  TRUE    172     77   male</span></span>
-<span id="cb169-7"><a href="dataframes.html#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han FALSE    180     85   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="dataframes.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="co"># converting height to centimeters</span></span>
+<span id="cb205-2"><a href="dataframes.html#cb205-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>height <span class="ot">&lt;-</span> dat<span class="sc">$</span>height <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb205-3"><a href="dataframes.html#cb205-3" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb205-4"><a href="dataframes.html#cb205-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name  jedi height weight    sex</span>
+<span id="cb205-5"><a href="dataframes.html#cb205-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia <span class="cn">FALSE</span>    <span class="dv">150</span>     <span class="dv">49</span> female</span>
+<span id="cb205-6"><a href="dataframes.html#cb205-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke  <span class="cn">TRUE</span>    <span class="dv">172</span>     <span class="dv">77</span>   male</span>
+<span id="cb205-7"><a href="dataframes.html#cb205-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han <span class="cn">FALSE</span>    <span class="dv">180</span>     <span class="dv">85</span>   male</span></code></pre></div>
 <p>Likewise, instead of using the <code>$</code> operator, you can refer to the column using
 bracket notation. Here’s how to transform weight from kilograms to pounds
 (1 kg = 2.20462 pounds):</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="dataframes.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># weight into pounds</span></span>
-<span id="cb170-2"><a href="dataframes.html#cb170-2" aria-hidden="true" tabindex="-1"></a>dat[ ,<span class="st">&quot;weight&quot;</span>] <span class="ot">&lt;-</span> dat[ ,<span class="st">&quot;weight&quot;</span>] <span class="sc">*</span> <span class="fl">2.20462</span></span>
-<span id="cb170-3"><a href="dataframes.html#cb170-3" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb170-4"><a href="dataframes.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name  jedi height   weight    sex</span></span>
-<span id="cb170-5"><a href="dataframes.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia FALSE    150 108.0264 female</span></span>
-<span id="cb170-6"><a href="dataframes.html#cb170-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke  TRUE    172 169.7557   male</span></span>
-<span id="cb170-7"><a href="dataframes.html#cb170-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han FALSE    180 187.3927   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="dataframes.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># weight into pounds</span></span>
+<span id="cb206-2"><a href="dataframes.html#cb206-2" aria-hidden="true" tabindex="-1"></a>dat[ ,<span class="st">&quot;weight&quot;</span>] <span class="ot">&lt;-</span> dat[ ,<span class="st">&quot;weight&quot;</span>] <span class="sc">*</span> <span class="fl">2.20462</span></span>
+<span id="cb206-3"><a href="dataframes.html#cb206-3" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb206-4"><a href="dataframes.html#cb206-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name  jedi height   weight    sex</span>
+<span id="cb206-5"><a href="dataframes.html#cb206-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia <span class="cn">FALSE</span>    <span class="dv">150</span> <span class="fl">108.0264</span> female</span>
+<span id="cb206-6"><a href="dataframes.html#cb206-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke  <span class="cn">TRUE</span>    <span class="dv">172</span> <span class="fl">169.7557</span>   male</span>
+<span id="cb206-7"><a href="dataframes.html#cb206-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han <span class="cn">FALSE</span>    <span class="dv">180</span> <span class="fl">187.3927</span>   male</span></code></pre></div>
 <p>There is also the <code>transform()</code> function which transform values <em>interactively</em>,
 that is, temporarily:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="dataframes.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform weight to kgs</span></span>
-<span id="cb171-2"><a href="dataframes.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">transform</span>(dat, <span class="at">weight =</span> weight <span class="sc">/</span> <span class="fl">0.453592</span>)</span>
-<span id="cb171-3"><a href="dataframes.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name  jedi height   weight    sex</span></span>
-<span id="cb171-4"><a href="dataframes.html#cb171-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia FALSE    150 238.1576 female</span></span>
-<span id="cb171-5"><a href="dataframes.html#cb171-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke  TRUE    172 374.2476   male</span></span>
-<span id="cb171-6"><a href="dataframes.html#cb171-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han FALSE    180 413.1305   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="dataframes.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform weight to kgs</span></span>
+<span id="cb207-2"><a href="dataframes.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="fu">transform</span>(dat, <span class="at">weight =</span> weight <span class="sc">/</span> <span class="fl">0.453592</span>)</span>
+<span id="cb207-3"><a href="dataframes.html#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name  jedi height   weight    sex</span>
+<span id="cb207-4"><a href="dataframes.html#cb207-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia <span class="cn">FALSE</span>    <span class="dv">150</span> <span class="fl">238.1576</span> female</span>
+<span id="cb207-5"><a href="dataframes.html#cb207-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke  <span class="cn">TRUE</span>    <span class="dv">172</span> <span class="fl">374.2476</span>   male</span>
+<span id="cb207-6"><a href="dataframes.html#cb207-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han <span class="cn">FALSE</span>    <span class="dv">180</span> <span class="fl">413.1305</span>   male</span></code></pre></div>
 <p><code>transform()</code> does its job of modifying the values of <code>weight</code> but only
 temporarily; if you inspect <code>dat</code> you’ll see what this means:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="dataframes.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># did weight really change?</span></span>
-<span id="cb172-2"><a href="dataframes.html#cb172-2" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb172-3"><a href="dataframes.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name  jedi height   weight    sex</span></span>
-<span id="cb172-4"><a href="dataframes.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia FALSE    150 108.0264 female</span></span>
-<span id="cb172-5"><a href="dataframes.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke  TRUE    172 169.7557   male</span></span>
-<span id="cb172-6"><a href="dataframes.html#cb172-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han FALSE    180 187.3927   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="dataframes.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># did weight really change?</span></span>
+<span id="cb208-2"><a href="dataframes.html#cb208-2" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb208-3"><a href="dataframes.html#cb208-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name  jedi height   weight    sex</span>
+<span id="cb208-4"><a href="dataframes.html#cb208-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia <span class="cn">FALSE</span>    <span class="dv">150</span> <span class="fl">108.0264</span> female</span>
+<span id="cb208-5"><a href="dataframes.html#cb208-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke  <span class="cn">TRUE</span>    <span class="dv">172</span> <span class="fl">169.7557</span>   male</span>
+<span id="cb208-6"><a href="dataframes.html#cb208-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han <span class="cn">FALSE</span>    <span class="dv">180</span> <span class="fl">187.3927</span>   male</span></code></pre></div>
 <p>To make the changes permanent with <code>transform()</code>, you need to reassign them
 to the data frame:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="dataframes.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform weight to inches (permanently)</span></span>
-<span id="cb173-2"><a href="dataframes.html#cb173-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">transform</span>(dat, <span class="at">weight =</span> weight <span class="sc">/</span> <span class="fl">0.453592</span>)</span>
-<span id="cb173-3"><a href="dataframes.html#cb173-3" aria-hidden="true" tabindex="-1"></a>dat</span>
-<span id="cb173-4"><a href="dataframes.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   name  jedi height   weight    sex</span></span>
-<span id="cb173-5"><a href="dataframes.html#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Leia FALSE    150 238.1576 female</span></span>
-<span id="cb173-6"><a href="dataframes.html#cb173-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Luke  TRUE    172 374.2476   male</span></span>
-<span id="cb173-7"><a href="dataframes.html#cb173-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Han FALSE    180 413.1305   male</span></span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="dataframes.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform weight to inches (permanently)</span></span>
+<span id="cb209-2"><a href="dataframes.html#cb209-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">transform</span>(dat, <span class="at">weight =</span> weight <span class="sc">/</span> <span class="fl">0.453592</span>)</span>
+<span id="cb209-3"><a href="dataframes.html#cb209-3" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb209-4"><a href="dataframes.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   name  jedi height   weight    sex</span>
+<span id="cb209-5"><a href="dataframes.html#cb209-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> Leia <span class="cn">FALSE</span>    <span class="dv">150</span> <span class="fl">238.1576</span> female</span>
+<span id="cb209-6"><a href="dataframes.html#cb209-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Luke  <span class="cn">TRUE</span>    <span class="dv">172</span> <span class="fl">374.2476</span>   male</span>
+<span id="cb209-7"><a href="dataframes.html#cb209-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>  Han <span class="cn">FALSE</span>    <span class="dv">180</span> <span class="fl">413.1305</span>   male</span></code></pre></div>
 <hr />
 </div>
 </div>
-<div id="exercises-5" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> Exercises</h2>
+<div id="exercises-7" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Exercises<a href="dataframes.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>1)</strong> Consider the following data frame <code>df</code>:</p>
 <pre><code>      first      last  gender  born         spell
 1     Harry    Potter    male  1980  sectumsempra
@@ -1000,11 +1037,11 @@ frame <code>df</code>:</p>
 and 2 (<code>last</code>), by unsuccessfully using the following command.
 Why does the command print all columns?</p></li>
 </ol>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="dataframes.html#cb175-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span> <span class="sc">&amp;</span> <span class="dv">2</span>]</span>
-<span id="cb175-2"><a href="dataframes.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      first    last gender born        spell</span></span>
-<span id="cb175-3"><a href="dataframes.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    Harry  Potter   male 1980 sectumsempra</span></span>
-<span id="cb175-4"><a href="dataframes.html#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Hermione Granger female 1979    alohomora</span></span>
-<span id="cb175-5"><a href="dataframes.html#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      Ron Weasley   male 1980   riddikulus</span></span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="dataframes.html#cb211-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span> <span class="sc">&amp;</span> <span class="dv">2</span>]</span>
+<span id="cb211-2"><a href="dataframes.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>      first    last gender born        spell</span>
+<span id="cb211-3"><a href="dataframes.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span>    Harry  Potter   male <span class="dv">1980</span> sectumsempra</span>
+<span id="cb211-4"><a href="dataframes.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> Hermione Granger female <span class="dv">1979</span>    alohomora</span>
+<span id="cb211-5"><a href="dataframes.html#cb211-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>      Ron Weasley   male <span class="dv">1980</span>   riddikulus</span></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
 <li><p>Write a command that would correctly display the first two columns.</p></li>
 <li><p>Write a command that would give you the following data from <code>df</code>.</p></li>
@@ -1016,18 +1053,12 @@ Why does the command print all columns?</p></li>
 4      episkey     Luna</code></pre>
 <p><br></p>
 <p><strong>2)</strong> Consider the following data frame <code>dat</code></p>
-<pre><code>       first        last   gender      title
-1        Jon        Snow     male       lord
-2       Arya       Stark   female   princess
-3     Tyrion   Lannister     male     master
-4   Daenerys   Targaryen   female   khaleesi
-5       Yara     Greyjoy   female   princess
-    gpa
-1   2.8
-2   3.5
-3   2.9
-4   3.7
-5    NA</code></pre>
+<pre><code>       first        last   gender      title   gpa
+1        Jon        Snow     male       lord   2.8
+2       Arya       Stark   female   princess   3.5
+3     Tyrion   Lannister     male     master   2.9
+4   Daenerys   Targaryen   female   khaleesi   3.7
+5       Yara     Greyjoy   female   princess    NA</code></pre>
 <p>One of your friends wrote the following R code. Help your friend find all the
 errors and <strong>explain what’s wrong</strong>.</p>
 <pre><code># value of &#39;first&#39; associated to maximum &#39;gpa&#39;
@@ -1115,7 +1146,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>26 Simulations (part 1) | Learning to Code in R</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="26 Simulations (part 1) | Learning to Code in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="26 Simulations (part 1) | Learning to Code in R" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+<meta name="date" content="2022-08-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="export-data.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>Learning to Code in R</b><br><small>Gaston Sanchez</small></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yet-another-r-book"><i class="fa fa-check"></i>Yet Another R Book</a></li>
+</ul></li>
+<li class="part"><span><b>I Getting Started with R and RStudio</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#interacting-with-r"><i class="fa fa-check"></i><b>1.1</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>2</b> Breaking the Ice with R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-r-via-rstudio"><i class="fa fa-check"></i><b>2.1</b> First Contact with R (via RStudio)</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>2.1.1</b> R as a scientific calculator</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rintro.html"><a href="rintro.html#assigning-values-to-objects"><i class="fa fa-check"></i><b>2.1.2</b> Assigning values to objects</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>2.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="2.1.4" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>2.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="2.1.5" data-path="rintro.html"><a href="rintro.html#calling-functions"><i class="fa fa-check"></i><b>2.1.5</b> Calling Functions</a></li>
+<li class="chapter" data-level="2.1.6" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>2.1.6</b> Comments in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rintro.html"><a href="rintro.html#help-documentation"><i class="fa fa-check"></i><b>2.2</b> Getting Help</a></li>
+<li class="chapter" data-level="2.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rintro.html"><a href="rintro.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>3</b> A Quick Tour Around RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rstudio.html"><a href="rstudio.html#first-contact-with-rstudio"><i class="fa fa-check"></i><b>3.1</b> First Contact with RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="rstudio.html"><a href="rstudio.html#rstudio-panes-in-a-nutshell"><i class="fa fa-check"></i><b>3.2</b> RStudio Panes in a Nutshell</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>3.2.1</b> Console</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help"><i class="fa fa-check"></i><b>3.2.2</b> Files, Plots, Packages, Help</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rstudio.html"><a href="rstudio.html#source-or-editor"><i class="fa fa-check"></i><b>3.2.3</b> Source or Editor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rstudio.html"><a href="rstudio.html#environment-history-connections"><i class="fa fa-check"></i><b>3.2.4</b> Environment, History, Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rstudio.html"><a href="rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session.html"><a href="session.html"><i class="fa fa-check"></i><b>4</b> Session Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session.html"><a href="session.html#starting-a-session"><i class="fa fa-check"></i><b>4.1</b> Starting a Session</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="session.html"><a href="session.html#what-happens-when-you-open-an-r-session-via-rstudio"><i class="fa fa-check"></i><b>4.1.1</b> What happens when you open an R session via RStudio?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="session.html"><a href="session.html#opening-a-session-for-the-first-time"><i class="fa fa-check"></i><b>4.1.2</b> Opening a session for the first time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="session.html"><a href="session.html#working-directory"><i class="fa fa-check"></i><b>4.1.3</b> Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="session.html"><a href="session.html#working-during-a-session"><i class="fa fa-check"></i><b>4.2</b> Working During a Session</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#sessions-working-directory"><i class="fa fa-check"></i><b>4.2.1</b> Session’s Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="session.html"><a href="session.html#workspace-and-global-environment"><i class="fa fa-check"></i><b>4.2.2</b> Workspace and Global Environment</a></li>
+<li class="chapter" data-level="4.2.3" data-path="session.html"><a href="session.html#commands-history"><i class="fa fa-check"></i><b>4.2.3</b> Commands History</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="session.html"><a href="session.html#closing-a-session"><i class="fa fa-check"></i><b>4.3</b> Closing a Session</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Objects: Vectors</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors1.html"><a href="vectors1.html"><i class="fa fa-check"></i><b>5</b> First Contact with Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors1.html"><a href="vectors1.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="vectors1.html"><a href="vectors1.html#comments"><i class="fa fa-check"></i><b>5.1.1</b> Comments</a></li>
+<li class="chapter" data-level="5.1.2" data-path="vectors1.html"><a href="vectors1.html#creating-objects"><i class="fa fa-check"></i><b>5.1.2</b> Creating Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="vectors1.html"><a href="vectors1.html#exercises-2"><i class="fa fa-check"></i><b>5.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectors2.html"><a href="vectors2.html"><i class="fa fa-check"></i><b>6</b> Properties of Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="vectors2.html"><a href="vectors2.html#motivation"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="vectors2.html"><a href="vectors2.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>6.2</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="vectors2.html"><a href="vectors2.html#complex-and-raw-types"><i class="fa fa-check"></i><b>6.2.1</b> Complex and Raw Types</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>6.3</b> Types and Modes</a></li>
+<li class="chapter" data-level="6.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>6.4</b> Special Values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>6.5</b> Length of Vectors</a></li>
+<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-named"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have named</a></li>
+<li class="chapter" data-level="6.7" data-path="vectors2.html"><a href="vectors2.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>7</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="vectors3.html"><a href="vectors3.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>7.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="7.2" data-path="vectors3.html"><a href="vectors3.html#default-vectors"><i class="fa fa-check"></i><b>7.2</b> Default Vectors</a></li>
+<li class="chapter" data-level="7.3" data-path="vectors3.html"><a href="vectors3.html#numeric-sequences"><i class="fa fa-check"></i><b>7.3</b> Numeric Sequences</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="vectors3.html"><a href="vectors3.html#sequences-with"><i class="fa fa-check"></i><b>7.3.1</b> Sequences with <code>:</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq"><i class="fa fa-check"></i><b>7.3.2</b> Sequences with <code>seq()</code></a></li>
+<li class="chapter" data-level="7.3.3" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq_len-and-seq_along"><i class="fa fa-check"></i><b>7.3.3</b> Sequences with <code>seq_len()</code> and <code>seq_along()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectors3.html"><a href="vectors3.html#replicated-vectors"><i class="fa fa-check"></i><b>7.4</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="7.5" data-path="vectors3.html"><a href="vectors3.html#coercion"><i class="fa fa-check"></i><b>7.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="vectors3.html"><a href="vectors3.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>7.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="7.5.2" data-path="vectors3.html"><a href="vectors3.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>7.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="vectors3.html"><a href="vectors3.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="vectors4.html"><a href="vectors4.html"><i class="fa fa-check"></i><b>8</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="vectors4.html"><a href="vectors4.html#motivation-future-value"><i class="fa fa-check"></i><b>8.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="vectors4.html"><a href="vectors4.html#future-value-formula"><i class="fa fa-check"></i><b>8.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="vectors4.html"><a href="vectors4.html#vectorization"><i class="fa fa-check"></i><b>8.2</b> Vectorization</a></li>
+<li class="chapter" data-level="8.3" data-path="vectors4.html"><a href="vectors4.html#recycling"><i class="fa fa-check"></i><b>8.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="vectors4.html"><a href="vectors4.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>8.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="vectors4.html"><a href="vectors4.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>8.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="vectors4.html"><a href="vectors4.html#numeric-subsetting"><i class="fa fa-check"></i><b>8.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="8.4.2" data-path="vectors4.html"><a href="vectors4.html#character-subsetting"><i class="fa fa-check"></i><b>8.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="8.4.3" data-path="vectors4.html"><a href="vectors4.html#logical-subsetting"><i class="fa fa-check"></i><b>8.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="8.4.4" data-path="vectors4.html"><a href="vectors4.html#summary-of-subsetting"><i class="fa fa-check"></i><b>8.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="vectors4.html"><a href="vectors4.html#exercises-5"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III More Atomic Objects</b></span></li>
+<li class="chapter" data-level="9" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>9</b> Factors</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>9.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="9.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>9.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="9.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>9.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>9.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="9.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>9.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>9.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="matrices1.html"><a href="matrices1.html"><i class="fa fa-check"></i><b>10</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="matrices1.html"><a href="matrices1.html#motivation-1"><i class="fa fa-check"></i><b>10.1</b> Motivation</a></li>
+<li class="chapter" data-level="10.2" data-path="matrices1.html"><a href="matrices1.html#matrices"><i class="fa fa-check"></i><b>10.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="matrices1.html"><a href="matrices1.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>10.2.1</b> What kind of object is a matrix?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="matrices1.html"><a href="matrices1.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>10.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrices1.html"><a href="matrices1.html#column-major-matrices"><i class="fa fa-check"></i><b>10.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="10.3.2" data-path="matrices1.html"><a href="matrices1.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>10.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="10.3.3" data-path="matrices1.html"><a href="matrices1.html#more-matrices"><i class="fa fa-check"></i><b>10.3.3</b> More Matrices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="matrices2.html"><a href="matrices2.html"><i class="fa fa-check"></i><b>11</b> More About Matrices</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="matrices2.html"><a href="matrices2.html#basic-operations-with-matrices"><i class="fa fa-check"></i><b>11.1</b> Basic Operations with Matrices</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="matrices2.html"><a href="matrices2.html#selecting-elements"><i class="fa fa-check"></i><b>11.1.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="11.1.2" data-path="matrices2.html"><a href="matrices2.html#adding-a-column"><i class="fa fa-check"></i><b>11.1.2</b> Adding a column</a></li>
+<li class="chapter" data-level="11.1.3" data-path="matrices2.html"><a href="matrices2.html#deleting-a-column"><i class="fa fa-check"></i><b>11.1.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="11.1.4" data-path="matrices2.html"><a href="matrices2.html#moving-a-column"><i class="fa fa-check"></i><b>11.1.4</b> Moving a column</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Non-Atomic Objects</b></span></li>
+<li class="chapter" data-level="12" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>12</b> Lists</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>12.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="12.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>12.2</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>12.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="12.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>12.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="12.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>12.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="12.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>12.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="12.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>12.2.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="lists.html"><a href="lists.html#exercises-6"><i class="fa fa-check"></i><b>12.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>13</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>13.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="13.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>13.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="13.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>13.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="13.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>13.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements-1"><i class="fa fa-check"></i><b>13.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="13.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column-1"><i class="fa fa-check"></i><b>13.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="13.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column-1"><i class="fa fa-check"></i><b>13.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="13.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>13.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="13.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column-1"><i class="fa fa-check"></i><b>13.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="13.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>13.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="dataframes.html"><a href="dataframes.html#exercises-7"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>V Graphics</b></span></li>
+<li class="chapter" data-level="14" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>14</b> Base Graphics</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>14.1</b> Basics of Graphics in R</a></li>
+<li class="chapter" data-level="14.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>14.2</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="14.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>14.3</b> Traditional Graphics in R</a></li>
+<li class="chapter" data-level="14.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>14.4</b> Low-Level Functions</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>14.4.1</b> Low-level functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>15</b> More Base Graphics</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>15.1</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="15.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>15.2</b> One variable graphics</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>15.2.1</b> More high-level graphics of a single variable</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>15.3</b> Plots of Two Variables</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>15.3.1</b> Example: Plots of two variables</a></li>
+<li class="chapter" data-level="15.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>15.3.2</b> More high-level graphics of two variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>16</b> Plots from Scratch</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>16.1</b> Making a graphic from scratch</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>16.1.1</b> How does it work</a></li>
+<li class="chapter" data-level="16.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>16.1.2</b> Drawing Arrows</a></li>
+<li class="chapter" data-level="16.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>16.1.3</b> Drawing Rectangles</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Programming Basics</b></span></li>
+<li class="chapter" data-level="17" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>17</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="functions1.html"><a href="functions1.html#motivation-2"><i class="fa fa-check"></i><b>17.1</b> Motivation</a></li>
+<li class="chapter" data-level="17.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>17.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>17.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>17.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>17.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="17.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>17.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="functions1.html"><a href="functions1.html#exercises-8"><i class="fa fa-check"></i><b>17.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>18</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>18.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>18.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="18.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>18.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="18.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>18.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="18.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>18.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>19</b> Conditionals: If-Else</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="conditionals.html"><a href="conditionals.html#motivation-3"><i class="fa fa-check"></i><b>19.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>19.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="19.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>19.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>19.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>19.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="19.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>19.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="19.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>19.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="19.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>19.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>19.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>19.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>19.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>20</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="for-loop.html"><a href="for-loop.html#motivation-4"><i class="fa fa-check"></i><b>20.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>20.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>20.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>20.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="20.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>20.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>20.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="20.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>20.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="20.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>20.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>20.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="20.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>20.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="20.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>20.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="20.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>20.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="20.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>20.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>21</b> Iterations: While Loop</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="while-loop.html"><a href="while-loop.html#motivation-5"><i class="fa fa-check"></i><b>21.1</b> Motivation</a></li>
+<li class="chapter" data-level="21.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>21.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="21.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>21.3</b> Another Example</a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>21.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="21.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>21.3.2</b> While Loops and Break statement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>22</b> More About Functions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="functions2.html"><a href="functions2.html#functions-recap"><i class="fa fa-check"></i><b>22.1</b> Functions Recap</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="functions2.html"><a href="functions2.html#simple-expressions-1"><i class="fa fa-check"></i><b>22.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="22.1.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>22.1.2</b> Nested Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>22.2</b> Function Output</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="functions2.html"><a href="functions2.html#the-return-command"><i class="fa fa-check"></i><b>22.2.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="22.2.2" data-path="functions2.html"><a href="functions2.html#white-spaces"><i class="fa fa-check"></i><b>22.2.2</b> White Spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="functions2.html"><a href="functions2.html#indentation"><i class="fa fa-check"></i><b>22.3</b> Indentation</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="functions2.html"><a href="functions2.html#meaningful-names"><i class="fa fa-check"></i><b>22.3.1</b> Meaningful Names</a></li>
+<li class="chapter" data-level="22.3.2" data-path="functions2.html"><a href="functions2.html#syntax-parentheses"><i class="fa fa-check"></i><b>22.3.2</b> Syntax: Parentheses</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>22.4</b> Recommendations</a></li>
+</ul></li>
+<li class="part"><span><b>VII Import / Export</b></span></li>
+<li class="chapter" data-level="23" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>23</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>23.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="23.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>23.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>23.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>24</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="import-tables.html"><a href="import-tables.html#motivation-6"><i class="fa fa-check"></i><b>24.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>24.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>24.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>24.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="24.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>24.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="24.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>24.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="24.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>24.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>24.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>24.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="24.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>24.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="24.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>24.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>24.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="24.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>24.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>25</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>25.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="25.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>25.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="25.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>25.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="25.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>25.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="25.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>25.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="25.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>25.5</b> Exporting R’s Binary Data</a></li>
+<li class="chapter" data-level="25.6" data-path="export-data.html"><a href="export-data.html#exporting-images"><i class="fa fa-check"></i><b>25.6</b> Exporting Images</a></li>
+</ul></li>
+<li class="part"><span><b>VIII Simulations</b></span></li>
+<li class="chapter" data-level="26" data-path="simulations1.html"><a href="simulations1.html"><i class="fa fa-check"></i><b>26</b> Simulations (part 1)</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="simulations1.html"><a href="simulations1.html#motivation-7"><i class="fa fa-check"></i><b>26.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="simulations1.html"><a href="simulations1.html#investing-a-lump-sum"><i class="fa fa-check"></i><b>26.1.1</b> Investing a Lump-sum</a></li>
+<li class="chapter" data-level="26.1.2" data-path="simulations1.html"><a href="simulations1.html#example-with-future-value"><i class="fa fa-check"></i><b>26.1.2</b> Example with Future Value</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="simulations1.html"><a href="simulations1.html#variable-rates-of-return-and-volatility"><i class="fa fa-check"></i><b>26.2</b> Variable rates of return and volatility</a>
+<ul>
+<li class="chapter" data-level="26.2.1" data-path="simulations1.html"><a href="simulations1.html#example-running-3-simulations"><i class="fa fa-check"></i><b>26.2.1</b> Example: Running 3 simulations</a></li>
+<li class="chapter" data-level="26.2.2" data-path="simulations1.html"><a href="simulations1.html#reshaping-the-table-of-simulations"><i class="fa fa-check"></i><b>26.2.2</b> Reshaping the table of simulations</a></li>
+<li class="chapter" data-level="26.2.3" data-path="simulations1.html"><a href="simulations1.html#graphing-the-simulations"><i class="fa fa-check"></i><b>26.2.3</b> Graphing the Simulations</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="simulations1.html"><a href="simulations1.html#running-100-simulations"><i class="fa fa-check"></i><b>26.3</b> Running 100 simulations</a></li>
+<li class="chapter" data-level="26.4" data-path="simulations1.html"><a href="simulations1.html#more-summary-statistics"><i class="fa fa-check"></i><b>26.4</b> More Summary Statistics</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learning to Code in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="simulations1" class="section level1 hasAnchor" number="26">
+<h1><span class="header-section-number">26</span> Simulations (part 1)<a href="simulations1.html#simulations1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter we are going to write code to simulate investing a lump-sum
+in the stock market. We will use some functions from the collection of
+<code>"tidyverse"</code> packages.</p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="simulations1.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="co"># required package</span></span>
+<span id="cb419-2"><a href="simulations1.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="motivation-7" class="section level2 hasAnchor" number="26.1">
+<h2><span class="header-section-number">26.1</span> Motivation<a href="simulations1.html#motivation-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We are going to consider investing in a total stock market index fund
+which is a financial instrument that tracks the performance of the U.S. stock
+market. This type of instrument typically takes the form of a mutual fund
+or an exchange-traded fund (ETF) that invests in a basket of stocks that
+passively tracks the performance of the U.S. stock market.</p>
+<div id="investing-a-lump-sum" class="section level3 hasAnchor" number="26.1.1">
+<h3><span class="header-section-number">26.1.1</span> Investing a Lump-sum<a href="simulations1.html#investing-a-lump-sum" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Say you are going to start your investment with a lump-sum of $1000 in a U.S.
+total stock market index fund. In theory, this is money that you don’t plan to
+use within the next 5 years, and you are willing to invest it for the long run
+(10 years or more). How much money would you expect to get at the end of a
+10-year period? Or after 15 years? Or after 20 years? Or after a longer period?</p>
+</div>
+<div id="example-with-future-value" class="section level3 hasAnchor" number="26.1.2">
+<h3><span class="header-section-number">26.1.2</span> Example with Future Value<a href="simulations1.html#example-with-future-value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose you want to invest $1000 in a financial product (e.g. Money Market,
+Certificate of Deposit, Mutual Fund, ETF) that has a hypothetical annual return
+rate of 5%. Assume that you will keep this investment for 10 years. How much
+money would you expect to get at the end of this period?</p>
+<p>To answer this question, you can use the <strong>Future Value</strong> formula, assuming
+compound interest.</p>
+<p>Here are the ingredients for the Future Value formula:</p>
+<ul>
+<li><span class="math inline">\(C_0\)</span> = cash flow at period 0 (i.e. how much you invest)</li>
+<li><span class="math inline">\(r\)</span> = rate of return (in a given period)</li>
+<li><span class="math inline">\(n\)</span> = number of periods</li>
+<li><span class="math inline">\(\text{FV}\)</span> = future value (i.e. what you’ll get)</li>
+</ul>
+<p><span class="math display">\[
+\text{FV} = C_0 (1 + r)^n
+\]</span></p>
+<p>One of the critical ingredients to calculate the future of your investment is
+the annual rate of return <span class="math inline">\(r\)</span>. The issue is that annual rates of return when
+investing in the stock market fluctuate every year—because the market is
+volatile. Consequently, the exact answer to the above question is impossible
+to know.</p>
+<p>However, we are going to make some assumptions, and run some simulations to get
+an idea of the behavior for this type of investment. For the sake of simplicity,
+we will ignore inflation.</p>
+</div>
+</div>
+<div id="variable-rates-of-return-and-volatility" class="section level2 hasAnchor" number="26.2">
+<h2><span class="header-section-number">26.2</span> Variable rates of return and volatility<a href="simulations1.html#variable-rates-of-return-and-volatility" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For simulation purposes, we are going to assume a probability distribution on
+the rates of return. More specifically, we are going to assume that annual rates
+of return <span class="math inline">\(r_y\)</span> follow a <strong>normal distribution</strong> with a certain mean <span class="math inline">\(\mu\)</span> and
+a certain standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p><span class="math display">\[
+\text{rate}_y \sim \mathcal{N}(\mu = \text{avg rate}, \hspace{1mm} \sigma = \text{avg volatility})
+\]</span></p>
+<p>Which <span class="math inline">\(\mu\)</span> and which <span class="math inline">\(\sigma\)</span>? We could look for historical data and use an
+average annual rate of return for <span class="math inline">\(\mu\)</span>, as well as an average annual volatility
+for <span class="math inline">\(\sigma\)</span></p>
+<ul>
+<li><p><strong>average annual return</strong>: <span class="math inline">\(\mu = 10\%\)</span></p></li>
+<li><p><strong>average annual volatility</strong>: <span class="math inline">\(\sigma = 18\%\)</span></p></li>
+</ul>
+<p>The following diagram illustrates the flow of compounding for a certain invested
+amount <span class="math inline">\(amt_0\)</span>. Observe that a random rate of return <span class="math inline">\(t_t\)</span> is generated for
+each year <span class="math inline">\(t = 1, 2, 3, ...\)</span></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-418"></span>
+<img src="images/iterations/timeline-investment-future-value.png" alt="Random rates of return following a normal distribution" width="95%" />
+<p class="caption">
+Figure 26.1: Random rates of return following a normal distribution
+</p>
+</div>
+<div id="example-running-3-simulations" class="section level3 hasAnchor" number="26.2.1">
+<h3><span class="header-section-number">26.2.1</span> Example: Running 3 simulations<a href="simulations1.html#example-running-3-simulations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One the goals of this project is to run various simulations that give you a
+theoretical idea for the behavior of this investment.</p>
+<p>Here’s a toy example with the annual balance of 3 simulations (see table below).
+The first row (0) shows the
+initial investment amount of $1000. Each year $360 are contributed at the end
+of the year. The last row (6) shows the balance of the investment at the end
+of year 5. Column 1 corresponds to the 1st simulation, column 2 to the 2nd
+simulation, etc. Rates of return for each year are generated via <code>rnorm()</code> in
+such a way that <span class="math inline">\(r_y \sim N(\mu = 10\%, \sigma = 18\%)\)</span></p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="simulations1.html#cb420-1" aria-hidden="true" tabindex="-1"></a>initial_amount <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb420-2"><a href="simulations1.html#cb420-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb420-3"><a href="simulations1.html#cb420-3" aria-hidden="true" tabindex="-1"></a>repetitions <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb420-4"><a href="simulations1.html#cb420-4" aria-hidden="true" tabindex="-1"></a>annual_return <span class="ot">&lt;-</span> <span class="fl">0.10</span></span>
+<span id="cb420-5"><a href="simulations1.html#cb420-5" aria-hidden="true" tabindex="-1"></a>annual_volatility <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
+<span id="cb420-6"><a href="simulations1.html#cb420-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-7"><a href="simulations1.html#cb420-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb420-8"><a href="simulations1.html#cb420-8" aria-hidden="true" tabindex="-1"></a>balances <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> years<span class="sc">+</span><span class="dv">1</span>, <span class="at">ncol =</span> repetitions)</span>
+<span id="cb420-9"><a href="simulations1.html#cb420-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-10"><a href="simulations1.html#cb420-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (rept <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>repetitions) {</span>
+<span id="cb420-11"><a href="simulations1.html#cb420-11" aria-hidden="true" tabindex="-1"></a>  balance <span class="ot">&lt;-</span> <span class="fu">rep</span>(initial_amount, years<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb420-12"><a href="simulations1.html#cb420-12" aria-hidden="true" tabindex="-1"></a>  return_rates <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(years, <span class="at">mean =</span> annual_return, <span class="at">sd =</span> annual_volatility)</span>
+<span id="cb420-13"><a href="simulations1.html#cb420-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (y <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years) {</span>
+<span id="cb420-14"><a href="simulations1.html#cb420-14" aria-hidden="true" tabindex="-1"></a>    balance[y<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> balance[y] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> return_rates[y])<span class="sc">^</span><span class="dv">1</span></span>
+<span id="cb420-15"><a href="simulations1.html#cb420-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb420-16"><a href="simulations1.html#cb420-16" aria-hidden="true" tabindex="-1"></a>  balances[ ,rept] <span class="ot">&lt;-</span> balance</span>
+<span id="cb420-17"><a href="simulations1.html#cb420-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb420-18"><a href="simulations1.html#cb420-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-19"><a href="simulations1.html#cb420-19" aria-hidden="true" tabindex="-1"></a><span class="co"># adding row-and-column names</span></span>
+<span id="cb420-20"><a href="simulations1.html#cb420-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(balances) <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb420-21"><a href="simulations1.html#cb420-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(balances) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;sim&quot;</span>, <span class="dv">1</span><span class="sc">:</span>repetitions)</span>
+<span id="cb420-22"><a href="simulations1.html#cb420-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-23"><a href="simulations1.html#cb420-23" aria-hidden="true" tabindex="-1"></a><span class="co"># converting into data.frame (for tidyverse convenience)</span></span>
+<span id="cb420-24"><a href="simulations1.html#cb420-24" aria-hidden="true" tabindex="-1"></a>balances <span class="ot">=</span> <span class="fu">as.data.frame</span>(balances)</span>
+<span id="cb420-25"><a href="simulations1.html#cb420-25" aria-hidden="true" tabindex="-1"></a>balances<span class="sc">$</span>year <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb420-26"><a href="simulations1.html#cb420-26" aria-hidden="true" tabindex="-1"></a>balances</span></code></pre></div>
+<pre><code>&gt;         sim1        sim2       sim3   year
+&gt; 0   1000.000   1000.0000   1000.000      0
+&gt; 1   1205.395    772.7679   1079.075      1
+&gt; 2   1479.868    937.6903   1539.966      2
+&gt; 3   1598.739    984.8438   1796.698      3
+&gt; 4   1628.109   1032.9547   2144.609      4
+&gt; 5   1968.481    965.3189   2069.342      5</code></pre>
+</div>
+<div id="reshaping-the-table-of-simulations" class="section level3 hasAnchor" number="26.2.2">
+<h3><span class="header-section-number">26.2.2</span> Reshaping the table of simulations<a href="simulations1.html#reshaping-the-table-of-simulations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To graph timelines with <code>"ggplot2"</code>, it is more convenient to arrange the
+content in what is called “tall” format. One option to do this is with the
+<code>melt()</code> function from package <code>"reshape2"</code>. Assuming that the data displayed
+above is in an object <code>balances</code>, we can <em>melt it</em> as follows:</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="simulations1.html#cb422-1" aria-hidden="true" tabindex="-1"></a>sim_dat <span class="ot">=</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb422-2"><a href="simulations1.html#cb422-2" aria-hidden="true" tabindex="-1"></a>  balances, </span>
+<span id="cb422-3"><a href="simulations1.html#cb422-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;sim&quot;</span>),</span>
+<span id="cb422-4"><a href="simulations1.html#cb422-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;simulation&quot;</span>),</span>
+<span id="cb422-5"><a href="simulations1.html#cb422-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;amount&quot;</span>)</span>
+<span id="cb422-6"><a href="simulations1.html#cb422-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb422-7"><a href="simulations1.html#cb422-7" aria-hidden="true" tabindex="-1"></a>sim_dat</span>
+<span id="cb422-8"><a href="simulations1.html#cb422-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># A tibble: 18 x 3</span></span>
+<span id="cb422-9"><a href="simulations1.html#cb422-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>     year simulation amount</span>
+<span id="cb422-10"><a href="simulations1.html#cb422-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb422-11"><a href="simulations1.html#cb422-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span>  <span class="dv">1</span>     <span class="dv">0</span> sim1        <span class="dv">1000</span> </span>
+<span id="cb422-12"><a href="simulations1.html#cb422-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="dv">2</span>     <span class="dv">0</span> sim2        <span class="dv">1000</span> </span>
+<span id="cb422-13"><a href="simulations1.html#cb422-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="dv">3</span>     <span class="dv">0</span> sim3        <span class="dv">1000</span> </span>
+<span id="cb422-14"><a href="simulations1.html#cb422-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="dv">4</span>     <span class="dv">1</span> sim1        <span class="fl">1205.</span></span>
+<span id="cb422-15"><a href="simulations1.html#cb422-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="dv">5</span>     <span class="dv">1</span> sim2         <span class="fl">773.</span></span>
+<span id="cb422-16"><a href="simulations1.html#cb422-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="dv">6</span>     <span class="dv">1</span> sim3        <span class="fl">1079.</span></span>
+<span id="cb422-17"><a href="simulations1.html#cb422-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="dv">7</span>     <span class="dv">2</span> sim1        <span class="fl">1480.</span></span>
+<span id="cb422-18"><a href="simulations1.html#cb422-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="dv">8</span>     <span class="dv">2</span> sim2         <span class="fl">938.</span></span>
+<span id="cb422-19"><a href="simulations1.html#cb422-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  <span class="dv">9</span>     <span class="dv">2</span> sim3        <span class="fl">1540.</span></span>
+<span id="cb422-20"><a href="simulations1.html#cb422-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">10</span>     <span class="dv">3</span> sim1        <span class="fl">1599.</span></span>
+<span id="cb422-21"><a href="simulations1.html#cb422-21" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">11</span>     <span class="dv">3</span> sim2         <span class="fl">985.</span></span>
+<span id="cb422-22"><a href="simulations1.html#cb422-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">12</span>     <span class="dv">3</span> sim3        <span class="fl">1797.</span></span>
+<span id="cb422-23"><a href="simulations1.html#cb422-23" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">13</span>     <span class="dv">4</span> sim1        <span class="fl">1628.</span></span>
+<span id="cb422-24"><a href="simulations1.html#cb422-24" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">14</span>     <span class="dv">4</span> sim2        <span class="fl">1033.</span></span>
+<span id="cb422-25"><a href="simulations1.html#cb422-25" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">15</span>     <span class="dv">4</span> sim3        <span class="fl">2145.</span></span>
+<span id="cb422-26"><a href="simulations1.html#cb422-26" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">16</span>     <span class="dv">5</span> sim1        <span class="fl">1968.</span></span>
+<span id="cb422-27"><a href="simulations1.html#cb422-27" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">17</span>     <span class="dv">5</span> sim2         <span class="fl">965.</span></span>
+<span id="cb422-28"><a href="simulations1.html#cb422-28" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">18</span>     <span class="dv">5</span> sim3        <span class="fl">2069.</span></span></code></pre></div>
+</div>
+<div id="graphing-the-simulations" class="section level3 hasAnchor" number="26.2.3">
+<h3><span class="header-section-number">26.2.3</span> Graphing the Simulations<a href="simulations1.html#graphing-the-simulations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Having the data in this “tall’ format, we can easily graph it with <code>ggplot()</code>
+and friends (<em>btw:</em> by now you should be abe to figure out the <code>ggplot()</code> command
+that produces the following graph):</p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="simulations1.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sim_dat, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount)) <span class="sc">+</span></span>
+<span id="cb423-2"><a href="simulations1.html#cb423-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> simulation), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb423-3"><a href="simulations1.html#cb423-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb423-4"><a href="simulations1.html#cb423-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span></span>
+<span id="cb423-5"><a href="simulations1.html#cb423-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Years&quot;</span>) <span class="sc">+</span></span>
+<span id="cb423-6"><a href="simulations1.html#cb423-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Portfolio balance&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-422-1.png" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="running-100-simulations" class="section level2 hasAnchor" number="26.3">
+<h2><span class="header-section-number">26.3</span> Running 100 simulations<a href="simulations1.html#running-100-simulations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>What if we decide to increase the number of simulations to say 100? Here’s
+what could happen.</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="simulations1.html#cb424-1" aria-hidden="true" tabindex="-1"></a>initial_amount <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb424-2"><a href="simulations1.html#cb424-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb424-3"><a href="simulations1.html#cb424-3" aria-hidden="true" tabindex="-1"></a>repetitions <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb424-4"><a href="simulations1.html#cb424-4" aria-hidden="true" tabindex="-1"></a>annual_return <span class="ot">&lt;-</span> <span class="fl">0.10</span></span>
+<span id="cb424-5"><a href="simulations1.html#cb424-5" aria-hidden="true" tabindex="-1"></a>annual_volatility <span class="ot">&lt;-</span> <span class="fl">0.18</span></span>
+<span id="cb424-6"><a href="simulations1.html#cb424-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-7"><a href="simulations1.html#cb424-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb424-8"><a href="simulations1.html#cb424-8" aria-hidden="true" tabindex="-1"></a>balances <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> years<span class="sc">+</span><span class="dv">1</span>, <span class="at">ncol =</span> repetitions)</span>
+<span id="cb424-9"><a href="simulations1.html#cb424-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-10"><a href="simulations1.html#cb424-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (rept <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>repetitions) {</span>
+<span id="cb424-11"><a href="simulations1.html#cb424-11" aria-hidden="true" tabindex="-1"></a>  balance <span class="ot">&lt;-</span> <span class="fu">rep</span>(initial_amount, years<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb424-12"><a href="simulations1.html#cb424-12" aria-hidden="true" tabindex="-1"></a>  return_rates <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(years, <span class="at">mean =</span> annual_return, <span class="at">sd =</span> annual_volatility)</span>
+<span id="cb424-13"><a href="simulations1.html#cb424-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (y <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years) {</span>
+<span id="cb424-14"><a href="simulations1.html#cb424-14" aria-hidden="true" tabindex="-1"></a>    balance[y<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> balance[y] <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> return_rates[y])<span class="sc">^</span><span class="dv">1</span></span>
+<span id="cb424-15"><a href="simulations1.html#cb424-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb424-16"><a href="simulations1.html#cb424-16" aria-hidden="true" tabindex="-1"></a>  balances[ ,rept] <span class="ot">&lt;-</span> balance</span>
+<span id="cb424-17"><a href="simulations1.html#cb424-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb424-18"><a href="simulations1.html#cb424-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-19"><a href="simulations1.html#cb424-19" aria-hidden="true" tabindex="-1"></a><span class="co"># adding row-and-column names</span></span>
+<span id="cb424-20"><a href="simulations1.html#cb424-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(balances) <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb424-21"><a href="simulations1.html#cb424-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(balances) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;sim&quot;</span>, <span class="dv">1</span><span class="sc">:</span>repetitions)</span>
+<span id="cb424-22"><a href="simulations1.html#cb424-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-23"><a href="simulations1.html#cb424-23" aria-hidden="true" tabindex="-1"></a><span class="co"># converting into data.frame (for tidyverse convenience)</span></span>
+<span id="cb424-24"><a href="simulations1.html#cb424-24" aria-hidden="true" tabindex="-1"></a>balances <span class="ot">=</span> <span class="fu">as.data.frame</span>(balances)</span>
+<span id="cb424-25"><a href="simulations1.html#cb424-25" aria-hidden="true" tabindex="-1"></a>balances<span class="sc">$</span>year <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb424-26"><a href="simulations1.html#cb424-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-27"><a href="simulations1.html#cb424-27" aria-hidden="true" tabindex="-1"></a>sim_dat <span class="ot">=</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb424-28"><a href="simulations1.html#cb424-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>(balances), </span>
+<span id="cb424-29"><a href="simulations1.html#cb424-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;sim&quot;</span>),</span>
+<span id="cb424-30"><a href="simulations1.html#cb424-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;simulation&quot;</span>),</span>
+<span id="cb424-31"><a href="simulations1.html#cb424-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;amount&quot;</span>)</span></code></pre></div>
+<p>And then graph them:</p>
+<p>In an attempt to provide a better way to observe the general behavior of the
+simulations, we can add reference lines for the 10-th and 90-th percentiles
+(colored in yellow), as well as the median line (blue line).</p>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-425-1.png" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="more-summary-statistics" class="section level2 hasAnchor" number="26.4">
+<h2><span class="header-section-number">26.4</span> More Summary Statistics<a href="simulations1.html#more-summary-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Something of interest, could be the computation of numeric
+summaries that help us make sense of the obtained results from 100 simulations.
+For instance, we could calculate some quantiles of the portfolio balance along
+the retirement period.</p>
+<p>We can then compute statistics</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="simulations1.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average and median returns</span></span>
+<span id="cb425-2"><a href="simulations1.html#cb425-2" aria-hidden="true" tabindex="-1"></a>ret_mean <span class="ot">&lt;-</span> <span class="fu">apply</span>(balances, <span class="dv">1</span>, mean)</span>
+<span id="cb425-3"><a href="simulations1.html#cb425-3" aria-hidden="true" tabindex="-1"></a>ret_median <span class="ot">&lt;-</span> <span class="fu">apply</span>(balances, <span class="dv">1</span>, median)</span>
+<span id="cb425-4"><a href="simulations1.html#cb425-4" aria-hidden="true" tabindex="-1"></a>ret_perc10 <span class="ot">&lt;-</span> <span class="fu">apply</span>(balances, <span class="dv">1</span>, quantile, <span class="fl">0.1</span>)</span>
+<span id="cb425-5"><a href="simulations1.html#cb425-5" aria-hidden="true" tabindex="-1"></a>ret_perc90 <span class="ot">&lt;-</span> <span class="fu">apply</span>(balances, <span class="dv">1</span>, quantile, <span class="fl">0.9</span>)</span>
+<span id="cb425-6"><a href="simulations1.html#cb425-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb425-7"><a href="simulations1.html#cb425-7" aria-hidden="true" tabindex="-1"></a><span class="co"># assembling separate data frames</span></span>
+<span id="cb425-8"><a href="simulations1.html#cb425-8" aria-hidden="true" tabindex="-1"></a>dat_median <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb425-9"><a href="simulations1.html#cb425-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span>years,</span>
+<span id="cb425-10"><a href="simulations1.html#cb425-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">amount =</span> ret_median</span>
+<span id="cb425-11"><a href="simulations1.html#cb425-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb425-12"><a href="simulations1.html#cb425-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb425-13"><a href="simulations1.html#cb425-13" aria-hidden="true" tabindex="-1"></a>dat_perc10 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb425-14"><a href="simulations1.html#cb425-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span>years,</span>
+<span id="cb425-15"><a href="simulations1.html#cb425-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">amount =</span> ret_perc10</span>
+<span id="cb425-16"><a href="simulations1.html#cb425-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb425-17"><a href="simulations1.html#cb425-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb425-18"><a href="simulations1.html#cb425-18" aria-hidden="true" tabindex="-1"></a>dat_perc90 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb425-19"><a href="simulations1.html#cb425-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span>years,</span>
+<span id="cb425-20"><a href="simulations1.html#cb425-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">amount =</span> ret_perc90</span>
+<span id="cb425-21"><a href="simulations1.html#cb425-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>With these statistics, we can enrich the plot</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="simulations1.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb426-2"><a href="simulations1.html#cb426-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> sim_dat, </span>
+<span id="cb426-3"><a href="simulations1.html#cb426-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount, <span class="at">group =</span> simulation), </span>
+<span id="cb426-4"><a href="simulations1.html#cb426-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb426-5"><a href="simulations1.html#cb426-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_perc10, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount),</span>
+<span id="cb426-6"><a href="simulations1.html#cb426-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb426-7"><a href="simulations1.html#cb426-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_perc90, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount),</span>
+<span id="cb426-8"><a href="simulations1.html#cb426-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb426-9"><a href="simulations1.html#cb426-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_median, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> amount),</span>
+<span id="cb426-10"><a href="simulations1.html#cb426-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb426-11"><a href="simulations1.html#cb426-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb426-12"><a href="simulations1.html#cb426-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span></span>
+<span id="cb426-13"><a href="simulations1.html#cb426-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Years&quot;</span>) <span class="sc">+</span></span>
+<span id="cb426-14"><a href="simulations1.html#cb426-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Portfolio balance&quot;</span>)</span></code></pre></div>
+<p><img src="rcoding_files/figure-html/unnamed-chunk-427-1.png" width="85%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="export-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rcoding.pdf", "rcoding.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

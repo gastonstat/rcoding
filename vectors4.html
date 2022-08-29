@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 More About Vectors | Learning to Code in R</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 More About Vectors | Learning to Code in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 More About Vectors | Learning to Code in R" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+<meta name="date" content="2022-08-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="vectors3.html"/>
+<link rel="next" href="factors.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>Learning to Code in R</b><br><small>Gaston Sanchez</small></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yet-another-r-book"><i class="fa fa-check"></i>Yet Another R Book</a></li>
+</ul></li>
+<li class="part"><span><b>I Getting Started with R and RStudio</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#interacting-with-r"><i class="fa fa-check"></i><b>1.1</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>2</b> Breaking the Ice with R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-r-via-rstudio"><i class="fa fa-check"></i><b>2.1</b> First Contact with R (via RStudio)</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>2.1.1</b> R as a scientific calculator</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rintro.html"><a href="rintro.html#assigning-values-to-objects"><i class="fa fa-check"></i><b>2.1.2</b> Assigning values to objects</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>2.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="2.1.4" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>2.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="2.1.5" data-path="rintro.html"><a href="rintro.html#calling-functions"><i class="fa fa-check"></i><b>2.1.5</b> Calling Functions</a></li>
+<li class="chapter" data-level="2.1.6" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>2.1.6</b> Comments in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rintro.html"><a href="rintro.html#help-documentation"><i class="fa fa-check"></i><b>2.2</b> Getting Help</a></li>
+<li class="chapter" data-level="2.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rintro.html"><a href="rintro.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>3</b> A Quick Tour Around RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rstudio.html"><a href="rstudio.html#first-contact-with-rstudio"><i class="fa fa-check"></i><b>3.1</b> First Contact with RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="rstudio.html"><a href="rstudio.html#rstudio-panes-in-a-nutshell"><i class="fa fa-check"></i><b>3.2</b> RStudio Panes in a Nutshell</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>3.2.1</b> Console</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help"><i class="fa fa-check"></i><b>3.2.2</b> Files, Plots, Packages, Help</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rstudio.html"><a href="rstudio.html#source-or-editor"><i class="fa fa-check"></i><b>3.2.3</b> Source or Editor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rstudio.html"><a href="rstudio.html#environment-history-connections"><i class="fa fa-check"></i><b>3.2.4</b> Environment, History, Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rstudio.html"><a href="rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session.html"><a href="session.html"><i class="fa fa-check"></i><b>4</b> Session Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session.html"><a href="session.html#starting-a-session"><i class="fa fa-check"></i><b>4.1</b> Starting a Session</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="session.html"><a href="session.html#what-happens-when-you-open-an-r-session-via-rstudio"><i class="fa fa-check"></i><b>4.1.1</b> What happens when you open an R session via RStudio?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="session.html"><a href="session.html#opening-a-session-for-the-first-time"><i class="fa fa-check"></i><b>4.1.2</b> Opening a session for the first time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="session.html"><a href="session.html#working-directory"><i class="fa fa-check"></i><b>4.1.3</b> Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="session.html"><a href="session.html#working-during-a-session"><i class="fa fa-check"></i><b>4.2</b> Working During a Session</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#sessions-working-directory"><i class="fa fa-check"></i><b>4.2.1</b> Session’s Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="session.html"><a href="session.html#workspace-and-global-environment"><i class="fa fa-check"></i><b>4.2.2</b> Workspace and Global Environment</a></li>
+<li class="chapter" data-level="4.2.3" data-path="session.html"><a href="session.html#commands-history"><i class="fa fa-check"></i><b>4.2.3</b> Commands History</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="session.html"><a href="session.html#closing-a-session"><i class="fa fa-check"></i><b>4.3</b> Closing a Session</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Objects: Vectors</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors1.html"><a href="vectors1.html"><i class="fa fa-check"></i><b>5</b> First Contact with Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors1.html"><a href="vectors1.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="vectors1.html"><a href="vectors1.html#comments"><i class="fa fa-check"></i><b>5.1.1</b> Comments</a></li>
+<li class="chapter" data-level="5.1.2" data-path="vectors1.html"><a href="vectors1.html#creating-objects"><i class="fa fa-check"></i><b>5.1.2</b> Creating Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="vectors1.html"><a href="vectors1.html#exercises-2"><i class="fa fa-check"></i><b>5.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectors2.html"><a href="vectors2.html"><i class="fa fa-check"></i><b>6</b> Properties of Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="vectors2.html"><a href="vectors2.html#motivation"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="vectors2.html"><a href="vectors2.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>6.2</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="vectors2.html"><a href="vectors2.html#complex-and-raw-types"><i class="fa fa-check"></i><b>6.2.1</b> Complex and Raw Types</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>6.3</b> Types and Modes</a></li>
+<li class="chapter" data-level="6.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>6.4</b> Special Values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>6.5</b> Length of Vectors</a></li>
+<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-named"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have named</a></li>
+<li class="chapter" data-level="6.7" data-path="vectors2.html"><a href="vectors2.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>7</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="vectors3.html"><a href="vectors3.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>7.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="7.2" data-path="vectors3.html"><a href="vectors3.html#default-vectors"><i class="fa fa-check"></i><b>7.2</b> Default Vectors</a></li>
+<li class="chapter" data-level="7.3" data-path="vectors3.html"><a href="vectors3.html#numeric-sequences"><i class="fa fa-check"></i><b>7.3</b> Numeric Sequences</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="vectors3.html"><a href="vectors3.html#sequences-with"><i class="fa fa-check"></i><b>7.3.1</b> Sequences with <code>:</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq"><i class="fa fa-check"></i><b>7.3.2</b> Sequences with <code>seq()</code></a></li>
+<li class="chapter" data-level="7.3.3" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq_len-and-seq_along"><i class="fa fa-check"></i><b>7.3.3</b> Sequences with <code>seq_len()</code> and <code>seq_along()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectors3.html"><a href="vectors3.html#replicated-vectors"><i class="fa fa-check"></i><b>7.4</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="7.5" data-path="vectors3.html"><a href="vectors3.html#coercion"><i class="fa fa-check"></i><b>7.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="vectors3.html"><a href="vectors3.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>7.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="7.5.2" data-path="vectors3.html"><a href="vectors3.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>7.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="vectors3.html"><a href="vectors3.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="vectors4.html"><a href="vectors4.html"><i class="fa fa-check"></i><b>8</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="vectors4.html"><a href="vectors4.html#motivation-future-value"><i class="fa fa-check"></i><b>8.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="vectors4.html"><a href="vectors4.html#future-value-formula"><i class="fa fa-check"></i><b>8.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="vectors4.html"><a href="vectors4.html#vectorization"><i class="fa fa-check"></i><b>8.2</b> Vectorization</a></li>
+<li class="chapter" data-level="8.3" data-path="vectors4.html"><a href="vectors4.html#recycling"><i class="fa fa-check"></i><b>8.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="vectors4.html"><a href="vectors4.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>8.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="vectors4.html"><a href="vectors4.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>8.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="vectors4.html"><a href="vectors4.html#numeric-subsetting"><i class="fa fa-check"></i><b>8.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="8.4.2" data-path="vectors4.html"><a href="vectors4.html#character-subsetting"><i class="fa fa-check"></i><b>8.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="8.4.3" data-path="vectors4.html"><a href="vectors4.html#logical-subsetting"><i class="fa fa-check"></i><b>8.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="8.4.4" data-path="vectors4.html"><a href="vectors4.html#summary-of-subsetting"><i class="fa fa-check"></i><b>8.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="vectors4.html"><a href="vectors4.html#exercises-5"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III More Atomic Objects</b></span></li>
+<li class="chapter" data-level="9" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>9</b> Factors</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>9.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="9.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>9.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="9.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>9.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>9.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="9.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>9.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>9.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="matrices1.html"><a href="matrices1.html"><i class="fa fa-check"></i><b>10</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="matrices1.html"><a href="matrices1.html#motivation-1"><i class="fa fa-check"></i><b>10.1</b> Motivation</a></li>
+<li class="chapter" data-level="10.2" data-path="matrices1.html"><a href="matrices1.html#matrices"><i class="fa fa-check"></i><b>10.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="matrices1.html"><a href="matrices1.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>10.2.1</b> What kind of object is a matrix?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="matrices1.html"><a href="matrices1.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>10.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrices1.html"><a href="matrices1.html#column-major-matrices"><i class="fa fa-check"></i><b>10.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="10.3.2" data-path="matrices1.html"><a href="matrices1.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>10.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="10.3.3" data-path="matrices1.html"><a href="matrices1.html#more-matrices"><i class="fa fa-check"></i><b>10.3.3</b> More Matrices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="matrices2.html"><a href="matrices2.html"><i class="fa fa-check"></i><b>11</b> More About Matrices</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="matrices2.html"><a href="matrices2.html#basic-operations-with-matrices"><i class="fa fa-check"></i><b>11.1</b> Basic Operations with Matrices</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="matrices2.html"><a href="matrices2.html#selecting-elements"><i class="fa fa-check"></i><b>11.1.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="11.1.2" data-path="matrices2.html"><a href="matrices2.html#adding-a-column"><i class="fa fa-check"></i><b>11.1.2</b> Adding a column</a></li>
+<li class="chapter" data-level="11.1.3" data-path="matrices2.html"><a href="matrices2.html#deleting-a-column"><i class="fa fa-check"></i><b>11.1.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="11.1.4" data-path="matrices2.html"><a href="matrices2.html#moving-a-column"><i class="fa fa-check"></i><b>11.1.4</b> Moving a column</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Non-Atomic Objects</b></span></li>
+<li class="chapter" data-level="12" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>12</b> Lists</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>12.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="12.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>12.2</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>12.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="12.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>12.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="12.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>12.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="12.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>12.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="12.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>12.2.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="lists.html"><a href="lists.html#exercises-6"><i class="fa fa-check"></i><b>12.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>13</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>13.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="13.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>13.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="13.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>13.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="13.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>13.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements-1"><i class="fa fa-check"></i><b>13.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="13.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column-1"><i class="fa fa-check"></i><b>13.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="13.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column-1"><i class="fa fa-check"></i><b>13.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="13.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>13.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="13.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column-1"><i class="fa fa-check"></i><b>13.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="13.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>13.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="dataframes.html"><a href="dataframes.html#exercises-7"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>V Graphics</b></span></li>
+<li class="chapter" data-level="14" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>14</b> Base Graphics</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>14.1</b> Basics of Graphics in R</a></li>
+<li class="chapter" data-level="14.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>14.2</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="14.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>14.3</b> Traditional Graphics in R</a></li>
+<li class="chapter" data-level="14.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>14.4</b> Low-Level Functions</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>14.4.1</b> Low-level functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>15</b> More Base Graphics</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>15.1</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="15.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>15.2</b> One variable graphics</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>15.2.1</b> More high-level graphics of a single variable</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>15.3</b> Plots of Two Variables</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>15.3.1</b> Example: Plots of two variables</a></li>
+<li class="chapter" data-level="15.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>15.3.2</b> More high-level graphics of two variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>16</b> Plots from Scratch</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>16.1</b> Making a graphic from scratch</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>16.1.1</b> How does it work</a></li>
+<li class="chapter" data-level="16.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>16.1.2</b> Drawing Arrows</a></li>
+<li class="chapter" data-level="16.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>16.1.3</b> Drawing Rectangles</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Programming Basics</b></span></li>
+<li class="chapter" data-level="17" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>17</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="functions1.html"><a href="functions1.html#motivation-2"><i class="fa fa-check"></i><b>17.1</b> Motivation</a></li>
+<li class="chapter" data-level="17.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>17.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>17.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>17.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>17.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="17.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>17.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="functions1.html"><a href="functions1.html#exercises-8"><i class="fa fa-check"></i><b>17.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>18</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>18.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>18.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="18.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>18.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="18.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>18.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="18.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>18.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>19</b> Conditionals: If-Else</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="conditionals.html"><a href="conditionals.html#motivation-3"><i class="fa fa-check"></i><b>19.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>19.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="19.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>19.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>19.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>19.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="19.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>19.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="19.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>19.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="19.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>19.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>19.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>19.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>19.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>20</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="for-loop.html"><a href="for-loop.html#motivation-4"><i class="fa fa-check"></i><b>20.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>20.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>20.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>20.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="20.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>20.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>20.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="20.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>20.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="20.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>20.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>20.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="20.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>20.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="20.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>20.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="20.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>20.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="20.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>20.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>21</b> Iterations: While Loop</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="while-loop.html"><a href="while-loop.html#motivation-5"><i class="fa fa-check"></i><b>21.1</b> Motivation</a></li>
+<li class="chapter" data-level="21.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>21.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="21.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>21.3</b> Another Example</a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>21.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="21.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>21.3.2</b> While Loops and Break statement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>22</b> More About Functions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="functions2.html"><a href="functions2.html#functions-recap"><i class="fa fa-check"></i><b>22.1</b> Functions Recap</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="functions2.html"><a href="functions2.html#simple-expressions-1"><i class="fa fa-check"></i><b>22.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="22.1.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>22.1.2</b> Nested Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>22.2</b> Function Output</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="functions2.html"><a href="functions2.html#the-return-command"><i class="fa fa-check"></i><b>22.2.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="22.2.2" data-path="functions2.html"><a href="functions2.html#white-spaces"><i class="fa fa-check"></i><b>22.2.2</b> White Spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="functions2.html"><a href="functions2.html#indentation"><i class="fa fa-check"></i><b>22.3</b> Indentation</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="functions2.html"><a href="functions2.html#meaningful-names"><i class="fa fa-check"></i><b>22.3.1</b> Meaningful Names</a></li>
+<li class="chapter" data-level="22.3.2" data-path="functions2.html"><a href="functions2.html#syntax-parentheses"><i class="fa fa-check"></i><b>22.3.2</b> Syntax: Parentheses</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>22.4</b> Recommendations</a></li>
+</ul></li>
+<li class="part"><span><b>VII Import / Export</b></span></li>
+<li class="chapter" data-level="23" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>23</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>23.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="23.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>23.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>23.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>24</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="import-tables.html"><a href="import-tables.html#motivation-6"><i class="fa fa-check"></i><b>24.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>24.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>24.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>24.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="24.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>24.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="24.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>24.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="24.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>24.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>24.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>24.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="24.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>24.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="24.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>24.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>24.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="24.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>24.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>25</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>25.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="25.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>25.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="25.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>25.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="25.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>25.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="25.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>25.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="25.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>25.5</b> Exporting R’s Binary Data</a></li>
+<li class="chapter" data-level="25.6" data-path="export-data.html"><a href="export-data.html#exporting-images"><i class="fa fa-check"></i><b>25.6</b> Exporting Images</a></li>
+</ul></li>
+<li class="part"><span><b>VIII Simulations</b></span></li>
+<li class="chapter" data-level="26" data-path="simulations1.html"><a href="simulations1.html"><i class="fa fa-check"></i><b>26</b> Simulations (part 1)</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="simulations1.html"><a href="simulations1.html#motivation-7"><i class="fa fa-check"></i><b>26.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="simulations1.html"><a href="simulations1.html#investing-a-lump-sum"><i class="fa fa-check"></i><b>26.1.1</b> Investing a Lump-sum</a></li>
+<li class="chapter" data-level="26.1.2" data-path="simulations1.html"><a href="simulations1.html#example-with-future-value"><i class="fa fa-check"></i><b>26.1.2</b> Example with Future Value</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="simulations1.html"><a href="simulations1.html#variable-rates-of-return-and-volatility"><i class="fa fa-check"></i><b>26.2</b> Variable rates of return and volatility</a>
+<ul>
+<li class="chapter" data-level="26.2.1" data-path="simulations1.html"><a href="simulations1.html#example-running-3-simulations"><i class="fa fa-check"></i><b>26.2.1</b> Example: Running 3 simulations</a></li>
+<li class="chapter" data-level="26.2.2" data-path="simulations1.html"><a href="simulations1.html#reshaping-the-table-of-simulations"><i class="fa fa-check"></i><b>26.2.2</b> Reshaping the table of simulations</a></li>
+<li class="chapter" data-level="26.2.3" data-path="simulations1.html"><a href="simulations1.html#graphing-the-simulations"><i class="fa fa-check"></i><b>26.2.3</b> Graphing the Simulations</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="simulations1.html"><a href="simulations1.html#running-100-simulations"><i class="fa fa-check"></i><b>26.3</b> Running 100 simulations</a></li>
+<li class="chapter" data-level="26.4" data-path="simulations1.html"><a href="simulations1.html#more-summary-statistics"><i class="fa fa-check"></i><b>26.4</b> More Summary Statistics</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learning to Code in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vectors4" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> More About Vectors<a href="vectors4.html#vectors4" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the previous chapter we started the topic of data objects by introducing
+R vectors and some of their basic properties. In this chapter we continue the
+discussion of vectors, specifically the notions of vectorization, recycling,
+and subsetting.</p>
+<div id="motivation-future-value" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Motivation: Future Value<a href="vectors4.html#motivation-future-value" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s bring back the savings example from the previous chapters: you have $1000
+and you decide to deposit this money in a savings account that pays you an
+annual interest rate of 2%. We’ve already seen how to calculate the amount of
+money that you would have at the end of the first, second and third years. Let’s
+now calculate the saved amount for a 10-year period.</p>
+<blockquote>
+<p>How much money will you have at the end of each year during a 10-year period?</p>
+</blockquote>
+<p>To answer this question, we could compute individual amount objects (e.g. 
+<code>amount1</code>, <code>amount2</code>, <code>amount3</code>, etc) to get the saved amount at the end of
+each year. For example:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="vectors4.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb84-2"><a href="vectors4.html#cb84-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb84-3"><a href="vectors4.html#cb84-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">&lt;-</span> <span class="fl">0.02</span></span>
+<span id="cb84-4"><a href="vectors4.html#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="vectors4.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="co"># amounts at the end of years 1, 2, 3, ..., 10</span></span>
+<span id="cb84-6"><a href="vectors4.html#cb84-6" aria-hidden="true" tabindex="-1"></a>amount1 <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-7"><a href="vectors4.html#cb84-7" aria-hidden="true" tabindex="-1"></a>amount2 <span class="ot">=</span> amount1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-8"><a href="vectors4.html#cb84-8" aria-hidden="true" tabindex="-1"></a>amount3 <span class="ot">=</span> amount2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-9"><a href="vectors4.html#cb84-9" aria-hidden="true" tabindex="-1"></a>amount4 <span class="ot">=</span> amount3 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-10"><a href="vectors4.html#cb84-10" aria-hidden="true" tabindex="-1"></a>amount5 <span class="ot">=</span> amount4 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-11"><a href="vectors4.html#cb84-11" aria-hidden="true" tabindex="-1"></a>amount6 <span class="ot">=</span> amount5 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-12"><a href="vectors4.html#cb84-12" aria-hidden="true" tabindex="-1"></a>amount7 <span class="ot">=</span> amount6 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-13"><a href="vectors4.html#cb84-13" aria-hidden="true" tabindex="-1"></a>amount8 <span class="ot">=</span> amount7 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-14"><a href="vectors4.html#cb84-14" aria-hidden="true" tabindex="-1"></a>amount9 <span class="ot">=</span> amount8 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb84-15"><a href="vectors4.html#cb84-15" aria-hidden="true" tabindex="-1"></a>amount10 <span class="ot">=</span> amount8 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span></code></pre></div>
+<p>The problem with this piece of code is that it is too repetitive, time consuming,
+boring, and error prone (can you spot the error?). Even worse, imagine if you
+were interested in computing the amount of your investment for a 20-year or
+a 30-year or a longer year period?</p>
+<p>The good news is that we don’t have to be so repetitive. Before describing what
+the alternative—and more efficient—approach is, we need to do a bit of algebra.</p>
+<div id="future-value-formula" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Future Value Formula<a href="vectors4.html#future-value-formula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In one year you’ll have:</p>
+<p><span class="math display">\[
+1000 \times (1.02) = 1020
+\]</span></p>
+<p>In two years you’ll have:</p>
+<p><span class="math display">\[
+1000 \times (1.02) \times (1.02) = 1000 \times (1.02)^2 = 1040.4
+\]</span></p>
+<p>In three years you’ll have:</p>
+<p><span class="math display">\[
+1000 \times (1.02) \times (1.02) \times (1.02) = 1000 \times (1.02)^3 = 1061.208
+\]</span></p>
+<p>Do you see a pattern?</p>
+<p>If you deposit $1000 at a rate of return <span class="math inline">\(r\)</span>, how much will you have at the
+end of year <span class="math inline">\(t\)</span>? The answer is given by the Future Value (FV) formula. In its
+simplest version, the formula is:</p>
+<p><span class="math display">\[
+\text{FV} = \text{PV} \times (1 + r)^n
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\text{FV}\)</span> = future value (how much you’ll have)</p></li>
+<li><p><span class="math inline">\(\text{PV}\)</span> = present value (the initial deposit)</p></li>
+<li><p><span class="math inline">\(r\)</span> = rate of return (e.g. annual rate of return)</p></li>
+<li><p><span class="math inline">\(n\)</span> = number of periods (e.g. number of years)</p></li>
+</ul>
+<p>Keep in mind that there are more sophisticated versions of the FV formula.
+For now, let’s keep things simple and use the above equation.</p>
+<p>If you deposit $1000 at a rate of 2%, how much will you have at the end of
+year 10?</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="vectors4.html#cb85-1" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb85-2"><a href="vectors4.html#cb85-2" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">&lt;-</span> <span class="fl">0.02</span></span>
+<span id="cb85-3"><a href="vectors4.html#cb85-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb85-4"><a href="vectors4.html#cb85-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-5"><a href="vectors4.html#cb85-5" aria-hidden="true" tabindex="-1"></a>amount10 <span class="ot">&lt;-</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>year</span>
+<span id="cb85-6"><a href="vectors4.html#cb85-6" aria-hidden="true" tabindex="-1"></a>amount10</span>
+<span id="cb85-7"><a href="vectors4.html#cb85-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1218.994</span></span></code></pre></div>
+<p>Using the formula of the Future Value you can directly compute the amount
+that you would have at the end of the tenth year. But what about calculating the
+amounts at the end of each year during that time period? Enter vectorization!</p>
+</div>
+</div>
+<div id="vectorization" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Vectorization<a href="vectors4.html#vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In order to explain what vectorization is, let me first show you the following
+R code. Compared to the code snippet above, note that the code below uses a
+vector <code>years</code> containing a numeric sequence from 1 to 10, thanks to the <code>:</code>
+(“colon”) operator. This vector <code>years</code> is then used to play the role of the
+exponent in the Future Value formula:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="vectors4.html#cb86-1" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb86-2"><a href="vectors4.html#cb86-2" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">&lt;-</span> <span class="fl">0.02</span></span>
+<span id="cb86-3"><a href="vectors4.html#cb86-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>  <span class="co"># vector of years</span></span>
+<span id="cb86-4"><a href="vectors4.html#cb86-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-5"><a href="vectors4.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="co"># example of vectorization (or vectorized code)</span></span>
+<span id="cb86-6"><a href="vectors4.html#cb86-6" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">&lt;-</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb86-7"><a href="vectors4.html#cb86-7" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb86-8"><a href="vectors4.html#cb86-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span> <span class="fl">1104.081</span> <span class="fl">1126.162</span> <span class="fl">1148.686</span> <span class="fl">1171.659</span></span>
+<span id="cb86-9"><a href="vectors4.html#cb86-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">9</span>] <span class="fl">1195.093</span> <span class="fl">1218.994</span></span></code></pre></div>
+<p>The computed object <code>amounts</code> is exactly what we are looking for. This vector
+contains the saved amounts at the end of each year, from the first year till
+the tenth year.</p>
+<p>The code used to obtain <code>amounts</code> is an example of one of the most fundamental
+and powerful kinds of operations (computations) in R, and it has its special
+name: <strong>vectorization</strong>, also referred to as <strong>vectorized</strong> code.</p>
+<p>When you write code like this:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="vectors4.html#cb87-1" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span></code></pre></div>
+<p>we say that your code is <strong>vectorized</strong>. Technically speaking, this code uses
+not just vectorization but it also uses something else called <em>recycling</em>, which
+we will explain in the next section. But let’s describe vectorization first.</p>
+<div id="so-what-is-vectorization" class="section level4 unnumbered hasAnchor">
+<h4>So what is vectorization?<a href="vectors4.html#so-what-is-vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Simply put, vectorization means that a given function or operation will be
+applied to all the elements of one or more vectors, element by element.</p>
+<p>Say you want to create a vector <code>log_amounts</code> by taking the logarithm of
+<code>amounts</code>. All you have to do is apply the <code>log()</code> function to <code>amounts</code>:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="vectors4.html#cb88-1" aria-hidden="true" tabindex="-1"></a>log_amounts <span class="ot">&lt;-</span> <span class="fu">log</span>(amounts)</span></code></pre></div>
+<p>When you create the vector <code>log_amounts</code>, what you’re doing is applying a
+function to a vector, which in turn acts on all the elements of the vector.
+Hence the reason why, in R parlance, we call it <em>vectorization</em>.</p>
+<p>Most functions that operate with vectors in R are vectorized functions. This
+means that an action is applied to all elements of the vector without the need
+to explicitly type commands to traverse all of its values, element by element.</p>
+<p>In many other programming languages, you would have to use a set of commands
+to loop over each element of a vector (or list of numbers) to transform them.
+But not in R.</p>
+<p>Another simple example of vectorization would be the calculation of the square
+root of all the amounts:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="vectors4.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(amounts)</span></code></pre></div>
+</div>
+<div id="why-should-you-care-about-vectorization" class="section level4 unnumbered hasAnchor">
+<h4>Why should you care about vectorization?<a href="vectors4.html#why-should-you-care-about-vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If you are new to programming, learning about R’s vectorization will be very
+natural and you won’t stop to think about it too much. If you have some previous
+programming experience in other languages (e.g. C, python, perl), you know
+that vectorization does not tend to be a native thing.</p>
+<p>Vectorization is essential in R. It saves you from typing many lines of code,
+and you will exploit vectorization with other useful functions known as the
+<em>apply</em> family functions (we’ll talk about them later in the book).</p>
+</div>
+</div>
+<div id="recycling" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Recycling<a href="vectors4.html#recycling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Closely related with the concept of <em>vectorization</em> we have the notion of
+<strong>Recycling</strong>. To explain recycling let’s see an example.</p>
+<p>The values in the vector <code>amounts</code> are given in dollars, but what if you need
+to convert them into values expressed in thousands of dollars?. To convert
+from dollars to thousands-of-dollars you just need to divide by 1000; for
+example</p>
+<ul>
+<li>1,000 dollars becomes 1 thousands-dollars</li>
+<li>10,000 dollars becomes 10 thousands-dollars</li>
+<li>1 dollar becomes 0.001 thousands-dollars</li>
+</ul>
+<p>Here is how to create a new vector <code>thousands</code>:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="vectors4.html#cb90-1" aria-hidden="true" tabindex="-1"></a>thousands <span class="ot">&lt;-</span> amounts <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb90-2"><a href="vectors4.html#cb90-2" aria-hidden="true" tabindex="-1"></a>thousands</span>
+<span id="cb90-3"><a href="vectors4.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="fl">1.020000</span> <span class="fl">1.040400</span> <span class="fl">1.061208</span> <span class="fl">1.082432</span> <span class="fl">1.104081</span> <span class="fl">1.126162</span> <span class="fl">1.148686</span> <span class="fl">1.171659</span></span>
+<span id="cb90-4"><a href="vectors4.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">9</span>] <span class="fl">1.195093</span> <span class="fl">1.218994</span></span></code></pre></div>
+<p>What you just did (assuming that you did things correctly) is called
+<strong>Recycling</strong>, which is what R does when you operate with two (or more) vectors
+of <strong>different length</strong>.</p>
+<p>To understand this concept, you need to remember that R does not have a data
+structure for scalars (single numbers). Scalars are in reality vectors of
+length 1.</p>
+<p>The conversion from dollars to thousands-of-dollars requires this operation:
+<code>amounts / 1000</code>. Although it may not be obvious, we are operating with two
+vectors of different length: <code>amounts</code> has 10 elements, whereas <code>1000</code> is a
+one-element vector. So how does R know what to do in this case?</p>
+<p>Well, R uses the <strong>recycling rule</strong>, which takes the shorter vector (in this
+case <code>1000</code>) and recycles its content to form a temporary vector that matches
+the length of the longer vector (i.e. <code>amounts</code>).</p>
+<div id="another-recycling-example" class="section level4 unnumbered hasAnchor">
+<h4>Another recycling example<a href="vectors4.html#another-recycling-example" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Here’s another example of recycling. Saved amounts of elements in an odd
+number position will be divided by two; values of elements in an even
+number position will be divided by 10:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="vectors4.html#cb91-1" aria-hidden="true" tabindex="-1"></a>units <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span>
+<span id="cb91-2"><a href="vectors4.html#cb91-2" aria-hidden="true" tabindex="-1"></a>new_amounts <span class="ot">&lt;-</span> amounts <span class="sc">*</span> units</span>
+<span id="cb91-3"><a href="vectors4.html#cb91-3" aria-hidden="true" tabindex="-1"></a>new_amounts</span>
+<span id="cb91-4"><a href="vectors4.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="fl">510.0000</span> <span class="fl">104.0400</span> <span class="fl">530.6040</span> <span class="fl">108.2432</span> <span class="fl">552.0404</span> <span class="fl">112.6162</span> <span class="fl">574.3428</span> <span class="fl">117.1659</span></span>
+<span id="cb91-5"><a href="vectors4.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">9</span>] <span class="fl">597.5463</span> <span class="fl">121.8994</span></span></code></pre></div>
+<p>In this piece of code, the elements of <code>units</code> are recycled (i.e. repeated) as
+many times as the number of elements in <code>amounts</code>.</p>
+<p>To achieve the same result without using recycling you would have to create a
+vector <code>new_units</code> (i.e. the values to divide by) of the same length as <code>amounts</code>.
+For example, you could create a vector <code>new_units</code> with the replicate function
+<code>rep()</code> having ten elements in which those values in odd positions are <code>1/2</code>
+and those values in even positions are <code>1/10</code>:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="vectors4.html#cb92-1" aria-hidden="true" tabindex="-1"></a>new_units <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>), <span class="at">length.out =</span> <span class="fu">length</span>(amounts))</span>
+<span id="cb92-2"><a href="vectors4.html#cb92-2" aria-hidden="true" tabindex="-1"></a>amounts <span class="sc">*</span> new_units</span>
+<span id="cb92-3"><a href="vectors4.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="fl">510.0000</span> <span class="fl">104.0400</span> <span class="fl">530.6040</span> <span class="fl">108.2432</span> <span class="fl">552.0404</span> <span class="fl">112.6162</span> <span class="fl">574.3428</span> <span class="fl">117.1659</span></span>
+<span id="cb92-4"><a href="vectors4.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">9</span>] <span class="fl">597.5463</span> <span class="fl">121.8994</span></span></code></pre></div>
+</div>
+<div id="vectorization-and-recycling" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Vectorization and Recycling<a href="vectors4.html#vectorization-and-recycling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s bring back the code that uses the Future Value to obtain the vector
+<code>amounts</code>:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="vectors4.html#cb93-1" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span></code></pre></div>
+<p>Recall that <code>deposit</code> and <code>rate</code> are vectors of length 1. And so it is the
+number <code>1</code>, it is a vector containing just one element. In contrast, <code>years</code>
+has 10 elements. This means that R is dealing with four vectors some of which
+have different lengths.</p>
+<p>In pictures, we have the following diagram:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-106"></span>
+<img src="images/vectors/vectorized1.png" alt="Diagram depicting vectors of different lengths." width="90%" />
+<p class="caption">
+Figure 8.1: Diagram depicting vectors of different lengths.
+</p>
+</div>
+<p>How does R take care of this?</p>
+<p>The following diagram depicts what R does behind the scenes: R recycles the
+shorter vectors to match the length of the longest vector. In this example,
+vectors <code>deposit</code>, <code>rate</code>, and <code>1</code> are the shorter vectors, which are then
+recycle to match the length of the longest vector <code>years</code>. The computation
+process is completed with vectorization.</p>
+<p><img src="images/vectors/vectorized2.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>As you can tell, this is an example of vectorization &amp; recycling rules in R.</p>
+</div>
+</div>
+<div id="manipulating-vectors-subsetting" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Manipulating Vectors: Subsetting<a href="vectors4.html#manipulating-vectors-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In addition to creating vectors, you should also learn how to do some basic
+manipulation of vectors. The most common type of manipulation is called
+<em>subsetting</em>, also known as <em>indexing</em> or <em>subscripting</em>, which refers to
+extracting elements of a vector (or another R object). To do so, you use what
+I like to call <strong>bracket notation</strong>. This implies using (square) brackets <code>[ ]</code>
+to get access to the elements of a vector.</p>
+<p>To subset a vector, you type the name of the vector, followed by an opening
+and a closing bracket. Inside the brackets you specify an indexing vector
+which could be a numeric vector, a logical vector, and sometimes a character
+vector. Let’s see these options in more detail in the following subsections.</p>
+<div id="numeric-subsetting" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Numeric Subsetting<a href="vectors4.html#numeric-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This type of subsetting, as the name indicates, is when the indexing vector
+consists of a numeric vector with one or more values that correspond to the
+position(s) of the vector element(s).</p>
+<p>The simplest type of numeric subsetting is when we use single number (which is
+a vector of length one).</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="vectors4.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># amount at end of year 1</span></span>
+<span id="cb94-2"><a href="vectors4.html#cb94-2" aria-hidden="true" tabindex="-1"></a>amounts[<span class="dv">1</span>]</span>
+<span id="cb94-3"><a href="vectors4.html#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1020</span></span></code></pre></div>
+<p>The indexing numeric vector can have more than one element. For example, if
+we want to extract the elements in positions 1, 2 and 3, we could provide a
+numeric sequence <code>1:3</code>:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="vectors4.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># amounts at end of years 1, 2, and 3</span></span>
+<span id="cb95-2"><a href="vectors4.html#cb95-2" aria-hidden="true" tabindex="-1"></a>amounts[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb95-3"><a href="vectors4.html#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
+<p>The numeric positions don’t have to be consecutive numbers. You can also use
+a vector of non-consecutive numbers:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="vectors4.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># amounts at end of years 2 and 4</span></span>
+<span id="cb96-2"><a href="vectors4.html#cb96-2" aria-hidden="true" tabindex="-1"></a>amounts[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span>
+<span id="cb96-3"><a href="vectors4.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1040.400</span> <span class="fl">1082.432</span></span></code></pre></div>
+<p>Likewise, we can also use a vector with repeated numbers:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="vectors4.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeated amounts</span></span>
+<span id="cb97-2"><a href="vectors4.html#cb97-2" aria-hidden="true" tabindex="-1"></a>amounts[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)]</span>
+<span id="cb97-3"><a href="vectors4.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1040.4</span> <span class="fl">1040.4</span> <span class="fl">1040.4</span></span></code></pre></div>
+<p>In addition to the previous subscripting options, we can specify negative
+numbers to indicate that we want to exclude an element in the associated
+position:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="vectors4.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># exclude 2nd year</span></span>
+<span id="cb98-2"><a href="vectors4.html#cb98-2" aria-hidden="true" tabindex="-1"></a>amounts[<span class="sc">-</span><span class="dv">2</span>]</span>
+<span id="cb98-3"><a href="vectors4.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span> <span class="fl">1104.081</span> <span class="fl">1126.162</span> <span class="fl">1148.686</span> <span class="fl">1171.659</span> <span class="fl">1195.093</span></span>
+<span id="cb98-4"><a href="vectors4.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">9</span>] <span class="fl">1218.994</span></span>
+<span id="cb98-5"><a href="vectors4.html#cb98-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-6"><a href="vectors4.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="co"># exclude 2nd and 4th years</span></span>
+<span id="cb98-7"><a href="vectors4.html#cb98-7" aria-hidden="true" tabindex="-1"></a>amounts[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span>
+<span id="cb98-8"><a href="vectors4.html#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1061.208</span> <span class="fl">1104.081</span> <span class="fl">1126.162</span> <span class="fl">1148.686</span> <span class="fl">1171.659</span> <span class="fl">1195.093</span> <span class="fl">1218.994</span></span></code></pre></div>
+</div>
+<div id="character-subsetting" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Character Subsetting<a href="vectors4.html#character-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes, you may have a vector with named elements. When this is the case,
+you can use a character vector—containing one or more of the element names—as
+the indexing vector.</p>
+<p>None of the vectors that we have created so far have named elements. So let’s
+see how to do this. One way to give names to the elements of an existing vector
+is with the function <code>names()</code></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="vectors4.html#cb99-1" aria-hidden="true" tabindex="-1"></a>amounts3 <span class="ot">=</span> amounts[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb99-2"><a href="vectors4.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(amounts3) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;y1&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y3&quot;</span>)</span>
+<span id="cb99-3"><a href="vectors4.html#cb99-3" aria-hidden="true" tabindex="-1"></a>amounts3</span>
+<span id="cb99-4"><a href="vectors4.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>       y1       y2       y3 </span>
+<span id="cb99-5"><a href="vectors4.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
+<p>When a vector, like <code>amounts3</code>, has named elements, we can use those names for
+subsetting purposes. Instead of using a numeric vector we use a character
+vector. Hence the term <em>character subsetting</em>.</p>
+<p>For example, to extract the element in <code>amounts3</code> that has name <code>"y1"</code> we pass
+this string inside the brackets:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="vectors4.html#cb100-1" aria-hidden="true" tabindex="-1"></a>amounts3[<span class="st">&quot;y1&quot;</span>]</span>
+<span id="cb100-2"><a href="vectors4.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   y1 </span>
+<span id="cb100-3"><a href="vectors4.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1020</span></span></code></pre></div>
+<p>To get the elements in <code>amounts3</code> that have names <code>"y1"</code> and <code>"y3"</code>, we can
+write</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="vectors4.html#cb101-1" aria-hidden="true" tabindex="-1"></a>amounts3[<span class="fu">c</span>(<span class="st">&quot;y1&quot;</span>, <span class="st">&quot;y3&quot;</span>)]</span>
+<span id="cb101-2"><a href="vectors4.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>       y1       y3 </span>
+<span id="cb101-3"><a href="vectors4.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1020.000</span> <span class="fl">1061.208</span></span></code></pre></div>
+<p>And like in the numeric subsetting case, we can also write a command such as:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="vectors4.html#cb102-1" aria-hidden="true" tabindex="-1"></a>amounts3[<span class="fu">c</span>(<span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y2&quot;</span>, <span class="st">&quot;y1&quot;</span>)]</span>
+<span id="cb102-2"><a href="vectors4.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>     y2     y2     y2     y1 </span>
+<span id="cb102-3"><a href="vectors4.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1040.4</span> <span class="fl">1040.4</span> <span class="fl">1040.4</span> <span class="fl">1020.0</span></span></code></pre></div>
+</div>
+<div id="logical-subsetting" class="section level3 hasAnchor" number="8.4.3">
+<h3><span class="header-section-number">8.4.3</span> Logical Subsetting<a href="vectors4.html#logical-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another type of subsetting is when we use a logical vector as the indexing
+vector.</p>
+<p>Let me show you an example of logical subsetting. In this case, we will use a
+logical vector with three elements <code>c(TRUE, FALSE, FALSE)</code> and pass this
+inside the brackets:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="vectors4.html#cb103-1" aria-hidden="true" tabindex="-1"></a>amounts3[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)]</span>
+<span id="cb103-2"><a href="vectors4.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   y1 </span>
+<span id="cb103-3"><a href="vectors4.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1020</span></span></code></pre></div>
+<p>As you can tell, the retrieved element in <code>amounts3</code> is the one associated to
+the <code>TRUE</code> position, whereas those elements associated to the <code>FALSE</code> values
+are excluded. This is how the logical values (in the indexing vector) are used:</p>
+<ul>
+<li><code>TRUE</code> means inclusion</li>
+<li><code>FALSE</code> means exclusion</li>
+</ul>
+<p>So, if we want to extract only the element in the second position, we could
+write something like this:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="vectors4.html#cb104-1" aria-hidden="true" tabindex="-1"></a>amounts3[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)]</span>
+<span id="cb104-2"><a href="vectors4.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>     y2 </span>
+<span id="cb104-3"><a href="vectors4.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1040.4</span></span></code></pre></div>
+<p>Now, I have to say that doing logical subsetting in this way is not really
+how we tend to use it in practice. In other words, we won’t be providing an
+explicit logical vector, typing a bunch of <code>TRUE</code>’s and <code>FALSE</code>’s values.
+Instead, what we typically do is to provide a command that, when executed by R,
+will return a logical vector.</p>
+<p>Consider the following example. We create a vector <code>x</code>, and then we use the
+greater than symbol <code>&gt;</code> to compute a mathematical comparison which in turn
+will return a logical vector.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="vectors4.html#cb105-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb105-2"><a href="vectors4.html#cb105-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">5</span></span>
+<span id="cb105-3"><a href="vectors4.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">FALSE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span>  <span class="cn">TRUE</span></span></code></pre></div>
+<p>Knowing that <code>x &gt; 5</code> produces a logical vector in which <code>FALSE</code> indicates that
+the number is less than 5, and <code>TRUE</code> indicates that the number
+is greater than five, we can write the following command to subset those
+elements in <code>x</code> that are greater than five:</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="vectors4.html#cb106-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">5</span>]</span>
+<span id="cb106-2"><a href="vectors4.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">6</span> <span class="dv">8</span></span></code></pre></div>
+<p>This is a simple example of logical subsetting because the indexing vector
+is the logical vector that comes from executing the comparison <code>x &gt; 5</code>.</p>
+<p>Here is a less simple example of logical subsetting to extract the elements in
+<code>x</code> that are greater than 3 and less than or equal to 6. This requires<br />
+two comparison expressions, <code>x &gt; 3</code> and <code>x &lt;= 6</code>, and the use of the logical
+<em>AND</em> operator <code>&amp;</code> to form a compound expression:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="vectors4.html#cb107-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">6</span>]</span>
+<span id="cb107-2"><a href="vectors4.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">6</span></span></code></pre></div>
+</div>
+<div id="summary-of-subsetting" class="section level3 hasAnchor" number="8.4.4">
+<h3><span class="header-section-number">8.4.4</span> Summary of Subsetting<a href="vectors4.html#summary-of-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In summary, the things that you can specify inside the brackets are three
+kind of vectors:</p>
+<ul>
+<li><p>numeric vectors</p></li>
+<li><p>logical vectors (the length of the logical vector must match the length
+of the vector to be subset)</p></li>
+<li><p>character vectors (if the elements have names)</p></li>
+</ul>
+<p>In addition to the brackets <code>[]</code>, some common functions that you can use on
+vectors are:</p>
+<ul>
+<li><code>length()</code> gives the number of values</li>
+<li><code>sort()</code> sorts the values in increasing or decreasing ways</li>
+<li><code>rev()</code> reverses the values</li>
+<li><code>unique()</code> extracts unique elements</li>
+</ul>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="vectors4.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(amounts3)</span>
+<span id="cb108-2"><a href="vectors4.html#cb108-2" aria-hidden="true" tabindex="-1"></a>amounts3[<span class="fu">length</span>(amounts3)]</span>
+<span id="cb108-3"><a href="vectors4.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(amounts3, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb108-4"><a href="vectors4.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rev</span>(amounts3)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="exercises-5" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Exercises<a href="vectors4.html#exercises-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>1)</strong> Explain, with your own words, the concept of <em>vectorization</em> a.k.a.
+vectorized operations in R.</p>
+<p><br></p>
+<p><strong>2)</strong> Explain, with your own words, the <em>recycling principle</em> in R.</p>
+<p><br></p>
+<p><strong>3)</strong> Write 2 different R commands to return the first five elements of a
+vector <code>x</code> (assume <code>x</code> has more than 5 elements).</p>
+<p><br></p>
+<p><strong>4)</strong> Suppose <code>y &lt;- c(1, 4, 9, 16, 25)</code>. Write down the R command to return a
+vector <code>z</code>, in which each element of <code>z</code> is the square root of each element of
+the vector <code>y</code>.</p>
+<p><br></p>
+<p><strong>5)</strong> Which command will fail to return the first five elements of a vector
+<code>x</code>? (assume <code>x</code> has more than 5 elements).</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>x[1:5]</code></p></li>
+<li><p><code>x[c(1,2,3,4,5)]</code></p></li>
+<li><p><code>head(x, n = 5)</code></p></li>
+<li><p><code>x[seq(1, 5)]</code></p></li>
+<li><p><code>x(1:5)</code></p></li>
+</ol>
+<p><br></p>
+<p><strong>6)</strong> Consider the following code to obtain vectors <code>name</code> and <code>mpg</code> from the
+data set <code>mtcars</code> that contains data about 32 automobiles (1973–74 models).</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="vectors4.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectors name and mpg</span></span>
+<span id="cb109-2"><a href="vectors4.html#cb109-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="fu">rownames</span>(mtcars)</span>
+<span id="cb109-3"><a href="vectors4.html#cb109-3" aria-hidden="true" tabindex="-1"></a>mpg <span class="ot">=</span> mtcars<span class="sc">$</span>mpg</span></code></pre></div>
+<p>Use <code>seq()</code>, and bracket notation, to subset (extract):</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>all the even elements in <code>name</code> (i.e. extract positions 2, 4, 6, etc)</p></li>
+<li><p>all the odd elements in <code>mpg</code> (i.e. extract positions 1, 3, 5, etc)</p></li>
+<li><p>all the elements in positions multiples of 5 (e.g. extract positions 5, 10,
+15, etc) of <code>mpg</code></p></li>
+<li><p>all the even elements in <code>name</code> but this time in reverse order; <em>hint</em> the
+<code>rev()</code> function is your friend.</p></li>
+</ol>
+<p><br></p>
+<p><strong>7)</strong> Consider the following code to obtain vectors <code>name</code>, <code>mpg</code> and <code>cyl</code>
+from the data set <code>mtcars</code> that contains data about 32 automobiles (1973–74
+models).</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="vectors4.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectors name, mpg and cyl</span></span>
+<span id="cb110-2"><a href="vectors4.html#cb110-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="fu">rownames</span>(mtcars)</span>
+<span id="cb110-3"><a href="vectors4.html#cb110-3" aria-hidden="true" tabindex="-1"></a>mpg <span class="ot">=</span> mtcars<span class="sc">$</span>mpg <span class="co"># miles-per-gallon</span></span>
+<span id="cb110-4"><a href="vectors4.html#cb110-4" aria-hidden="true" tabindex="-1"></a>cyl <span class="ot">=</span> mtcars<span class="sc">$</span>cyl  <span class="co"># number of cylinders</span></span></code></pre></div>
+<p>Write commands, using bracket notation, to answer the parts listed below.
+You may need to use <code>is.na()</code>, <code>sum()</code>, <code>min()</code>, <code>max()</code>, <code>which()</code>,
+<code>which.min()</code>, <code>which.max()</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>name of cars that have a fuel consumption of less than 15 mpg</p></li>
+<li><p>name of cars that have 6 cylinders</p></li>
+<li><p>largest mpg value of all cars with 8 cylinders</p></li>
+<li><p>name of car(s) with mpg equal to the median mpg</p></li>
+<li><p>name of car(s) with mpg of at most 22, and at least 6 cylinders</p></li>
+</ol>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vectors3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="factors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rcoding.pdf", "rcoding.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>22 More About Functions | Learning to Code in R</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="22 More About Functions | Learning to Code in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="22 More About Functions | Learning to Code in R" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+<meta name="date" content="2022-08-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="while-loop.html"/>
+<link rel="next" href="input-output.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>Learning to Code in R</b><br><small>Gaston Sanchez</small></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yet-another-r-book"><i class="fa fa-check"></i>Yet Another R Book</a></li>
+</ul></li>
+<li class="part"><span><b>I Getting Started with R and RStudio</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#interacting-with-r"><i class="fa fa-check"></i><b>1.1</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="rintro.html"><a href="rintro.html"><i class="fa fa-check"></i><b>2</b> Breaking the Ice with R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rintro.html"><a href="rintro.html#first-contact-with-r-via-rstudio"><i class="fa fa-check"></i><b>2.1</b> First Contact with R (via RStudio)</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="rintro.html"><a href="rintro.html#r-as-a-scientific-calculator"><i class="fa fa-check"></i><b>2.1.1</b> R as a scientific calculator</a></li>
+<li class="chapter" data-level="2.1.2" data-path="rintro.html"><a href="rintro.html#assigning-values-to-objects"><i class="fa fa-check"></i><b>2.1.2</b> Assigning values to objects</a></li>
+<li class="chapter" data-level="2.1.3" data-path="rintro.html"><a href="rintro.html#object-names"><i class="fa fa-check"></i><b>2.1.3</b> Object Names</a></li>
+<li class="chapter" data-level="2.1.4" data-path="rintro.html"><a href="rintro.html#case-sensitive"><i class="fa fa-check"></i><b>2.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="2.1.5" data-path="rintro.html"><a href="rintro.html#calling-functions"><i class="fa fa-check"></i><b>2.1.5</b> Calling Functions</a></li>
+<li class="chapter" data-level="2.1.6" data-path="rintro.html"><a href="rintro.html#comments-in-r"><i class="fa fa-check"></i><b>2.1.6</b> Comments in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="rintro.html"><a href="rintro.html#help-documentation"><i class="fa fa-check"></i><b>2.2</b> Getting Help</a></li>
+<li class="chapter" data-level="2.3" data-path="rintro.html"><a href="rintro.html#installing-packages"><i class="fa fa-check"></i><b>2.3</b> Installing Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="rintro.html"><a href="rintro.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>3</b> A Quick Tour Around RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rstudio.html"><a href="rstudio.html#first-contact-with-rstudio"><i class="fa fa-check"></i><b>3.1</b> First Contact with RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="rstudio.html"><a href="rstudio.html#rstudio-panes-in-a-nutshell"><i class="fa fa-check"></i><b>3.2</b> RStudio Panes in a Nutshell</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rstudio.html"><a href="rstudio.html#console"><i class="fa fa-check"></i><b>3.2.1</b> Console</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rstudio.html"><a href="rstudio.html#files-plots-packages-help"><i class="fa fa-check"></i><b>3.2.2</b> Files, Plots, Packages, Help</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rstudio.html"><a href="rstudio.html#source-or-editor"><i class="fa fa-check"></i><b>3.2.3</b> Source or Editor</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rstudio.html"><a href="rstudio.html#environment-history-connections"><i class="fa fa-check"></i><b>3.2.4</b> Environment, History, Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rstudio.html"><a href="rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session.html"><a href="session.html"><i class="fa fa-check"></i><b>4</b> Session Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session.html"><a href="session.html#starting-a-session"><i class="fa fa-check"></i><b>4.1</b> Starting a Session</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="session.html"><a href="session.html#what-happens-when-you-open-an-r-session-via-rstudio"><i class="fa fa-check"></i><b>4.1.1</b> What happens when you open an R session via RStudio?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="session.html"><a href="session.html#opening-a-session-for-the-first-time"><i class="fa fa-check"></i><b>4.1.2</b> Opening a session for the first time</a></li>
+<li class="chapter" data-level="4.1.3" data-path="session.html"><a href="session.html#working-directory"><i class="fa fa-check"></i><b>4.1.3</b> Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="session.html"><a href="session.html#working-during-a-session"><i class="fa fa-check"></i><b>4.2</b> Working During a Session</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="session.html"><a href="session.html#sessions-working-directory"><i class="fa fa-check"></i><b>4.2.1</b> Session’s Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="session.html"><a href="session.html#workspace-and-global-environment"><i class="fa fa-check"></i><b>4.2.2</b> Workspace and Global Environment</a></li>
+<li class="chapter" data-level="4.2.3" data-path="session.html"><a href="session.html#commands-history"><i class="fa fa-check"></i><b>4.2.3</b> Commands History</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="session.html"><a href="session.html#closing-a-session"><i class="fa fa-check"></i><b>4.3</b> Closing a Session</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Objects: Vectors</b></span></li>
+<li class="chapter" data-level="5" data-path="vectors1.html"><a href="vectors1.html"><i class="fa fa-check"></i><b>5</b> First Contact with Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vectors1.html"><a href="vectors1.html#motivation-compound-interest"><i class="fa fa-check"></i><b>5.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="vectors1.html"><a href="vectors1.html#comments"><i class="fa fa-check"></i><b>5.1.1</b> Comments</a></li>
+<li class="chapter" data-level="5.1.2" data-path="vectors1.html"><a href="vectors1.html#creating-objects"><i class="fa fa-check"></i><b>5.1.2</b> Creating Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="vectors1.html"><a href="vectors1.html#exercises-2"><i class="fa fa-check"></i><b>5.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectors2.html"><a href="vectors2.html"><i class="fa fa-check"></i><b>6</b> Properties of Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="vectors2.html"><a href="vectors2.html#motivation"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="vectors2.html"><a href="vectors2.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>6.2</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="vectors2.html"><a href="vectors2.html#complex-and-raw-types"><i class="fa fa-check"></i><b>6.2.1</b> Complex and Raw Types</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>6.3</b> Types and Modes</a></li>
+<li class="chapter" data-level="6.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>6.4</b> Special Values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>6.5</b> Length of Vectors</a></li>
+<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-named"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have named</a></li>
+<li class="chapter" data-level="6.7" data-path="vectors2.html"><a href="vectors2.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>7</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="vectors3.html"><a href="vectors3.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>7.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="7.2" data-path="vectors3.html"><a href="vectors3.html#default-vectors"><i class="fa fa-check"></i><b>7.2</b> Default Vectors</a></li>
+<li class="chapter" data-level="7.3" data-path="vectors3.html"><a href="vectors3.html#numeric-sequences"><i class="fa fa-check"></i><b>7.3</b> Numeric Sequences</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="vectors3.html"><a href="vectors3.html#sequences-with"><i class="fa fa-check"></i><b>7.3.1</b> Sequences with <code>:</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq"><i class="fa fa-check"></i><b>7.3.2</b> Sequences with <code>seq()</code></a></li>
+<li class="chapter" data-level="7.3.3" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq_len-and-seq_along"><i class="fa fa-check"></i><b>7.3.3</b> Sequences with <code>seq_len()</code> and <code>seq_along()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectors3.html"><a href="vectors3.html#replicated-vectors"><i class="fa fa-check"></i><b>7.4</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="7.5" data-path="vectors3.html"><a href="vectors3.html#coercion"><i class="fa fa-check"></i><b>7.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="vectors3.html"><a href="vectors3.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>7.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="7.5.2" data-path="vectors3.html"><a href="vectors3.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>7.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="vectors3.html"><a href="vectors3.html#exercises-4"><i class="fa fa-check"></i><b>7.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="vectors4.html"><a href="vectors4.html"><i class="fa fa-check"></i><b>8</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="vectors4.html"><a href="vectors4.html#motivation-future-value"><i class="fa fa-check"></i><b>8.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="vectors4.html"><a href="vectors4.html#future-value-formula"><i class="fa fa-check"></i><b>8.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="vectors4.html"><a href="vectors4.html#vectorization"><i class="fa fa-check"></i><b>8.2</b> Vectorization</a></li>
+<li class="chapter" data-level="8.3" data-path="vectors4.html"><a href="vectors4.html#recycling"><i class="fa fa-check"></i><b>8.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="vectors4.html"><a href="vectors4.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>8.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="vectors4.html"><a href="vectors4.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>8.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="vectors4.html"><a href="vectors4.html#numeric-subsetting"><i class="fa fa-check"></i><b>8.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="8.4.2" data-path="vectors4.html"><a href="vectors4.html#character-subsetting"><i class="fa fa-check"></i><b>8.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="8.4.3" data-path="vectors4.html"><a href="vectors4.html#logical-subsetting"><i class="fa fa-check"></i><b>8.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="8.4.4" data-path="vectors4.html"><a href="vectors4.html#summary-of-subsetting"><i class="fa fa-check"></i><b>8.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="vectors4.html"><a href="vectors4.html#exercises-5"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III More Atomic Objects</b></span></li>
+<li class="chapter" data-level="9" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>9</b> Factors</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>9.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="9.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>9.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="9.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>9.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>9.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="9.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>9.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>9.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="matrices1.html"><a href="matrices1.html"><i class="fa fa-check"></i><b>10</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="matrices1.html"><a href="matrices1.html#motivation-1"><i class="fa fa-check"></i><b>10.1</b> Motivation</a></li>
+<li class="chapter" data-level="10.2" data-path="matrices1.html"><a href="matrices1.html#matrices"><i class="fa fa-check"></i><b>10.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="matrices1.html"><a href="matrices1.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>10.2.1</b> What kind of object is a matrix?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="matrices1.html"><a href="matrices1.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>10.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrices1.html"><a href="matrices1.html#column-major-matrices"><i class="fa fa-check"></i><b>10.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="10.3.2" data-path="matrices1.html"><a href="matrices1.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>10.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="10.3.3" data-path="matrices1.html"><a href="matrices1.html#more-matrices"><i class="fa fa-check"></i><b>10.3.3</b> More Matrices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="matrices2.html"><a href="matrices2.html"><i class="fa fa-check"></i><b>11</b> More About Matrices</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="matrices2.html"><a href="matrices2.html#basic-operations-with-matrices"><i class="fa fa-check"></i><b>11.1</b> Basic Operations with Matrices</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="matrices2.html"><a href="matrices2.html#selecting-elements"><i class="fa fa-check"></i><b>11.1.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="11.1.2" data-path="matrices2.html"><a href="matrices2.html#adding-a-column"><i class="fa fa-check"></i><b>11.1.2</b> Adding a column</a></li>
+<li class="chapter" data-level="11.1.3" data-path="matrices2.html"><a href="matrices2.html#deleting-a-column"><i class="fa fa-check"></i><b>11.1.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="11.1.4" data-path="matrices2.html"><a href="matrices2.html#moving-a-column"><i class="fa fa-check"></i><b>11.1.4</b> Moving a column</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Non-Atomic Objects</b></span></li>
+<li class="chapter" data-level="12" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>12</b> Lists</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>12.1</b> Creating Lists</a></li>
+<li class="chapter" data-level="12.2" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>12.2</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>12.2.1</b> Single brackets</a></li>
+<li class="chapter" data-level="12.2.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>12.2.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="12.2.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>12.2.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="12.2.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>12.2.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="12.2.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>12.2.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="lists.html"><a href="lists.html#exercises-6"><i class="fa fa-check"></i><b>12.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>13</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>13.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="13.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>13.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="13.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>13.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="13.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>13.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements-1"><i class="fa fa-check"></i><b>13.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="13.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column-1"><i class="fa fa-check"></i><b>13.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="13.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column-1"><i class="fa fa-check"></i><b>13.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="13.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>13.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="13.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column-1"><i class="fa fa-check"></i><b>13.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="13.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>13.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="dataframes.html"><a href="dataframes.html#exercises-7"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>V Graphics</b></span></li>
+<li class="chapter" data-level="14" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>14</b> Base Graphics</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>14.1</b> Basics of Graphics in R</a></li>
+<li class="chapter" data-level="14.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>14.2</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="14.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>14.3</b> Traditional Graphics in R</a></li>
+<li class="chapter" data-level="14.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>14.4</b> Low-Level Functions</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>14.4.1</b> Low-level functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>15</b> More Base Graphics</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>15.1</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="15.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>15.2</b> One variable graphics</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>15.2.1</b> More high-level graphics of a single variable</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>15.3</b> Plots of Two Variables</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>15.3.1</b> Example: Plots of two variables</a></li>
+<li class="chapter" data-level="15.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>15.3.2</b> More high-level graphics of two variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>16</b> Plots from Scratch</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>16.1</b> Making a graphic from scratch</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>16.1.1</b> How does it work</a></li>
+<li class="chapter" data-level="16.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>16.1.2</b> Drawing Arrows</a></li>
+<li class="chapter" data-level="16.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>16.1.3</b> Drawing Rectangles</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Programming Basics</b></span></li>
+<li class="chapter" data-level="17" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>17</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="functions1.html"><a href="functions1.html#motivation-2"><i class="fa fa-check"></i><b>17.1</b> Motivation</a></li>
+<li class="chapter" data-level="17.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>17.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>17.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>17.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>17.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="17.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>17.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="functions1.html"><a href="functions1.html#exercises-8"><i class="fa fa-check"></i><b>17.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>18</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>18.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>18.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="18.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>18.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="18.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>18.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="18.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>18.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>19</b> Conditionals: If-Else</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="conditionals.html"><a href="conditionals.html#motivation-3"><i class="fa fa-check"></i><b>19.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>19.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="19.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>19.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>19.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>19.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="19.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>19.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="19.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>19.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="19.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>19.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>19.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>19.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>19.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>20</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="for-loop.html"><a href="for-loop.html#motivation-4"><i class="fa fa-check"></i><b>20.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>20.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>20.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>20.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="20.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>20.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>20.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="20.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>20.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="20.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>20.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>20.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="20.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>20.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="20.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>20.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="20.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>20.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="20.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>20.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>21</b> Iterations: While Loop</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="while-loop.html"><a href="while-loop.html#motivation-5"><i class="fa fa-check"></i><b>21.1</b> Motivation</a></li>
+<li class="chapter" data-level="21.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>21.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="21.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>21.3</b> Another Example</a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>21.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="21.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>21.3.2</b> While Loops and Break statement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>22</b> More About Functions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="functions2.html"><a href="functions2.html#functions-recap"><i class="fa fa-check"></i><b>22.1</b> Functions Recap</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="functions2.html"><a href="functions2.html#simple-expressions-1"><i class="fa fa-check"></i><b>22.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="22.1.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>22.1.2</b> Nested Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>22.2</b> Function Output</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="functions2.html"><a href="functions2.html#the-return-command"><i class="fa fa-check"></i><b>22.2.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="22.2.2" data-path="functions2.html"><a href="functions2.html#white-spaces"><i class="fa fa-check"></i><b>22.2.2</b> White Spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="functions2.html"><a href="functions2.html#indentation"><i class="fa fa-check"></i><b>22.3</b> Indentation</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="functions2.html"><a href="functions2.html#meaningful-names"><i class="fa fa-check"></i><b>22.3.1</b> Meaningful Names</a></li>
+<li class="chapter" data-level="22.3.2" data-path="functions2.html"><a href="functions2.html#syntax-parentheses"><i class="fa fa-check"></i><b>22.3.2</b> Syntax: Parentheses</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>22.4</b> Recommendations</a></li>
+</ul></li>
+<li class="part"><span><b>VII Import / Export</b></span></li>
+<li class="chapter" data-level="23" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>23</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>23.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="23.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>23.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>23.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>24</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="import-tables.html"><a href="import-tables.html#motivation-6"><i class="fa fa-check"></i><b>24.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>24.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>24.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>24.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="24.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>24.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="24.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>24.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="24.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>24.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>24.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>24.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="24.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>24.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="24.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>24.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>24.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="24.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>24.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>25</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>25.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="25.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>25.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="25.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>25.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="25.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>25.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="25.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>25.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="25.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>25.5</b> Exporting R’s Binary Data</a></li>
+<li class="chapter" data-level="25.6" data-path="export-data.html"><a href="export-data.html#exporting-images"><i class="fa fa-check"></i><b>25.6</b> Exporting Images</a></li>
+</ul></li>
+<li class="part"><span><b>VIII Simulations</b></span></li>
+<li class="chapter" data-level="26" data-path="simulations1.html"><a href="simulations1.html"><i class="fa fa-check"></i><b>26</b> Simulations (part 1)</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="simulations1.html"><a href="simulations1.html#motivation-7"><i class="fa fa-check"></i><b>26.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="simulations1.html"><a href="simulations1.html#investing-a-lump-sum"><i class="fa fa-check"></i><b>26.1.1</b> Investing a Lump-sum</a></li>
+<li class="chapter" data-level="26.1.2" data-path="simulations1.html"><a href="simulations1.html#example-with-future-value"><i class="fa fa-check"></i><b>26.1.2</b> Example with Future Value</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="simulations1.html"><a href="simulations1.html#variable-rates-of-return-and-volatility"><i class="fa fa-check"></i><b>26.2</b> Variable rates of return and volatility</a>
+<ul>
+<li class="chapter" data-level="26.2.1" data-path="simulations1.html"><a href="simulations1.html#example-running-3-simulations"><i class="fa fa-check"></i><b>26.2.1</b> Example: Running 3 simulations</a></li>
+<li class="chapter" data-level="26.2.2" data-path="simulations1.html"><a href="simulations1.html#reshaping-the-table-of-simulations"><i class="fa fa-check"></i><b>26.2.2</b> Reshaping the table of simulations</a></li>
+<li class="chapter" data-level="26.2.3" data-path="simulations1.html"><a href="simulations1.html#graphing-the-simulations"><i class="fa fa-check"></i><b>26.2.3</b> Graphing the Simulations</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="simulations1.html"><a href="simulations1.html#running-100-simulations"><i class="fa fa-check"></i><b>26.3</b> Running 100 simulations</a></li>
+<li class="chapter" data-level="26.4" data-path="simulations1.html"><a href="simulations1.html#more-summary-statistics"><i class="fa fa-check"></i><b>26.4</b> More Summary Statistics</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="blank">Gaston Sanchez</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learning to Code in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functions2" class="section level1 hasAnchor" number="22">
+<h1><span class="header-section-number">22</span> More About Functions<a href="functions2.html#functions2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter you will learn more aspects about creating functions in R.</p>
+<div id="functions-recap" class="section level2 hasAnchor" number="22.1">
+<h2><span class="header-section-number">22.1</span> Functions Recap<a href="functions2.html#functions-recap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider a toy example with a function that squares its argument:</p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="functions2.html#cb340-1" aria-hidden="true" tabindex="-1"></a>square <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
+<span id="cb340-2"><a href="functions2.html#cb340-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">*</span> x</span>
+<span id="cb340-3"><a href="functions2.html#cb340-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>the function name is <code>"square"</code></li>
+<li>it has one argument: <code>x</code></li>
+<li>the function body consists of one simple expression</li>
+<li>it returns the value <code>x * x</code></li>
+</ul>
+<p><code>square()</code> works like any other function in R:</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="functions2.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">10</span>)</span>
+<span id="cb341-2"><a href="functions2.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">100</span></span></code></pre></div>
+<p>In this case, <code>square()</code> is also vectorized:</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="functions2.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb342-2"><a href="functions2.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">4</span>  <span class="dv">9</span> <span class="dv">16</span> <span class="dv">25</span></span></code></pre></div>
+<p>Why is <code>square()</code> vectorized?</p>
+<p>Once defined, functions can be used in other function definitions:</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="functions2.html#cb343-1" aria-hidden="true" tabindex="-1"></a>sum_of_squares <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
+<span id="cb343-2"><a href="functions2.html#cb343-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">square</span>(x))</span>
+<span id="cb343-3"><a href="functions2.html#cb343-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb343-4"><a href="functions2.html#cb343-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_of_squares</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb343-5"><a href="functions2.html#cb343-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">55</span></span></code></pre></div>
+<div id="simple-expressions-1" class="section level3 hasAnchor" number="22.1.1">
+<h3><span class="header-section-number">22.1.1</span> Simple Expressions<a href="functions2.html#simple-expressions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Functions with a body consisting of a <strong>simple expression</strong> can be written with
+no braces (in one single line!):</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="functions2.html#cb344-1" aria-hidden="true" tabindex="-1"></a>square <span class="ot">=</span> <span class="cf">function</span>(x) x <span class="sc">*</span> x</span>
+<span id="cb344-2"><a href="functions2.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">10</span>)</span>
+<span id="cb344-3"><a href="functions2.html#cb344-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">100</span></span></code></pre></div>
+<p>However, as a general coding rule, you should get into the habit of writing functions using braces.</p>
+</div>
+<div id="nested-functions" class="section level3 hasAnchor" number="22.1.2">
+<h3><span class="header-section-number">22.1.2</span> Nested Functions<a href="functions2.html#nested-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can also define a function inside another function:</p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="functions2.html#cb345-1" aria-hidden="true" tabindex="-1"></a>getmax <span class="ot">=</span> <span class="cf">function</span>(a) {</span>
+<span id="cb345-2"><a href="functions2.html#cb345-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># nested function</span></span>
+<span id="cb345-3"><a href="functions2.html#cb345-3" aria-hidden="true" tabindex="-1"></a>  maxpos <span class="ot">&lt;-</span> <span class="cf">function</span>(u) <span class="fu">which.max</span>(u) </span>
+<span id="cb345-4"><a href="functions2.html#cb345-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># output</span></span>
+<span id="cb345-5"><a href="functions2.html#cb345-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">position =</span> <span class="fu">maxpos</span>(a),</span>
+<span id="cb345-6"><a href="functions2.html#cb345-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">value =</span> <span class="fu">max</span>(a))</span>
+<span id="cb345-7"><a href="functions2.html#cb345-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb345-8"><a href="functions2.html#cb345-8" aria-hidden="true" tabindex="-1"></a><span class="fu">getmax</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">10</span>, pi))</span>
+<span id="cb345-9"><a href="functions2.html#cb345-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>position</span>
+<span id="cb345-10"><a href="functions2.html#cb345-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span></span>
+<span id="cb345-11"><a href="functions2.html#cb345-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb345-12"><a href="functions2.html#cb345-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>value</span>
+<span id="cb345-13"><a href="functions2.html#cb345-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">10</span></span></code></pre></div>
+</div>
+</div>
+<div id="function-output" class="section level2 hasAnchor" number="22.2">
+<h2><span class="header-section-number">22.2</span> Function Output<a href="functions2.html#function-output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The value of a function can be established in two ways:</p>
+<ul>
+<li>As the last evaluated simple expression (in the body of the function)</li>
+<li>An explicitly <strong>returned</strong> value via <code>return()</code></li>
+</ul>
+<p>Here’s a basic example of a function in which the output is the last evaluated
+expression:</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="functions2.html#cb346-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">=</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb346-2"><a href="functions2.html#cb346-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb346-3"><a href="functions2.html#cb346-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb346-4"><a href="functions2.html#cb346-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb346-5"><a href="functions2.html#cb346-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb346-6"><a href="functions2.html#cb346-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">5</span></span></code></pre></div>
+<p>Here’s another version of <code>add()</code> in which the output is the last evaluated
+expression:</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="functions2.html#cb347-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">=</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb347-2"><a href="functions2.html#cb347-2" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">=</span> x <span class="sc">+</span> y</span>
+<span id="cb347-3"><a href="functions2.html#cb347-3" aria-hidden="true" tabindex="-1"></a>  z</span>
+<span id="cb347-4"><a href="functions2.html#cb347-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb347-5"><a href="functions2.html#cb347-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-6"><a href="functions2.html#cb347-6" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb347-7"><a href="functions2.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">5</span></span></code></pre></div>
+<p>Be careful with the form in which the last expression is evaluated:</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="functions2.html#cb348-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">=</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb348-2"><a href="functions2.html#cb348-2" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">=</span> x <span class="sc">+</span> y</span>
+<span id="cb348-3"><a href="functions2.html#cb348-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb348-4"><a href="functions2.html#cb348-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb348-5"><a href="functions2.html#cb348-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<p>In this case, it looks like <code>add()</code> does not work. If you run the previous
+code, nothing appears in the console. Can you guess why? To help you answer
+this question, assign the invocation to an object and then print the object:</p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="functions2.html#cb349-1" aria-hidden="true" tabindex="-1"></a>why <span class="ot">&lt;-</span> <span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb349-2"><a href="functions2.html#cb349-2" aria-hidden="true" tabindex="-1"></a>why</span></code></pre></div>
+<p><code>add()</code> does work. The issue has to do with the form of the last expression.
+Nothing gets displayed in the console because the last statement <code>z &lt;- x + y</code>
+is an assignment (that does not print anything).</p>
+<div id="the-return-command" class="section level3 hasAnchor" number="22.2.1">
+<h3><span class="header-section-number">22.2.1</span> The <code>return()</code> command<a href="functions2.html#the-return-command" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>More often than not, the <code>return()</code> command is included to explicitly indicate
+the output of a function:</p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="functions2.html#cb350-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">=</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb350-2"><a href="functions2.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb350-3"><a href="functions2.html#cb350-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(z)</span>
+<span id="cb350-4"><a href="functions2.html#cb350-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb350-5"><a href="functions2.html#cb350-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb350-6"><a href="functions2.html#cb350-6" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb350-7"><a href="functions2.html#cb350-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">5</span></span></code></pre></div>
+<p>I’ve seen that many users with previous programming experience in other languages
+prefer to use <code>return()</code>. The main reason is that most programming languages
+tend to use some sort of <em>return</em> statement to indicate the output of a function.</p>
+<p>So, following good language-agnostic coding practices, we also recommend that
+you use the function <code>return()</code>. In this way, any reader can quickly scan the
+body of your functions and visually locate the places in which a <em>return</em>
+statement is being made.</p>
+</div>
+<div id="white-spaces" class="section level3 hasAnchor" number="22.2.2">
+<h3><span class="header-section-number">22.2.2</span> White Spaces<a href="functions2.html#white-spaces" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Use a lot of it</li>
+<li>around operators (assignment and arithmetic)</li>
+<li>between function arguments and list elements</li>
+<li>between matrix/array indices, in particular for missing indices</li>
+<li>Split long lines at meaningful places</li>
+</ul>
+<p>Avoid this</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="functions2.html#cb351-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="dv">2</span></span>
+<span id="cb351-2"><a href="functions2.html#cb351-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="dv">3</span></span>
+<span id="cb351-3"><a href="functions2.html#cb351-3" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">log</span>(<span class="fu">sqrt</span>(x))</span>
+<span id="cb351-4"><a href="functions2.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">7</span><span class="sc">-</span>pi<span class="sc">*</span>x<span class="sc">/</span>(y<span class="sc">-</span>a)</span></code></pre></div>
+<p>Much Better</p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="functions2.html#cb352-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb352-2"><a href="functions2.html#cb352-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb352-3"><a href="functions2.html#cb352-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">sqrt</span>(x))</span>
+<span id="cb352-4"><a href="functions2.html#cb352-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">7</span> <span class="sc">-</span> pi <span class="sc">*</span> x <span class="sc">/</span> (y <span class="sc">-</span> a)</span></code></pre></div>
+<p>Another example:</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="functions2.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Avoid this</span></span>
+<span id="cb353-2"><a href="functions2.html#cb353-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">col=</span><span class="fu">rgb</span>(<span class="fl">0.5</span>,<span class="fl">0.7</span>,<span class="fl">0.4</span>),<span class="at">pch=</span><span class="st">&#39;+&#39;</span>,<span class="at">cex=</span><span class="dv">5</span>)</span>
+<span id="cb353-3"><a href="functions2.html#cb353-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-4"><a href="functions2.html#cb353-4" aria-hidden="true" tabindex="-1"></a><span class="co"># okay</span></span>
+<span id="cb353-5"><a href="functions2.html#cb353-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">0.4</span>), <span class="at">pch =</span> <span class="st">&#39;+&#39;</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span></code></pre></div>
+<p>Another readability recommendation is to limit the width of line: they should
+be broken/wrapped around so that they are less than 80 columns wide</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="functions2.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lines too long</span></span>
+<span id="cb354-2"><a href="functions2.html#cb354-2" aria-hidden="true" tabindex="-1"></a>histogram <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
+<span id="cb354-3"><a href="functions2.html#cb354-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data, <span class="at">col =</span> <span class="st">&#39;gray90&#39;</span>, <span class="at">xlab =</span> <span class="st">&#39;x&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Frequency&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Histogram of x&#39;</span>)</span>
+<span id="cb354-4"><a href="functions2.html#cb354-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">c</span>(<span class="fu">min</span>(data), <span class="fu">max</span>(data), <span class="fu">median</span>(data), <span class="fu">mean</span>(data)),</span>
+<span id="cb354-5"><a href="functions2.html#cb354-5" aria-hidden="true" tabindex="-1"></a><span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;tomato&#39;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb354-6"><a href="functions2.html#cb354-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Lines should be broken/wrapped around so that they are less than 80 columns wide</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="functions2.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lines with okay width</span></span>
+<span id="cb355-2"><a href="functions2.html#cb355-2" aria-hidden="true" tabindex="-1"></a>histogram <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb355-3"><a href="functions2.html#cb355-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(data, <span class="at">col =</span> <span class="st">&#39;gray90&#39;</span>, <span class="at">xlab =</span> <span class="st">&#39;x&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Frequency&#39;</span>, </span>
+<span id="cb355-4"><a href="functions2.html#cb355-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&#39;Histogram of x&#39;</span>)</span>
+<span id="cb355-5"><a href="functions2.html#cb355-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">c</span>(<span class="fu">min</span>(data), <span class="fu">max</span>(data), <span class="fu">median</span>(data), <span class="fu">mean</span>(data)),</span>
+<span id="cb355-6"><a href="functions2.html#cb355-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;gray30&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;tomato&#39;</span>), </span>
+<span id="cb355-7"><a href="functions2.html#cb355-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb355-8"><a href="functions2.html#cb355-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Spacing forms the second important part in code indentation and formatting.</li>
+<li>Spacing makes the code more readable</li>
+<li>Follow proper spacing through out your coding</li>
+<li>Use spacing consistently</li>
+</ul>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="functions2.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this can be improved</span></span>
+<span id="cb356-2"><a href="functions2.html#cb356-2" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="fu">max</span>(x)<span class="sc">-</span><span class="fu">min</span>(x),</span>
+<span id="cb356-3"><a href="functions2.html#cb356-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(x, <span class="at">probs=</span><span class="fl">0.25</span>), <span class="fu">quantile</span>(x, <span class="at">probs=</span><span class="fl">0.75</span>), <span class="fu">IQR</span>(x),</span>
+<span id="cb356-4"><a href="functions2.html#cb356-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(x), <span class="fu">mean</span>(x), <span class="fu">sd</span>(x)</span>
+<span id="cb356-5"><a href="functions2.html#cb356-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Don’t be afraid of splitting one long line into individual pieces:</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="functions2.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="co"># much better</span></span>
+<span id="cb357-2"><a href="functions2.html#cb357-2" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb357-3"><a href="functions2.html#cb357-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">min</span>(x), </span>
+<span id="cb357-4"><a href="functions2.html#cb357-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>(x), </span>
+<span id="cb357-5"><a href="functions2.html#cb357-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x),</span>
+<span id="cb357-6"><a href="functions2.html#cb357-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fl">0.25</span>),</span>
+<span id="cb357-7"><a href="functions2.html#cb357-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fl">0.75</span>),</span>
+<span id="cb357-8"><a href="functions2.html#cb357-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">IQR</span>(x),</span>
+<span id="cb357-9"><a href="functions2.html#cb357-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(x), </span>
+<span id="cb357-10"><a href="functions2.html#cb357-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x), </span>
+<span id="cb357-11"><a href="functions2.html#cb357-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sd</span>(x)</span>
+<span id="cb357-12"><a href="functions2.html#cb357-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>You can even do this:</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="functions2.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># also OK</span></span>
+<span id="cb358-2"><a href="functions2.html#cb358-2" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb358-3"><a href="functions2.html#cb358-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">min    =</span> <span class="fu">min</span>(x), </span>
+<span id="cb358-4"><a href="functions2.html#cb358-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">max    =</span> <span class="fu">max</span>(x), </span>
+<span id="cb358-5"><a href="functions2.html#cb358-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">range  =</span> <span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x),</span>
+<span id="cb358-6"><a href="functions2.html#cb358-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">q1     =</span> <span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fl">0.25</span>),</span>
+<span id="cb358-7"><a href="functions2.html#cb358-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">q3     =</span> <span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fl">0.75</span>),</span>
+<span id="cb358-8"><a href="functions2.html#cb358-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iqr    =</span> <span class="fu">IQR</span>(x),</span>
+<span id="cb358-9"><a href="functions2.html#cb358-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">median =</span> <span class="fu">median</span>(x), </span>
+<span id="cb358-10"><a href="functions2.html#cb358-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean   =</span> <span class="fu">mean</span>(x), </span>
+<span id="cb358-11"><a href="functions2.html#cb358-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">stdev  =</span> <span class="fu">sd</span>(x)</span>
+<span id="cb358-12"><a href="functions2.html#cb358-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>All commas and semicolons must be followed by single whitespace</li>
+<li>All binary operators should maintain a space on either side of the operator</li>
+<li>Left parenthesis should start immediately after a function name</li>
+<li>All keywords like <code>if</code>, <code>while</code>, <code>for</code>, <code>repeat</code> should be followed by a
+single space.</li>
+</ul>
+<p>All binary operators should maintain a space on either side of the operator</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="functions2.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NOT Recommended </span></span>
+<span id="cb359-2"><a href="functions2.html#cb359-2" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span>b<span class="sc">-</span>c</span>
+<span id="cb359-3"><a href="functions2.html#cb359-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> b<span class="sc">-</span>c</span>
+<span id="cb359-4"><a href="functions2.html#cb359-4" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span>b <span class="sc">-</span> c; </span>
+<span id="cb359-5"><a href="functions2.html#cb359-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb359-6"><a href="functions2.html#cb359-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommended </span></span>
+<span id="cb359-7"><a href="functions2.html#cb359-7" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> b <span class="sc">-</span> c</span></code></pre></div>
+<p>All binary operators should maintain a space on either side of the operator</p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="functions2.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Not really recommended </span></span>
+<span id="cb360-2"><a href="functions2.html#cb360-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">6</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">9</span><span class="sc">*</span>y</span>
+<span id="cb360-3"><a href="functions2.html#cb360-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-4"><a href="functions2.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommended (option 1)</span></span>
+<span id="cb360-5"><a href="functions2.html#cb360-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">6</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">9</span> <span class="sc">*</span> y</span>
+<span id="cb360-6"><a href="functions2.html#cb360-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-7"><a href="functions2.html#cb360-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommended (option 2)</span></span>
+<span id="cb360-8"><a href="functions2.html#cb360-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (<span class="dv">7</span> <span class="sc">*</span> x) <span class="sc">+</span> (<span class="dv">9</span> <span class="sc">*</span> y)</span></code></pre></div>
+<p>Left parenthesis should start immediately after a function name</p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="functions2.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NOT Recommended </span></span>
+<span id="cb361-2"><a href="functions2.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.table</span> (<span class="st">&#39;data.csv&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb361-3"><a href="functions2.html#cb361-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-4"><a href="functions2.html#cb361-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommended </span></span>
+<span id="cb361-5"><a href="functions2.html#cb361-5" aria-hidden="true" tabindex="-1"></a><span class="fu">read.table</span>(<span class="st">&#39;data.csv&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>All keywords like <code>if</code>, <code>while</code>, <code>for</code>, <code>repeat</code> should be followed by a single
+space.</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="functions2.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not bad</span></span>
+<span id="cb362-2"><a href="functions2.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.numeric</span>(object)) {</span>
+<span id="cb362-3"><a href="functions2.html#cb362-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(object)</span>
+<span id="cb362-4"><a href="functions2.html#cb362-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb362-5"><a href="functions2.html#cb362-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-6"><a href="functions2.html#cb362-6" aria-hidden="true" tabindex="-1"></a><span class="co"># much better</span></span>
+<span id="cb362-7"><a href="functions2.html#cb362-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.numeric</span>(object)) {</span>
+<span id="cb362-8"><a href="functions2.html#cb362-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(object)</span>
+<span id="cb362-9"><a href="functions2.html#cb362-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<div id="indentation" class="section level2 hasAnchor" number="22.3">
+<h2><span class="header-section-number">22.3</span> Indentation<a href="functions2.html#indentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Keep your indentation style consistent</p></li>
+<li><p>There is more than one way of indenting code</p></li>
+<li><p>There is no “best” style that everyone should be following</p></li>
+<li><p>You can indent using spaces or tabs (but don’t mix them)</p></li>
+<li><p>Can help in detecting errors in your code because it can expose lack of symmetry</p></li>
+<li><p>Do this systematically (RStudio editor helps a lot)</p></li>
+</ul>
+<p>Don’t write code like this:</p>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="functions2.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no indentation</span></span>
+<span id="cb363-2"><a href="functions2.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t do this!</span></span>
+<span id="cb363-3"><a href="functions2.html#cb363-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.vector</span>(x)) {</span>
+<span id="cb363-4"><a href="functions2.html#cb363-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stop</span>(<span class="st">&#39;x must be a vector&#39;</span>)</span>
+<span id="cb363-5"><a href="functions2.html#cb363-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb363-6"><a href="functions2.html#cb363-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(x))){</span>
+<span id="cb363-7"><a href="functions2.html#cb363-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]</span>
+<span id="cb363-8"><a href="functions2.html#cb363-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb363-9"><a href="functions2.html#cb363-9" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb363-10"><a href="functions2.html#cb363-10" aria-hidden="true" tabindex="-1"></a>x_sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb363-11"><a href="functions2.html#cb363-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb363-12"><a href="functions2.html#cb363-12" aria-hidden="true" tabindex="-1"></a>  x_sum <span class="ot">&lt;-</span> x_sum <span class="sc">+</span> x[i]</span>
+<span id="cb363-13"><a href="functions2.html#cb363-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb363-14"><a href="functions2.html#cb363-14" aria-hidden="true" tabindex="-1"></a>x_sum <span class="sc">/</span> total</span>
+<span id="cb363-15"><a href="functions2.html#cb363-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Instead, write with indentation</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="functions2.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co"># better with indentation</span></span>
+<span id="cb364-2"><a href="functions2.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.vector</span>(x)) {</span>
+<span id="cb364-3"><a href="functions2.html#cb364-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">&#39;x must be a vector&#39;</span>)</span>
+<span id="cb364-4"><a href="functions2.html#cb364-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb364-5"><a href="functions2.html#cb364-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(<span class="fu">is.na</span>(x))) {</span>
+<span id="cb364-6"><a href="functions2.html#cb364-6" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]</span>
+<span id="cb364-7"><a href="functions2.html#cb364-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb364-8"><a href="functions2.html#cb364-8" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb364-9"><a href="functions2.html#cb364-9" aria-hidden="true" tabindex="-1"></a>  x_sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb364-10"><a href="functions2.html#cb364-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb364-11"><a href="functions2.html#cb364-11" aria-hidden="true" tabindex="-1"></a>    x_sum <span class="ot">&lt;-</span> x_sum <span class="sc">+</span> x[i]</span>
+<span id="cb364-12"><a href="functions2.html#cb364-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb364-13"><a href="functions2.html#cb364-13" aria-hidden="true" tabindex="-1"></a>  x_sum <span class="sc">/</span> total</span>
+<span id="cb364-14"><a href="functions2.html#cb364-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>There are several Indenting Styles</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="functions2.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="co"># style 1</span></span>
+<span id="cb365-2"><a href="functions2.html#cb365-2" aria-hidden="true" tabindex="-1"></a>find_roots <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">c =</span> <span class="dv">0</span>) </span>
+<span id="cb365-3"><a href="functions2.html#cb365-3" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb365-4"><a href="functions2.html#cb365-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c <span class="sc">&lt;</span> <span class="dv">0</span>) </span>
+<span id="cb365-5"><a href="functions2.html#cb365-5" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb365-6"><a href="functions2.html#cb365-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;No real roots&quot;</span>)</span>
+<span id="cb365-7"><a href="functions2.html#cb365-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> </span>
+<span id="cb365-8"><a href="functions2.html#cb365-8" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb365-9"><a href="functions2.html#cb365-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">quadratic</span>(<span class="at">a =</span> a, <span class="at">b =</span> b, <span class="at">c =</span> c))</span>
+<span id="cb365-10"><a href="functions2.html#cb365-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb365-11"><a href="functions2.html#cb365-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>My preferred style is like this:</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="functions2.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># style 2</span></span>
+<span id="cb366-2"><a href="functions2.html#cb366-2" aria-hidden="true" tabindex="-1"></a>find_roots <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">c =</span> <span class="dv">0</span>) {</span>
+<span id="cb366-3"><a href="functions2.html#cb366-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb366-4"><a href="functions2.html#cb366-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;No real roots&quot;</span>)</span>
+<span id="cb366-5"><a href="functions2.html#cb366-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb366-6"><a href="functions2.html#cb366-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">quadratic</span>(<span class="at">a =</span> a, <span class="at">b =</span> b, <span class="at">c =</span> c))</span>
+<span id="cb366-7"><a href="functions2.html#cb366-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb366-8"><a href="functions2.html#cb366-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Benefits of code indentation:</p>
+<ul>
+<li>Easier to read</li>
+<li>Easier to understand</li>
+<li>Easier to modify</li>
+<li>Easier to maintain</li>
+<li>Easier to enhance</li>
+</ul>
+<div id="meaningful-names" class="section level3 hasAnchor" number="22.3.1">
+<h3><span class="header-section-number">22.3.1</span> Meaningful Names<a href="functions2.html#meaningful-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Choose a consistent naming style for objects and functions</p>
+<ul>
+<li><code>someObject</code> (lowerCamelCase)</li>
+<li><code>SomeObject</code> (UpperCamelCase)</li>
+<li><code>some_object</code> (underscore separation)</li>
+<li><code>some.object</code> (dot separation)</li>
+</ul>
+<p>Avoid using names of standard R objects, for example:</p>
+<ul>
+<li><code>vector</code></li>
+<li><code>mean</code></li>
+<li><code>list</code></li>
+<li><code>data</code></li>
+<li><code>c</code></li>
+<li><code>colors</code></li>
+</ul>
+<p>If you’re thinking about using names of R objects, prefer something like this</p>
+<ul>
+<li><code>xvector</code></li>
+<li><code>xmean</code></li>
+<li><code>xlist</code></li>
+<li><code>xdata</code></li>
+<li><code>xc</code></li>
+<li><code>xcolors</code></li>
+</ul>
+<p>Better to add meaning like this</p>
+<ul>
+<li><code>mean_salary</code></li>
+<li><code>input_vector</code></li>
+<li><code>data_list</code></li>
+<li><code>data_table</code></li>
+<li><code>first_last</code></li>
+<li><code>some_colors</code></li>
+</ul>
+<p>Prefer Pronounceable Names</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="functions2.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co"># avoid cryptic abbreviations</span></span>
+<span id="cb367-2"><a href="functions2.html#cb367-2" aria-hidden="true" tabindex="-1"></a>DtaRcrd102 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb367-3"><a href="functions2.html#cb367-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nm =</span> <span class="st">&#39;John Doe&#39;</span>,</span>
+<span id="cb367-4"><a href="functions2.html#cb367-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">bdg =</span> <span class="st">&#39;Valley Life Sciences Building&#39;</span>,</span>
+<span id="cb367-5"><a href="functions2.html#cb367-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">rm =</span> <span class="dv">2060</span></span>
+<span id="cb367-6"><a href="functions2.html#cb367-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb367-7"><a href="functions2.html#cb367-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb367-8"><a href="functions2.html#cb367-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb367-9"><a href="functions2.html#cb367-9" aria-hidden="true" tabindex="-1"></a><span class="co"># prefer pronounceable names </span></span>
+<span id="cb367-10"><a href="functions2.html#cb367-10" aria-hidden="true" tabindex="-1"></a>Customer <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb367-11"><a href="functions2.html#cb367-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&#39;John Doe&#39;</span>,</span>
+<span id="cb367-12"><a href="functions2.html#cb367-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">building =</span> <span class="st">&#39;Valley Life Sciences Building&#39;</span>,</span>
+<span id="cb367-13"><a href="functions2.html#cb367-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">room =</span> <span class="dv">2060</span></span>
+<span id="cb367-14"><a href="functions2.html#cb367-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="syntax-parentheses" class="section level3 hasAnchor" number="22.3.2">
+<h3><span class="header-section-number">22.3.2</span> Syntax: Parentheses<a href="functions2.html#syntax-parentheses" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Use parentheses for clarity even if not needed for order of operations.</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="functions2.html#cb368-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb368-2"><a href="functions2.html#cb368-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb368-3"><a href="functions2.html#cb368-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb368-4"><a href="functions2.html#cb368-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-5"><a href="functions2.html#cb368-5" aria-hidden="true" tabindex="-1"></a>a<span class="sc">/</span>y<span class="sc">*</span>x</span>
+<span id="cb368-6"><a href="functions2.html#cb368-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-7"><a href="functions2.html#cb368-7" aria-hidden="true" tabindex="-1"></a><span class="co"># better</span></span>
+<span id="cb368-8"><a href="functions2.html#cb368-8" aria-hidden="true" tabindex="-1"></a>(a <span class="sc">/</span> y) <span class="sc">*</span> x</span></code></pre></div>
+<p>another example</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="functions2.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># confusing</span></span>
+<span id="cb369-2"><a href="functions2.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb369-3"><a href="functions2.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span>
+<span id="cb369-4"><a href="functions2.html#cb369-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb369-5"><a href="functions2.html#cb369-5" aria-hidden="true" tabindex="-1"></a><span class="co"># better</span></span>
+<span id="cb369-6"><a href="functions2.html#cb369-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span>(<span class="dv">3</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb369-7"><a href="functions2.html#cb369-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
+</div>
+</div>
+<div id="recommendations" class="section level2 hasAnchor" number="22.4">
+<h2><span class="header-section-number">22.4</span> Recommendations<a href="functions2.html#recommendations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Functions are tools and operations</li>
+<li>Functions form the building blocks for larger tasks</li>
+<li>Functions allow us to reuse blocks of code easily for later use</li>
+<li>Use functions whenever possible</li>
+<li>Try to write functions rather than carry out your work using blocks of code</li>
+<li>Ideal length between 2 and 4 lines of code</li>
+<li>No more than 10 lines</li>
+<li>No more than 20 lines</li>
+<li>Should not exceed the size of the text editor window</li>
+<li>Don’t write long functions</li>
+<li>Rewrite long functions by converting collections of related expression into separate functions</li>
+<li>Smaller functions are easier to debug, easier to understand, and can be combined in a modular fashion</li>
+<li>Functions shouldn’t be longer than one visible screen (with reasonable font)</li>
+<li>Separate small functions</li>
+<li>are easier to reason about and manage</li>
+<li>are easier to test and verify they are correct</li>
+<li>are more likely to be reusable</li>
+<li>Think about different scenarios and contexts in which a function might be used</li>
+<li>Can you generalize it?</li>
+<li>Who will use it?</li>
+<li>Who is going to maintain the code?</li>
+<li>Use descriptive names</li>
+<li>Readers (including you) should infer the operation by looking at the call of the function</li>
+<li>be modular (having a single task)</li>
+<li>have meaningful name</li>
+<li>have a comment describing their purpose, inputs and outputs</li>
+<li>Functions should not modify global variables</li>
+<li>except connections or environments</li>
+<li>should not change global <code>par()</code> settings</li>
+</ul>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="while-loop.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="input-output.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rcoding.pdf", "rcoding.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
