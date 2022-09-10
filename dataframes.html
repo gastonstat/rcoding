@@ -23,7 +23,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-08-29" />
+<meta name="date" content="2022-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -210,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>6.3</b> Types and Modes</a></li>
 <li class="chapter" data-level="6.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>6.4</b> Special Values</a></li>
 <li class="chapter" data-level="6.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>6.5</b> Length of Vectors</a></li>
-<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-named"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have named</a></li>
+<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-names"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have names</a></li>
 <li class="chapter" data-level="6.7" data-path="vectors2.html"><a href="vectors2.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>7</b> Creating Vectors</a>
@@ -630,24 +630,29 @@ attributes: an attribute <code>names</code> for column names, an attribute
 <code>row.names</code> for row names, and of course its attribute <code>class</code>:</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="dataframes.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(mtcars)</span>
 <span id="cb187-2"><a href="dataframes.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>names</span>
-<span id="cb187-3"><a href="dataframes.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="st">&quot;mpg&quot;</span>  <span class="st">&quot;cyl&quot;</span>  <span class="st">&quot;disp&quot;</span> <span class="st">&quot;hp&quot;</span>   <span class="st">&quot;drat&quot;</span> <span class="st">&quot;wt&quot;</span>   <span class="st">&quot;qsec&quot;</span> <span class="st">&quot;vs&quot;</span>   <span class="st">&quot;am&quot;</span>   <span class="st">&quot;gear&quot;</span></span>
-<span id="cb187-4"><a href="dataframes.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">11</span>] <span class="st">&quot;carb&quot;</span></span>
+<span id="cb187-3"><a href="dataframes.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="st">&quot;mpg&quot;</span>  <span class="st">&quot;cyl&quot;</span>  <span class="st">&quot;disp&quot;</span> <span class="st">&quot;hp&quot;</span>   <span class="st">&quot;drat&quot;</span> <span class="st">&quot;wt&quot;</span>  </span>
+<span id="cb187-4"><a href="dataframes.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">7</span>] <span class="st">&quot;qsec&quot;</span> <span class="st">&quot;vs&quot;</span>   <span class="st">&quot;am&quot;</span>   <span class="st">&quot;gear&quot;</span> <span class="st">&quot;carb&quot;</span></span>
 <span id="cb187-5"><a href="dataframes.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
 <span id="cb187-6"><a href="dataframes.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>row.names</span>
-<span id="cb187-7"><a href="dataframes.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="st">&quot;Mazda RX4&quot;</span>           <span class="st">&quot;Mazda RX4 Wag&quot;</span>       <span class="st">&quot;Datsun 710&quot;</span>         </span>
-<span id="cb187-8"><a href="dataframes.html#cb187-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">4</span>] <span class="st">&quot;Hornet 4 Drive&quot;</span>      <span class="st">&quot;Hornet Sportabout&quot;</span>   <span class="st">&quot;Valiant&quot;</span>            </span>
-<span id="cb187-9"><a href="dataframes.html#cb187-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">7</span>] <span class="st">&quot;Duster 360&quot;</span>          <span class="st">&quot;Merc 240D&quot;</span>           <span class="st">&quot;Merc 230&quot;</span>           </span>
-<span id="cb187-10"><a href="dataframes.html#cb187-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">10</span>] <span class="st">&quot;Merc 280&quot;</span>            <span class="st">&quot;Merc 280C&quot;</span>           <span class="st">&quot;Merc 450SE&quot;</span>         </span>
-<span id="cb187-11"><a href="dataframes.html#cb187-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">13</span>] <span class="st">&quot;Merc 450SL&quot;</span>          <span class="st">&quot;Merc 450SLC&quot;</span>         <span class="st">&quot;Cadillac Fleetwood&quot;</span> </span>
-<span id="cb187-12"><a href="dataframes.html#cb187-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">16</span>] <span class="st">&quot;Lincoln Continental&quot;</span> <span class="st">&quot;Chrysler Imperial&quot;</span>   <span class="st">&quot;Fiat 128&quot;</span>           </span>
-<span id="cb187-13"><a href="dataframes.html#cb187-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">19</span>] <span class="st">&quot;Honda Civic&quot;</span>         <span class="st">&quot;Toyota Corolla&quot;</span>      <span class="st">&quot;Toyota Corona&quot;</span>      </span>
-<span id="cb187-14"><a href="dataframes.html#cb187-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">22</span>] <span class="st">&quot;Dodge Challenger&quot;</span>    <span class="st">&quot;AMC Javelin&quot;</span>         <span class="st">&quot;Camaro Z28&quot;</span>         </span>
-<span id="cb187-15"><a href="dataframes.html#cb187-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">25</span>] <span class="st">&quot;Pontiac Firebird&quot;</span>    <span class="st">&quot;Fiat X1-9&quot;</span>           <span class="st">&quot;Porsche 914-2&quot;</span>      </span>
-<span id="cb187-16"><a href="dataframes.html#cb187-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">28</span>] <span class="st">&quot;Lotus Europa&quot;</span>        <span class="st">&quot;Ford Pantera L&quot;</span>      <span class="st">&quot;Ferrari Dino&quot;</span>       </span>
-<span id="cb187-17"><a href="dataframes.html#cb187-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">31</span>] <span class="st">&quot;Maserati Bora&quot;</span>       <span class="st">&quot;Volvo 142E&quot;</span>         </span>
-<span id="cb187-18"><a href="dataframes.html#cb187-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb187-19"><a href="dataframes.html#cb187-19" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>class</span>
-<span id="cb187-20"><a href="dataframes.html#cb187-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;data.frame&quot;</span></span></code></pre></div>
+<span id="cb187-7"><a href="dataframes.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="st">&quot;Mazda RX4&quot;</span>           <span class="st">&quot;Mazda RX4 Wag&quot;</span>      </span>
+<span id="cb187-8"><a href="dataframes.html#cb187-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">3</span>] <span class="st">&quot;Datsun 710&quot;</span>          <span class="st">&quot;Hornet 4 Drive&quot;</span>     </span>
+<span id="cb187-9"><a href="dataframes.html#cb187-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">5</span>] <span class="st">&quot;Hornet Sportabout&quot;</span>   <span class="st">&quot;Valiant&quot;</span>            </span>
+<span id="cb187-10"><a href="dataframes.html#cb187-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">7</span>] <span class="st">&quot;Duster 360&quot;</span>          <span class="st">&quot;Merc 240D&quot;</span>          </span>
+<span id="cb187-11"><a href="dataframes.html#cb187-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">9</span>] <span class="st">&quot;Merc 230&quot;</span>            <span class="st">&quot;Merc 280&quot;</span>           </span>
+<span id="cb187-12"><a href="dataframes.html#cb187-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">11</span>] <span class="st">&quot;Merc 280C&quot;</span>           <span class="st">&quot;Merc 450SE&quot;</span>         </span>
+<span id="cb187-13"><a href="dataframes.html#cb187-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">13</span>] <span class="st">&quot;Merc 450SL&quot;</span>          <span class="st">&quot;Merc 450SLC&quot;</span>        </span>
+<span id="cb187-14"><a href="dataframes.html#cb187-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">15</span>] <span class="st">&quot;Cadillac Fleetwood&quot;</span>  <span class="st">&quot;Lincoln Continental&quot;</span></span>
+<span id="cb187-15"><a href="dataframes.html#cb187-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">17</span>] <span class="st">&quot;Chrysler Imperial&quot;</span>   <span class="st">&quot;Fiat 128&quot;</span>           </span>
+<span id="cb187-16"><a href="dataframes.html#cb187-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">19</span>] <span class="st">&quot;Honda Civic&quot;</span>         <span class="st">&quot;Toyota Corolla&quot;</span>     </span>
+<span id="cb187-17"><a href="dataframes.html#cb187-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">21</span>] <span class="st">&quot;Toyota Corona&quot;</span>       <span class="st">&quot;Dodge Challenger&quot;</span>   </span>
+<span id="cb187-18"><a href="dataframes.html#cb187-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">23</span>] <span class="st">&quot;AMC Javelin&quot;</span>         <span class="st">&quot;Camaro Z28&quot;</span>         </span>
+<span id="cb187-19"><a href="dataframes.html#cb187-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">25</span>] <span class="st">&quot;Pontiac Firebird&quot;</span>    <span class="st">&quot;Fiat X1-9&quot;</span>          </span>
+<span id="cb187-20"><a href="dataframes.html#cb187-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">27</span>] <span class="st">&quot;Porsche 914-2&quot;</span>       <span class="st">&quot;Lotus Europa&quot;</span>       </span>
+<span id="cb187-21"><a href="dataframes.html#cb187-21" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">29</span>] <span class="st">&quot;Ford Pantera L&quot;</span>      <span class="st">&quot;Ferrari Dino&quot;</span>       </span>
+<span id="cb187-22"><a href="dataframes.html#cb187-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">31</span>] <span class="st">&quot;Maserati Bora&quot;</span>       <span class="st">&quot;Volvo 142E&quot;</span>         </span>
+<span id="cb187-23"><a href="dataframes.html#cb187-23" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb187-24"><a href="dataframes.html#cb187-24" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>class</span>
+<span id="cb187-25"><a href="dataframes.html#cb187-25" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;data.frame&quot;</span></span></code></pre></div>
 </div>
 <div id="creating-data-frames" class="section level2 hasAnchor" number="13.3">
 <h2><span class="header-section-number">13.3</span> Creating data frames<a href="dataframes.html#creating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -864,9 +869,10 @@ Figure 13.9: Other options to select columns of a data frame
 <p>The dollar sign also works for selecting a column of a data frame
 using its name</p>
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="dataframes.html#cb196-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg</span>
-<span id="cb196-2"><a href="dataframes.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="fl">21.0</span> <span class="fl">21.0</span> <span class="fl">22.8</span> <span class="fl">21.4</span> <span class="fl">18.7</span> <span class="fl">18.1</span> <span class="fl">14.3</span> <span class="fl">24.4</span> <span class="fl">22.8</span> <span class="fl">19.2</span> <span class="fl">17.8</span> <span class="fl">16.4</span> <span class="fl">17.3</span> <span class="fl">15.2</span> <span class="fl">10.4</span></span>
-<span id="cb196-3"><a href="dataframes.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">16</span>] <span class="fl">10.4</span> <span class="fl">14.7</span> <span class="fl">32.4</span> <span class="fl">30.4</span> <span class="fl">33.9</span> <span class="fl">21.5</span> <span class="fl">15.5</span> <span class="fl">15.2</span> <span class="fl">13.3</span> <span class="fl">19.2</span> <span class="fl">27.3</span> <span class="fl">26.0</span> <span class="fl">30.4</span> <span class="fl">15.8</span> <span class="fl">19.7</span></span>
-<span id="cb196-4"><a href="dataframes.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">31</span>] <span class="fl">15.0</span> <span class="fl">21.4</span></span></code></pre></div>
+<span id="cb196-2"><a href="dataframes.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>] <span class="fl">21.0</span> <span class="fl">21.0</span> <span class="fl">22.8</span> <span class="fl">21.4</span> <span class="fl">18.7</span> <span class="fl">18.1</span> <span class="fl">14.3</span> <span class="fl">24.4</span> <span class="fl">22.8</span></span>
+<span id="cb196-3"><a href="dataframes.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">10</span>] <span class="fl">19.2</span> <span class="fl">17.8</span> <span class="fl">16.4</span> <span class="fl">17.3</span> <span class="fl">15.2</span> <span class="fl">10.4</span> <span class="fl">10.4</span> <span class="fl">14.7</span> <span class="fl">32.4</span></span>
+<span id="cb196-4"><a href="dataframes.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">19</span>] <span class="fl">30.4</span> <span class="fl">33.9</span> <span class="fl">21.5</span> <span class="fl">15.5</span> <span class="fl">15.2</span> <span class="fl">13.3</span> <span class="fl">19.2</span> <span class="fl">27.3</span> <span class="fl">26.0</span></span>
+<span id="cb196-5"><a href="dataframes.html#cb196-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">28</span>] <span class="fl">30.4</span> <span class="fl">15.8</span> <span class="fl">19.7</span> <span class="fl">15.0</span> <span class="fl">21.4</span></span></code></pre></div>
 <p>You don’t need to use quote marks, but you can if you want. The following
 calls are equivalent.</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="dataframes.html#cb197-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span><span class="st">&#39;mpg&#39;</span></span>
@@ -1053,12 +1059,18 @@ Why does the command print all columns?</p></li>
 4      episkey     Luna</code></pre>
 <p><br></p>
 <p><strong>2)</strong> Consider the following data frame <code>dat</code></p>
-<pre><code>       first        last   gender      title   gpa
-1        Jon        Snow     male       lord   2.8
-2       Arya       Stark   female   princess   3.5
-3     Tyrion   Lannister     male     master   2.9
-4   Daenerys   Targaryen   female   khaleesi   3.7
-5       Yara     Greyjoy   female   princess    NA</code></pre>
+<pre><code>       first        last   gender      title
+1        Jon        Snow     male       lord
+2       Arya       Stark   female   princess
+3     Tyrion   Lannister     male     master
+4   Daenerys   Targaryen   female   khaleesi
+5       Yara     Greyjoy   female   princess
+    gpa
+1   2.8
+2   3.5
+3   2.9
+4   3.7
+5    NA</code></pre>
 <p>One of your friends wrote the following R code. Help your friend find all the
 errors and <strong>explain what’s wrong</strong>.</p>
 <pre><code># value of &#39;first&#39; associated to maximum &#39;gpa&#39;

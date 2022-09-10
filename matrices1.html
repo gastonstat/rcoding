@@ -23,7 +23,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-08-29" />
+<meta name="date" content="2022-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -210,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>6.3</b> Types and Modes</a></li>
 <li class="chapter" data-level="6.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>6.4</b> Special Values</a></li>
 <li class="chapter" data-level="6.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>6.5</b> Length of Vectors</a></li>
-<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-named"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have named</a></li>
+<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-names"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have names</a></li>
 <li class="chapter" data-level="6.7" data-path="vectors2.html"><a href="vectors2.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>7</b> Creating Vectors</a>
@@ -747,21 +747,25 @@ an input vector in order to create a matrix.</p>
 <p>What about those cases in which the length of the input vector does not match
 the size of the desired matrix? For example, consider the following commands
 illustrating this type of situation:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="matrices1.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># examples in which length of input of vector</span></span>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="matrices1.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># examples in which length of input vector</span></span>
 <span id="cb147-2"><a href="matrices1.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="co"># does not match size of matrix</span></span>
 <span id="cb147-3"><a href="matrices1.html#cb147-3" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
 <span id="cb147-4"><a href="matrices1.html#cb147-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb147-5"><a href="matrices1.html#cb147-5" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
 <span id="cb147-6"><a href="matrices1.html#cb147-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb147-7"><a href="matrices1.html#cb147-7" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb147-8"><a href="matrices1.html#cb147-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-9"><a href="matrices1.html#cb147-9" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb147-10"><a href="matrices1.html#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)<span class="sc">:</span> data length [<span class="dv">4</span>] is not a sub<span class="sc">-</span></span>
-<span id="cb147-11"><a href="matrices1.html#cb147-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> multiple or multiple of the number of rows [<span class="dv">3</span>]</span>
-<span id="cb147-12"><a href="matrices1.html#cb147-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-13"><a href="matrices1.html#cb147-13" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb147-14"><a href="matrices1.html#cb147-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)<span class="sc">:</span> data length [<span class="dv">8</span>] is not a sub<span class="sc">-</span></span>
-<span id="cb147-15"><a href="matrices1.html#cb147-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> multiple or multiple of the number of columns [<span class="dv">3</span>]</span></code></pre></div>
+<span id="cb147-8"><a href="matrices1.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)<span class="sc">:</span> data</span>
+<span id="cb147-9"><a href="matrices1.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> length differs from size of matrix<span class="sc">:</span> [<span class="dv">12</span> <span class="sc">!=</span> <span class="dv">3</span> x <span class="dv">2</span>]</span>
+<span id="cb147-10"><a href="matrices1.html#cb147-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-11"><a href="matrices1.html#cb147-11" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb147-12"><a href="matrices1.html#cb147-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)<span class="sc">:</span> data</span>
+<span id="cb147-13"><a href="matrices1.html#cb147-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> length [<span class="dv">4</span>] is not a sub<span class="sc">-</span>multiple or multiple of</span>
+<span id="cb147-14"><a href="matrices1.html#cb147-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> the number of rows [<span class="dv">3</span>]</span>
+<span id="cb147-15"><a href="matrices1.html#cb147-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-16"><a href="matrices1.html#cb147-16" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb147-17"><a href="matrices1.html#cb147-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)<span class="sc">:</span> data</span>
+<span id="cb147-18"><a href="matrices1.html#cb147-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> length [<span class="dv">8</span>] is not a sub<span class="sc">-</span>multiple or multiple of</span>
+<span id="cb147-19"><a href="matrices1.html#cb147-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> the number of columns [<span class="dv">3</span>]</span></code></pre></div>
 <p>In matrices <code>m1</code> and <code>m2</code> the input vector <code>1:3</code> is a sub-multiple of the size
 of the matrix 6.</p>
 <p>In matrix <code>m3</code> the input vector <code>1:12</code> is longer than the size of the matrix: 6.
@@ -781,10 +785,10 @@ second column after being recycled.</p>
 <p>In contrast, matrix <code>m3</code> does not use all the elements in the input vector
 <code>1:12</code>. Instead, only the first six values are retained.</p>
 <p>As for the matrices <code>m4</code> and <code>m5</code>, they all have an input vector whose
-length is neither a multiple or sub-multiple of the size of the matrix. R will
-also apply its recycling rules, but it will also display a warning message
-letting us know that the length of the input vector is not a multiple or
-sub-multiple of either the number of rows or the number of columns.</p>
+length is neither a multiple nor a sub-multiple of the size of the matrix.
+In these cases R will also apply its recycling rules, but it will also display
+a warning message letting us know that the length of the input vector is not a
+multiple or sub-multiple of either the number of rows or the number of columns.</p>
 </div>
 </div>
 <div id="giving-names-to-rows-and-columns" class="section level3 hasAnchor" number="10.3.2">

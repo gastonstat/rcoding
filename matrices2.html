@@ -23,7 +23,7 @@
 <meta name="author" content="Gaston Sanchez" />
 
 
-<meta name="date" content="2022-08-29" />
+<meta name="date" content="2022-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -210,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>6.3</b> Types and Modes</a></li>
 <li class="chapter" data-level="6.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>6.4</b> Special Values</a></li>
 <li class="chapter" data-level="6.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>6.5</b> Length of Vectors</a></li>
-<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-named"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have named</a></li>
+<li class="chapter" data-level="6.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-names"><i class="fa fa-check"></i><b>6.6</b> Vector elements can have names</a></li>
 <li class="chapter" data-level="6.7" data-path="vectors2.html"><a href="vectors2.html#exercises-3"><i class="fa fa-check"></i><b>6.7</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>7</b> Creating Vectors</a>
@@ -659,18 +659,20 @@ Figure 11.6: Several ways to select columns
 </div>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="matrices2.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting second column</span></span>
 <span id="cb162-2"><a href="matrices2.html#cb162-2" aria-hidden="true" tabindex="-1"></a>mat[ ,<span class="dv">2</span>]</span>
-<span id="cb162-3"><a href="matrices2.html#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>        <span class="dv">1</span>        <span class="dv">2</span>        <span class="dv">3</span>        <span class="dv">4</span>        <span class="dv">5</span>        <span class="dv">6</span> </span>
-<span id="cb162-4"><a href="matrices2.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1000.000</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span> <span class="fl">1104.081</span></span>
-<span id="cb162-5"><a href="matrices2.html#cb162-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb162-6"><a href="matrices2.html#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting columns 2 to 4</span></span>
-<span id="cb162-7"><a href="matrices2.html#cb162-7" aria-hidden="true" tabindex="-1"></a>mat[ ,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
-<span id="cb162-8"><a href="matrices2.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    savings moneymkt certificate</span>
-<span id="cb162-9"><a href="matrices2.html#cb162-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="fl">1000.000</span> <span class="fl">1000.000</span>    <span class="fl">1000.000</span></span>
-<span id="cb162-10"><a href="matrices2.html#cb162-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> <span class="fl">1020.000</span> <span class="fl">1025.000</span>    <span class="fl">1030.000</span></span>
-<span id="cb162-11"><a href="matrices2.html#cb162-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span> <span class="fl">1040.400</span> <span class="fl">1050.625</span>    <span class="fl">1060.900</span></span>
-<span id="cb162-12"><a href="matrices2.html#cb162-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">4</span> <span class="fl">1061.208</span> <span class="fl">1076.891</span>    <span class="fl">1092.727</span></span>
-<span id="cb162-13"><a href="matrices2.html#cb162-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">5</span> <span class="fl">1082.432</span> <span class="fl">1103.813</span>    <span class="fl">1125.509</span></span>
-<span id="cb162-14"><a href="matrices2.html#cb162-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">6</span> <span class="fl">1104.081</span> <span class="fl">1131.408</span>    <span class="fl">1159.274</span></span></code></pre></div>
+<span id="cb162-3"><a href="matrices2.html#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>        <span class="dv">1</span>        <span class="dv">2</span>        <span class="dv">3</span>        <span class="dv">4</span>        <span class="dv">5</span> </span>
+<span id="cb162-4"><a href="matrices2.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1000.000</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span> </span>
+<span id="cb162-5"><a href="matrices2.html#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>        <span class="dv">6</span> </span>
+<span id="cb162-6"><a href="matrices2.html#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1104.081</span></span>
+<span id="cb162-7"><a href="matrices2.html#cb162-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-8"><a href="matrices2.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="co"># selecting columns 2 to 4</span></span>
+<span id="cb162-9"><a href="matrices2.html#cb162-9" aria-hidden="true" tabindex="-1"></a>mat[ ,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb162-10"><a href="matrices2.html#cb162-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    savings moneymkt certificate</span>
+<span id="cb162-11"><a href="matrices2.html#cb162-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="fl">1000.000</span> <span class="fl">1000.000</span>    <span class="fl">1000.000</span></span>
+<span id="cb162-12"><a href="matrices2.html#cb162-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> <span class="fl">1020.000</span> <span class="fl">1025.000</span>    <span class="fl">1030.000</span></span>
+<span id="cb162-13"><a href="matrices2.html#cb162-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span> <span class="fl">1040.400</span> <span class="fl">1050.625</span>    <span class="fl">1060.900</span></span>
+<span id="cb162-14"><a href="matrices2.html#cb162-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">4</span> <span class="fl">1061.208</span> <span class="fl">1076.891</span>    <span class="fl">1092.727</span></span>
+<span id="cb162-15"><a href="matrices2.html#cb162-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">5</span> <span class="fl">1082.432</span> <span class="fl">1103.813</span>    <span class="fl">1125.509</span></span>
+<span id="cb162-16"><a href="matrices2.html#cb162-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">6</span> <span class="fl">1104.081</span> <span class="fl">1131.408</span>    <span class="fl">1159.274</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-158"></span>
 <img src="images/objects/obj-matrix-cols2.png" alt="Several ways to exclude columns" width="80%" />
 <p class="caption">

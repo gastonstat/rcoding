@@ -104,7 +104,7 @@ complex-and-raw-types
 types-and-modes
 special-values
 length-of-vectors
-vector-elements-can-have-named
+vector-elements-can-have-names
 exercises-3
 vectors3
 creating-vectors-with-c
